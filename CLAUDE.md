@@ -4,6 +4,17 @@ A relationship-with-yourself app for adults. Most people have one loud inner voi
 
 The name is always lowercase: **hey you**. It is the idea itself: talking to yourself as "you", the way you'd talk to a friend, makes hard moments lighter (Kross et al., 2014).
 
+## The heart of it (read first)
+
+hey you exists because its maker cares. Read `MANIFESTO.md` before doing anything else. Everything here is built on genuine compassion, empathy, truth, kindness and peace:
+
+- Thank people.
+- Start with what's good.
+- Show them they can be kind to themselves instead of telling them they've been unkind.
+- Never say anything we can't stand behind.
+
+When a choice is unclear, choose the gentler, truer, more welcoming option.
+
 ## v1 scope (build only this)
 
 - **Home is just home:** a sky that follows the hour, sol, a greeting, one next step, two shortcuts. Tabs: learn, practice, home (in the middle, where the app opens), book, you.
@@ -61,12 +72,15 @@ Confident dusk violet with sunrise coral, gold and teal; every voice habit has i
 
 ## Every feature must pass
 
+The manifesto's questions come first; these make them concrete.
+
 1. Does it show rather than tell?
 2. Would someone used to being blamed feel judged by it?
 3. Does it move toward real life?
 4. Is it safe on a phone someone else might see? (neutral look, nothing revealing on screen by default)
 5. Can we stand behind every claim it makes?
 6. Would people come back because they want to, not because they were nudged? (no streaks, points, or guilt; counts only where they help someone see their own patterns)
+7. Does it thank, welcome, or appreciate the person somewhere, and leave them a little lighter than they arrived?
 
 ## Working in parallel (growth agents)
 

@@ -1,6 +1,6 @@
 # Growth practices: the shared plan
 
-Four practices built by four agents at the same time. They teach people to relate to themselves in their own words, one believable step at a time, and to feel the difference. Read this whole file before writing code, along with `CLAUDE.md`, which still rules over everything here.
+Four practices built by four agents at the same time. Read `MANIFESTO.md` first: these practices exist to help people feel what it's like to be kind to themselves, so lead with warmth and gratitude, never with what's hard. They teach people to relate to themselves in their own words, one believable step at a time, and to feel the difference. Read this whole file before writing code, along with `CLAUDE.md`, which still rules over everything here.
 
 ## Why these four, and the line we hold
 
