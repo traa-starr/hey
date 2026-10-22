@@ -1,7 +1,7 @@
 {
   "id": "the-friend-test",
   "title": "the friend test",
-  "subtitle": "the voice you already use for others",
+  "subtitle": "the voice already used for others",
   "minutes": 4,
   "steps": [
     {
@@ -31,13 +31,13 @@
         },
         {
           "label": "you studied really hard",
-          "reply": "you saw the effort, not just the result. you already know how to do this."
+          "reply": "that's seeing the effort, not just the result. the skill is already there."
         }
       ]
     },
     {
       "type": "ask",
-      "text": "now imagine it was you. what would your inner voice say?",
+      "text": "now imagine it happened to you. what would the inner voice say?",
       "options": [
         {
           "label": "probably something harsh",
@@ -64,7 +64,7 @@
     },
     {
       "type": "write",
-      "prompt": "think of something you've been hard on yourself about. what would you tell a friend?",
+      "prompt": "think of something that's been weighing on you. what would a good friend hear from you?",
       "template": "i'd tell them {x}",
       "ideas": [
         "one bad day isn't who they are.",
@@ -76,7 +76,7 @@
     },
     {
       "type": "takeaway",
-      "text": "talk to yourself like a friend you love. it isn't soft. it helps you keep going.",
+      "text": "talking inward like a friend isn't soft. it helps people keep going.",
       "source": {
         "label": "Breines & Chen, 2012",
         "url": "https://doi.org/10.1177/0146167212445599"
@@ -85,7 +85,7 @@
     },
     {
       "type": "experiment",
-      "text": "once today, notice the gap: what you'd say to a friend, and what you say to you."
+      "text": "once today, notice the gap: the words for a friend, and the words used inward."
     }
   ],
   "grounding": [

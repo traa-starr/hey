@@ -1,12 +1,12 @@
 {
   "id": "changing-your-mind",
-  "title": "changing your mind",
-  "subtitle": "knowing where you stand, today",
+  "title": "changing my mind",
+  "subtitle": "knowing where i stand, today",
   "minutes": 3,
   "steps": [
     {
       "type": "say",
-      "text": "knowing where you stand is linked to feeling steadier in yourself. researchers call it self-concept clarity."
+      "text": "knowing where we stand is linked to feeling steadier. researchers call it self-concept clarity."
     },
     {
       "type": "say",
@@ -15,7 +15,7 @@
     },
     {
       "type": "ask",
-      "text": "have you changed your mind about something big in the last few years?",
+      "text": "has a big opinion changed in the last few years?",
       "options": [
         {
           "label": "yes",
@@ -33,7 +33,7 @@
     },
     {
       "type": "write",
-      "prompt": "something you used to think, and what you think now:",
+      "prompt": "something once believed, and what's believed now:",
       "template": "{x}",
       "ideas": [
         "i used to think i hated running. now i kind of like it.",
@@ -44,7 +44,7 @@
     },
     {
       "type": "takeaway",
-      "text": "changing your mind, thoughtfully, is part of getting to know yourself.",
+      "text": "changing one's mind, thoughtfully, is part of getting to know oneself.",
       "source": {
         "label": "design idea, inspired by self-concept clarity research (Campbell, 1990)",
         "url": ""
@@ -53,7 +53,7 @@
     },
     {
       "type": "experiment",
-      "text": "look through \"about you\" in your book, and notice one thing you'd update."
+      "text": "look through \"about me\" in the book, and notice one thing to update."
     }
   ],
   "grounding": [

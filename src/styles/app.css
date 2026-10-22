@@ -317,7 +317,6 @@ p { margin: 0; }
 .cover-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
 .cover-head .ibtn { background: #ffffff26; color: #fff; }
 .screen:has(> .cover) { padding-top: calc(18px + env(safe-area-inset-top, 0px)); }
-.cover .by { font-family: var(--voice); font-style: italic; font-size: 1.15rem; color: #ffffffd9; margin-top: -2px; }
 .cover svg { width: 100%; height: auto; display: block; overflow: visible; margin: 6px 0 2px; }
 .cover .dust { fill: #ffffff; opacity: .28; }
 .cover .link { stroke: #ffffff; stroke-opacity: .2; stroke-width: .8; }

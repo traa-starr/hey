@@ -25,7 +25,7 @@
     },
     {
       "type": "say",
-      "text": "changing your mind isn't flaky. it's what thinking looks like when you keep learning about yourself."
+      "text": "changing one's mind isn't flaky. it's what thinking looks like while still learning."
     },
     {
       "type": "write",
@@ -41,7 +41,7 @@
     },
     {
       "type": "takeaway",
-      "text": "\"for now\" lets you say what you think without signing it in ink.",
+      "text": "\"for now\" lets an opinion be said without signing it in ink.",
       "source": {
         "label": "design idea",
         "url": ""

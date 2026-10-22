@@ -19,7 +19,7 @@
     },
     {
       "type": "ask",
-      "text": "which sounds more like you when you're upset?",
+      "text": "which sounds more familiar on an upset day?",
       "options": [
         {
           "label": "lots of \"why\"",

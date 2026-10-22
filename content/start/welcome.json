@@ -11,7 +11,7 @@
     },
     {
       "type": "say",
-      "text": "i'm {companion}. thank you for being here. opening something like this is already a kind thing to do for yourself.",
+      "text": "i'm {companion}. thank you for being here. opening something like this is already a kind thing to do.",
       "mood": "happy"
     },
     {
@@ -21,38 +21,37 @@
     },
     {
       "type": "say",
-      "text": "this is a place to get on your own side: to talk to you the way you'd talk to someone you love. let's try it once, together.",
+      "text": "here, we practice kindness pointed inward, the same kind we give the people we love. let's try it once, together.",
       "mood": "curious"
     },
     {
       "type": "write",
-      "prompt": "finish this any way that feels kind. tap an idea if you like.",
-      "template": "hey {name}, you {x}",
+      "prompt": "finish this kindly. tap an idea if one fits.",
+      "template": "{name} {x}",
       "ideas": [
         "showed up today, and that counts.",
-        "care a lot about the people in your life.",
-        "keep going, even on slow days.",
-        "are allowed to rest.",
-        "are learning as you go.",
-        "took a moment for yourself just now."
+        "kept going, even on a slow day.",
+        "took a kind moment just now.",
+        "made it through something hard.",
+        "did enough today."
       ],
       "keep": "my-words"
     },
     {
       "type": "ask",
-      "text": "read it to yourself once more, slowly. how does it land?",
+      "text": "read it once more, slowly. how does it land?",
       "options": [
         {
           "label": "warm",
-          "reply": "stay with that for a second. that's you, being on your side."
+          "reply": "stay with that for a second. that's kindness, pointed inward."
         },
         {
           "label": "a little strange",
-          "reply": "makes sense. kind words to ourselves often feel new at first. they get easier with practice."
+          "reply": "makes sense. kind words inward often feel new at first. they get easier with practice."
         },
         {
           "label": "hard to believe",
-          "reply": "that's honest, and it's okay. we'll find words that feel true to you, one small step at a time."
+          "reply": "that's honest, and it's okay. we'll find words that feel true, one small step at a time."
         }
       ]
     },
@@ -60,15 +59,15 @@
       "type": "list",
       "text": "a few promises:",
       "items": [
-        "you can skip anything.",
-        "no streaks, ever. come back whenever you like.",
+        "anything can be skipped.",
+        "no streaks, ever. come back any time.",
         "everything stays on this phone.",
         "this isn't therapy. it's a place to practice."
       ]
     },
     {
       "type": "end",
-      "text": "that's the heart of it: getting on your own side, a little at a time. i'm glad you're here.",
+      "text": "that's the heart of it: kindness inward, a little at a time. i'm really glad you're here.",
       "button": "take me home",
       "then": "home"
     }

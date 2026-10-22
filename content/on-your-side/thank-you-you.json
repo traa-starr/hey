@@ -1,12 +1,12 @@
 {
   "id": "thank-you-you",
-  "title": "thank you, you",
-  "subtitle": "gratitude, turned toward yourself",
+  "title": "small thanks",
+  "subtitle": "gratitude, turned inward",
   "minutes": 3,
   "steps": [
     {
       "type": "say",
-      "text": "you probably thank other people all day. when did you last thank yourself?",
+      "text": "most of us thank other people all day. when was the last thank-you turned inward?",
       "mood": "curious"
     },
     {
@@ -15,28 +15,28 @@
     },
     {
       "type": "pick",
-      "prompt": "what could you thank yourself for today?",
+      "prompt": "what deserves a thank-you today?",
       "options": [
         "getting out of bed",
         "eating something",
         "showing up for someone",
         "doing a hard thing",
-        "resting when you needed to",
+        "resting when it was needed",
         "asking for help",
         "being honest",
-        "taking a minute for you"
+        "taking a quiet minute"
       ],
-      "reply": "thank you, from you. those are kept in your book.",
+      "reply": "thanks, given and received. kept in the book.",
       "keep": "my-words",
-      "as": "thank you for {x}."
+      "as": "thanks, {name}, for {x}."
     },
     {
       "type": "ask",
-      "text": "how does it feel to be thanked by you?",
+      "text": "how does that thank-you feel?",
       "options": [
         {
           "label": "nice",
-          "reply": "it is. you deserve the same thanks you give everyone else."
+          "reply": "it is. the thanks we give others belongs here too."
         },
         {
           "label": "odd",
@@ -44,17 +44,17 @@
         },
         {
           "label": "hard to take",
-          "reply": "that's honest. let it sit there anyway. you don't have to fully accept it yet."
+          "reply": "that's honest. let it sit there anyway. no need to accept it fully yet."
         }
       ]
     },
     {
       "type": "write",
-      "prompt": "one more, in your own words:",
-      "template": "thank you, {name}, for {x}",
+      "prompt": "one more:",
+      "template": "thanks, {name}, for {x}",
       "ideas": [
         "getting through today.",
-        "being patient with yourself.",
+        "being patient.",
         "trying, even when it was hard.",
         "looking after someone."
       ],
@@ -71,7 +71,7 @@
     },
     {
       "type": "experiment",
-      "text": "before you sleep, thank yourself for one thing you did today."
+      "text": "before sleep, give one quiet thanks for something done today."
     }
   ],
   "grounding": [

@@ -1,6 +1,6 @@
 # Growth practices: the shared plan
 
-Four practices built by four agents at the same time. Read `MANIFESTO.md` first: these practices exist to help people feel what it's like to be kind to themselves, so lead with warmth and gratitude, never with what's hard. They teach people to relate to themselves in their own words, one believable step at a time, and to feel the difference. Read this whole file before writing code, along with `CLAUDE.md`, which still rules over everything here.
+Four practices built by four agents at the same time. Read `MANIFESTO.md` first, and the voice rules in `CLAUDE.md`, especially "go easy on 'you'": these practices exist to help people feel what it's like to be kind to themselves, so lead with warmth and gratitude, never with what's hard. They teach people to relate to themselves in their own words, one believable step at a time, and to feel the difference. Read this whole file before writing code, along with `CLAUDE.md`, which still rules over everything here.
 
 ## Why these four, and the line we hold
 
@@ -136,12 +136,12 @@ Teach, briefly and in bubbles, why believable beats big (the Wood 2009 finding) 
 ### 2. your lines (`lines`)
 1. Pick a value: a list in content (honesty, humor, showing up, curiosity, care, courage…), plus "my own word".
 2. Recall one small, recent moment you lived it. No painful memories; prompts stay small and everyday.
-3. sol shapes it into a second-person line, *"you're someone who shows up, like yesterday with mia."*, from templates in content.
+3. sol shapes it into a line that uses the person's name, *"sam shows up, like yesterday with mia."*, from templates in content. With no name, use first person (*"i show up, like yesterday with mia."*). Second-person "you" self-talk belongs only to the "you" trick lesson; see Voice in `CLAUDE.md`.
 4. Tune it: swap words using a word bank drawn from the person's own words (their book entries and past lines) plus content suggestions.
 5. Try it on, read aloud if they like. "how true does this feel?"
 6. Keep it.
 
-Feel check before and after the first session of the day. **Today's line** on home shows one of their lines, rotating daily (`dailyIndex` in `src/lib/time.ts`), hidden until tapped, with "still true?", which opens tuning. Book section: your lines as a small gallery. Teach values affirmation (Steele; Cohen & Sherman), and the "you" distance (Kross 2014, already in the app).
+Feel check before and after the first session of the day. **Today's line** on home shows one of their lines, rotating daily (`dailyIndex` in `src/lib/time.ts`), hidden until tapped, with "still true?", which opens tuning. Book section: your lines as a small gallery. Teach values affirmation (Steele; Cohen & Sherman), and the distance that using your own name gives (Kross 2014, already in the app).
 
 ### 3. the warm room (`warm`)
 1. Feel check.

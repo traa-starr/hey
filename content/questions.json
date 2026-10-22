@@ -1,17 +1,125 @@
 {
-  "intro": "one small question a day. it goes in your book.",
+  "intro": "one small question a day. it goes in the book.",
   "questions": [
-    { "id": "rain-sun", "prompt": "rain on the window, or sun on your face?", "options": ["rain on the window", "sun on your face"], "keep": "like", "as": "i'd pick {x}." },
-    { "id": "night-in", "prompt": "a big night out, or a cozy night in?", "options": ["a big night out", "a cozy night in"], "keep": "like", "as": "i'd pick {x}." },
-    { "id": "sunrise", "prompt": "sunrise or sunset?", "options": ["sunrise", "sunset"], "keep": "like", "as": "i'd pick {x}." },
-    { "id": "walk-bath", "prompt": "a long walk, or a long bath?", "options": ["a long walk", "a long bath"], "keep": "like", "as": "i'd pick {x}." },
-    { "id": "mountains", "prompt": "mountains or the ocean?", "options": ["mountains", "the ocean"], "keep": "like", "as": "i'd pick {x}." },
-    { "id": "plans", "prompt": "plans, or surprises?", "options": ["plans", "surprises"], "keep": "like", "as": "i'd pick {x}." },
-    { "id": "songs", "prompt": "old songs or new songs?", "options": ["old songs", "new songs"], "keep": "like", "as": "i'd pick {x}." },
-    { "id": "breakfast", "prompt": "is breakfast for dinner better than breakfast?", "options": ["breakfast for dinner wins", "breakfast belongs in the morning"], "keep": "think", "as": "i think {x}." },
-    { "id": "mess", "prompt": "a little mess: cozy, or distracting?", "options": ["a little mess is cozy", "i think better when it's tidy"], "keep": "think", "as": "{x}." },
-    { "id": "morning", "prompt": "for now, are you more of a morning or a night person?", "options": ["a morning person", "a night person"], "keep": "think", "as": "for now, i'm {x}." },
-    { "id": "sweet", "prompt": "sweet or salty?", "options": ["sweet", "salty"], "keep": "like", "as": "i'd pick {x}." },
-    { "id": "quiet", "prompt": "a quiet morning, or a slow evening?", "options": ["a quiet morning", "a slow evening"], "keep": "like", "as": "i'd love {x}." }
+    {
+      "id": "rain-sun",
+      "prompt": "rain on the window, or sun on your face?",
+      "options": [
+        "rain on the window",
+        "sun on your face"
+      ],
+      "keep": "like",
+      "as": "i'd pick {x}."
+    },
+    {
+      "id": "night-in",
+      "prompt": "a big night out, or a cozy night in?",
+      "options": [
+        "a big night out",
+        "a cozy night in"
+      ],
+      "keep": "like",
+      "as": "i'd pick {x}."
+    },
+    {
+      "id": "sunrise",
+      "prompt": "sunrise or sunset?",
+      "options": [
+        "sunrise",
+        "sunset"
+      ],
+      "keep": "like",
+      "as": "i'd pick {x}."
+    },
+    {
+      "id": "walk-bath",
+      "prompt": "a long walk, or a long bath?",
+      "options": [
+        "a long walk",
+        "a long bath"
+      ],
+      "keep": "like",
+      "as": "i'd pick {x}."
+    },
+    {
+      "id": "mountains",
+      "prompt": "mountains or the ocean?",
+      "options": [
+        "mountains",
+        "the ocean"
+      ],
+      "keep": "like",
+      "as": "i'd pick {x}."
+    },
+    {
+      "id": "plans",
+      "prompt": "plans, or surprises?",
+      "options": [
+        "plans",
+        "surprises"
+      ],
+      "keep": "like",
+      "as": "i'd pick {x}."
+    },
+    {
+      "id": "songs",
+      "prompt": "old songs or new songs?",
+      "options": [
+        "old songs",
+        "new songs"
+      ],
+      "keep": "like",
+      "as": "i'd pick {x}."
+    },
+    {
+      "id": "breakfast",
+      "prompt": "is breakfast for dinner better than breakfast?",
+      "options": [
+        "breakfast for dinner wins",
+        "breakfast belongs in the morning"
+      ],
+      "keep": "think",
+      "as": "i think {x}."
+    },
+    {
+      "id": "mess",
+      "prompt": "a little mess: cozy, or distracting?",
+      "options": [
+        "a little mess is cozy",
+        "i think better when it's tidy"
+      ],
+      "keep": "think",
+      "as": "{x}."
+    },
+    {
+      "id": "morning",
+      "prompt": "for now, are you more of a morning or a night person?",
+      "options": [
+        "a morning person",
+        "a night person"
+      ],
+      "keep": "think",
+      "as": "for now, i'm {x}."
+    },
+    {
+      "id": "sweet",
+      "prompt": "sweet or salty?",
+      "options": [
+        "sweet",
+        "salty"
+      ],
+      "keep": "like",
+      "as": "i'd pick {x}."
+    },
+    {
+      "id": "quiet",
+      "prompt": "a quiet morning, or a slow evening?",
+      "options": [
+        "a quiet morning",
+        "a slow evening"
+      ],
+      "keep": "like",
+      "as": "i'd love {x}."
+    }
   ]
 }

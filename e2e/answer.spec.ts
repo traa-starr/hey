@@ -24,14 +24,14 @@ test("answering the inner voice keeps the answer, never the original unless aske
 
   await page.getByRole("slider", { name: "how loud it is" }).fill("2");
   await button(page, "next").click();
-  await expect(page.getByText("a little quieter. you did that, in your own words.")).toBeVisible();
+  await expect(page.getByText("a little quieter. those words did that.")).toBeVisible();
   // the answer carries the inner voice's words, and the screen says so before anything is kept
-  await expect(page.getByText(/this answer includes your inner voice's words/)).toBeVisible();
+  await expect(page.getByText(/this answer includes the inner voice's words/)).toBeVisible();
   await button(page, "keep it in my book").click();
-  await expect(page.getByText("kept in your book.")).toBeVisible();
+  await expect(page.getByText("kept in the book.")).toBeVisible();
 
-  await button(page, "see your book").click();
-  await expect(page.getByRole("img", { name: "a sky of 3 things you've kept" })).toBeVisible();
+  await button(page, "see the book").click();
+  await expect(page.getByRole("img", { name: "a sky of 3 kept things" })).toBeVisible();
   await page.getByRole("link", { name: "words: 2" }).click();
   const first = page.locator(".entry").first();
   await expect(first).toContainText("they're being harder on themselves than they deserve.");
@@ -54,7 +54,7 @@ test("an unfinished answer resumes after a reload in the same session", async ({
 test("a way chosen from explore skips straight to writing", async ({ page }) => {
   await returning(page);
   await page.goto("./#/way/for-now");
-  await button(page, "try it on one of yours").click();
+  await button(page, "try it on a real one").click();
   await button(page, "i'm not good enough.").click();
   await button(page, "next").click();
   await button(page, "hard to say").click();

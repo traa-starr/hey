@@ -21,10 +21,10 @@
         "i should be further along by now.",
         "i should have known better."
       ],
-      "job": "holds you to a standard, so you keep going.",
-      "misses": "where the rule came from, and whether it still fits your life.",
+      "job": "holds a high standard, to keep things moving.",
+      "misses": "where the rule came from, and whether it still fits.",
       "spot": {
-        "scene": "you finish a long week. you got a lot done. one email is still unanswered.",
+        "scene": "the end of a long week. a lot got done. one email is still unanswered.",
         "quote": "i should have answered that on tuesday."
       },
       "answers": [
@@ -41,8 +41,8 @@
           "line": "hey, you're allowed to be one email behind."
         }
       ],
-      "keep": "\"should\" is often a rule someone handed you. you get to check if it's still yours.",
-      "try": "next time you hear \"i should,\" try swapping it for \"i'd like to\" and notice what changes."
+      "keep": "\"should\" is often a rule someone else handed over. it's worth checking if it still fits.",
+      "try": "next time \"i should\" shows up, try swapping it for \"i'd like to\" and notice what changes."
     },
     {
       "id": "mind",
@@ -59,10 +59,10 @@
         "they're probably annoyed with me.",
         "they only invited me to be nice."
       ],
-      "job": "tries to stay one step ahead of what people think, so you're never caught off guard.",
-      "misses": "that you can't actually see inside anyone's head, and neither can it.",
+      "job": "tries to stay one step ahead of what people think, so nothing comes as a surprise.",
+      "misses": "that no one can see inside anyone's head, and neither can it.",
       "spot": {
-        "scene": "a friend replies to your long message with just \"ok\".",
+        "scene": "a friend replies to a long message with just \"ok\".",
         "quote": "they're done with me."
       },
       "answers": [
@@ -79,8 +79,8 @@
           "line": "hey, you don't have to solve this tonight. you could just ask."
         }
       ],
-      "keep": "a guess about someone else's mind is still a guess. you're allowed to check.",
-      "try": "catch one mind-read today. ask yourself: what do i actually know?"
+      "keep": "a guess about someone else's mind is still a guess. it's okay to check.",
+      "try": "catch one mind-read today. ask: what do i actually know?"
     },
     {
       "id": "always",
@@ -97,10 +97,10 @@
         "i always mess things up.",
         "nothing ever works out for me."
       ],
-      "job": "turns one moment into a rule, so you'll see it coming next time.",
+      "job": "turns one moment into a rule, so it can be seen coming next time.",
       "misses": "all the times it went differently.",
       "spot": {
-        "scene": "you burn dinner while texting someone.",
+        "scene": "dinner burns during a text conversation.",
         "quote": "i ruin everything i touch."
       },
       "answers": [
@@ -118,7 +118,7 @@
         }
       ],
       "keep": "one time is one time. \"always\" and \"never\" are rarely the whole story.",
-      "try": "when you hear \"always\" or \"never\" today, try \"this time\" instead."
+      "try": "when \"always\" or \"never\" shows up today, try \"this time\" instead."
     },
     {
       "id": "forecast",
@@ -135,10 +135,10 @@
         "this is going to go terribly.",
         "if i say something, it'll be a disaster."
       ],
-      "job": "prepares you for the worst, just in case.",
-      "misses": "the other ways it could go, and how often you've coped before.",
+      "job": "prepares for the worst, just in case.",
+      "misses": "the other ways it could go, and every time things were handled before.",
       "spot": {
-        "scene": "your manager asks for \"a quick chat tomorrow\".",
+        "scene": "a manager asks for \"a quick chat tomorrow\".",
         "quote": "i'm getting fired."
       },
       "answers": [
@@ -173,10 +173,10 @@
         "everyone else has it together.",
         "they're so far ahead of me."
       ],
-      "job": "measures where you stand, so you don't fall behind.",
-      "misses": "that you're comparing your inside to everyone else's outside.",
+      "job": "keeps track of where things stand, so nothing slips behind.",
+      "misses": "that it holds the inside of one life up against the outside of everyone else's.",
       "spot": {
-        "scene": "you scroll past an old classmate's wedding, house, and new job.",
+        "scene": "scrolling past an old classmate's wedding, house, and new job.",
         "quote": "i'm so behind."
       },
       "answers": [
@@ -193,7 +193,7 @@
           "line": "i'm noticing the thought that i'm behind."
         }
       ],
-      "keep": "you only ever see other people's highlights. you see all of your own footage.",
+      "keep": "other people show their highlights. our own footage shows everything.",
       "try": "notice one comparison today. ask: compared to what, exactly?"
     },
     {
@@ -211,10 +211,10 @@
         "i'm such an idiot.",
         "i'm too much."
       ],
-      "job": "sums you up in one word, so things feel simple and clear.",
-      "misses": "that you're a person who did one thing, not a word.",
+      "job": "sums things up in one word, so they feel simple and clear.",
+      "misses": "that a person who did one thing is still a whole person, not a word.",
       "spot": {
-        "scene": "you forget a coworker's name, right as you introduce them.",
+        "scene": "a coworker's name goes blank, right in the middle of an introduction.",
         "quote": "i'm such an idiot."
       },
       "answers": [
@@ -231,8 +231,8 @@
           "line": "hey, you blanked on a name. you're still you."
         }
       ],
-      "keep": "you did a thing. you're not the thing.",
-      "try": "when a label shows up, try describing what you did instead of who you are."
+      "keep": "doing a thing isn't being the thing.",
+      "try": "when a label shows up, try describing what happened instead of who someone is."
     },
     {
       "id": "discount",
@@ -249,10 +249,10 @@
         "that doesn't count, anyone could have done it.",
         "they're just being nice."
       ],
-      "job": "keeps you humble, so you keep trying and nobody thinks you're full of yourself.",
+      "job": "keeps things humble, so the trying continues and nobody seems full of themselves.",
       "misses": "the good things that are actually true.",
       "spot": {
-        "scene": "your friend says your presentation was really clear.",
+        "scene": "a friend says the presentation was really clear.",
         "quote": "they're just saying that."
       },
       "answers": [
@@ -269,8 +269,8 @@
           "line": "hey, you can let that one land."
         }
       ],
-      "keep": "you're allowed to keep the good stuff too.",
-      "try": "next time someone compliments you, just say \"thank you\" and stop there."
+      "keep": "the good stuff is allowed to stay too.",
+      "try": "next time a compliment comes, just say \"thank you\" and stop there."
     },
     {
       "id": "onme",
@@ -287,10 +287,10 @@
         "it's my fault they're upset.",
         "if i'd done more, this wouldn't have happened."
       ],
-      "job": "looks for what you can control, so you can make things right.",
-      "misses": "everything else that was going on, that had nothing to do with you.",
+      "job": "looks for what can be controlled, so things can be made right.",
+      "misses": "everything else that was going on, most of it nothing to do with us.",
       "spot": {
-        "scene": "your partner comes home quiet and goes straight to bed.",
+        "scene": "a partner comes home quiet and goes straight to bed.",
         "quote": "what did i do?"
       },
       "answers": [
@@ -307,8 +307,8 @@
           "line": "this is hard. other people feel this too. what i need right now is to let it rest until morning."
         }
       ],
-      "keep": "you matter to the people around you. you're not the cause of everything they feel.",
-      "try": "when you feel responsible for someone's mood, list three other things that could be going on for them."
+      "keep": "mattering to people doesn't mean causing everything they feel.",
+      "try": "when someone's mood feels like a personal job, list three other things that could be going on for them."
     },
     {
       "id": "allnone",
@@ -325,10 +325,10 @@
         "if it's not perfect, it's a failure.",
         "i missed one day, so the whole thing is ruined."
       ],
-      "job": "keeps the bar high, so you aim for your best.",
+      "job": "keeps the bar high, aiming for the best.",
       "misses": "everything in between, which is where most of life happens.",
       "spot": {
-        "scene": "you planned to work out four times this week. you went twice.",
+        "scene": "the plan was four workouts this week. it ended up being two.",
         "quote": "i've already blown it."
       },
       "answers": [
@@ -363,10 +363,10 @@
         "i feel stupid, so i must be.",
         "it feels impossible, so it must be."
       ],
-      "job": "takes your feelings seriously, which matters.",
-      "misses": "that a feeling tells you how things feel, not always how things are.",
+      "job": "takes feelings seriously, which matters.",
+      "misses": "that a feeling shows how things feel, not always how things are.",
       "spot": {
-        "scene": "you ask a friend for help moving, and feel uneasy about it all day.",
+        "scene": "after asking a friend for help moving, an uneasy feeling hangs around all day.",
         "quote": "i'm just in the way."
       },
       "answers": [
