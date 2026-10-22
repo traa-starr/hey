@@ -1,4 +1,5 @@
 import "fake-indexeddb/auto";
+import Dexie from "dexie";
 import { describe, expect, it } from "vitest";
 import { dexieBackend, memoryBackend } from "./db";
 import { fromV1 } from "./migrate";
@@ -134,5 +135,34 @@ describe("store", () => {
     await new Promise((r) => setTimeout(r, 0));
     expect(s.get().persistent).toBe(false);
     expect(s.get().entries).toHaveLength(1);
+  });
+
+  it("keeps growth practice records, and survives the move from version 2", async () => {
+    // a book saved before growth practices existed
+    const name = `test-v2-${++n}`;
+    const old = new Dexie(name);
+    old.version(2).stores({ entries: "id, kind, at", kv: "key", logs: "id, type, at" });
+    await old.open();
+    await old.table("entries").put({ id: "x1", kind: "voice", text: "still here.", from: "", at: "2026-10-01T10:00:00.000Z" });
+    old.close();
+
+    const s = new Store();
+    await s.open(() => dexieBackend(name), () => null);
+    expect(s.get().entries.map((e) => e.id)).toEqual(["x1"]);
+    expect(s.get().grown).toEqual([]);
+    const r = s.grow("ladder", "climb", { rungs: ["one"] });
+    s.regrow(r.id, { rungs: ["one", "two"], done: true });
+    s.grow("feel", "shift", { practice: "ladder" });
+    expect(s.get().grown.map((g) => g.feature)).toEqual(["ladder", "feel"]);
+    await new Promise((res) => setTimeout(res, 20));
+
+    const again = new Store();
+    await again.open(() => dexieBackend(name), () => null);
+    expect(again.get().grown.find((g) => g.feature === "ladder")).toMatchObject({ type: "climb", data: { rungs: ["one", "two"], done: true } });
+    expect(JSON.parse(again.exportJSON()).grown).toHaveLength(2);
+    again.ungrow(r.id);
+    expect(again.get().grown).toHaveLength(1);
+    again.clearAll();
+    expect(again.get().grown).toEqual([]);
   });
 });

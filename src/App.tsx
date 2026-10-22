@@ -23,6 +23,7 @@ const Practice = lazy(() => import("./screens/Practice").then((m) => ({ default:
 const Settings = lazy(() => import("./screens/Settings").then((m) => ({ default: m.Settings })));
 const Way = lazy(() => import("./screens/Way").then((m) => ({ default: m.Way })));
 const You = lazy(() => import("./screens/You").then((m) => ({ default: m.You })));
+const GrowthScreen = lazy(() => import("./growth/GrowthScreen").then((m) => ({ default: m.GrowthScreen })));
 
 // once the app is up and quiet, fetch the other screens so moving to them never waits
 const preload = () => {
@@ -80,6 +81,7 @@ function Routes() {
     case "book": page = <Book tab={route.tab} />; break;
     case "settings": page = <Settings />; break;
     case "way": page = <Way id={route.id} />; break;
+    case "grow": page = <GrowthScreen key={route.feature} feature={route.feature} sub={route.sub} />; break;
     default: page = <Home />;
   }
   return (

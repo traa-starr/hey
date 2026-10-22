@@ -115,7 +115,8 @@ export function buildContent(files: Files, strict: boolean): Content {
 
 // content/**/*.json, keyed by path inside content/
 export function bundledFiles(): Files {
-  const mods = import.meta.glob<unknown>(["../../content/**/*.json", "!../../content/language/**"], { eager: true, import: "default" });
+  // growth practices load their own content (content/growth/<feature>/), so it stays out of this bundle
+  const mods = import.meta.glob<unknown>(["../../content/**/*.json", "!../../content/language/**", "!../../content/growth/**"], { eager: true, import: "default" });
   return Object.fromEntries(Object.entries(mods).map(([k, v]) => [k.replace(/^.*?content\//, ""), v]));
 }
 

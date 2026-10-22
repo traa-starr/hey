@@ -13,10 +13,13 @@ describe("moving between screens", () => {
     expect(d("#/", "#/you")).toBe("tab");
     expect(d("#/book", "#/you")).toBe("tab");
     expect(d("#/book/voice", "#/book")).toBe("back");
+    expect(d("#/practice", "#/grow/ladder")).toBe("forward");
+    expect(d("#/grow/ladder", "#/grow/ladder/climb")).toBe("forward");
     expect(d("#/book/voice", "#/book/about")).toBeNull();
     expect(d("#/you", "#/you")).toBeNull();
   });
   it("reads and writes the same routes", () => {
-    for (const h of ["#/", "#/book/keeper", "#/lesson/inner-voice/everyone-has-one", "#/answer/habit/mind"]) expect(href(parse(h))).toBe(h);
+    for (const h of ["#/", "#/book/keeper", "#/lesson/inner-voice/everyone-has-one", "#/answer/habit/mind", "#/grow/ladder", "#/grow/lines/abc/edit"]) expect(href(parse(h))).toBe(h);
+    expect(parse("#/grow")).toEqual({ name: "practice" });
   });
 });

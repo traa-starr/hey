@@ -1,5 +1,6 @@
 // practice: the tools, one tap away.
 import { content } from "../content/load";
+import { onPlugins } from "../growth/registry";
 import { href, type Route } from "../router";
 import { Icon } from "../ui/icons";
 import { PageTitle, Screen, SolSays, Tabs } from "../ui/kit";
@@ -26,6 +27,12 @@ export function Practice() {
               <b>{x.title}</b><small>{x.sub}</small>
             </a>
           ))}
+          {onPlugins().flatMap((p) => (p.tile ? [p.tile] : []).map((tile) => (
+            <a key={p.id} className="tile" style={{ background: `var(--${tile.color}-soft)` }} href={href({ name: "grow", feature: p.id })}>
+              <span className="ico" style={{ background: `var(--${tile.color})` }}>{tile.icon}</span>
+              <b>{tile.title}</b><small>{tile.sub}</small>
+            </a>
+          )))}
         </div>
         <section className="section" aria-labelledby="ways-h">
           <h2 id="ways-h" className="label">{t.ways}</h2>

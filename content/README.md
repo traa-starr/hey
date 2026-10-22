@@ -11,6 +11,7 @@ Everything hey you says lives here as JSON, separate from the code. Adding a les
 - `help.json`, `credits.json`: real help lines; third-party assets with licenses.
 - `inner-voice/`, `talk-to-you/`, `what-you-like/`, `what-you-think/`: lessons.
 - `language/`: early drafts, not shipped.
+- `growth/<feature>/`: content for each growth practice (one rung up, your lines, the warm room, proof, the feel check). Each practice loads and validates its own files; see `docs/growth/PLAN.md`.
 
 ## Paths
 

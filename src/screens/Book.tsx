@@ -3,6 +3,7 @@
 import * as m from "motion/react-m";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { content } from "../content/load";
+import { BookSections } from "../growth/BookSections";
 import { byMonth, constellation, hash, metHabits, monthName, shifts, wayUse } from "../lib/book";
 import { toSecondPerson } from "../lib/person";
 import { format } from "../lib/template";
@@ -62,6 +63,7 @@ function Cover() {
         <Shelf />
         <Moved entries={entries} />
         <Range entries={entries} />
+        <BookSections />
         <p className="small">{t.privacy}</p>
       </Screen>
       <Tabs current="book" />

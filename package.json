@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "check": "npm run typecheck && npm run lint && npm run test",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "scope": "node scripts/scope.mjs"
   },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "5.3.0",

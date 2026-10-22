@@ -21,6 +21,10 @@ export type Moment = { id: string; type: "moment"; at: string; habit: string | n
 export type CheckIn = { id: string; type: "checkin"; at: string; loud: number; habits: string[] };
 export type VoiceCheck = { id: string; type: "check"; at: string; scores: Record<string, number> };
 export type Log = Moment | CheckIn | VoiceCheck;
+
+// what the growth practices keep (src/growth/<feature>/): one shape for all of them, so adding a
+// practice never needs a database change. each feature owns the meaning of its own `type` and `data`.
+export type GrowthRecord = { id: string; feature: string; type: string; at: string; data: Record<string, unknown> };
 type LogInput<T extends Log> = Omit<T, "id" | "at"> & { at?: string };
 export type NewLog = LogInput<Moment> | LogInput<CheckIn> | LogInput<VoiceCheck>;
 
@@ -62,4 +66,4 @@ export const freshKV = (): KV => ({
   done: {}, companion: { name: "", on: true }
 });
 
-export type State = KV & { entries: Entry[]; logs: Log[]; ready: boolean; persistent: boolean };
+export type State = KV & { entries: Entry[]; logs: Log[]; grown: GrowthRecord[]; ready: boolean; persistent: boolean };

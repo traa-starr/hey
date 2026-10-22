@@ -14,5 +14,15 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }]
     }
+  },
+  {
+    // growth practices stay independent: a feature may use the shared contract, registry and feel check,
+    // and anything outside src/growth, but never another feature's folder (docs/growth/PLAN.md)
+    files: ["src/growth/*/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": ["error", {
+        patterns: [{ regex: "^\\.\\./(?!feel/|types$|registry$|\\.\\./)", message: "Growth features don't import each other. Use ../feel, ../types, ../registry, or code outside src/growth." }]
+      }]
+    }
   }
 );

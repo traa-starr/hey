@@ -8,6 +8,7 @@ import { href } from "../router";
 import { useData } from "../store/useStore";
 import { Icon } from "../ui/icons";
 import { Screen, Tabs, colorVar, useCompanion } from "../ui/kit";
+import { Today } from "../growth/Today";
 import { pathArt } from "../ui/art";
 import { Sol } from "../ui/Sol";
 
@@ -53,6 +54,8 @@ export function Home() {
             {comp.on ? <div className="solbox"><Sol mood={tod === "night" ? "sleepy" : "happy"} /></div> : null}
           </div>
         </section>
+
+        <Today />
 
         <p className="label">{copy.home.next}</p>
         {next ? (
