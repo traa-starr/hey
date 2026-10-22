@@ -19,7 +19,9 @@ export type Route =
   | { name: "habit"; id: string }
   | { name: "book"; tab?: Kind }
   | { name: "settings" }
-  | { name: "way"; id: string };
+  | { name: "way"; id: string }
+  // a growth practice (src/growth/<feature>/), with an optional deeper screen
+  | { name: "grow"; feature: string; sub?: string };
 
 export function parse(hash: string): Route {
   const decode = (x: string) => {
@@ -45,6 +47,7 @@ export function parse(hash: string): Route {
       return { name: "answer" };
     case "habit": return one ? { name: "habit", id: one } : { name: "you" };
     case "way": return one ? { name: "way", id: one } : { name: "practice" };
+    case "grow": return one ? (rest.length > 1 ? { name: "grow", feature: one, sub: rest.slice(1).join("/") } : { name: "grow", feature: one }) : { name: "practice" };
     default: return { name: "home" };
   }
 }
@@ -60,6 +63,7 @@ export function href(r: Route): string {
     case "habit": return `#/habit/${e(r.id)}`;
     case "way": return `#/way/${e(r.id)}`;
     case "book": return r.tab ? `#/book/${r.tab}` : "#/book";
+    case "grow": return `#/grow/${e(r.feature)}${r.sub ? `/${r.sub.split("/").map(e).join("/")}` : ""}`;
     default: return `#/${r.name}`;
   }
 }
@@ -73,7 +77,7 @@ export function go(r: Route, replace = false) {
 
 // how deep a screen sits: tabs, then what opens from them, then what opens from those
 const DEPTH: Partial<Record<Route["name"], number>> = { home: 0, learn: 0, practice: 0, you: 0, book: 0, lesson: 2, way: 2 };
-const depth = (r: Route) => (r.name === "book" && r.tab ? 1 : DEPTH[r.name] ?? 1);
+const depth = (r: Route) => (r.name === "book" && r.tab ? 1 : r.name === "grow" && r.sub ? 2 : DEPTH[r.name] ?? 1);
 
 // which way a change of screen moves: deeper slides in from the right, back slides away, tabs cross-fade
 export function direction(from: Route, to: Route): "forward" | "back" | "tab" | null {

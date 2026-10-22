@@ -1,0 +1,21 @@
+{
+  "copy": {
+    "askBefore": "before we start: how does it feel right now?",
+    "askAfter": "and now?",
+    "light": "heavy or light",
+    "lightEnds": ["heavy", "light"],
+    "open": "tight or open",
+    "openEnds": ["tight", "open"],
+    "of": "{n} of 10, from {from} to {to}",
+    "word": "a word for it, if one fits",
+    "before": "before",
+    "after": "after",
+    "shiftLabel": "before: {before}. after: {after}.",
+    "feelText": "{light} of 10 light, {open} of 10 open",
+    "bookTitle": "how it shifted",
+    "bookNote": "how practices felt, before and after. any shift counts, and so does none.",
+    "demoTitle": "feel check",
+    "demoMiddle": "the practice happens here."
+  },
+  "words": ["tense", "worried", "tired", "sad", "irritated", "numb", "flat", "okay", "calm", "steady", "soft", "hopeful", "warm", "curious", "proud"]
+}

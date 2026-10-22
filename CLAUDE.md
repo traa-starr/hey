@@ -17,6 +17,14 @@ The name is always lowercase: **hey you**. It is the idea itself: talking to you
 - **Never leave an empty box alone.** Every text field offers tappable ideas.
 - **Read aloud** (on-device Web Speech) and **soft sounds**, both off by default. Haptics where the platform allows.
 - **Pick up where you left off:** every unfinished lesson resumes. An unfinished answer resumes only within the same session, for 30 minutes.
+- **Growth practices** (`src/growth/`, plan in `docs/growth/PLAN.md`): practices that teach people to build their own kind voice and feel the difference, each opening and closing with the shared **feel check**:
+  - **one rung up:** believable steps up from a heavy moment
+  - **your lines:** affirmations made from your own values and real moments, with today's line on home
+  - **the warm room:** a compassionate voice you build
+  - **proof:** real-life experiments and evidence
+  - **how your mind works:** a science path
+  
+  Never generic affirmations: lines far from what someone believes can backfire (Wood et al., 2009).
 
 Out of scope for v1 (do not build unless asked): rooms hub, customizable space, rehearsal room, garden, out-there steps, library, AI companion (sol is scripted), accounts, notifications, streaks, points, resource shelf.
 
@@ -59,6 +67,17 @@ Confident dusk violet with sunrise coral, gold and teal; every voice habit has i
 4. Is it safe on a phone someone else might see? (neutral look, nothing revealing on screen by default)
 5. Can we stand behind every claim it makes?
 6. Would people come back because they want to, not because they were nudged? (no streaks, points, or guilt; counts only where they help someone see their own patterns)
+
+## Working in parallel (growth agents)
+
+Several agents may be building growth practices at once. If you are one of them:
+
+- Read `docs/growth/PLAN.md` before anything else. It says which practice is yours, which paths you own, and the contracts you plug into.
+- Change only your own paths: `src/growth/<id>/`, `content/growth/<id>/`, `e2e/growth-<id>.spec.ts`, `docs/growth/<id>.md`, `docs/growth/requests/<id>.md`.
+- `npm run scope <id>` must pass before every push.
+- Shared files are off limits: store, router, app shell, home, practice, book, `content/copy.json`, `src/styles/app.css`, `src/ui/`, and the existing tests. Write what you need in `docs/growth/requests/<id>.md` instead.
+- Don't import another practice's code (lint blocks it). Read its records only through `useData().grown`, defensively.
+- Work on branch `growth/<id>`, never on `main`. Never merge pull requests.
 
 ## Workflow
 

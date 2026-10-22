@@ -2,7 +2,7 @@
 // behind it, and if saving fails the app keeps working from memory.
 import { dexieBackend, memoryBackend, type Backend } from "./db";
 import { fromV1, V1_KEY } from "./migrate";
-import { DEFAULT_SETTINGS, freshKV, type Entry, type KV, type Log, type NewLog, type Settings, type State } from "./types";
+import { DEFAULT_SETTINGS, freshKV, type Entry, type GrowthRecord, type KV, type Log, type NewLog, type Settings, type State } from "./types";
 
 type Listener = () => void;
 
@@ -18,7 +18,7 @@ function readLocal(key: string): string | null {
 }
 
 export class Store {
-  private state: State = { ...freshKV(), entries: [], logs: [], ready: false, persistent: false };
+  private state: State = { ...freshKV(), entries: [], logs: [], grown: [], ready: false, persistent: false };
   private listeners = new Set<Listener>();
   private backend: Backend = memoryBackend();
 
@@ -47,7 +47,7 @@ export class Store {
       this.backend = memoryBackend();
       persistent = false;
     }
-    let loaded: Awaited<ReturnType<Backend["load"]>> = { entries: [], logs: [], kv: {} };
+    let loaded: Awaited<ReturnType<Backend["load"]>> = { entries: [], logs: [], grown: [], kv: {} };
     try {
       loaded = await this.backend.load();
     } catch {
@@ -91,7 +91,8 @@ export class Store {
       }
     }
     const logs = (loaded.logs ?? []).slice().sort((a, b) => (a.at < b.at ? -1 : 1));
-    this.set({ ...kv, entries: entries.sort(byNewest), logs, ready: true, persistent });
+    const grown = (loaded.grown ?? []).slice().sort((a, b) => (a.at < b.at ? -1 : 1));
+    this.set({ ...kv, entries: entries.sort(byNewest), logs, grown, ready: true, persistent });
   }
 
   private setKV<K extends keyof KV>(key: K, value: KV[K]) {
@@ -109,6 +110,24 @@ export class Store {
     this.set({ logs: [...this.state.logs, entry] });
     this.save((b) => b.putLog(entry));
     return entry;
+  };
+  // growth practices keep their own records (oldest first); `data` is the feature's own shape
+  grow = (feature: string, type: string, data: Record<string, unknown>, at?: string): GrowthRecord => {
+    const rec: GrowthRecord = { id: newId(), feature, type, at: at ?? new Date().toISOString(), data };
+    this.set({ grown: [...this.state.grown, rec] });
+    this.save((b) => b.putGrown(rec));
+    return rec;
+  };
+  regrow = (id: string, data: Record<string, unknown>) => {
+    const found = this.state.grown.find((g) => g.id === id);
+    if (!found) return;
+    const rec = { ...found, data: { ...found.data, ...data } };
+    this.set({ grown: this.state.grown.map((g) => (g.id === id ? rec : g)) });
+    this.save((b) => b.putGrown(rec));
+  };
+  ungrow = (id: string) => {
+    this.set({ grown: this.state.grown.filter((g) => g.id !== id) });
+    this.save((b) => b.deleteGrown(id));
   };
   markTried = (lessonId: string) => this.setKV("tried", { ...this.state.tried, [lessonId]: new Date().toISOString() });
   markAnswered = (questionId: string) => this.setKV("answered", { ...this.state.answered, [questionId]: new Date().toISOString() });
@@ -148,14 +167,14 @@ export class Store {
     } catch {
       // nothing more to clear
     }
-    this.set({ ...freshKV(), ...keep, entries: [], logs: [] });
+    this.set({ ...freshKV(), ...keep, entries: [], logs: [], grown: [] });
     this.save(async (b) => {
       await b.clear();
       await Promise.all(Object.entries(keep).map(([k, v]) => b.putKV(k, v)));
     });
   };
   exportJSON = () =>
-    JSON.stringify({ app: "hey you", exported: new Date().toISOString(), name: this.state.name, entries: this.state.entries, logs: this.state.logs }, null, 2);
+    JSON.stringify({ app: "hey you", exported: new Date().toISOString(), name: this.state.name, entries: this.state.entries, logs: this.state.logs, grown: this.state.grown }, null, 2);
 }
 
 export const store = new Store();
