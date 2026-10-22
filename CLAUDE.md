@@ -6,14 +6,12 @@ The name is always lowercase: **hey you**.
 
 ## v1 scope (build only this)
 
-- **One engine, three practices.** Every practice is the same card flow: prompt → respond (pick, rewrite, or type; no right answers) → keep (saved to me, collected) → try it today (optional).
-  - **start:** a first lesson (`content/start/welcome.json`) that shows what hey you is before any practice.
-  - **Lessons are tools, not corrections.** Each lesson hands people a small language technique that adds range ("today's tool: the dial"). Never start from a flaw. Shape: name the tool → show it in a tiny scene → try it on → build your own sentence with it → collect → optional try it today. References: `content/language/the-dial.json`, `content/desires/want-words.json`.
-  - **words (language) tools:** the dial (a little / really), two at once ("and"), i notice, for now, one word more (adding what's underneath), i choose to.
-  - **wants (desires) tools:** want words, this or that, younger you, small wants.
-  - **thoughts (opinions) tools:** i think… because…, for now (changing your mind), not sure yet, a little bit of both.
-- **me, collected:** my words, what I like, what I think. Editable and deletable.
-- **resource shelf:** small, curated, every item tagged with its license and how we may use it.
+- **Core practice: weigh it.** Catch a sentence your inner voice said → feel its weight (feather to boulder, optional body location) → optional curiosity (what is the voice doing, does it sound like anyone) → pick a formula → write your own version → feel the new weight → keep it in my words. The original sentence is never saved unless the person opts in. Research basis: the Self-Talk Toolkit doc and `content/formulas.json` sources.
+- **Formulas** (`content/formulas.json`): frames from published research or recognized therapy approaches that people fill with their own words. Never auto-rewrite someone's sentence. Each formula shows its source and an honest evidence label. Talking to yourself as "you" (Kross et al., 2014) is the namesake technique.
+- **start:** `content/start/welcome.json` shows what hey you is before anything else, and asks (optionally) what to call the person.
+- **wants and thoughts:** short tool lessons (`content/desires/`, `content/opinions/`) for discovering what you like and think. Lessons are tools, not corrections.
+- **me, collected:** my words (with before → after weights), what I like, what I think. Editable and deletable.
+- **resource shelf:** small, curated, every item tagged with its license and how we may use it (not built yet).
 
 Out of scope for v1 (do not build unless asked): rooms hub, customizable space, rehearsal room, garden, out-there steps, library, AI companion, accounts, notifications, streaks.
 

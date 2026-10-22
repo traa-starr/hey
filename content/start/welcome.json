@@ -54,12 +54,17 @@
       "button": "i like that"
     },
     {
+      "type": "show",
+      "text": "one thing researchers found: talking to yourself as \"you,\" or by your own name, instead of \"i,\" helped people feel less distress under stress. it's like getting advice from a friend who happens to be you.",
+      "button": "so that's the name"
+    },
+    {
       "type": "map",
-      "prompt": "three things you can explore here, in any order:",
+      "prompt": "what you can do here, in any order:",
       "items": [
-        { "name": "words", "practice": "language", "text": "how you talk to yourself, and new ways to try" },
-        { "name": "wants", "practice": "desires", "text": "what you actually like, outside of everyone else" },
-        { "name": "thoughts", "practice": "opinions", "text": "what you actually think, and saying it" }
+        { "name": "weigh it", "practice": "weigh", "text": "catch something your inner voice said, feel its weight, and reshape it in your own words" },
+        { "name": "formulas", "practice": "formulas", "text": "frames from real research that help you find new words. you bring the words." },
+        { "name": "wants and thoughts", "practice": "know", "text": "find out what you actually like and think, outside of everyone else" }
       ],
       "button": "next"
     },
@@ -78,6 +83,17 @@
         "this isn't therapy, and you never have to share anything you don't want to."
       ],
       "button": "got it"
+    },
+    {
+      "type": "write",
+      "optional": true,
+      "prompt": "what should hey you call you? a name, a nickname, anything.",
+      "input": {
+        "label": "call me:",
+        "placeholder": "your name"
+      },
+      "keep": "name",
+      "skip": "skip for now"
     },
     {
       "type": "write",

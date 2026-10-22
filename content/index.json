@@ -1,12 +1,7 @@
 {
   "start": "start/welcome.json",
+  "formulas": "formulas.json",
   "practices": [
-    {
-      "id": "language",
-      "name": "words",
-      "blurb": "how you talk to yourself, and new ways to try",
-      "lessons": ["language/the-dial.json", "language/two-at-once.json"]
-    },
     {
       "id": "desires",
       "name": "wants",
