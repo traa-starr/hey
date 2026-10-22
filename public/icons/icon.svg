@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><radialGradient id="g" cx="0.7" cy="0.1" r="1.1"><stop offset="0" stop-color="#fde3d2"/><stop offset=".45" stop-color="#f8d2c6"/><stop offset="1" stop-color="#efc7cf"/></radialGradient></defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <text x="31" y="44" text-anchor="middle" font-family="Newsreader, Georgia, 'Times New Roman', serif" font-style="italic" font-size="44" fill="#2b1d1a">y</text>
+</svg>

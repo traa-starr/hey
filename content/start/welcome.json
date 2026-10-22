@@ -2,7 +2,7 @@
   "id": "welcome",
   "practice": "start",
   "title": "hey you",
-  "subtitle": "a place to come back to yourself",
+  "subtitle": "a place to grow a second voice",
   "minutes": 2,
   "steps": [
     {
@@ -12,22 +12,34 @@
     },
     {
       "type": "show",
-      "text": "this is a place to get to know yourself again, one small step at a time.",
-      "button": "okay"
+      "text": "most of us carry one loud inner voice.",
+      "visual": {
+        "inner": "you always mess things up.",
+        "loud": 4
+      },
+      "button": "go on"
     },
     {
       "type": "show",
-      "text": "here, the heavy things your inner voice says can become lighter, truer words. in your own voice.",
+      "text": "here, you grow a second one. yours, in your own words.",
+      "visual": {
+        "inner": "you always mess things up.",
+        "mine": "i messed up, and i'm still learning."
+      },
       "button": "i'd like that"
     },
     {
       "type": "show",
-      "text": "and every new sentence you make becomes a stone in your foundation. something steady to build a life on.",
-      "button": "a foundation"
-    },
-    {
-      "type": "show",
-      "text": "a little secret behind the name: speaking to yourself as \"you,\" the way a friend would, has been shown to make hard moments feel lighter.",
+      "text": "why \"you\"? talking to yourself as \"you\" makes hard moments feel lighter.",
+      "more": "in seven studies, people who talked to themselves by name or as \"you\", the way they'd talk to a friend, felt less distress and handled stress better.",
+      "source": {
+        "label": "Kross et al., 2014",
+        "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+      },
+      "visual": {
+        "inner": "i can't do this.",
+        "mine": "hey you. you've done hard things before."
+      },
       "button": "hey you"
     },
     {
@@ -37,7 +49,7 @@
         "there are no right answers here.",
         "you can skip anything.",
         "no streaks, ever. come back whenever you like.",
-        "everything stays on your phone.",
+        "everything stays on this phone.",
         "this isn't therapy. it's a place to practice."
       ],
       "button": "sounds good"
@@ -47,7 +59,7 @@
       "optional": true,
       "prompt": "what would you like to be called?",
       "input": {
-        "label": "call me:",
+        "label": "call me",
         "placeholder": "a name, a nickname, anything"
       },
       "keep": "name",
@@ -55,9 +67,9 @@
     },
     {
       "type": "close",
-      "text": "whenever you're ready, let's lay your first stone.",
-      "button": "lay my first stone",
-      "then": "weigh",
+      "text": "whenever you're ready, answer one.",
+      "button": "answer one",
+      "then": "answer",
       "later": "look around first"
     }
   ],
