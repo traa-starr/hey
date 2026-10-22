@@ -1,0 +1,7 @@
+{
+  "note": "everything else in hey you, including its drawings and sounds, is made for it.",
+  "items": [
+    { "name": "Newsreader", "by": "Production Type", "license": "SIL Open Font License 1.1", "use": "self-hosted typeface for your voice", "url": "https://fonts.google.com/specimen/Newsreader" },
+    { "name": "Instrument Sans", "by": "Instrument", "license": "SIL Open Font License 1.1", "use": "self-hosted typeface for the interface and the inner voice", "url": "https://fonts.google.com/specimen/Instrument+Sans" }
+  ]
+}

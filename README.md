@@ -2,16 +2,24 @@
 
 a relationship-with-yourself app.
 
-hey you helps you rebuild who you are, one small practice at a time:
+most of us carry one loud inner voice. hey you helps you grow a second one: yours, in your own words.
 
-- **language:** notice how the words you use with yourself shape your mind, and practice new ones.
-- **desires:** find out what you actually like and want.
-- **opinions:** practice knowing what you think, and saying it.
+- **answer it:** catch what your inner voice said, notice how loud it is, and answer it with a way that comes from research, in your own words.
+- **about you:** small questions that help you find out what you actually like and think.
+- **your book:** everything you keep, written by you, kept privately on your phone.
 
-Everything you discover is kept privately on your own phone, in your **foundation**.
+hey you is a practice space, not therapy. It never asks you to revisit painful memories. There are no accounts, no tracking, and nothing leaves your phone.
 
-hey you is a practice space, not therapy. It never asks you to revisit painful memories.
+## Develop
 
-## Status
+```sh
+npm install
+npm run dev        # local app at http://localhost:5173/hey/
+npm run check      # typecheck, lint, unit tests
+npm run e2e        # end-to-end tests (Playwright)
+npm run build      # production build in dist/
+```
 
-Early build. See [`docs/v1-plan.md`](docs/v1-plan.md) for what's being built first.
+Content lives in [`content/`](content/README.md). The spec is [`docs/SPEC.md`](docs/SPEC.md) and the design system is [`docs/DESIGN.md`](docs/DESIGN.md).
+
+Pushing to `main` builds and deploys to GitHub Pages through `.github/workflows/deploy.yml` (repository settings → Pages → source: GitHub Actions).

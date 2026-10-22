@@ -1,16 +1,20 @@
 {
   "start": "start/welcome.json",
   "formulas": "formulas.json",
+  "questions": "questions.json",
+  "copy": "copy.json",
+  "help": "help.json",
+  "credits": "credits.json",
   "practices": [
     {
       "id": "desires",
-      "name": "wants",
+      "name": "what you like",
       "blurb": "what you actually like, outside of everyone else",
       "lessons": ["desires/want-words.json", "desires/this-or-that.json"]
     },
     {
       "id": "opinions",
-      "name": "thoughts",
+      "name": "what you think",
       "blurb": "what you actually think, and saying it",
       "lessons": ["opinions/i-think-because.json", "opinions/for-now.json"]
     }

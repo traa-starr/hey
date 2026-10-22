@@ -1,46 +1,48 @@
 # content
 
-All lessons, prompts, and shelf items live here as data files, separate from the app's code. Adding content should never require changing code.
+Everything hey you says lives here as JSON, separate from the code. Adding a lesson, a way to answer, or a question never requires changing code: edit or add a file, list it in `index.json` if it's a lesson, and push. Every file is checked against a schema (`src/content/schema.ts`): a broken file fails the tests, and in the app the broken piece is skipped while the rest keeps working.
 
-- `start/` — the first lesson, showing what hey you is (`welcome.json`)
-- `language/` — one file per everyday word or phrase (`its-fine.json` is an early draft, to be rewritten as exploration rather than correction)
-- `desires/` — prompt sets for what you like and want
-- `opinions/` — low-stakes questions to form and say a view
-- `shelf/` — resource shelf items, each with source, license, and allowed use
+- `index.json`: which files exist and in what order (the welcome, ways to answer, questions, copy, help, credits, and the lesson sets).
+- `start/welcome.json`: the welcome story.
+- `formulas.json`: the ways to answer, plus `catchIdeas` (inner-voice sentences people can tap).
+- `questions.json`: the daily "getting to know you" question on today.
+- `copy.json`: every interface string that isn't in a lesson.
+- `help.json`: real-help lines shown at the bottom of your book.
+- `credits.json`: third-party assets (fonts) with license and how we use them.
+- `desires/`, `opinions/`: lesson sets for what you like and what you think.
+- `language/`: early drafts kept for later; not shown in the app.
 
-## index.json
+## Ways to answer (`formulas.json`)
 
-`index.json` tells the app which lessons exist and in what order. To add a lesson: write its file, then add its path to the right practice in `index.json`. No code changes needed.
+Each: `id`, `name`, `frame` (the shape, with `___`), `why`, `example` (`before`, `after`), `template` (with `{key}` slots), `slots`, `source` (`label`, `url`, may be empty), `evidence` (an honest label).
+
+Each slot: `key`, `label`, and one of: `fill` (`name` for what the person is called, `original` for the inner voice's sentence, `original-i` for that sentence turned into first person), `chips` (pick one), or free typing with `placeholder` and `ideas` (tappable suggestions). Every typed slot needs `ideas`, so nobody starts from an empty box.
+
+## Questions (`questions.json`)
+
+Each: `id`, `prompt`, `options` (two or more), `keep` (`like` or `think`), and `as`: how the answer is written in the book, in first person, with `{x}` for the option (for example `i'd pick {x}.`). Your book reads it back in second person ("you'd pick sunrise.").
 
 ## Lesson format
 
-Each lesson is one JSON file in `language/`. `language/its-fine.json` is the reference example.
+One JSON file per set. Top-level: `id`, `practice`, `kind` (`tool`), `title`, `subtitle`, `minutes`, `steps`, `grounding` (the research or practice it draws on).
 
-Top-level fields: `id`, `practice`, `kind` (`tool` for practice lessons), `title`, `subtitle`, `minutes`, `steps` (in order), `grounding` (the research or practice the lesson draws on).
-
-Every practice lesson is a **tool**: a small technique that adds range, never a correction. See `language/the-dial.json` and `desires/want-words.json`.
-
-Each step has a `type`. Most also carry a `stage` (`notice`, `understand`, `rewrite`, `keep`, `try`) so the app can show progress.
-
-| type | What it shows | Fields |
+| type | what it shows | fields |
 | --- | --- | --- |
-| `welcome` | A short, warm opener. Never asks how you feel. | `text`, `button` |
-| `show` | One short line that shows an idea, then a soft button. | `text`, `button` |
-| `try-on` | The same moment said a few ways, to notice how each lands. Never graded. | `prompt`, `options`, `question`, optional `answers`, `reply` |
-| `map` | A simple overview of the practices. | `prompt`, `items` (`name`, `practice`, `text`), `button` |
-| `promises` | What hey you promises the person. | `prompt`, `items`, `button` |
-| `this-or-that` | Quick gut picks between pairs, saved as likes. | `prompt`, `pairs`, `extras` (e.g. both, neither), `keep` |
-| `build` | Make your own sentence with the tool, from chips and optional typing. | `prompt`, `template` (with `{key}` slots), `parts` (`key`, `label`, `chips` and/or `input`, `placeholder`, `allowCustom`), `reply`, `keep`, `optional` |
-| `scene` | A small relatable moment, then what was underneath. | `scene`, `reveal`, optional `prompt` + `options` + `reply`, or `button` |
-| `understand` | Two or three short lines on what the pattern does. | `lines`, `button` |
-| `rewrite` | A sentence in context and a few ways to say it, each with a gentle note on what it tends to do. No right answer. | `context`, `original`, `prompt`, `options` (`text`, `note`), optional `footer` |
-| `write` | Optional free writing, with chips as starters. | `prompt`, `chips`, `input` (`label`, `placeholder`), `keep`, `skip` |
-| `pocket` | Phrases to save for later. | `prompt`, `phrases`, `keep` |
-| `try` | One optional small thing for real life today. | `prompt`, `options`, `skip` |
-| `close` | A short ending. | `text`, `button` |
+| `welcome` | a short opener. never asks how you feel. | `text`, `button`, optional `visual` |
+| `show` | one short line, then a soft button. | `text`, `button`, optional `more` (behind "tell me more"), `source`, `visual` |
+| `try-on` | the same moment said a few ways, to notice how each lands. never graded. | `prompt`, `options`, `question`, optional `answers`, `reply` |
+| `promises` | what hey you promises. | `prompt`, `items`, `button` |
+| `this-or-that` | quick gut picks between pairs, kept as likes. | `prompt`, `pairs`, `extras` (both, neither), `keep` |
+| `build` | make your own sentence from chips and typing. | `prompt`, `template`, `parts` (`key`, `label`, `chips` and/or `input`, `placeholder`, `ideas`, `allowCustom`), `reply`, `keep`, `optional` |
+| `write` | optional free writing, with chips as starters. | `prompt`, `chips`, `input` (`label`, `placeholder`), `keep`, `skip` |
+| `pocket` | phrases to keep for later. | `prompt`, `phrases`, `keep` |
+| `try` | one optional small thing for real life today. | `prompt`, `options`, `skip` |
+| `close` | a short ending. | `text`, `button`, optional `then` (`answer`) and `later` |
 
-`keep` names where the answer is saved in your foundation (`my-words`, `what-i-like`, `what-i-think`).
+`visual` (welcome only) picks a typographic scene: `hey`, `inner`, `answer`, `you`.
+
+`keep` says where an answer goes: `my-words` (things you've told yourself), `what-i-like` or `what-i-think` (about you), or `name`. Write kept sentences in first person; the book turns about-you entries into second person when it shows them.
 
 ## Writing rules
 
-Follow the core stance, voice, and feature tests in the root `CLAUDE.md`: exploring, not correcting; lowercase; show don't tell; no grades; every option makes sense; always a way to skip. `start/welcome.json` is the reference for tone.
+Follow the core stance, voice, and feature tests in the root `CLAUDE.md`: exploring, not correcting; lowercase; adult and plain; show, don't tell; no grades; every option makes sense; always a way to skip. `start/welcome.json` is the reference for tone.

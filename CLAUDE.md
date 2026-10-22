@@ -1,45 +1,52 @@
 # hey you
 
-A relationship-with-yourself app. People rebuild who they are by learning how their words shape their mind (language), what they actually want (desires), and what they actually think (opinions). Everything they keep becomes a stone in their **foundation**, a private, growing picture of who they are.
+A relationship-with-yourself app for adults. Most people have one loud inner voice. hey you helps them grow a second one: their own, in their own words. People answer what their inner voice says, find out what they actually like and think, and keep it all in **your book**, a private, growing book about them, written by them.
 
-The name is always lowercase: **hey you**.
+The name is always lowercase: **hey you**. It is the idea itself: talking to yourself as "you", the way you'd talk to a friend, makes hard moments lighter (Kross et al., 2014).
 
 ## v1 scope (build only this)
 
-- **Core practice: weigh it.** Catch a sentence your inner voice said → feel its weight (feather to boulder, optional body location) → optional curiosity (what is the voice doing, does it sound like anyone) → pick a formula → write your own version → feel the new weight → keep it in my words. The original sentence is never saved unless the person opts in. Research basis: the Self-Talk Toolkit doc and `content/formulas.json` sources.
-- **Formulas** (`content/formulas.json`): frames from published research or recognized therapy approaches that people fill with their own words. Never auto-rewrite someone's sentence. Each formula shows its source and an honest evidence label. Talking to yourself as "you" (Kross et al., 2014) is the namesake technique.
-- **start:** `content/start/welcome.json` shows what hey you is before anything else, and asks (optionally) what to call the person.
-- **wants and thoughts:** short tool lessons (`content/desires/`, `content/opinions/`) for discovering what you like and think. Lessons are tools, not corrections.
-- **foundation:** every kept sentence, like, and thought is a stone. Shown as a stacking visual with gentle milestones (never streaks), and listed as my words (with before → after weights), what I like, what I think. Editable and deletable. Settings, real help, and data controls live at the bottom of the foundation tab.
-- **Never leave an empty box alone.** Every open text field offers tappable ideas so nobody has to start from nothing.
-- **Home is simple:** greeting, the foundation, one main action (lay a new stone), one light suggestion, and a link to all tools. Tabs: home, tools, foundation.
-- **resource shelf:** small, curated, every item tagged with its license and how we may use it (not built yet).
+- **Core practice: answer it.** Catch a sentence your inner voice said → set how loud it is (a whisper to all i can hear; the sentence itself grows) → optional calm moment when it's loud → pick a way to answer → write your answer → set how loud the original is now → keep it in your book, try another way, or let it go. The inner voice's sentence is never stored unless the person opts in.
+- **Ways to answer** (`content/formulas.json`): frames from published research or recognized therapy approaches that people fill with their own words. Never auto-rewrite someone's sentence. Each shows its source and an honest evidence label.
+- **Welcome** (`content/start/welcome.json`): a short story (8 screens or fewer) about the two voices that ends with answering a first one. Asks (optionally) what to call the person.
+- **Getting to know you:** a daily question on today (`content/questions.json`) plus short sets (`content/desires/`, `content/opinions/`) for discovering what you like and think. Tools, never corrections.
+- **Your book:** two parts. *things you've told yourself* (answers, with loudness before → after) and *about you* (likes and thoughts, read back in second person: "you'd pick rain"). Editable and deletable. No counts, milestones, or streaks. Settings, real help, and data controls live at the bottom of the book.
+- **Today is simple:** greeting, one line you once told yourself, one main action (answer it), one small question about you. Tabs: today, explore, your book.
+- **Never leave an empty box alone.** Every text field offers tappable ideas.
+- **Read aloud** (on-device Web Speech) and **soft sounds**, both off by default. Haptics where the platform allows.
+- **Pick up where you left off:** an unfinished set resumes. An unfinished answer resumes only within the same session (the inner voice's words are never written to lasting storage).
 
-Out of scope for v1 (do not build unless asked): rooms hub, customizable space, rehearsal room, garden, out-there steps, library, AI companion, accounts, notifications, streaks.
+Out of scope for v1 (do not build unless asked): rooms hub, customizable space, rehearsal room, garden, out-there steps, library, AI companion, accounts, notifications, streaks, milestones, resource shelf.
 
 ## Tech decisions
 
-- Static home-screen web app (PWA), hosted on GitHub Pages. No server, no accounts, no AI.
-- Content lives in `content/` as data files, separate from code. Adding a lesson must never require code changes.
-- User data stays on the device (localStorage). Wrap every storage read/write in try/catch; the app must still work if storage fails.
-- Mobile first. Check every screen at phone width in light and dark mode before calling it done.
+- React + TypeScript, built with Vite, as an installable PWA (vite-plugin-pwa) on GitHub Pages under `/hey/`. No server, no accounts, no analytics, no AI. Works offline after the first load; fonts are self-hosted.
+- Content lives in `content/` as JSON (lessons, ways to answer, questions, UI copy, help lines, credits), validated at load with Zod schemas in `src/content/`. Adding a lesson, way, or question must never require code changes.
+- User data stays on the device in IndexedDB (Dexie). Everything from the old `heyyou.v1` localStorage key migrates on first open. If storage fails, the app keeps working in memory.
+- Motion (`motion/react`) for transitions, always honoring reduced motion.
+- Mobile first. Check every screen at 390px wide in light and dark, and with reduced motion, before calling it done.
+- `npm run check` runs typecheck, lint, and unit tests. `npm run e2e` runs Playwright.
 
 ## Core stance: exploring, not correcting
 
-IMPORTANT: hey you never treats people as doing something wrong. Nothing a person says or does is a "pattern to fix." The app shows how their words, wants, and thoughts already work, with curiosity and appreciation, then offers more range: more words, more ways to say what's true, more room to be themselves. Like learning more of a language, nothing already known is wrong.
+IMPORTANT: hey you never treats people as doing something wrong. Nothing a person says or does is a "pattern to fix." The inner voice isn't an enemy to defeat; it has usually been trying to help. The app shows how a person's words, wants, and thoughts already work, with curiosity and appreciation, then offers more range: more words, more ways to answer, more room to be themselves.
 
 - Explore what a word or habit means for this person; appreciate the work it has done for them.
-- Let people try things on and notice how each lands. Never grade options or attach a "cost" to the way they already speak.
+- Let people try things on and notice how each lands. Never grade answers or attach a "cost" to how they already speak.
 - Collect, don't replace. The goal is range, not better sentences.
 
 ## Voice
 
-- In the app, the three practices are called **words** (language), **wants** (desires), and **thoughts** (opinions).
-- Lowercase, warm, short sentences. Show, don't tell: scenes and examples, never definitions or lectures.
+- In the app: **answer it** (language), **about you** (desires and opinions), **your book** (what's kept), **ways to answer** (formulas).
+- Lowercase, warm, plain, adult. Short sentences. Show, don't tell: scenes and examples, never definitions or lectures. Never cute.
 - Never: toxic, broken, fix, should (as an instruction), wrong, disorder, healing journey.
 - Lean on: makes sense, of course, want to try, no pressure.
 - Never ask "how do you feel?" on arrival. Welcome first, ask later, and always offer skip.
 - Not therapy. Never diagnose, never ask people to revisit painful memories, never tell anyone to leave a relationship.
+
+## Look
+
+Typography is the illustration. The inner voice is set in a plain grey sans that fades; the person's own voice is set in a warm serif that stays. The page color follows the time of day (dawn, day, dusk, night). Calm, precise motion. See `docs/DESIGN.md`.
 
 ## Every feature must pass
 
@@ -48,10 +55,10 @@ IMPORTANT: hey you never treats people as doing something wrong. Nothing a perso
 3. Does it move toward real life?
 4. Is it safe on a phone someone else might see? (neutral look, nothing revealing on screen by default)
 5. Can we stand behind every claim it makes?
-6. Would people come back because they want to, not because they were nudged? (no streaks, no guilt)
+6. Would people come back because they want to, not because they were nudged? (no streaks, no counts, no guilt)
 
 ## Workflow
 
-- One piece per session. Plan, build, check at phone size, then commit.
-- Real help (crisis lines) is always reachable from settings, quietly, never stamped on every screen.
-- Full plan: `docs/v1-plan.md`.
+- One piece at a time. Plan, build, check at phone size, then commit.
+- Real help (crisis lines) is always reachable from the bottom of your book, quietly, never stamped on every screen.
+- Spec: `docs/SPEC.md`. Design: `docs/DESIGN.md`. Content format: `content/README.md`.
