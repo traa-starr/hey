@@ -3,6 +3,8 @@ import { button, returning } from "./helpers";
 
 test("the voice check maps your habits without any typing", async ({ page }) => {
   await returning(page);
+  // the voice check lives in practice; home starts with something kind instead
+  await page.getByRole("link", { name: "practice", exact: true }).click();
   await page.getByRole("link", { name: /voice check/ }).click();
   await button(page, "start").click();
   await expect(page.getByText("1 of 20")).toBeVisible();
@@ -14,7 +16,7 @@ test("the voice check maps your habits without any typing", async ({ page }) => 
     if (i < 19) await expect(page.getByText(`${i + 2} of 20`)).toBeVisible();
     await page.waitForTimeout(260);
   }
-  await expect(page.getByText(/here's how your inner voice tends to talk/)).toBeVisible();
+  await expect(page.getByText(/thank you for being honest with yourself/)).toBeVisible();
   await expect(page.locator(".habit-row").first()).toContainText("the mind reader");
   await page.locator(".habit-row").first().click();
   await expect(page.getByRole("heading", { name: "the mind reader" })).toBeVisible();

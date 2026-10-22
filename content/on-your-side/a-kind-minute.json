@@ -1,0 +1,94 @@
+{
+  "id": "a-kind-minute",
+  "title": "a kind minute",
+  "subtitle": "try being on your side",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "thanks for being here. let's spend one minute on your side.",
+      "mood": "happy"
+    },
+    {
+      "type": "say",
+      "text": "picture someone you love having a rough day. what would you want them to hear from you?"
+    },
+    {
+      "type": "pick",
+      "prompt": "pick any that fit, or none.",
+      "options": [
+        "you're doing what you can",
+        "it makes sense this is hard",
+        "you don't have to be perfect",
+        "i'm glad you're here",
+        "rest is allowed"
+      ],
+      "reply": "those are kind. now let's turn them toward you."
+    },
+    {
+      "type": "tryon",
+      "prompt": "say one to yourself, slowly, with your name. out loud if you can. tap the one you tried.",
+      "lines": [
+        "{name}, you're doing what you can.",
+        "{name}, it makes sense this is hard.",
+        "{name}, rest is allowed."
+      ],
+      "reply": "notice how that landed. that's the voice we're growing."
+    },
+    {
+      "type": "ask",
+      "text": "compared to how you usually talk to yourself, how was that?",
+      "options": [
+        {
+          "label": "softer",
+          "reply": "that softness is the whole point. it's yours, any time you want it."
+        },
+        {
+          "label": "strange",
+          "reply": "of course. kind words to yourself can feel unfamiliar. they get easier with practice."
+        },
+        {
+          "label": "about the same",
+          "reply": "that's okay too. sometimes it takes a few tries, and the right words."
+        }
+      ]
+    },
+    {
+      "type": "write",
+      "prompt": "keep one kind line, in your own words:",
+      "template": "hey {name}, you {x}",
+      "ideas": [
+        "are doing what you can.",
+        "are allowed to rest.",
+        "don't have to be perfect to be okay.",
+        "are more than one hard day."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "being kind to yourself isn't going easy on yourself. across many studies, people who treat themselves kindly tend to report greater well-being.",
+      "source": {
+        "label": "Zessin, Dickhäuser & Garbade, 2015 (meta-analysis)",
+        "url": "https://self-compassion.org/wp-content/uploads/2015/09/Zessin.meta-analysis.pdf"
+      },
+      "evidence": "moderate (a consistent link across 79 samples; mostly not proof of cause)"
+    },
+    {
+      "type": "experiment",
+      "text": "tonight, say your kind line to yourself once, using your name."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "self-compassion goes along with greater well-being",
+      "source": "Zessin, Dickhäuser & Garbade, 2015, Applied Psychology: Health and Well-Being",
+      "url": "https://self-compassion.org/wp-content/uploads/2015/09/Zessin.meta-analysis.pdf"
+    },
+    {
+      "idea": "talking to yourself as \"you\" or by name reduces distress under stress",
+      "source": "Kross et al., 2014, Journal of Personality and Social Psychology",
+      "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ import { content } from "../content/load";
 import { buzz, keptChime } from "../lib/feedback";
 import { format } from "../lib/template";
 import { deck, scoreCheck } from "../lib/voice";
-import { go } from "../router";
+import { go, href } from "../router";
 import { store } from "../store/store";
 import { FlowTop, Screen, SolSays } from "../ui/kit";
 import { VoiceMap } from "./You";
@@ -61,6 +61,8 @@ export function Check() {
           <h2 className="sr">{c.copy.you.map}</h2>
           <SolSays mood="happy">{t.mapSol}</SolSays>
           <VoiceMap />
+          <SolSays mood="happy">{t.kindAfter}</SolSays>
+          <a className="btn" href={href({ name: "lesson", key: "on-your-side/a-kind-minute" })}>{t.kindGo}</a>
         </Screen>
       </>
     );

@@ -1,0 +1,79 @@
+{
+  "id": "savor-it",
+  "title": "savor it",
+  "subtitle": "stay with a good moment a little longer",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "minds are quick to replay what went badly, and quick to skip past what went well.",
+      "mood": "curious"
+    },
+    {
+      "type": "say",
+      "text": "savoring is the opposite: staying with a good moment a little longer, on purpose."
+    },
+    {
+      "type": "ask",
+      "text": "think of one small good moment from today or yesterday. got one?",
+      "options": [
+        {
+          "label": "yes",
+          "reply": "lovely. hold it in mind for a moment."
+        },
+        {
+          "label": "a small one",
+          "reply": "small is perfect. a warm drink counts."
+        },
+        {
+          "label": "not really",
+          "reply": "that's okay. try one from this week, or something you're looking forward to."
+        }
+      ]
+    },
+    {
+      "type": "pick",
+      "prompt": "pick any ways to stay with it:",
+      "options": [
+        "picture where you were",
+        "remember what you could see and hear",
+        "notice how your body felt",
+        "tell yourself what you liked about it",
+        "let yourself smile, if it comes"
+      ],
+      "reply": "take a few seconds with it now. no rush."
+    },
+    {
+      "type": "write",
+      "prompt": "keep it in a sentence:",
+      "template": "a good moment: {x}",
+      "ideas": [
+        "the first sip of coffee.",
+        "a message from a friend.",
+        "sun through the window.",
+        "a laugh i didn't expect."
+      ],
+      "keep": "what-i-like"
+    },
+    {
+      "type": "takeaway",
+      "text": "in one study, students who practiced savoring good moments for two weeks reported less low mood than those who didn't.",
+      "source": {
+        "label": "Hurley & Kwon, 2012",
+        "url": "https://ideas.repec.org/a/spr/jhappi/v13y2012i4p579-588.html"
+      },
+      "evidence": "emerging (one study with students)"
+    },
+    {
+      "type": "experiment",
+      "text": "when something small goes well today, pause and stay with it for three breaths."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "a two-week savoring practice reduced depressive symptoms and negative feelings",
+      "source": "Hurley & Kwon, 2012, Journal of Happiness Studies",
+      "url": "https://ideas.repec.org/a/spr/jhappi/v13y2012i4p579-588.html"
+    }
+  ]
+}

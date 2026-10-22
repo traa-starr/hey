@@ -22,6 +22,9 @@ function Stars() {
   );
 }
 
+const KIND = "on-your-side/a-kind-minute";
+const SAVOR = "on-your-side/savor-it";
+
 export function Home() {
   const c = content();
   const copy = c.copy;
@@ -33,7 +36,6 @@ export function Home() {
   const lines = copy.sol[tod];
   const solLine = lines[dailyIndex(lines.length)] ?? lines[0];
   const next = nextLesson(c, data.done);
-  const checked = data.logs.some((l) => l.type === "check");
   const told = data.entries.filter((e) => e.kind === "voice" && !e.said && !e.holdsSaid);
   const line = told[dailyIndex(told.length)];
 
@@ -74,15 +76,16 @@ export function Home() {
         )}
 
         <div className="grid2">
-          {checked ? (
-            <a className="tile" style={{ background: "var(--coral-soft)" }} href={href({ name: "catch" })}>
-              <span className="ico" style={{ background: "var(--coral)" }}>{Icon.catch}</span>
-              <b>{copy.home.catch}</b><small>{copy.home.catchSub}</small>
+          {/* something kind, always; when the kind minute is already the next step, a good moment instead */}
+          {next?.item.key === KIND ? (
+            <a className="tile" style={{ background: "var(--pink-soft)" }} href={href({ name: "lesson", key: SAVOR })}>
+              <span className="ico" style={{ background: "var(--pink)" }}>{Icon.sun}</span>
+              <b>{copy.home.savor}</b><small>{copy.home.savorSub}</small>
             </a>
           ) : (
-            <a className="tile" style={{ background: "var(--coral-soft)" }} href={href({ name: "check" })}>
-              <span className="ico" style={{ background: "var(--coral)" }}>{Icon.check}</span>
-              <b>{copy.home.check}</b><small>{copy.home.checkSub}</small>
+            <a className="tile" style={{ background: "var(--coral-soft)" }} href={href({ name: "lesson", key: KIND })}>
+              <span className="ico" style={{ background: "var(--coral)" }}>{Icon.heart}</span>
+              <b>{copy.home.kind}</b><small>{copy.home.kindSub}</small>
             </a>
           )}
           <a className="tile" style={{ background: "var(--teal-soft)" }} href={href({ name: "answer" })}>
