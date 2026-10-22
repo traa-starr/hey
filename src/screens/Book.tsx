@@ -7,40 +7,45 @@ import { shortDate } from "../lib/time";
 import { store } from "../store/store";
 import type { Entry } from "../store/types";
 import { useData } from "../store/useStore";
-import { Nav, Screen, TopBar } from "../ui/kit";
-import { Settings } from "./Settings";
+import { go } from "../router";
+import { FlowTop, Screen } from "../ui/kit";
+
+type Tab = "voice" | "about" | "keeper";
+const TABS: Tab[] = ["voice", "about", "keeper"];
 
 export function Book() {
   const copy = content().copy;
   const { entries } = useData();
-  const [tab, setTab] = useState<"voice" | "about">("voice");
+  const [tab, setTab] = useState<Tab>("voice");
   const [openedAt] = useState(() => Date.now());
   const list = entries.filter((e) => e.kind === tab);
   return (
     <>
-      <TopBar />
+      <FlowTop onClose={() => go({ name: "you" })} title={copy.book.title} />
       <Screen id="book">
-        <h1 className="title" data-say>{copy.book.title}</h1>
-        <div className="tabs" role="tablist" aria-label={copy.book.title}>
-          {(["voice", "about"] as const).map((t) => (
+        <div className="tabs-row" role="tablist" aria-label={copy.book.title}>
+          {TABS.map((t) => (
             <button
               key={t} type="button" role="tab" id={`tab-${t}`} aria-controls="book-panel" aria-selected={tab === t}
               tabIndex={tab === t ? 0 : -1} onClick={() => setTab(t)}
-              onKeyDown={(e) => { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { const o = t === "voice" ? "about" : "voice"; setTab(o); document.getElementById(`tab-${o}`)?.focus(); } }}
+              onKeyDown={(e) => {
+                if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+                const o = TABS[(TABS.indexOf(t) + (e.key === "ArrowRight" ? 1 : TABS.length - 1)) % TABS.length]!;
+                setTab(o);
+                document.getElementById(`tab-${o}`)?.focus();
+              }}
             >
-              {t === "voice" ? copy.book.voiceTab : copy.book.aboutTab}
+              {t === "voice" ? copy.book.voiceTab : t === "about" ? copy.book.aboutTab : copy.book.keepTab}
             </button>
           ))}
         </div>
         <div className="entries" role="tabpanel" id="book-panel" tabIndex={-1} aria-labelledby={`tab-${tab}`}>
           {list.length ? list.map((e, n) => <Item key={e.id} e={e} fresh={n === 0 && openedAt - Date.parse(e.at) < 15000} />) : (
-            <p className="empty">{tab === "voice" ? copy.book.voiceEmpty : copy.book.aboutEmpty}</p>
+            <p className="empty">{tab === "voice" ? copy.book.voiceEmpty : tab === "about" ? copy.book.aboutEmpty : copy.book.keepEmpty}</p>
           )}
         </div>
         <p className="small">{copy.book.privacy}</p>
-        <Settings />
       </Screen>
-      <Nav current="book" />
     </>
   );
 }

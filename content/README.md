@@ -1,48 +1,49 @@
 # content
 
-Everything hey you says lives here as JSON, separate from the code. Adding a lesson, a way to answer, or a question never requires changing code: edit or add a file, list it in `index.json` if it's a lesson, and push. Every file is checked against a schema (`src/content/schema.ts`): a broken file fails the tests, and in the app the broken piece is skipped while the rest keeps working.
+Everything hey you says lives here as JSON, separate from the code. Adding a lesson, a voice habit, a way to answer, or a question never requires changing code. Every file is checked against a schema (`src/content/schema.ts`): a broken file fails the tests, and in the app the broken piece is skipped while the rest keeps working.
 
-- `index.json`: which files exist and in what order (the welcome, ways to answer, questions, copy, help, credits, and the lesson sets).
-- `start/welcome.json`: the welcome story.
-- `formulas.json`: the ways to answer, plus `catchIdeas` (inner-voice sentences people can tap).
-- `questions.json`: the daily "getting to know you" question on today.
-- `copy.json`: every interface string that isn't in a lesson.
-- `help.json`: real-help lines shown at the bottom of your book.
-- `credits.json`: third-party assets (fonts) with license and how we use them.
-- `desires/`, `opinions/`: lesson sets for what you like and what you think.
-- `language/`: early drafts kept for later; not shown in the app.
+- `index.json`: the welcome, ways to answer, questions, habits, copy, help, credits, and the learn **paths** (each with `id`, `name`, `blurb`, `color`, and `lessons`).
+- `start/welcome.json`: the welcome chat with sol.
+- `habits.json`: the ten voice habits, the voice check note, and their source.
+- `formulas.json`: the ways to answer, plus `catchIdeas`.
+- `questions.json`: quick this-or-that questions.
+- `copy.json`: every interface string. Its shape is the app's type, so a missing string fails the typecheck.
+- `help.json`, `credits.json`: real help lines; third-party assets with licenses.
+- `inner-voice/`, `talk-to-you/`, `what-you-like/`, `what-you-think/`: lessons.
+- `language/`: early drafts, not shipped.
 
-## Ways to answer (`formulas.json`)
+## Paths
 
-Each: `id`, `name`, `frame` (the shape, with `___`), `why`, `example` (`before`, `after`), `template` (with `{key}` slots), `slots`, `source` (`label`, `url`, may be empty), `evidence` (an honest label).
+A path lists lessons by file path (`"inner-voice/everyone-has-one.json"`) or by habit (`"habit:rules"`). A habit lesson is built from the habit's data, so adding a habit and listing it is all it takes. Colors: violet, pink, coral, gold, teal, plum, blue, orange, lime, mint.
 
-Each slot: `key`, `label`, and one of: `fill` (`name` for what the person is called, `original` for the inner voice's sentence, `original-i` for that sentence turned into first person), `chips` (pick one), or free typing with `placeholder` and `ideas` (tappable suggestions). Every typed slot needs `ideas`, so nobody starts from an empty box.
+## Voice habits (`habits.json`)
 
-## Questions (`questions.json`)
+Each: `id`, `name` ("the rule keeper"), `short`, `color`, `glyph` (ruler, eye, loop, cloud, scales, tag, shrink, target, split, wave), `says` (what it tends to say), `quiz` (lines for the voice check), `job` (what it's trying to do, said with appreciation), `misses` (what it can leave out), `spot` (`scene`, `quote`), `answers` (`way` from formulas.json, `line`), `keep` (a takeaway), `try` (a small experiment).
 
-Each: `id`, `prompt`, `options` (two or more), `keep` (`like` or `think`), and `as`: how the answer is written in the book, in first person, with `{x}` for the option (for example `i'd pick {x}.`). Your book reads it back in second person ("you'd pick sunrise.").
+## Lessons
 
-## Lesson format
-
-One JSON file per set. Top-level: `id`, `practice`, `kind` (`tool`), `title`, `subtitle`, `minutes`, `steps`, `grounding` (the research or practice it draws on).
+Top level: `id`, `title`, `subtitle`, `minutes`, `steps`, `grounding` (sources). In text, `{name}` is what the person is called and `{companion}` is sol's name.
 
 | type | what it shows | fields |
 | --- | --- | --- |
-| `welcome` | a short opener. never asks how you feel. | `text`, `button`, optional `visual` |
-| `show` | one short line, then a soft button. | `text`, `button`, optional `more` (behind "tell me more"), `source`, `visual` |
-| `try-on` | the same moment said a few ways, to notice how each lands. never graded. | `prompt`, `options`, `question`, optional `answers`, `reply` |
-| `promises` | what hey you promises. | `prompt`, `items`, `button` |
-| `this-or-that` | quick gut picks between pairs, kept as likes. | `prompt`, `pairs`, `extras` (both, neither), `keep` |
-| `build` | make your own sentence from chips and typing. | `prompt`, `template`, `parts` (`key`, `label`, `chips` and/or `input`, `placeholder`, `ideas`, `allowCustom`), `reply`, `keep`, `optional` |
-| `write` | optional free writing, with chips as starters. | `prompt`, `chips`, `input` (`label`, `placeholder`), `keep`, `skip` |
-| `pocket` | phrases to keep for later. | `prompt`, `phrases`, `keep` |
-| `try` | one optional small thing for real life today. | `prompt`, `options`, `skip` |
-| `close` | a short ending. | `text`, `button`, optional `then` (`answer`) and `later` |
+| `say` | a bubble from sol | `text`, optional `mood` (calm, happy, curious, sleepy) |
+| `scene` | a line the inner voice says | `quote`, optional `label` |
+| `mine` | a line in your own voice | `text` |
+| `ask` | a question with tap replies; sol answers each | `text`, `options` (`label`, `reply`) |
+| `tryon` | lines to try on and notice | `prompt`, `lines`, `reply` |
+| `pick` | choose any; optionally kept | `prompt`, `options`, `reply`, optional `keep`, `as` (with `{x}`), `max` |
+| `write` | finish a sentence; ideas always offered | `prompt`, `template` (with `{x}`), `ideas`, optional `keep`, `placeholder` |
+| `spot` | which habit is talking? gentle feedback | `scene`, `quote`, `options`, `answer` (index), `explain` |
+| `tot` | quick this or that, kept as likes | `prompt`, `pairs`, `keep` |
+| `takeaway` | a line to keep, with its source | `text`, `source` (`label`, `url`), optional `evidence` |
+| `experiment` | one small thing to try today | `text` |
+| `breathe` | three slow breaths | none |
+| `list` | a short list | `text`, `items` |
+| `name` | what to call the person (welcome) | `text`, `placeholder` |
+| `end` | the welcome's last line | `text`, `button`, `then` (check or home), `later` |
 
-`visual` (welcome and show) draws a small typographic scene above the text: `inner` (what the inner voice says, in grey), `mine` (an answer in your voice), and optional `loud` (1 to 5) to show the inner voice at that volume.
-
-`keep` says where an answer goes: `my-words` (things you've told yourself), `what-i-like` or `what-i-think` (about you), or `name`. Write kept sentences in first person; the book turns about-you entries into second person when it shows them.
+`keep`: `my-words`, `what-i-like`, or `what-i-think`. Write kept sentences in first person; your book reads about-you entries back in second person.
 
 ## Writing rules
 
-Follow the core stance, voice, and feature tests in the root `CLAUDE.md`: exploring, not correcting; lowercase; adult and plain; show, don't tell; no grades; every option makes sense; always a way to skip. `start/welcome.json` is the reference for tone.
+Follow `CLAUDE.md`: exploring, not correcting; lowercase; adult and warm, never cute; one idea per bubble, about 30 words at most; every lesson ends with a takeaway (with an honest source and evidence label) and an experiment; always a way to skip. Habits are described by what they're trying to do, never as flaws.

@@ -5,18 +5,73 @@
   "copy": "copy.json",
   "help": "help.json",
   "credits": "credits.json",
-  "practices": [
+  "paths": [
     {
-      "id": "desires",
-      "name": "what you like",
-      "blurb": "what you actually like, outside of everyone else",
-      "lessons": ["desires/want-words.json", "desires/this-or-that.json"]
+      "id": "inner-voice",
+      "name": "meet your inner voice",
+      "blurb": "what it is, where it comes from, how to hear it",
+      "color": "violet",
+      "lessons": [
+        "inner-voice/everyone-has-one.json",
+        "inner-voice/where-it-comes-from.json",
+        "inner-voice/a-thought-not-a-fact.json",
+        "inner-voice/turn-down-the-volume.json"
+      ]
     },
     {
-      "id": "opinions",
+      "id": "habits",
+      "name": "your voice habits",
+      "blurb": "ten ways inner voices talk, and what each one is trying to do",
+      "color": "coral",
+      "lessons": [
+        "habit:rules",
+        "habit:mind",
+        "habit:always",
+        "habit:forecast",
+        "habit:compare",
+        "habit:label",
+        "habit:discount",
+        "habit:onme",
+        "habit:allnone",
+        "habit:feeling"
+      ]
+    },
+    {
+      "id": "talk-to-you",
+      "name": "talk to you",
+      "blurb": "the \"you\" trick, the friend test, and kind lines that hold up",
+      "color": "teal",
+      "lessons": [
+        "talk-to-you/the-you-trick.json",
+        "talk-to-you/the-friend-test.json",
+        "talk-to-you/three-kind-lines.json",
+        "talk-to-you/why-to-what.json"
+      ]
+    },
+    {
+      "id": "what-you-like",
+      "name": "what you like",
+      "blurb": "small wants, your values, and saying it out loud",
+      "color": "gold",
+      "lessons": [
+        "what-you-like/small-wants.json",
+        "what-you-like/this-or-that.json",
+        "what-you-like/your-values.json",
+        "what-you-like/asking-for-it.json"
+      ]
+    },
+    {
+      "id": "what-you-think",
       "name": "what you think",
-      "blurb": "what you actually think, and saying it",
-      "lessons": ["opinions/i-think-because.json", "opinions/for-now.json"]
+      "blurb": "having opinions, saying them, letting them grow",
+      "color": "pink",
+      "lessons": [
+        "what-you-think/i-think-because.json",
+        "what-you-think/for-now.json",
+        "what-you-think/disagreeing-kindly.json",
+        "what-you-think/changing-your-mind.json"
+      ]
     }
-  ]
+  ],
+  "habits": "habits.json"
 }

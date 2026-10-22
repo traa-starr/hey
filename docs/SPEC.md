@@ -1,130 +1,112 @@
-# hey you — spec
+# hey you — spec (v3)
 
-hey you helps adults grow a second inner voice: their own, in their own words. This spec covers v1. Scope, stance, and voice rules live in `CLAUDE.md` and win over anything here.
+hey you helps adults grow a second inner voice: their own, in their own words. This spec covers v1 as rebuilt in v3. Scope, stance, and voice rules live in `CLAUDE.md` and win over anything here.
 
 ## Screens
 
-Three tabs, shown as a small pill bar at the bottom: **today**, **explore**, **your book**. Full-screen flows (welcome, answer it, a set) hide the tabs and show a close button and a thin progress line.
+Four tabs in a floating bar: **home**, **learn**, **practice**, **you**. Full-screen flows (welcome, lessons, voice check, catch it, check-in, answer it, breathe, habit, book, settings) hide the tabs and show a close button, a progress bar where there are steps, and read aloud when it's on.
 
-### Welcome (first open, replayable from your book)
+### Welcome (first open)
 
-Driven by `content/start/welcome.json`. Eight screens or fewer, each one idea with 20 words or fewer:
+A chat with sol (`content/start/welcome.json`): hey you → meet sol → the two voices → why "you" (Kross et al., 2014) → promises → what to call you (optional) → "want to find out how your inner voice tends to talk?" → voice check, or look around first. Closing it at any point skips it; it can be replayed from settings.
 
-1. "hey you." (typographic: the words settle in)
-2. most of us carry one loud inner voice. (a grey sentence appears, grows louder)
-3. here, you grow a second one. yours. (a serif answer appears beneath; the grey one fades)
-4. why "you": talking to yourself as "you" makes hard moments lighter. (source shown, "tell me more")
-5. a few promises (no right answers, skip anything, no streaks ever, stays on this phone, not therapy)
-6. what should we call you? (optional, with skip)
-7. "whenever you're ready, answer one." → answer it, or "look around first"
+### Home
 
-Finishing sets `welcomed`. Closing the welcome at any point skips it (it can be replayed from your book, always from the start).
+A sky (dawn, day, dusk, night, following the clock) with sol, a greeting with the person's name, and one line from sol for that time of day. Below: **your next step** (the first unfinished lesson, path by path, with a progress ring), two shortcuts (voice check until one is done, then catch it; and "it's loud right now" → answer it), and "you told yourself", which stays hidden until tapped (shared-phone safe; never shows what the inner voice said; can be turned off). A "check in" chip in the sky opens the check-in. Nothing else.
 
-### Today
+### Learn
 
-- Greeting by time of day, with the name if given ("morning, sam.").
-- **you told yourself**: one line from the book, chosen once per day, with its date. Shared-phone safe: the line stays hidden behind "tap to read it" until the person taps. Lines that record what the inner voice said are never resurfaced. Without any lines, a one-line explanation of what will appear there. Can be turned off in settings.
-- **did your inner voice say something?** → starts answer it.
-- **getting to know you**: today's question from `content/questions.json` (rotates daily). Answering adds to about you and shows "noted in your book." Skippable, never repeats an answered question until all are answered, then they come round again.
-- A quiet link to explore.
+Paths (`index.json` → `paths`), each with a color, an icon, and a progress row of its lessons:
 
-### Answer it (the core flow, under two minutes)
+| path | lessons |
+| --- | --- |
+| meet your inner voice | everyone has one · where it comes from · a thought is not a fact · turn down the volume |
+| your voice habits | one lesson per habit (generated from `habits.json`) |
+| talk to you | the "you" trick · the friend test · three kind lines · why to what |
+| what you like | small wants count · this or that · what matters to you · asking for it |
+| what you think | i think… because… · for now · disagreeing kindly · changing your mind |
 
-Steps, shown by a thin progress line:
+A path shows its lessons with done, pick up again, or minutes.
 
-1. **catch**: "what did your inner voice say?" Textarea plus "sound familiar?" ideas from `catchIdeas`. Note: "nothing here is saved unless you choose to keep it."
-2. **how loud**: the sentence shown large; a 5-step range (a whisper, quiet, clear, loud, all i can hear). The sentence's size, weight, and contrast follow the value. "hard to say" skips.
-3. **calm moment** (offered only at loud or all i can hear, always optional): "want to take a breath first?" → three slow breaths with an expanding circle (static, counted text under reduced motion) → continue.
-4. **way**: "how do you want to answer it?" The list of ways, each with its name, evidence label, and a before → after example in the two voices. Opening one starts writing.
-5. **write**: the inner sentence small in grey above, the answer forming in serif below. Slots filled from `name`, `original`, `original-i`, chips, or typed text, each with idea chips; filled slots stay editable. "about this way" shows why it works; source and evidence are always shown. "this is mine" enables once every slot is filled.
-6. **again**: "and now?" The original at its earlier size with the answer beneath; the same range. Optional.
-7. **kept**: the answer as a page, loudness before → after, and a message by outcome (quieter / same / louder, never graded). When the answer still contains the inner voice's own words (ways that build on them), the screen says so and offers "change it" before anything is kept. Options: keep it in my book (with an opt-in "also keep what the inner voice said" as its own entry), try another way, let it go.
+### A lesson
 
-Started from a specific way (explore or today), step 4 is skipped.
+A conversation with sol: one step at a time, a continue button for sol's lines, replies as tappable chips. Step types: `say`, `scene` (an inner-voice line), `mine` (a line in your voice), `ask` (chips, sol replies), `tryon` (try lines on), `pick` (multi-select, optionally kept), `write` (template plus ideas, optionally kept), `spot` (which habit is talking, with gentle feedback), `tot` (this or that), `takeaway` (keep this, with source and evidence, optionally saved as a keeper), `experiment` (try it today), `breathe`, `list`, `name`, `end`. Every lesson has a takeaway and an experiment. Progress is saved per lesson after every step; finishing marks it done.
 
-### Explore
+### Voice check
 
-- **ways to answer**: every formula, with name, frame, evidence label. Opens a detail view (why, before → after, source, "try it on one of yours").
-- **getting to know you**: the sets from `content/index.json` with minutes and "tried".
+Twenty cards, two per habit, interleaved: "does your inner voice ever say…" → that's me / sometimes / not really (or swipe right or left). Scores each habit 0–1 and saves the check. Ends on the voice map.
 
-### A set (lesson player)
+### Practice
 
-Plays any lesson file. Supported step types: `welcome`, `show`, `try-on`, `promises`, `this-or-that`, `build`, `write`, `pocket`, `try`, `close`. One step per screen, progress line, close and back buttons. Each step keeps its own answers, so going back never keeps the same thing twice. Progress is saved per set after every step, so every unfinished set resumes where it left off.
+Tiles: catch it, answer it, breathe, voice check, this or that. Below: every way to answer.
 
-### Your book
+### Catch it
 
-- Title, then two tabs: **things you've told yourself** and **about you**.
-- Entries newest first: text (about-you entries read in second person), date, the way used, loudness before → after when both were set.
-- Each entry: edit (inline field) and remove (with an in-page confirm).
-- Empty states explain, in one line, what will appear.
-- Then settings: what to call you · read aloud (off/on, read each screen automatically, voice, speed) · soft sounds (off/on) · appearance (follow the time of day / always light / always dark) · real help · about and sources · replay the welcome · add to home screen · your data (export as a file, clear everything with confirm).
+Three taps: which habit (the person's loudest first, or "not sure which") → where (work, home, people, my body, money, the future, the past, online, something else, or skip) → how loud. Saved as a moment. Then: answer it now (the habit's own lines become the ideas), or done.
+
+### Check-in
+
+Opened only by the person (never on arrival): how loud is your inner voice today, plus optional habits. Feeds "how loud it's been".
+
+### Answer it
+
+As before (v2): catch → how loud → optional breath at loud or all i can hear → way → write → and now → kept. Started from a habit, its lines are the ideas. The inner sentence is never stored unless opted in; when the answer contains it, the kept screen says so and offers to change it. The draft lives in `sessionStorage` and expires after 30 minutes.
+
+### You
+
+- **your voice map**: up to six habits as bubbles sized by the latest voice check (75%) and what's been caught (25%), then the top three with what each is trying to do. Tap a habit for its page.
+- **when it shows up**: where caught habits happen, as bars.
+- **how loud it's been**: one point per day from check-ins and caught moments, last 14 days.
+- **your book** (words, about you, keepers; edit and remove) and **settings**.
+
+### Habit page
+
+Its glyph and color, what it says, what it's trying to do, what it can leave out, ways to answer it (each opens the way), learn about it, I caught it just now.
+
+### Settings
+
+What to call you · your companion (name, show sol) · read aloud (on, auto, voice, speed, test) · soft sounds · show a line from your book on home · appearance (match my phone, always light, always dark) · real help · about and sources · replay the welcome · add to home screen · your data (save a copy, clear everything).
 
 ## Data model
 
-IndexedDB database `heyyou` (Dexie), version 1:
+IndexedDB `heyyou` (Dexie). Version 1 tables carry over unchanged; version 2 adds `logs`.
 
 | table | key | fields |
 | --- | --- | --- |
-| `entries` | `id` | `kind` (`voice` \| `about`), `sub` (`like` \| `think`, about only), `text`, `from`, `at` (ISO), `before?`, `after?` (1–5) |
-| `kv` | `key` | `value` (JSON): `name`, `welcomed`, `tried` (`{lessonId: iso}`), `settings`, `progress` (`{[lessonPath]: {i, locals}}`), `answered` (`{questionId: iso}`), `migratedV1` |
+| `entries` | `id` | `kind` (`voice` \| `about` \| `keeper`), `sub` (`like` \| `think`), `text`, `from`, `at`, `before?`, `after?`, `said?` |
+| `logs` | `id` | `type` `moment` (`habit`, `where`, `loud`) \| `checkin` (`loud`, `habits`) \| `check` (`scores`), `at` |
+| `kv` | `key` | `name`, `welcomed`, `tried`, `answered`, `settings`, `progress` (`{[lessonKey]: {i, locals}}`), `done` (`{[lessonKey]: iso}`), `companion` (`{name, on}`), `migratedV1` |
 
-Settings: `{ readAloud: boolean, autoRead: boolean, voice: string | null, rate: number, sound: boolean, appearance: "time" | "light" | "dark" }`.
+A lesson key is its file path without `.json`, or `habit:<id>`. About-you text is stored in first person and shown in second person. If IndexedDB is unavailable, everything runs in memory.
 
-Text is stored in first person, as written. About-you entries are shown in second person by `toSecondPerson()` at display time, so editing shows the person's own words.
+## Migration
 
-The in-progress answer (including the inner sentence) lives only in memory and `sessionStorage`. It is cleared when the answer is kept or let go, and expires after 30 minutes without changes, so a shared phone never shows it later.
+From `heyyou.v1` (localStorage), as in v2: name, welcomed, tried, every entry with weights as loudness, retried if saving fails, the old key removed only by "clear everything". v2 databases upgrade in place (Dexie version 2).
 
-If IndexedDB is unavailable, the store runs in memory and the app still works.
+## Content
 
-## Migration from v1
-
-On first load, if `localStorage["heyyou.v1"]` exists and `migratedV1` is not set:
-
-| v1 | v2 |
-| --- | --- |
-| `name`, `welcomed`, `tried` | same keys in `kv` |
-| `collected["my-words"][]` | `entries` with `kind: "voice"` |
-| `collected["what-i-like"][]` | `kind: "about"`, `sub: "like"` |
-| `collected["what-i-think"][]` | `kind: "about"`, `sub: "think"` |
-| entry `id`, `text`, `from`, `at` | kept as is |
-| entry `before`, `after` (feather 1 … boulder 5) | kept as loudness 1 … 5 |
-
-Then `migratedV1` is set, only once the move has really been saved (a failed move is tried again next time). The old key is left in place, so nothing can be lost; only "clear everything" removes it. Malformed JSON or entries are skipped, not fatal.
-
-## Content schema
-
-Every file in `content/` is validated at build time (Vitest) and at load (Zod `safeParse`). In development a broken file throws with the path and issue; in production the broken item is skipped and the rest of the app works.
-
-- `index.json`: `start`, `formulas`, `questions`, `copy`, `help`, `practices[]` (`id`, `name`, `blurb`, `lessons[]`).
-- `formulas.json`: `intro`, `catchIdeas[]`, `formulas[]` (`id`, `name`, `frame`, `why`, `example {before, after}`, `template`, `slots[]` (`key`, `label`, `fill?` name/original/original-i, `chips?`, `placeholder?`, `ideas?`), `source {label, url}`, `evidence`).
-- `questions.json`: `questions[]` (`id`, `prompt`, `options[]`, `keep` like/think, `as` template such as `i'd pick {x}.`).
-- `copy.json`: every UI string not in a lesson (greetings, loudness names, flow prompts, replies, settings text, empty states).
-- `help.json`: crisis lines (`name`, `detail`, `url?`, `href?` for tel: and sms: links), with region note.
-- `credits.json`: third-party assets with license and use.
-- Lessons: as documented in `content/README.md`.
+Validated at build time (tests) and at load (Zod). Strict in development, forgiving in production. See `content/README.md`.
 
 ## Accessibility
 
-WCAG 2.2 AA contrast in every time of day in light and dark. Full keyboard use with visible focus. On every new step, focus moves to its heading; confirm dialogs take focus. Screen-reader labels on every control. The loudness control is a native range input with `aria-valuetext`. Every animation has a static equivalent under `prefers-reduced-motion`. Text scales with browser settings. Touch targets of at least 44px.
+WCAG 2.2 AA (habit colors darkened in light mode for 4.5:1 with white; dark text on light colors in dark mode). Full keyboard use, visible focus, focus moves to each new step's heading. The voice check works with buttons as well as swipes. Loudness is a native range with `aria-valuetext`. The voice map and trend chart have text alternatives, and the top habits are listed as links. Reduced motion removes all movement, including sol's breathing and the card swipes.
 
 ## Out of scope
 
-Everything in CLAUDE.md's out-of-scope list, plus: syncing between devices, reminders, sharing, the three language lessons (`content/language/`, kept on disk, not wired up).
+Everything in CLAUDE.md's list, plus syncing, reminders, sharing, and the language drafts in `content/language/`.
 
 ## Later: app stores
 
-Wrap the same build with Capacitor (iOS and Android) to add native haptics (`@capacitor/haptics`) and a home-screen icon without the browser. The web app stays the source of truth; storage moves to the native WebView's IndexedDB unchanged. Not built in v1.
+Wrap the same build with Capacitor for native haptics and store distribution. Not built in v1.
 
 ## How each part is verified
 
 | part | check |
 | --- | --- |
-| content schemas | unit test parses every file in `content/` |
-| first-person and second-person converters | unit tests with real catch ideas and lesson sentences |
-| templates and slot filling | unit tests for every formula |
-| migration | unit test: a real v1 blob → expected entries and kv, idempotent on second run, survives malformed input |
-| store | unit tests: add, edit, remove, clear, memory fallback |
-| welcome, answer it, a set, your book, settings | Playwright end-to-end at 390px |
-| look | screenshots of every screen at 390px, light and dark, and reduced motion |
-| quality | Lighthouse on the built app: 90+ performance, accessibility, best practices; installable PWA |
-| words | a check that no avoided word appears in `content/` or `src/` copy |
+| content | unit tests parse every file; every path item loads; every lesson has a takeaway, an experiment and at least three interactive steps; sol's bubbles stay short; habit lessons spot the right habit; avoided words never appear (except inside the inner voice's own lines) |
+| voice logic | unit tests for the deck, scoring, weights, places and loudness trend |
+| store and migration | unit tests (v1 blob, malformed input, retry, logs, memory fallback) |
+| flows | Playwright at 390px: welcome, voice check to map to habit, catch it to answer it, check-in, a full lesson with resume, a habit lesson, this or that, answer it, book, settings, offline |
+| accessibility | axe (WCAG 2.2 AA) on every screen in light and dark |
+| look | screenshots of every screen at 390px in light and dark (`scripts/shots.mjs`) |
+| quality | Lighthouse mobile: 90+ performance, accessibility, best practices |

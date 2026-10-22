@@ -1,0 +1,76 @@
+{
+  "id": "i-think-because",
+  "title": "i think… because…",
+  "subtitle": "an opinion with a reason is easy to say",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "an opinion doesn't have to be big or right. it's just what you think."
+    },
+    {
+      "type": "say",
+      "text": "adding \"because\" lets people see why. it also helps you find out why.",
+      "mood": "curious"
+    },
+    {
+      "type": "tryon",
+      "prompt": "someone asks which movie to watch. try each answer on:",
+      "lines": [
+        "whatever you want is fine.",
+        "i think the comedy.",
+        "i think the comedy, because i could use a laugh tonight."
+      ],
+      "reply": "all real answers. the last one gives people a little more of you."
+    },
+    {
+      "type": "ask",
+      "text": "low stakes. is breakfast for dinner better than breakfast?",
+      "options": [
+        {
+          "label": "breakfast for dinner wins",
+          "reply": "a strong position. respected."
+        },
+        {
+          "label": "breakfast belongs in the morning",
+          "reply": "a classic view. respected."
+        },
+        {
+          "label": "both are great",
+          "reply": "a diplomat. also respected."
+        }
+      ]
+    },
+    {
+      "type": "write",
+      "prompt": "now add your reason:",
+      "template": "i think so because {x}",
+      "ideas": [
+        "pancakes at night feel like a treat.",
+        "morning food belongs in the morning.",
+        "good food is good any time."
+      ],
+      "keep": "what-i-think"
+    },
+    {
+      "type": "takeaway",
+      "text": "an opinion with a reason is easy to say, and easy to hear.",
+      "source": {
+        "label": "Coutts, Al-Kire & Weidler, 2023",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+      },
+      "evidence": "moderate"
+    },
+    {
+      "type": "experiment",
+      "text": "next time someone asks what you'd prefer, give one small opinion with a \"because\"."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "a clearer sense of who you are is linked to wellbeing",
+      "source": "Coutts, Al-Kire & Weidler, 2023, PLOS ONE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+    }
+  ]
+}

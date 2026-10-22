@@ -1,32 +1,32 @@
 // one way to answer, up close: why it works, an example in the two voices, and its source.
 import { content } from "../content/load";
 import { go } from "../router";
-import { FlowBar, Screen } from "../ui/kit";
+import { FlowTop, Screen } from "../ui/kit";
 
 export function Way({ id }: { id: string }) {
   const c = content();
-  const copy = c.copy.explore;
+  const copy = c.copy.way;
   const f = c.formulas.find((x) => x.id === id);
-  const back = () => go({ name: "explore" });
+  const back = () => go({ name: "practice" });
   if (!f) {
     return (
       <>
-        <FlowBar at={0} of={1} onClose={back} />
-        <Screen id="way-missing"><p className="lede">{c.copy.errors.missing}</p></Screen>
+        <FlowTop onClose={back} />
+        <Screen id="way-missing"><p className="quote">{c.copy.errors.missing}</p></Screen>
       </>
     );
   }
   return (
     <>
-      <FlowBar at={0} of={1} onClose={back} back={back} />
+      <FlowTop onClose={back} title="" />
       <Screen id={`way-${f.id}`}>
-        <p className="label" style={{ marginTop: "var(--s4)" }}>{c.copy.explore.waysTitle}</p>
-        <h1 className="title" style={{ marginTop: 0 }} data-say>{f.name}</h1>
-        <p className="lede" data-say>{f.frame}</p>
-        <div className="card exchange">
+        <p className="label" style={{ marginTop: "var(--s4)" }}>{c.copy.way.title}</p>
+        <h1 className="h2" style={{ fontSize: "2rem" }} data-say>{f.name}</h1>
+        <p className="quote" data-say>{f.frame}</p>
+        <div className="card">
           <p className="label">{copy.example}</p>
           <p className="inner" style={{ fontSize: "1.05rem" }}>{f.example.before}</p>
-          <p className="reply sm">{f.example.after}</p>
+          <p className="quote">{f.example.after}</p>
         </div>
         <div className="more">
           <p className="label">{copy.why}</p>

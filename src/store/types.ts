@@ -1,4 +1,4 @@
-export type Kind = "voice" | "about";
+export type Kind = "voice" | "about" | "keeper";
 export type Sub = "like" | "think";
 
 export type Entry = {
@@ -14,6 +14,15 @@ export type Entry = {
   said?: boolean;
 };
 
+// what gets noticed over time: a habit caught in the moment, a daily check-in, a voice check
+export type Moment = { id: string; type: "moment"; at: string; habit: string | null; where: string | null; loud: number };
+export type CheckIn = { id: string; type: "checkin"; at: string; loud: number; habits: string[] };
+export type VoiceCheck = { id: string; type: "check"; at: string; scores: Record<string, number> };
+export type Log = Moment | CheckIn | VoiceCheck;
+type LogInput<T extends Log> = Omit<T, "id" | "at"> & { at?: string };
+export type NewLog = LogInput<Moment> | LogInput<CheckIn> | LogInput<VoiceCheck>;
+
+// "time" means: follow the phone's light or dark setting
 export type Appearance = "time" | "light" | "dark";
 
 export type Settings = {
@@ -37,6 +46,9 @@ export type KV = {
   settings: Settings;
   progress: Progress;
   migratedV1: boolean;
+  // finished lessons, keyed by lesson key
+  done: Record<string, string>;
+  companion: { name: string; on: boolean };
 };
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -44,7 +56,8 @@ export const DEFAULT_SETTINGS: Settings = {
 };
 
 export const freshKV = (): KV => ({
-  name: "", welcomed: false, tried: {}, answered: {}, settings: { ...DEFAULT_SETTINGS }, progress: {}, migratedV1: false
+  name: "", welcomed: false, tried: {}, answered: {}, settings: { ...DEFAULT_SETTINGS }, progress: {}, migratedV1: false,
+  done: {}, companion: { name: "", on: true }
 });
 
-export type State = KV & { entries: Entry[]; ready: boolean; persistent: boolean };
+export type State = KV & { entries: Entry[]; logs: Log[]; ready: boolean; persistent: boolean };

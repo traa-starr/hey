@@ -2,7 +2,7 @@
 // behind it, and if saving fails the app keeps working from memory.
 import { dexieBackend, memoryBackend, type Backend } from "./db";
 import { fromV1, V1_KEY } from "./migrate";
-import { DEFAULT_SETTINGS, freshKV, type Entry, type KV, type Settings, type State } from "./types";
+import { DEFAULT_SETTINGS, freshKV, type Entry, type KV, type Log, type NewLog, type Settings, type State } from "./types";
 
 type Listener = () => void;
 
@@ -18,7 +18,7 @@ function readLocal(key: string): string | null {
 }
 
 export class Store {
-  private state: State = { ...freshKV(), entries: [], ready: false, persistent: false };
+  private state: State = { ...freshKV(), entries: [], logs: [], ready: false, persistent: false };
   private listeners = new Set<Listener>();
   private backend: Backend = memoryBackend();
 
@@ -47,7 +47,7 @@ export class Store {
       this.backend = memoryBackend();
       persistent = false;
     }
-    let loaded: Awaited<ReturnType<Backend["load"]>> = { entries: [], kv: {} };
+    let loaded: Awaited<ReturnType<Backend["load"]>> = { entries: [], logs: [], kv: {} };
     try {
       loaded = await this.backend.load();
     } catch {
@@ -55,6 +55,8 @@ export class Store {
     }
     const kv = { ...freshKV(), ...(loaded.kv as Partial<KV>) };
     kv.settings = { ...DEFAULT_SETTINGS, ...(kv.settings ?? {}) };
+    kv.companion = { ...freshKV().companion, ...(kv.companion ?? {}) };
+    kv.done = kv.done ?? {};
     if (!kv.progress || typeof kv.progress !== "object" || "lessonPath" in kv.progress) kv.progress = {};
     let entries = loaded.entries;
     if (!kv.migratedV1) {
@@ -88,7 +90,8 @@ export class Store {
         persistent = false;
       }
     }
-    this.set({ ...kv, entries: entries.sort(byNewest), ready: true, persistent });
+    const logs = (loaded.logs ?? []).slice().sort((a, b) => (a.at < b.at ? -1 : 1));
+    this.set({ ...kv, entries: entries.sort(byNewest), logs, ready: true, persistent });
   }
 
   private setKV<K extends keyof KV>(key: K, value: KV[K]) {
@@ -98,6 +101,15 @@ export class Store {
 
   setName = (name: string) => this.setKV("name", name.trim());
   setWelcomed = () => this.setKV("welcomed", true);
+  markDone = (key: string) => this.setKV("done", { ...this.state.done, [key]: new Date().toISOString() });
+  setCompanion = (patch: Partial<KV["companion"]>) => this.setKV("companion", { ...this.state.companion, ...patch });
+  // logs are kept oldest first, so trends read left to right
+  log = (l: NewLog): Log => {
+    const entry = { ...l, id: newId(), at: l.at ?? new Date().toISOString() } as Log;
+    this.set({ logs: [...this.state.logs, entry] });
+    this.save((b) => b.putLog(entry));
+    return entry;
+  };
   markTried = (lessonId: string) => this.setKV("tried", { ...this.state.tried, [lessonId]: new Date().toISOString() });
   markAnswered = (questionId: string) => this.setKV("answered", { ...this.state.answered, [questionId]: new Date().toISOString() });
   setProgress = (path: string, p: KV["progress"][string] | null) => {
@@ -129,21 +141,21 @@ export class Store {
     this.save((b) => b.deleteEntry(id));
   };
   clearAll = () => {
-    const keep = { welcomed: true, migratedV1: true, settings: this.state.settings };
+    const keep = { welcomed: true, migratedV1: true, settings: this.state.settings, companion: this.state.companion };
     // the first version's copy goes too, so nothing old is left on the phone
     try {
       globalThis.localStorage?.removeItem(V1_KEY);
     } catch {
       // nothing more to clear
     }
-    this.set({ ...freshKV(), ...keep, entries: [] });
+    this.set({ ...freshKV(), ...keep, entries: [], logs: [] });
     this.save(async (b) => {
       await b.clear();
       await Promise.all(Object.entries(keep).map(([k, v]) => b.putKV(k, v)));
     });
   };
   exportJSON = () =>
-    JSON.stringify({ app: "hey you", exported: new Date().toISOString(), name: this.state.name, entries: this.state.entries }, null, 2);
+    JSON.stringify({ app: "hey you", exported: new Date().toISOString(), name: this.state.name, entries: this.state.entries, logs: this.state.logs }, null, 2);
 }
 
 export const store = new Store();

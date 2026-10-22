@@ -18,8 +18,8 @@ test("installable, and works offline after the first load", async ({ page, conte
 
   await context.setOffline(true);
   await page.reload();
-  await expect(page.locator(".greet")).toBeVisible();
-  for (const name of ["explore", "your book"]) {
+  await expect(page.locator(".sky")).toBeVisible();
+  for (const name of ["learn", "practice", "you"]) {
     await page.getByRole("link", { name, exact: true }).click();
     await expect(page.locator("h1")).toBeVisible();
   }

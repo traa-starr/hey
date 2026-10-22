@@ -1,46 +1,33 @@
 import { expect, test } from "@playwright/test";
-import { button, saved } from "./helpers";
+import { button, cont, saved } from "./helpers";
 
-test("a first visit tells the two-voices story and ends with answering one", async ({ page }) => {
+test("a first visit is a short chat with sol that ends with the voice check", async ({ page }) => {
   await page.goto("./");
-  await expect(page.getByRole("heading", { name: "hey you." })).toBeVisible();
-  await button(page, "hi").click();
-  await expect(page.getByText("most of us carry one loud inner voice.")).toBeVisible();
-  await button(page, "go on").click();
-  await button(page, "i'd like that").click();
-  await button(page, "tell me more").click();
-  await expect(page.getByRole("link", { name: "Kross et al., 2014" })).toBeVisible();
-  await button(page, "hey you").click();
-  await button(page, "sounds good").click();
-  await page.getByLabel("call me").fill("Robin");
+  await expect(page.getByText("hey you.", { exact: true })).toBeVisible();
+  for (let i = 0; i < 4; i++) await cont(page);
+  await expect(page.getByText("everything stays on this phone.")).toBeVisible();
+  await cont(page);
+  await page.getByLabel("what would you like me to call you?").fill("Robin");
   await button(page, "that's me").click();
   await expect(page.getByText("nice to meet you, robin.")).toBeVisible();
-  await button(page, "next").click();
-  await button(page, "answer one").click();
-  await expect(page.getByRole("heading", { name: "what did your inner voice say?" })).toBeVisible();
+  await cont(page);
+  await button(page, "let's find out").click();
+  await expect(page.getByText(/swipe through a few things inner voices say/)).toBeVisible();
 
   // the welcome doesn't come back once it's done
   await page.goto("./");
-  await expect(page.locator(".greet")).toHaveText(/robin\./);
+  await expect(page.locator(".hello h1")).toHaveText(/robin\./);
 });
 
-test("the welcome can be left early and resumes where it stopped", async ({ page }) => {
+test("the welcome can be left early, resumes, and can be skipped", async ({ page }) => {
   await page.goto("./");
-  await button(page, "hi").click();
-  await button(page, "go on").click();
-  await saved(page, "progress", (p) => (p as Record<string, { i: number }> | null)?.["start/welcome.json"]?.i === 2);
+  await cont(page);
+  await cont(page);
+  await saved(page, "progress", (p) => (p as Record<string, { i: number }> | null)?.["start/welcome"]?.i === 2);
   await page.reload();
-  await expect(page.getByText("here, you grow a second one. yours, in your own words.")).toBeVisible();
-});
-
-test("the welcome can be skipped and replayed from your book", async ({ page }) => {
-  await page.goto("./");
-  await button(page, "hi").click();
-  await button(page, "leave, nothing is lost").click();
-  await expect(page.locator(".greet")).toBeVisible();
+  await expect(page.getByText(/most of us carry one loud inner voice/)).toBeVisible();
+  await button(page, "close, nothing is lost").click();
+  await expect(page.locator(".sky")).toBeVisible();
   await page.reload();
-  await expect(page.locator(".greet")).toBeVisible();
-  await page.getByRole("link", { name: "your book" }).click();
-  await button(page, "replay the welcome").click();
-  await expect(page.getByRole("heading", { name: "hey you." })).toBeVisible();
+  await expect(page.locator(".sky")).toBeVisible();
 });

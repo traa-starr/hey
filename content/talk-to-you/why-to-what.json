@@ -1,0 +1,84 @@
+{
+  "id": "why-to-what",
+  "title": "why to what",
+  "subtitle": "when \"why am i like this\" goes in circles",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "scene",
+      "quote": "why am i like this?"
+    },
+    {
+      "type": "say",
+      "text": "\"why\" questions feel like they'll help. often they go in circles."
+    },
+    {
+      "type": "say",
+      "text": "\"what happened?\" and \"what's one next step?\" tend to move.",
+      "mood": "curious"
+    },
+    {
+      "type": "ask",
+      "text": "which sounds more like you when you're upset?",
+      "options": [
+        {
+          "label": "lots of \"why\"",
+          "reply": "really common. \"why\" feels like digging for an answer."
+        },
+        {
+          "label": "more \"what now\"",
+          "reply": "nice. that's the move we're practicing."
+        },
+        {
+          "label": "a mix",
+          "reply": "makes sense. most of us switch back and forth."
+        }
+      ]
+    },
+    {
+      "type": "tryon",
+      "prompt": "try each one on:",
+      "lines": [
+        "why do i always ruin everything?",
+        "what actually happened was i forgot her birthday. one small next step is texting her tonight."
+      ],
+      "reply": "the second one gives you something to do. that's the point."
+    },
+    {
+      "type": "say",
+      "text": "in early studies, practicing concrete \"what\" and \"how\" thinking helped people step out of rumination."
+    },
+    {
+      "type": "write",
+      "prompt": "think of something that's been on your mind. one small next step is…",
+      "template": "one small next step is {x}",
+      "ideas": [
+        "taking a breath first.",
+        "sending one honest text.",
+        "writing down one thing for tomorrow.",
+        "letting it rest until morning."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "when \"why\" goes in circles, try: what happened, and what's one next step?",
+      "source": {
+        "label": "summary of Watkins et al., 2009",
+        "url": "https://psychlabs.torontomu.ca/caplab/why-vs-how-the-role-of-abstract-and-concrete-thinking-in-anxiety-and-depression-by-jenna-vieira/"
+      },
+      "evidence": "emerging"
+    },
+    {
+      "type": "experiment",
+      "text": "next time you catch a \"why am i…\", swap it for \"what's one next step?\""
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "concrete thinking training reduced rumination in early studies",
+      "source": "summary of Watkins et al., 2009",
+      "url": "https://psychlabs.torontomu.ca/caplab/why-vs-how-the-role-of-abstract-and-concrete-thinking-in-anxiety-and-depression-by-jenna-vieira/"
+    }
+  ]
+}

@@ -1,2 +1,2 @@
-// motion's animation features, loaded after first paint
-export { domAnimation as default } from "motion/react";
+// motion's animation and drag features, loaded after first paint
+export { domMax as default } from "motion/react";

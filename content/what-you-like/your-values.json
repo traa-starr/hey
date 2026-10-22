@@ -1,0 +1,97 @@
+{
+  "id": "your-values",
+  "title": "what matters to you",
+  "subtitle": "values are directions, not finish lines",
+  "minutes": 5,
+  "steps": [
+    {
+      "type": "say",
+      "text": "underneath wants are values: what matters to you about how you live."
+    },
+    {
+      "type": "say",
+      "text": "values aren't goals you finish. they're more like directions. you can always take a step that way.",
+      "mood": "curious"
+    },
+    {
+      "type": "pick",
+      "prompt": "tap the ones that feel most like you. up to five.",
+      "options": [
+        "honesty",
+        "kindness",
+        "adventure",
+        "calm",
+        "creativity",
+        "family",
+        "freedom",
+        "fun",
+        "growth",
+        "learning",
+        "loyalty",
+        "nature",
+        "rest",
+        "courage",
+        "humor",
+        "independence",
+        "connection",
+        "beauty",
+        "fairness",
+        "faith"
+      ],
+      "reply": "these are yours. no ranking needed.",
+      "keep": "what-i-think",
+      "as": "{x} matters to me.",
+      "max": 5
+    },
+    {
+      "type": "ask",
+      "text": "when did you last do something that fit one of them?",
+      "options": [
+        {
+          "label": "today",
+          "reply": "lovely. that's what living by your values looks like, mostly small things."
+        },
+        {
+          "label": "this week",
+          "reply": "nice. it's usually small things, and they count."
+        },
+        {
+          "label": "a while ago",
+          "reply": "that's okay. noticing it is already a step back toward it."
+        }
+      ]
+    },
+    {
+      "type": "write",
+      "prompt": "one small thing you could do this week that fits what matters to you:",
+      "template": "this week, i could {x}",
+      "ideas": [
+        "call someone i miss.",
+        "spend ten minutes outside.",
+        "make something just for fun.",
+        "say what i actually think once."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "values are directions, not finish lines. any small step that way counts.",
+      "source": {
+        "label": "acceptance and commitment therapy (values work)",
+        "url": ""
+      },
+      "evidence": "strong (as part of ACT)"
+    },
+    {
+      "type": "experiment",
+      "text": "do the small thing you wrote, even for five minutes."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "clarifying values and taking small steps toward them is a core part of acceptance and commitment therapy",
+      "source": "Hayes, Strosahl & Wilson, acceptance and commitment therapy",
+      "url": ""
+    }
+  ]
+}

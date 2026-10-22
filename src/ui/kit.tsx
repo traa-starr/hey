@@ -1,26 +1,29 @@
-// Shared pieces: the screen wrapper, bars, idea chips, the loudness control, and a sentence being written.
+// Shared pieces: the screen wrapper, bars, tabs, sol's messages, chips, habit glyphs, the loudness control.
 import * as m from "motion/react-m";
 import { useEffect, useRef, type ReactNode } from "react";
 import { content } from "../content/load";
+import type { Color, Habit } from "../content/schema";
 import { buzz, stepChime } from "../lib/feedback";
 import { readScreen, screenText, speak } from "../lib/speech";
 import type { Piece } from "../lib/template";
-import { go, href, type Route } from "../router";
+import { format } from "../lib/template";
+import { href, type Route } from "../router";
 import { useData } from "../store/useStore";
+import { GLYPH, Icon } from "./icons";
+import { Sol, type Mood } from "./Sol";
 
-const ease = [0.2, 0.7, 0.2, 1] as const;
+const ease = [0.2, 0.8, 0.2, 1] as const;
 // the first screen after opening the app keeps the browser's own focus
 let moved = false;
 
-// one screen: settles in, and reads itself aloud when the person asked for that
-export function Screen({ children, id, label }: { children: ReactNode; id: string; label?: string }) {
+// one screen: settles in, reads itself aloud when asked to, and moves focus to its heading
+export function Screen({ children, id }: { children: ReactNode; id: string }) {
   const { settings } = useData();
   const ref = useRef<HTMLDivElement>(null);
   const auto = settings.readAloud && settings.autoRead;
   useEffect(() => {
     if (auto && ref.current) speak(screenText(ref.current));
   }, [id, auto]);
-  // a new step: move focus to its heading so screen readers and keyboards start in the right place
   useEffect(() => {
     if (!moved) {
       moved = true;
@@ -33,95 +36,101 @@ export function Screen({ children, id, label }: { children: ReactNode; id: strin
     }
   }, [id]);
   return (
-    <m.div
-      key={id}
-      ref={ref}
-      className="screen"
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, ease }}
-      aria-label={label}
-    >
+    <m.div key={id} ref={ref} className="screen" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }}>
       {children}
     </m.div>
   );
 }
 
-export const Icon = {
-  close: (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
-  ),
-  speaker: (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10z" /><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11" /></svg>
-  ),
-  back: (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
-  )
-};
-
 function Speaker() {
   const { settings } = useData();
-  const copy = content().copy;
-  if (!settings.readAloud) return <span style={{ width: "2.75rem" }} aria-hidden="true" />;
-  return (
-    <button className="ibtn" type="button" onClick={readScreen} aria-label={copy.app.readAloud}>
-      {Icon.speaker}
-    </button>
-  );
+  if (!settings.readAloud) return null;
+  return <button className="ibtn" type="button" onClick={readScreen} aria-label={content().copy.app.readAloud}>{Icon.speaker}</button>;
 }
 
-export function TopBar() {
+// close, an optional back, progress, and read aloud
+export function FlowTop({ at, of, onClose, back, title }: { at?: number; of?: number; onClose: () => void; back?: () => void; title?: string }) {
+  const copy = content().copy.app;
+  const pct = of ? Math.round((Math.min((at ?? 0) + 1, of) / of) * 100) : 0;
   return (
     <div className="top">
-      <span className="mark" aria-hidden="true">{content().copy.app.name}</span>
+      <button className="ibtn" type="button" onClick={onClose} aria-label={copy.close}>{Icon.close}</button>
+      {back ? <button className="ibtn" type="button" onClick={back} aria-label={copy.back}>{Icon.back}</button> : null}
+      {of ? (
+        <div className="bar" role="progressbar" aria-label={copy.progress} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}><span style={{ width: `${pct}%` }} /></div>
+      ) : (
+        <h1 className="h2" style={{ flex: 1, fontSize: "1.35rem" }}>{title}</h1>
+      )}
       <Speaker />
     </div>
   );
 }
 
-export function FlowBar({ at, of, onClose, back }: { at: number; of: number; onClose: () => void; back?: () => void }) {
-  const copy = content().copy;
-  const pct = Math.round((Math.min(at + 1, of) / of) * 100);
+export function PageTitle({ children }: { children: ReactNode }) {
   return (
-    <div className="top">
-      <button className="ibtn" type="button" onClick={onClose} aria-label={copy.app.close}>{Icon.close}</button>
-      {back ? <button className="ibtn" type="button" onClick={back} aria-label={copy.app.back}>{Icon.back}</button> : null}
-      <div className="progress" role="progressbar" aria-label={copy.app.progress} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
-        <span style={{ width: `${pct}%` }} />
-      </div>
+    <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 12 }}>
+      <h1 className="title" data-say>{children}</h1>
       <Speaker />
     </div>
   );
 }
 
-export function Nav({ current }: { current: "today" | "explore" | "book" }) {
+export type Tab = "home" | "learn" | "practice" | "you";
+export function Tabs({ current }: { current: Tab }) {
   const t = content().copy.tabs;
-  const tabs: { name: typeof current; label: string; route: Route }[] = [
-    { name: "today", label: t.today, route: { name: "today" } },
-    { name: "explore", label: t.explore, route: { name: "explore" } },
-    { name: "book", label: t.book, route: { name: "book" } }
+  const tabs: { name: Tab; route: Route }[] = [
+    { name: "home", route: { name: "home" } },
+    { name: "learn", route: { name: "learn" } },
+    { name: "practice", route: { name: "practice" } },
+    { name: "you", route: { name: "you" } }
   ];
   return (
-    <nav className="nav" aria-label={t.label}>
+    <nav className="tabs" aria-label={t.label}>
       {tabs.map((x) => (
         <a key={x.name} href={href(x.route)} aria-current={current === x.name ? "page" : undefined} onClick={() => buzz(4)}>
-          {x.label}
+          {Icon[x.name]}{t[x.name]}
         </a>
       ))}
     </nav>
   );
 }
 
+export function useCompanion() {
+  const { companion } = useData();
+  return { name: companion.name || content().copy.app.companionDefault, on: companion.on };
+}
+
+// a message from sol (or a plain bubble when the companion is turned off)
+export function SolSays({ children, mood = "calm", say = true }: { children: ReactNode; mood?: Mood; say?: boolean }) {
+  const { on } = useCompanion();
+  return (
+    <div className="msg">
+      {on ? <span className="av"><Sol mood={mood} /></span> : null}
+      <p className="bubble" data-say={say ? true : undefined}>{children}</p>
+    </div>
+  );
+}
+
+// fill {companion} and {name} in sol's lines
+export function useLine() {
+  const { name } = useData();
+  const comp = useCompanion();
+  return (s: string) => format(s, { companion: comp.name, name: name.toLowerCase() || content().copy.greeting.noName });
+}
+
+export function HabitGlyph({ habit, size }: { habit: Pick<Habit, "glyph" | "color">; size?: "sm" | "lg" }) {
+  return <span className={`glyph${size ? ` ${size}` : ""}`} style={{ background: `var(--${habit.color})` }} aria-hidden="true">{GLYPH[habit.glyph]}</span>;
+}
+export const colorVar = (c: Color, soft = false) => `var(--${c}${soft ? "-soft" : ""})`;
+
 export function Ideas({ ideas, picked, onPick, label }: { ideas: string[]; picked?: string; onPick: (v: string) => void; label?: string }) {
   if (!ideas.length) return null;
   return (
-    <div className="ideas">
+    <div className="section">
       <span className="label">{label ?? content().copy.app.ideas}</span>
       <div className="chips">
         {ideas.map((x) => (
-          <button key={x} type="button" className="chip idea" aria-pressed={picked === x} onClick={() => { buzz(4); onPick(x); }}>
-            {x}
-          </button>
+          <button key={x} type="button" className="chip idea" aria-pressed={picked === x} onClick={() => { buzz(4); onPick(x); }}>{x}</button>
         ))}
       </div>
     </div>
@@ -133,9 +142,7 @@ export function Chips({ options, picked, onPick, label }: { options: string[]; p
   return (
     <div className="chips" role="group" aria-label={label}>
       {options.map((x, n) => (
-        <button key={x} type="button" className="chip" aria-pressed={on(x)} onClick={() => { buzz(4); onPick(x, n); }}>
-          {x}
-        </button>
+        <button key={x} type="button" className="chip" aria-pressed={on(x)} onClick={() => { buzz(4); onPick(x, n); }}>{x}</button>
       ))}
     </div>
   );
@@ -143,7 +150,6 @@ export function Chips({ options, picked, onPick, label }: { options: string[]; p
 
 // how loud the inner voice is: the sentence itself carries it
 export function Loudness({ said, value, onChange, reply }: { said: string; value: number; onChange: (n: number) => void; reply?: string }) {
-  const l = content().copy.loudness;
   const set = (n: number) => {
     if (n !== value) {
       buzz(6);
@@ -153,44 +159,38 @@ export function Loudness({ said, value, onChange, reply }: { said: string; value
   };
   return (
     <>
-      <div className="stage">
-        <p className="said" style={{ ["--loud" as string]: value || 2 }} data-say>{said}</p>
-      </div>
-      {reply ? <p className="reply sm" data-say>{reply}</p> : null}
-      <div className="range">
-        <p className="loudname" aria-hidden="true">{value ? l.names[value - 1] : l.unset}</p>
-        <label className="sr" htmlFor="loudness">{l.label}</label>
-        <input
-          id="loudness"
-          type="range"
-          min={1}
-          max={5}
-          step={1}
-          value={value || 3}
-          aria-valuetext={value ? l.names[value - 1] : l.notSet}
-          onChange={(e) => set(Number(e.target.value))}
-          onPointerUp={(e) => set(Number((e.target as HTMLInputElement).value))}
-          onKeyUp={(e) => { if (!value && (e.key === "Enter" || e.key === " ")) set(3); }}
-        />
-        <div className="ends" aria-hidden="true"><span>{l.names[0]}</span><span>{l.names[4]}</span></div>
-      </div>
+      <div className="stage"><p className="said" style={{ ["--loud" as string]: value || 2 }} data-say>{said}</p></div>
+      {reply ? <p className="reply-line" style={{ fontSize: "1.3rem" }} data-say>{reply}</p> : null}
+      <LoudRange value={value} onChange={set} />
     </>
   );
 }
 
+export function LoudRange({ value, onChange }: { value: number; onChange: (n: number) => void }) {
+  const l = content().copy.loudness;
+  return (
+    <div className="range">
+      <p className="loudname" aria-hidden="true">{value ? l.names[value - 1] : l.unset}</p>
+      <label className="sr" htmlFor="loudness">{l.label}</label>
+      <input
+        id="loudness" type="range" min={1} max={5} step={1} value={value || 3}
+        aria-valuetext={value ? l.names[value - 1] : l.notSet}
+        onChange={(e) => onChange(Number(e.target.value))}
+        onPointerUp={(e) => onChange(Number((e.target as HTMLInputElement).value))}
+        onKeyUp={(e) => { if (!value && (e.key === "Enter" || e.key === " ")) onChange(3); }}
+      />
+      <div className="ends" aria-hidden="true"><span>{l.names[0]}</span><span>{l.names[4]}</span></div>
+    </div>
+  );
+}
+
 // a sentence with its blanks showing while it's being written
-export function Sentence({ parts, className = "reply" }: { parts: Piece[]; className?: string }) {
+export function Sentence({ parts, className = "reply-line" }: { parts: Piece[]; className?: string }) {
   return (
     <p className={className} data-say>
       {parts.map((p, n) =>
-        p.slot ? (
-          p.empty ? <span key={n} className="slot" aria-label="blank">&nbsp;</span> : <span key={n} className="filled">{p.text}</span>
-        ) : (
-          <span key={n}>{p.text}</span>
-        )
+        p.slot ? (p.empty ? <span key={n} className="slot" aria-label="blank">&nbsp;</span> : <span key={n}>{p.text}</span>) : <span key={n}>{p.text}</span>
       )}
     </p>
   );
 }
-
-export const goTo = (r: Route) => () => go(r);

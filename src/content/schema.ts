@@ -41,48 +41,53 @@ export const question = z.object({
 });
 export const questionsFile = z.object({ intro: text, questions: list(z.unknown()) });
 
-const keep = z.enum(["my-words", "what-i-like", "what-i-think"]);
+export const keep = z.enum(["my-words", "what-i-like", "what-i-think"]);
 
-// a small typographic scene: the inner voice, your voice, or both
-export const visual = z.object({
-  inner: opt(z.string()),
-  mine: opt(z.string()),
-  loud: opt(z.int().check(z.minimum(1), z.maximum(5)))
+// ---------- voice habits ----------
+export const COLORS = ["violet", "pink", "coral", "gold", "teal", "plum", "blue", "orange", "lime", "mint"] as const;
+export const GLYPHS = ["ruler", "eye", "loop", "cloud", "scales", "tag", "shrink", "target", "split", "wave"] as const;
+
+export const habit = z.object({
+  id: text,
+  name: text,
+  short: text,
+  color: z.enum(COLORS),
+  glyph: z.enum(GLYPHS),
+  says: list(text, 1),
+  quiz: list(text, 1),
+  job: text,
+  misses: text,
+  spot: z.object({ scene: text, quote: text }),
+  answers: list(z.object({ way: text, line: text }), 1),
+  keep: text,
+  try: text
 });
+export const habitsFile = z.object({ intro: text, note: text, source, habits: list(z.unknown(), 1) });
 
-const buildPart = z.object({
-  key: text,
-  label: text,
-  chips: opt(list(text)),
-  input: opt(z.boolean()),
-  placeholder: opt(z.string()),
-  ideas: opt(list(text)),
-  allowCustom: opt(z.boolean())
-});
-
-const stage = opt(z.string());
+// ---------- chat lessons: sol talks, you tap ----------
+const mood = opt(z.enum(["calm", "happy", "curious", "sleepy"]));
+const option = z.object({ label: text, reply: opt(z.string()) });
 
 export const step = z.discriminatedUnion("type", [
-  z.object({ type: z.literal("welcome"), text, button: text, visual: opt(visual) }),
-  z.object({ type: z.literal("show"), text, button: text, stage, more: opt(z.string()), source: opt(source), visual: opt(visual) }),
-  z.object({ type: z.literal("try-on"), prompt: text, options: list(text, 2), question: text, answers: opt(list(text)), reply: text, stage }),
-  z.object({ type: z.literal("promises"), prompt: text, items: list(text, 1), button: text }),
-  z.object({ type: z.literal("this-or-that"), prompt: text, pairs: list(z.tuple([text, text]), 1), extras: opt(list(text)), keep: z.literal("what-i-like") }),
-  z.object({ type: z.literal("build"), prompt: text, template: text, parts: list(buildPart, 1), reply: opt(z.string()), keep, optional: opt(z.boolean()) }),
-  z.object({
-    type: z.literal("write"), prompt: text, chips: opt(list(text)),
-    input: opt(z.object({ label: text, placeholder: opt(z.string()) })),
-    keep: z.union([keep, z.literal("name")]), skip: opt(z.string()), optional: opt(z.boolean()), stage
-  }),
-  z.object({ type: z.literal("pocket"), prompt: text, phrases: list(text, 1), keep, stage }),
-  z.object({ type: z.literal("try"), prompt: text, options: list(text, 1), skip: opt(z.string()), stage }),
-  z.object({ type: z.literal("close"), text, button: opt(z.string()), then: opt(z.literal("answer")), later: opt(z.string()) })
+  z.object({ type: z.literal("say"), text, mood }),
+  z.object({ type: z.literal("scene"), quote: text, label: opt(z.string()) }),
+  z.object({ type: z.literal("mine"), text }),
+  z.object({ type: z.literal("ask"), text, options: list(option, 2) }),
+  z.object({ type: z.literal("tryon"), prompt: text, lines: list(text, 2), reply: text }),
+  z.object({ type: z.literal("pick"), prompt: text, options: list(text, 2), reply: text, keep: opt(keep), as: opt(z.string()), max: opt(z.number()) }),
+  z.object({ type: z.literal("write"), prompt: text, template: text.check(z.refine((t) => t.includes("{x}"), "needs {x}")), ideas: list(text, 1), keep: opt(keep), placeholder: opt(z.string()) }),
+  z.object({ type: z.literal("spot"), scene: text, quote: text, options: list(text, 2), answer: z.number(), explain: text }),
+  z.object({ type: z.literal("tot"), prompt: text, pairs: list(z.tuple([text, text]), 1), keep: z.literal("what-i-like") }),
+  z.object({ type: z.literal("takeaway"), text, source, evidence: opt(z.string()) }),
+  z.object({ type: z.literal("experiment"), text }),
+  z.object({ type: z.literal("breathe") }),
+  z.object({ type: z.literal("list"), text, items: list(text, 1) }),
+  z.object({ type: z.literal("name"), text, placeholder: opt(z.string()) }),
+  z.object({ type: z.literal("end"), text, button: text, then: z.enum(["check", "home"]), later: opt(z.string()) })
 ]);
 
 export const lesson = z.object({
   id: text,
-  practice: text,
-  kind: opt(z.string()),
   title: text,
   subtitle: text,
   minutes: z.number().check(z.positive()),
@@ -90,14 +95,17 @@ export const lesson = z.object({
   grounding: opt(list(z.object({ idea: text, source: text, url: opt(z.string()) })))
 });
 
+export const path = z.object({ id: text, name: text, blurb: text, color: z.enum(COLORS), lessons: list(text, 1) });
+
 export const index = z.object({
   start: text,
   formulas: text,
   questions: text,
+  habits: text,
   copy: text,
   help: text,
   credits: text,
-  practices: list(z.object({ id: text, name: text, blurb: text, lessons: list(text) }))
+  paths: list(path, 1)
 });
 
 export const help = z.object({
@@ -111,40 +119,25 @@ export const credits = z.object({
   items: list(z.object({ name: text, by: text, license: text, use: text, url: z.string() }))
 });
 
-const strings = <T extends string>(...keys: T[]) => z.object(Object.fromEntries(keys.map((k) => [k, text])) as Record<T, typeof text>);
-
-export const copy = z.object({
-  app: strings("name", "loading", "close", "back", "readAloud", "next", "skip", "done", "tellMore", "tellLess", "ideas", "progress"),
-  tabs: strings("today", "explore", "book", "label"),
-  greeting: strings("night", "dawn", "day", "dusk", "noName"),
-  today: strings("toldYourself", "toldEmpty", "answerTitle", "answerSub", "questionLabel", "questionNote", "noted", "reveal", "explore"),
-  loudness: z.object({ names: z.array(text).check(z.length(5)), label: text, unset: text, notSet: text, hardToSay: text }),
-  answer: strings(
-    "catchAsk", "catchLabel", "catchPlaceholder", "catchNote", "catchIdeas", "loudAsk", "calmAsk", "calmYes", "calmNo",
-    "calmIn", "calmOut", "calmDone", "calmStatic", "wayAsk", "aboutWay", "evidence", "slotPlaceholder", "thisIsMine",
-    "againAsk", "forBook", "quieter", "same", "louder", "plain", "keepSaid", "saidAs", "keep", "another", "letGo",
-    "kept", "seeBook", "backToday", "includesSaid", "change"
-  ),
-  explore: strings("title", "waysTitle", "setsTitle", "tried", "resume", "minutes", "tryIt", "why", "example", "source"),
-  lesson: strings("keep", "keepThese", "kept", "noPicks", "picks", "pickAs", "both", "neither", "tryReply", "nameHello", "thatsMe", "ofTotal", "orYourOwn"),
-  book: strings("title", "voiceTab", "aboutTab", "voiceEmpty", "aboutEmpty", "edit", "save", "cancel", "remove", "removeAsk", "keepIt", "editLabel", "privacy"),
-  settings: strings(
-    "title", "nameTitle", "nameLabel", "nameSaved", "save", "voiceTitle", "voiceOn", "voiceAuto", "voicePick", "voiceDefault",
-    "voiceRate", "voiceTest", "voiceSample", "voiceNone", "soundTitle", "soundOn", "resurface", "lookTitle", "lookTime", "lookLight", "lookDark",
-    "aboutTitle", "about", "credits", "replay", "installTitle", "installIos", "installButton", "installOther", "dataTitle", "data",
-    "export", "clear", "clearAsk", "clearYes", "clearNo", "storageNote"
-  ),
-  errors: strings("content", "missing")
-});
+// every interface string: the type comes from copy.json itself, so a missing key fails the typecheck,
+// and at load every value is checked to be real text
+type Strings = string | string[] | { [k: string]: Strings };
+const isStrings = (v: unknown): v is Strings =>
+  (typeof v === "string" && v.length > 0) ||
+  (Array.isArray(v) && v.length > 0 && v.every((x) => typeof x === "string" && x.length > 0)) ||
+  (!!v && typeof v === "object" && !Array.isArray(v) && Object.values(v).every(isStrings));
+export const copy = z.custom<typeof import("../../content/copy.json")>((v) => isStrings(v), "every value in copy.json must be non-empty text");
 
 export type Slot = z.infer<typeof slot>;
 export type Formula = z.infer<typeof formula>;
 export type Question = z.infer<typeof question>;
 export type Step = z.infer<typeof step>;
+export type Habit = z.infer<typeof habit>;
+export type Path = z.infer<typeof path>;
+export type Color = (typeof COLORS)[number];
+export type Glyph = (typeof GLYPHS)[number];
 export type Lesson = z.infer<typeof lesson>;
 export type Copy = z.infer<typeof copy>;
 export type Help = z.infer<typeof help>;
 export type Credits = z.infer<typeof credits>;
-export type Practice = z.infer<typeof index>["practices"][number];
 export type Keep = z.infer<typeof keep>;
-export type Visual = z.infer<typeof visual>;

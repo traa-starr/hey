@@ -2,13 +2,22 @@
 import { useSyncExternalStore } from "react";
 
 export type Route =
-  | { name: "today" }
-  | { name: "explore" }
-  | { name: "book" }
+  | { name: "home" }
+  | { name: "learn" }
+  | { name: "path"; id: string }
+  | { name: "lesson"; key: string }
   | { name: "welcome" }
-  | { name: "answer"; way?: string }
-  | { name: "way"; id: string }
-  | { name: "set"; path: string };
+  | { name: "practice" }
+  | { name: "check" }
+  | { name: "catch"; habit?: string }
+  | { name: "answer"; way?: string; habit?: string }
+  | { name: "breathe" }
+  | { name: "checkin" }
+  | { name: "you" }
+  | { name: "habit"; id: string }
+  | { name: "book" }
+  | { name: "settings" }
+  | { name: "way"; id: string };
 
 export function parse(hash: string): Route {
   const decode = (x: string) => {
@@ -20,23 +29,33 @@ export function parse(hash: string): Route {
   };
   const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decode);
   const [head, ...rest] = parts;
+  const one = rest[0];
   switch (head) {
-    case "explore": return { name: "explore" };
-    case "book": return { name: "book" };
-    case "welcome": return { name: "welcome" };
-    case "answer": return rest[0] ? { name: "answer", way: rest[0] } : { name: "answer" };
-    case "way": return rest[0] ? { name: "way", id: rest[0] } : { name: "explore" };
-    case "set": return rest.length ? { name: "set", path: `${rest.join("/")}.json` } : { name: "explore" };
-    default: return { name: "today" };
+    case "learn": case "welcome": case "practice": case "check": case "breathe": case "checkin": case "you": case "book": case "settings":
+      return { name: head };
+    case "path": return one ? { name: "path", id: one } : { name: "learn" };
+    case "lesson": return rest.length ? { name: "lesson", key: rest.join("/") } : { name: "learn" };
+    case "catch": return one ? { name: "catch", habit: one } : { name: "catch" };
+    case "answer":
+      if (one === "way" && rest[1]) return { name: "answer", way: rest[1] };
+      if (one === "habit" && rest[1]) return { name: "answer", habit: rest[1] };
+      return { name: "answer" };
+    case "habit": return one ? { name: "habit", id: one } : { name: "you" };
+    case "way": return one ? { name: "way", id: one } : { name: "practice" };
+    default: return { name: "home" };
   }
 }
 
 export function href(r: Route): string {
+  const e = encodeURIComponent;
   switch (r.name) {
-    case "today": return "#/";
-    case "answer": return r.way ? `#/answer/${encodeURIComponent(r.way)}` : "#/answer";
-    case "way": return `#/way/${encodeURIComponent(r.id)}`;
-    case "set": return `#/set/${r.path.replace(/\.json$/, "").split("/").map(encodeURIComponent).join("/")}`;
+    case "home": return "#/";
+    case "path": return `#/path/${e(r.id)}`;
+    case "lesson": return `#/lesson/${r.key.split("/").map(e).join("/")}`;
+    case "catch": return r.habit ? `#/catch/${e(r.habit)}` : "#/catch";
+    case "answer": return r.way ? `#/answer/way/${e(r.way)}` : r.habit ? `#/answer/habit/${e(r.habit)}` : "#/answer";
+    case "habit": return `#/habit/${e(r.id)}`;
+    case "way": return `#/way/${e(r.id)}`;
     default: return `#/${r.name}`;
   }
 }

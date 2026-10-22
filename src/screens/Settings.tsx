@@ -7,6 +7,8 @@ import { go } from "../router";
 import { store } from "../store/store";
 import type { Appearance } from "../store/types";
 import { useData } from "../store/useStore";
+import { format } from "../lib/template";
+import { FlowTop, Screen } from "../ui/kit";
 
 export function Settings() {
   const c = content();
@@ -32,11 +34,21 @@ export function Settings() {
   };
 
   return (
-    <section className="settings" aria-labelledby="settings-title">
-      <h2 className="sr" id="settings-title">{s.title}</h2>
+    <>
+    <FlowTop onClose={() => go({ name: "you" })} title={s.title} />
+    <Screen id="settings">
+    <section className="settings" aria-label={s.title}>
       {!data.persistent && data.ready ? <p className="note" role="status">{s.storageNote}</p> : null}
 
       <NameForm key={data.name} initial={data.name} saved={savedName === data.name} onSaved={setSavedName} />
+
+      <div className="set">
+        <h3>{s.companionTitle}</h3>
+        <label className="small" htmlFor="companion-name">{s.companionName}</label>
+        <input id="companion-name" className="field" value={data.companion.name} placeholder={c.copy.app.companionDefault} autoComplete="off"
+          onChange={(e) => store.setCompanion({ name: e.target.value })} />
+        <Toggle id="companion" label={format(s.companionOn, { companion: data.companion.name || c.copy.app.companionDefault })} checked={data.companion.on} onChange={(v) => store.setCompanion({ on: v })} />
+      </div>
 
       <div className="set">
         <h3>{s.voiceTitle}</h3>
@@ -105,7 +117,7 @@ export function Settings() {
             ))}. {c.credits.note}
           </p>
         ) : null}
-        <button className="btn quiet" type="button" onClick={() => { store.setProgress(c.startPath, null); go({ name: "welcome" }); }}>{s.replay}</button>
+        <button className="btn quiet" type="button" onClick={() => { store.setProgress("start/welcome", null); go({ name: "welcome" }); }}>{s.replay}</button>
       </div>
 
       <div className="set">
@@ -130,6 +142,8 @@ export function Settings() {
         ) : <button className="btn quiet" type="button" onClick={() => setClearing(true)}>{s.clear}</button>}
       </div>
     </section>
+    </Screen>
+    </>
   );
 }
 

@@ -20,11 +20,37 @@ describe("content", () => {
     expect(c.start).not.toBeNull();
     expect(c.formulas.length).toBeGreaterThanOrEqual(9);
     expect(c.questions.length).toBeGreaterThan(0);
-    expect(c.practices.every((p) => p.sets.length === p.lessons.length)).toBe(true);
+    expect(c.paths.every((p) => p.items.length === p.lessons.length)).toBe(true);
+    expect(c.habits.length).toBe(10);
   });
 
-  it("keeps the welcome to eight screens or fewer", () => {
+  it("keeps the welcome short", () => {
     expect(c.start!.steps.length).toBeLessThanOrEqual(8);
+  });
+
+  it("gives every voice habit a full lesson where spotting it has the right answer", () => {
+    const habitPath = c.paths.find((p) => p.id === "habits")!;
+    expect(habitPath.items.map((i) => i.habit?.id)).toEqual(c.habits.map((h) => h.id));
+    for (const it of habitPath.items) {
+      const spot = it.lesson.steps.find((s) => s.type === "spot");
+      expect(spot && spot.type === "spot" && spot.options[spot.answer], it.key).toBe(it.habit!.name);
+      expect(it.lesson.steps.some((s) => s.type === "takeaway"), it.key).toBe(true);
+    }
+  });
+
+  it("gives every lesson something to keep and something to try", () => {
+    for (const p of c.paths) for (const it of p.items) {
+      expect(it.lesson.steps.some((s) => s.type === "takeaway"), it.key).toBe(true);
+      expect(it.lesson.steps.some((s) => s.type === "experiment"), it.key).toBe(true);
+      const ask = it.lesson.steps.filter((s) => s.type !== "say" && s.type !== "scene" && s.type !== "mine").length;
+      expect(ask, `${it.key} needs real interaction`).toBeGreaterThanOrEqual(3);
+    }
+  });
+
+  it("keeps sol's bubbles short enough to read at a glance", () => {
+    for (const l of Object.values(c.lessons)) for (const s of l.steps) {
+      if (s.type === "say") expect(s.text.split(/\s+/).length, `${l.id}: ${s.text}`).toBeLessThanOrEqual(32);
+    }
   });
 
   it("gives every way to answer a source and an evidence label", () => {
@@ -66,13 +92,19 @@ describe("words", () => {
   const shipped = (path: string) => !path.startsWith("language/");
 
   it("keeps avoided words out of shipped content", () => {
+    const c = buildContent(files, true);
+    // "should" only appears as something the inner voice says, or as a quoted word being talked about
+    const voiceLines = new Set([...c.catchIdeas, ...c.habits.flatMap((h) => [...h.says, ...h.quiz, h.spot.quote])]);
+    const strings = (v: unknown): string[] =>
+      typeof v === "string" ? [v] : Array.isArray(v) ? v.flatMap(strings) : v && typeof v === "object" ? Object.values(v).flatMap(strings) : [];
     for (const [path, json] of Object.entries(files).filter(([p]) => shipped(p))) {
-      const text = JSON.stringify(json);
-      expect(text.match(avoided)?.[0] ?? null, path).toBeNull();
-      // "should" only ever appears as something the inner voice says
-      const shoulds = text.match(/[^"]*\bshould\b[^"]*/gi) ?? [];
-      const catchIdeas = path === "formulas.json" ? (json as { catchIdeas: string[] }).catchIdeas : [];
-      for (const s of shoulds) expect(catchIdeas, `${path}: ${s}`).toContain(s);
+      for (const str of strings(json)) {
+        expect(str.match(avoided)?.[0] ?? null, `${path}: ${str}`).toBeNull();
+        if (/\bshould\b/i.test(str)) {
+          const mentioned = str.replace(/"(i )?should[^"]*"/gi, "");
+          expect(voiceLines.has(str) || !/\bshould\b/i.test(mentioned), `${path}: ${str}`).toBe(true);
+        }
+      }
     }
   });
 

@@ -1,0 +1,63 @@
+{
+  "id": "for-now",
+  "title": "for now",
+  "subtitle": "opinions are allowed to grow",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "sometimes an opinion feels risky because it sounds permanent."
+    },
+    {
+      "type": "say",
+      "text": "\"for now\" makes it light enough to say.",
+      "mood": "happy"
+    },
+    {
+      "type": "tryon",
+      "prompt": "try each one on:",
+      "lines": [
+        "i don't know what i want to do with my life.",
+        "for now, i'm drawn to things where i get to make stuff.",
+        "for now, i think i'd like a slower pace."
+      ],
+      "reply": "\"for now\" turns a big question into a small, honest answer. you can update it anytime."
+    },
+    {
+      "type": "say",
+      "text": "changing your mind isn't flaky. it's what thinking looks like when you keep learning about yourself."
+    },
+    {
+      "type": "write",
+      "prompt": "say something you think, for now:",
+      "template": "for now, {x}",
+      "ideas": [
+        "i'd like more quiet in my life.",
+        "i'm more of a night person than i thought.",
+        "i want to make more things with my hands.",
+        "i'm done pretending to like things i don't."
+      ],
+      "keep": "what-i-think"
+    },
+    {
+      "type": "takeaway",
+      "text": "\"for now\" lets you say what you think without signing it in ink.",
+      "source": {
+        "label": "design idea",
+        "url": ""
+      },
+      "evidence": "not tested on its own"
+    },
+    {
+      "type": "experiment",
+      "text": "add \"for now\" to one opinion you've been holding back."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "a clearer sense of who you are is linked to wellbeing",
+      "source": "Coutts, Al-Kire & Weidler, 2023, PLOS ONE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+    }
+  ]
+}

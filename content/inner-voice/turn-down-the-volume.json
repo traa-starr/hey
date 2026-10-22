@@ -1,0 +1,108 @@
+{
+  "id": "turn-down-the-volume",
+  "title": "turn down the volume",
+  "subtitle": "a precise word can calm a loud feeling",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "when a feeling is loud, giving it a precise name can turn the volume down."
+    },
+    {
+      "type": "say",
+      "text": "it sounds too simple. but in brain imaging studies, putting feelings into words calmed the brain's alarm response.",
+      "mood": "curious"
+    },
+    {
+      "type": "ask",
+      "text": "what's one feeling you've had today?",
+      "options": [
+        {
+          "label": "tired",
+          "reply": "noted. just naming it is the practice."
+        },
+        {
+          "label": "worried",
+          "reply": "noted. just naming it is the practice."
+        },
+        {
+          "label": "annoyed",
+          "reply": "noted. just naming it is the practice."
+        },
+        {
+          "label": "flat",
+          "reply": "noted. just naming it is the practice."
+        },
+        {
+          "label": "good",
+          "reply": "nice. naming the good ones counts too."
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "text": "most of us lean on a few big words: fine. bad. stressed. there are a lot more."
+    },
+    {
+      "type": "pick",
+      "prompt": "which of these could fit a \"stressed\" day?",
+      "options": [
+        "overwhelmed",
+        "rushed",
+        "pressured",
+        "worried",
+        "stretched thin",
+        "behind",
+        "on edge"
+      ],
+      "reply": "precise words like these are linked to coping better. researchers call it emotion differentiation."
+    },
+    {
+      "type": "tryon",
+      "prompt": "same feeling, three volumes. try each one on:",
+      "lines": [
+        "i'm a little annoyed.",
+        "i'm annoyed.",
+        "i'm really fed up."
+      ],
+      "reply": "each one is true in different moments. the precise one helps people know where you are, including you."
+    },
+    {
+      "type": "write",
+      "prompt": "say how you are, with a volume:",
+      "template": "i'm {x}",
+      "ideas": [
+        "a little tired.",
+        "kind of nervous about tomorrow.",
+        "really proud of myself.",
+        "mostly okay, a little flat."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "a precise word for a feeling can turn its volume down.",
+      "source": {
+        "label": "Lieberman et al., 2007; Kashdan et al., 2015",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
+      },
+      "evidence": "strong"
+    },
+    {
+      "type": "experiment",
+      "text": "today, when you'd say \"fine\", find one more precise word."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "putting feelings into words reduced amygdala response",
+      "source": "Lieberman et al., 2007, Psychological Science",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
+    },
+    {
+      "idea": "telling feelings apart precisely is linked to healthier coping",
+      "source": "Kashdan, Barrett & McKnight, 2015",
+      "url": "https://www.affective-science.org/pubs/2015/kashdan-et-all-unpacking-emotion-differentiation-2015.pdf"
+    }
+  ]
+}

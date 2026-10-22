@@ -1,0 +1,103 @@
+{
+  "id": "the-friend-test",
+  "title": "the friend test",
+  "subtitle": "the voice you already use for others",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "most of us are much kinder to friends than to ourselves."
+    },
+    {
+      "type": "say",
+      "text": "picture a good friend telling you this:"
+    },
+    {
+      "type": "scene",
+      "quote": "i'm so stupid. i failed the exam.",
+      "label": "your friend"
+    },
+    {
+      "type": "ask",
+      "text": "what would you say to them?",
+      "options": [
+        {
+          "label": "one exam isn't you",
+          "reply": "kind and true. you already know how to do this."
+        },
+        {
+          "label": "that sounds rough, want to talk?",
+          "reply": "warm, and it leaves room for them. you already know how to do this."
+        },
+        {
+          "label": "you studied really hard",
+          "reply": "you saw the effort, not just the result. you already know how to do this."
+        }
+      ]
+    },
+    {
+      "type": "ask",
+      "text": "now imagine it was you. what would your inner voice say?",
+      "options": [
+        {
+          "label": "probably something harsh",
+          "reply": "most people say that. the gap between those two voices is what we're working with."
+        },
+        {
+          "label": "about the same as for a friend",
+          "reply": "that's lovely. you have a friend in there already."
+        },
+        {
+          "label": "not sure",
+          "reply": "that's okay. next time it happens, just listen for it."
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "text": "people sometimes worry that being kind to themselves will make them lazy. research suggests the opposite.",
+      "mood": "curious"
+    },
+    {
+      "type": "say",
+      "text": "in one set of studies, people who took a kind view of a mistake were more motivated to improve, and studied longer for a retest."
+    },
+    {
+      "type": "write",
+      "prompt": "think of something you've been hard on yourself about. what would you tell a friend?",
+      "template": "i'd tell them {x}",
+      "ideas": [
+        "one bad day isn't who they are.",
+        "they're being harder on themselves than they deserve.",
+        "it makes sense they feel that way, and it isn't the whole story.",
+        "they're allowed to mess up and still be loved."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "talk to yourself like a friend you love. it isn't soft. it helps you keep going.",
+      "source": {
+        "label": "Breines & Chen, 2012",
+        "url": "https://doi.org/10.1177/0146167212445599"
+      },
+      "evidence": "moderate (four experiments)"
+    },
+    {
+      "type": "experiment",
+      "text": "once today, notice the gap: what you'd say to a friend, and what you say to you."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "self-compassion after a setback increased motivation to improve",
+      "source": "Breines & Chen, 2012, Personality and Social Psychology Bulletin",
+      "url": "https://doi.org/10.1177/0146167212445599"
+    },
+    {
+      "idea": "writing to yourself as a compassionate friend",
+      "source": "Greater Good in Action",
+      "url": "https://ggia.berkeley.edu/practice/self_compassionate_letter"
+    }
+  ]
+}

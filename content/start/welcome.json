@@ -1,75 +1,48 @@
 {
   "id": "welcome",
-  "practice": "start",
   "title": "hey you",
-  "subtitle": "a place to grow a second voice",
+  "subtitle": "meet sol",
   "minutes": 2,
   "steps": [
     {
-      "type": "welcome",
+      "type": "say",
       "text": "hey you.",
-      "button": "hi"
+      "mood": "happy"
     },
     {
-      "type": "show",
-      "text": "most of us carry one loud inner voice.",
-      "visual": {
-        "inner": "you always mess things up.",
-        "loud": 4
-      },
-      "button": "go on"
+      "type": "say",
+      "text": "i'm {companion}. i'll keep you company while you're here."
     },
     {
-      "type": "show",
-      "text": "here, you grow a second one. yours, in your own words.",
-      "visual": {
-        "inner": "you always mess things up.",
-        "mine": "i messed up, and i'm still learning."
-      },
-      "button": "i'd like that"
+      "type": "say",
+      "text": "most of us carry one loud inner voice. here, you grow a second one. yours, in your own words.",
+      "mood": "curious"
     },
     {
-      "type": "show",
-      "text": "why \"you\"? talking to yourself as \"you\" makes hard moments feel lighter.",
-      "more": "in seven studies, people who talked to themselves by name or as \"you\", the way they'd talk to a friend, felt less distress and handled stress better.",
-      "source": {
-        "label": "Kross et al., 2014",
-        "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
-      },
-      "visual": {
-        "inner": "i can't do this.",
-        "mine": "hey you. you've done hard things before."
-      },
-      "button": "hey you"
+      "type": "say",
+      "text": "talking to yourself as \"you\", the way you'd talk to a friend, makes hard moments lighter. that's where the name comes from."
     },
     {
-      "type": "promises",
-      "prompt": "a few promises:",
+      "type": "list",
+      "text": "a few promises:",
       "items": [
         "there are no right answers here.",
         "you can skip anything.",
         "no streaks, ever. come back whenever you like.",
         "everything stays on this phone.",
         "this isn't therapy. it's a place to practice."
-      ],
-      "button": "sounds good"
+      ]
     },
     {
-      "type": "write",
-      "optional": true,
-      "prompt": "what would you like to be called?",
-      "input": {
-        "label": "call me",
-        "placeholder": "a name, a nickname, anything"
-      },
-      "keep": "name",
-      "skip": "skip for now"
+      "type": "name",
+      "text": "what would you like me to call you?",
+      "placeholder": "a name, a nickname, anything"
     },
     {
-      "type": "close",
-      "text": "whenever you're ready, answer one.",
-      "button": "answer one",
-      "then": "answer",
+      "type": "end",
+      "text": "want to find out how your inner voice tends to talk? it takes about two minutes.",
+      "button": "let's find out",
+      "then": "check",
       "later": "look around first"
     }
   ],
@@ -78,11 +51,6 @@
       "idea": "talking to yourself as \"you\" or by name reduces distress under stress",
       "source": "Kross et al., 2014, Journal of Personality and Social Psychology",
       "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
-    },
-    {
-      "idea": "putting experiences into words can change how intense they feel",
-      "source": "Lieberman et al., 2007, Psychological Science",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
     }
   ]
 }

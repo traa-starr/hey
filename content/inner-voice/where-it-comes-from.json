@@ -1,0 +1,86 @@
+{
+  "id": "where-it-comes-from",
+  "title": "where it comes from",
+  "subtitle": "the words you picked up along the way",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "your inner voice didn't come out of nowhere.",
+      "mood": "curious"
+    },
+    {
+      "type": "say",
+      "text": "as kids, we talk out loud to ourselves while we play and figure things out. slowly, that talk moves inside."
+    },
+    {
+      "type": "say",
+      "text": "on the way in, it picks up words from the people and places around us."
+    },
+    {
+      "type": "ask",
+      "text": "does your inner voice ever sound like someone you know?",
+      "options": [
+        {
+          "label": "yes",
+          "reply": "that's really common. sometimes we carry someone else's words for years."
+        },
+        {
+          "label": "no",
+          "reply": "okay. it might be a mix of a lot of places."
+        },
+        {
+          "label": "not sure",
+          "reply": "that's fine. you might notice it later, when you're not looking for it."
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "text": "a parent's warning. a teacher's red pen. a coach's push. the feed's opinion."
+    },
+    {
+      "type": "say",
+      "text": "most of those voices meant to help: to keep you safe, make you try harder, help you fit in."
+    },
+    {
+      "type": "pick",
+      "prompt": "where might some of your inner voice's words come from?",
+      "options": [
+        "family",
+        "school",
+        "work",
+        "friends",
+        "the internet",
+        "my own experiences",
+        "not sure"
+      ],
+      "reply": "you don't have to know for sure. just being curious about it gives you a little room."
+    },
+    {
+      "type": "say",
+      "text": "here's what matters most: words you picked up, you can also put down. and you can pick up new ones.",
+      "mood": "happy"
+    },
+    {
+      "type": "takeaway",
+      "text": "your inner voice is made of words you picked up. you get to choose which ones to keep.",
+      "source": {
+        "label": "Alderson-Day & Fernyhough, 2015",
+        "url": "https://doi.org/10.1037/bul0000021"
+      },
+      "evidence": "strong (a large review)"
+    },
+    {
+      "type": "experiment",
+      "text": "when your inner voice says something sharp today, ask quietly: whose words are these?"
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "inner speech develops from the out-loud private speech of childhood",
+      "source": "Alderson-Day & Fernyhough, 2015, Psychological Bulletin",
+      "url": "https://doi.org/10.1037/bul0000021"
+    }
+  ]
+}
