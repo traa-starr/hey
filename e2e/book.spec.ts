@@ -23,7 +23,7 @@ test("the book grows a star for each thing kept, and shows what's been read and 
   await expect(page.getByRole("heading", { name: "sam's book", level: 1 })).toBeVisible();
   await expect(page.getByRole("img", { name: "a sky of 2 kept things" })).toBeVisible();
   await expect(page.locator(".cover .star")).toHaveCount(2);
-  await expect(page.getByText("0 of 30 lessons read")).toBeVisible();
+  await expect(page.getByText("0 of 36 lessons read")).toBeVisible();
   await expect(page.getByRole("link", { name: "meet the inner voice: 0 of 4 read" })).toBeVisible();
   await expect(page.getByRole("img", { name: /^after answering: .*all i can hear, then clear$/ })).toBeVisible();
   await expect(page.getByRole("link", { name: "talk to you, used once" })).toBeVisible();
