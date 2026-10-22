@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e87a68"/><stop offset="1" stop-color="#c24f5c"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g)"/><rect x="21" y="63.5" width="30" height="13" rx="6.5" fill="#ffead8"/><rect x="53" y="63.5" width="26" height="13" rx="6.5" fill="#ffead8"/><rect x="35" y="49" width="32" height="13" rx="6.5" fill="#f5bd5f"/><rect x="41" y="34.5" width="18" height="13" rx="6.5" fill="#fff6f1"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><radialGradient id="g" cx="0.7" cy="0.1" r="1.1"><stop offset="0" stop-color="#fde3d2"/><stop offset=".45" stop-color="#f8d2c6"/><stop offset="1" stop-color="#efc7cf"/></radialGradient></defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <text x="31" y="44" text-anchor="middle" font-family="Newsreader, Georgia, 'Times New Roman', serif" font-style="italic" font-size="44" fill="#2b1d1a">y</text>
+</svg>
