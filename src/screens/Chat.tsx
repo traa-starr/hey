@@ -175,10 +175,10 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
     case "tryon":
       return (
         <>
-          <SolSays>{step.prompt}</SolSays>
-          <div className="option-stack" role="group" aria-label={step.prompt}>
+          <SolSays>{line(step.prompt)}</SolSays>
+          <div className="option-stack" role="group" aria-label={line(step.prompt)}>
             {step.lines.map((x, n) => (
-              <button key={x} type="button" className="option" aria-pressed={L.pick === n} disabled={!active && L.pick !== n} onClick={() => { if (!active) return; buzz(6); set({ pick: n, done: true }); }}>{x}</button>
+              <button key={x} type="button" className="option" aria-pressed={L.pick === n} disabled={!active && L.pick !== n} onClick={() => { if (!active) return; buzz(6); set({ pick: n, done: true }); }}>{line(x)}</button>
             ))}
           </div>
           {L.done ? <SolSays mood="happy">{step.reply}</SolSays> : null}

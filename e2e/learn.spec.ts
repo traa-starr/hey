@@ -23,7 +23,7 @@ test("a lesson is a chat: tap through, try it, keep what you like", async ({ pag
   await cont(page);
   await button(page, "i'll try it").click();
   await cont(page);
-  await expect(page.getByText("lesson done. nice work.")).toBeVisible();
+  await expect(page.getByText("lesson done. thank you for spending this time on you.")).toBeVisible();
   await button(page, "done").click();
   await expect(page.locator(".lesson-row").nth(2)).toContainText("done");
 

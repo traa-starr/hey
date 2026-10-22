@@ -7,6 +7,30 @@
   "credits": "credits.json",
   "paths": [
     {
+      "id": "on-your-side",
+      "name": "be on your side",
+      "blurb": "kindness, strengths and small good things, starting now",
+      "color": "coral",
+      "lessons": [
+        "on-your-side/a-kind-minute.json",
+        "on-your-side/whats-good-in-you.json",
+        "on-your-side/thank-you-you.json",
+        "on-your-side/savor-it.json"
+      ]
+    },
+    {
+      "id": "talk-to-you",
+      "name": "talk to you",
+      "blurb": "the \"you\" trick, the friend test, and kind lines that hold up",
+      "color": "teal",
+      "lessons": [
+        "talk-to-you/the-you-trick.json",
+        "talk-to-you/the-friend-test.json",
+        "talk-to-you/three-kind-lines.json",
+        "talk-to-you/why-to-what.json"
+      ]
+    },
+    {
       "id": "inner-voice",
       "name": "meet your inner voice",
       "blurb": "what it is, where it comes from, how to hear it",
@@ -34,18 +58,6 @@
         "habit:onme",
         "habit:allnone",
         "habit:feeling"
-      ]
-    },
-    {
-      "id": "talk-to-you",
-      "name": "talk to you",
-      "blurb": "the \"you\" trick, the friend test, and kind lines that hold up",
-      "color": "teal",
-      "lessons": [
-        "talk-to-you/the-you-trick.json",
-        "talk-to-you/the-friend-test.json",
-        "talk-to-you/three-kind-lines.json",
-        "talk-to-you/why-to-what.json"
       ]
     },
     {

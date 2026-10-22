@@ -2,7 +2,7 @@
   "id": "welcome",
   "title": "hey you",
   "subtitle": "meet sol",
-  "minutes": 2,
+  "minutes": 3,
   "steps": [
     {
       "type": "say",
@@ -11,27 +11,8 @@
     },
     {
       "type": "say",
-      "text": "i'm {companion}. i'll keep you company while you're here."
-    },
-    {
-      "type": "say",
-      "text": "most of us carry one loud inner voice. here, you grow a second one. yours, in your own words.",
-      "mood": "curious"
-    },
-    {
-      "type": "say",
-      "text": "talking to yourself as \"you\", the way you'd talk to a friend, makes hard moments lighter. that's where the name comes from."
-    },
-    {
-      "type": "list",
-      "text": "a few promises:",
-      "items": [
-        "there are no right answers here.",
-        "you can skip anything.",
-        "no streaks, ever. come back whenever you like.",
-        "everything stays on this phone.",
-        "this isn't therapy. it's a place to practice."
-      ]
+      "text": "i'm {companion}. thank you for being here. opening something like this is already a kind thing to do for yourself.",
+      "mood": "happy"
     },
     {
       "type": "name",
@@ -39,11 +20,57 @@
       "placeholder": "a name, a nickname, anything"
     },
     {
+      "type": "say",
+      "text": "this is a place to get on your own side: to talk to you the way you'd talk to someone you love. let's try it once, together.",
+      "mood": "curious"
+    },
+    {
+      "type": "write",
+      "prompt": "finish this any way that feels kind. tap an idea if you like.",
+      "template": "hey {name}, you {x}",
+      "ideas": [
+        "showed up today, and that counts.",
+        "care a lot about the people in your life.",
+        "keep going, even on slow days.",
+        "are allowed to rest.",
+        "are learning as you go.",
+        "took a moment for yourself just now."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "ask",
+      "text": "read it to yourself once more, slowly. how does it land?",
+      "options": [
+        {
+          "label": "warm",
+          "reply": "stay with that for a second. that's you, being on your side."
+        },
+        {
+          "label": "a little strange",
+          "reply": "makes sense. kind words to ourselves often feel new at first. they get easier with practice."
+        },
+        {
+          "label": "hard to believe",
+          "reply": "that's honest, and it's okay. we'll find words that feel true to you, one small step at a time."
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "text": "a few promises:",
+      "items": [
+        "you can skip anything.",
+        "no streaks, ever. come back whenever you like.",
+        "everything stays on this phone.",
+        "this isn't therapy. it's a place to practice."
+      ]
+    },
+    {
       "type": "end",
-      "text": "want to find out how your inner voice tends to talk? it takes about two minutes.",
-      "button": "let's find out",
-      "then": "check",
-      "later": "look around first"
+      "text": "that's the heart of it: getting on your own side, a little at a time. i'm glad you're here.",
+      "button": "take me home",
+      "then": "home"
     }
   ],
   "grounding": [

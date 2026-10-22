@@ -1,0 +1,84 @@
+{
+  "id": "thank-you-you",
+  "title": "thank you, you",
+  "subtitle": "gratitude, turned toward yourself",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "you probably thank other people all day. when did you last thank yourself?",
+      "mood": "curious"
+    },
+    {
+      "type": "say",
+      "text": "not for big wins. for the quiet things: getting up, trying again, being decent when it was hard."
+    },
+    {
+      "type": "pick",
+      "prompt": "what could you thank yourself for today?",
+      "options": [
+        "getting out of bed",
+        "eating something",
+        "showing up for someone",
+        "doing a hard thing",
+        "resting when you needed to",
+        "asking for help",
+        "being honest",
+        "taking a minute for you"
+      ],
+      "reply": "thank you, from you. those are kept in your book.",
+      "keep": "my-words",
+      "as": "thank you for {x}."
+    },
+    {
+      "type": "ask",
+      "text": "how does it feel to be thanked by you?",
+      "options": [
+        {
+          "label": "nice",
+          "reply": "it is. you deserve the same thanks you give everyone else."
+        },
+        {
+          "label": "odd",
+          "reply": "it often is, the first few times. gratitude usually points outward. this is a new direction."
+        },
+        {
+          "label": "hard to take",
+          "reply": "that's honest. let it sit there anyway. you don't have to fully accept it yet."
+        }
+      ]
+    },
+    {
+      "type": "write",
+      "prompt": "one more, in your own words:",
+      "template": "thank you, {name}, for {x}",
+      "ideas": [
+        "getting through today.",
+        "being patient with yourself.",
+        "trying, even when it was hard.",
+        "looking after someone."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "gratitude practices tend to lift well-being a little. thanking yourself is a newer idea, built on the same habit of noticing what's good.",
+      "source": {
+        "label": "Davis et al., 2016 (meta-analysis)",
+        "url": "https://psycnet.apa.org/doi/10.1037/cou0000107"
+      },
+      "evidence": "emerging (small effects; thanking yourself is less studied)"
+    },
+    {
+      "type": "experiment",
+      "text": "before you sleep, thank yourself for one thing you did today."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "gratitude interventions show small effects on well-being",
+      "source": "Davis et al., 2016, Journal of Counseling Psychology",
+      "url": "https://psycnet.apa.org/doi/10.1037/cou0000107"
+    }
+  ]
+}

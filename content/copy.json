@@ -31,22 +31,22 @@
   },
   "sol": {
     "dawn": [
-      "new day. want to do one small thing together?",
-      "morning. one small step is plenty.",
+      "morning. thank you for starting your day here.",
+      "new day. one small kind thing is plenty.",
       "good to see you. let's keep it light."
     ],
     "day": [
-      "good to see you. your next step is a short one.",
-      "hey. a few minutes is enough.",
-      "nice to see you. no rush."
+      "good to see you. thanks for making a little time for you.",
+      "hey. a few minutes on your side is enough.",
+      "nice to see you. no rush at all."
     ],
     "dusk": [
-      "how was today? no pressure to say.",
-      "evening. let's do something gentle.",
-      "you made it through today. that counts."
+      "you made it through today. thank you for coming back.",
+      "evening. let's do something gentle together.",
+      "how was today? no pressure to say."
     ],
     "night": [
-      "it's late. let's keep it gentle.",
+      "it's late. thank you for being kind to yourself tonight.",
       "still up? we can take it slow.",
       "night mode. small and kind."
     ]
@@ -56,14 +56,15 @@
     "next": "your next step",
     "nextDone": "you've finished every lesson. replay any of them in learn.",
     "lessonOf": "{path} · lesson {n} of {total} · {min} min",
-    "check": "voice check",
-    "checkSub": "find your voice habits",
     "loud": "it's loud right now",
     "loudSub": "answer it, together",
-    "catch": "catch it",
-    "catchSub": "3 taps, no typing",
     "told": "you told yourself",
-    "reveal": "tap to read it"
+    "reveal": "tap to read it",
+    "kind": "a kind minute",
+    "kindSub": "be on your side, briefly",
+    "catch": "catch it",
+    "savor": "a good moment",
+    "savorSub": "stay with it a little longer"
   },
   "learn": {
     "title": "learn",
@@ -93,7 +94,7 @@
     "notReply": "that's okay. it'll be here.",
     "whichHabit": "which habit is talking?",
     "finish": "done",
-    "finished": "lesson done. nice work.",
+    "finished": "lesson done. thank you for spending this time on you.",
     "evidence": "evidence",
     "nameHello": "nice to meet you, {name}.",
     "thatsMe": "that's me",
@@ -126,17 +127,19 @@
     "not": "not really",
     "note": "no right answers. just notice.",
     "of": "{n} of {total}",
-    "intro": "swipe through a few things inner voices say. takes about two minutes.",
+    "intro": "every inner voice has a few habits, and each one started out trying to help. want to see which ones yours leans on? no right answers, and it takes about two minutes.",
     "start": "start",
     "mapTitle": "your voice map",
-    "mapSol": "here's how your inner voice tends to talk. bigger means more often. none of these are flaws: each one is trying to help.",
+    "mapSol": "thank you for being honest with yourself. that takes some courage. bigger means more often, and every one of these has been trying to help you.",
     "mapEmpty": "do a voice check to see your map.",
     "again": "check again",
     "top": "your loudest habits",
     "mapQuiet": "none of these matched much for you, and that's good to know. you can catch a habit any time it shows up.",
     "even": "these show up about evenly for you",
     "undo": "undo the last card",
-    "done": "done"
+    "done": "done",
+    "kindAfter": "your kind voice is in there too. want to give it a minute?",
+    "kindGo": "a kind minute"
   },
   "habit": {
     "says": "it says things like",

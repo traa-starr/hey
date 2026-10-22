@@ -1,0 +1,86 @@
+{
+  "id": "whats-good-in-you",
+  "title": "what's good in you",
+  "subtitle": "strengths you already have",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "let's look at what's already good in you. no modesty needed here.",
+      "mood": "happy"
+    },
+    {
+      "type": "say",
+      "text": "strengths aren't trophies. they're the things you do naturally, often without noticing you're doing them."
+    },
+    {
+      "type": "pick",
+      "prompt": "which of these sound like you, even a little?",
+      "options": [
+        "i'm kind to people",
+        "i keep going",
+        "i'm curious",
+        "i'm funny",
+        "i notice details",
+        "i'm fair",
+        "i'm a good listener",
+        "i make things",
+        "i'm honest",
+        "i stay calm when it counts"
+      ],
+      "reply": "kept in your book, under about you. they were there before you picked them.",
+      "keep": "what-i-think",
+      "as": "{x}."
+    },
+    {
+      "type": "ask",
+      "text": "when did one of these show up lately, even in a tiny way?",
+      "options": [
+        {
+          "label": "today",
+          "reply": "lovely. small counts. it's still you."
+        },
+        {
+          "label": "this week",
+          "reply": "then it's alive and well, whether or not anyone noticed."
+        },
+        {
+          "label": "can't think of one",
+          "reply": "that's okay. strengths are easy to miss in ourselves. keep an eye out today."
+        }
+      ]
+    },
+    {
+      "type": "write",
+      "prompt": "say one back to yourself:",
+      "template": "hey {name}, you {x}",
+      "ideas": [
+        "were kind to someone today.",
+        "kept going when it was hard.",
+        "made someone laugh.",
+        "noticed something others missed."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "using a strength in a new way, on purpose, lifted happiness in one well-known study. later studies found smaller effects, but it's an easy thing to try.",
+      "source": {
+        "label": "Seligman, Steen, Park & Peterson, 2005",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16045394/"
+      },
+      "evidence": "emerging (small effects; mixed replications)"
+    },
+    {
+      "type": "experiment",
+      "text": "use one of your strengths on purpose today, in a small new way."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "using signature strengths in a new way increased happiness in a randomized online study",
+      "source": "Seligman, Steen, Park & Peterson, 2005, American Psychologist",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16045394/"
+    }
+  ]
+}

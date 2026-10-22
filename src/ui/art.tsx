@@ -9,6 +9,14 @@ const art = (d: ReactNode) => (
 );
 
 export const PATH_ART: Record<string, ReactNode> = {
+  // a heart, held: being on your own side
+  "on-your-side": art(<>
+    <path d="M32 40c-9-6-14-11-14-17a7 7 0 0 1 14-3 7 7 0 0 1 14 3c0 6-5 11-14 17z" fill="currentColor" stroke="none" />
+    <path d="M10 36c2 11 11 18 22 18s20-7 22-18" strokeOpacity=".75" />
+    <circle cx="10" cy="34" r="3.2" fill="currentColor" fillOpacity=".55" stroke="none" />
+    <circle cx="54" cy="34" r="3.2" fill="currentColor" fillOpacity=".55" stroke="none" />
+    <path d="M50 6l1.5 3.5L55 11l-3.5 1.5L50 16l-1.5-3.5L45 11l3.5-1.5z" fill="currentColor" fillOpacity=".7" stroke="none" />
+  </>),
   // two voices: the loud familiar one, and a smaller one of your own in front of it
   "inner-voice": art(<>
     <path d="M14 10h22a8 8 0 0 1 8 8v8a8 8 0 0 1-8 8H22l-8 7v-7a8 8 0 0 1-8-8v-8a8 8 0 0 1 8-8z" fill="currentColor" fillOpacity=".28" stroke="none" />

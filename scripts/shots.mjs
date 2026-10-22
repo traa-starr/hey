@@ -62,8 +62,15 @@ for (const scheme of (process.env.SCHEMES ?? "light,dark").split(",")) {
   await page.goto(base);
   await page.waitForSelector(".chat");
   await shot("01-welcome");
-  for (let i = 0; i < 4; i++) await tap("continue");
-  await shot("02-welcome-promises");
+  await tap("continue"); await tap("continue");
+  await page.getByLabel("what would you like me to call you?").fill("sam");
+  await tap("that's me");
+  await tap("continue"); await tap("continue");
+  await tap("showed up today, and that counts.");
+  await tap("keep it");
+  await tap("continue");
+  await tap("warm");
+  await shot("02-welcome-kind");
 
   // someone coming back with a book and some history
   await page.evaluate((seed) => { localStorage.setItem("heyyou.v1", JSON.stringify(seed)); indexedDB.deleteDatabase("heyyou"); }, SEED);
@@ -93,6 +100,13 @@ for (const scheme of (process.env.SCHEMES ?? "light,dark").split(",")) {
 
   await page.goto(`${base}#/learn`);
   await shot("20-learn");
+  await page.goto(`${base}#/lesson/on-your-side/a-kind-minute`);
+  for (let i = 0; i < 2; i++) await tap("continue");
+  await tap("rest is allowed"); await tap("i'm glad you're here");
+  await tap("next");
+  await tap("continue");
+  await tap("sam, rest is allowed.");
+  await shot("25-kind-minute");
   await page.goto(`${base}#/path/habits`);
   await shot("21-path");
   await page.goto(`${base}#/lesson/inner-voice/a-thought-not-a-fact`);

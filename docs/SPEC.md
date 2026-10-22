@@ -8,11 +8,20 @@ Five tabs in a floating bar: **learn**, **practice**, **home** (in the middle; t
 
 ### Welcome (first open)
 
-A chat with sol (`content/start/welcome.json`): hey you → meet sol → the two voices → why "you" (Kross et al., 2014) → promises → what to call you (optional) → "want to find out how your inner voice tends to talk?" → voice check, or look around first. Closing it at any point skips it; it can be replayed from settings.
+A chat with sol (`content/start/welcome.json`) that starts with thanks, not questions about the inner voice:
+1. hey you, and meet sol, who thanks the person for being here.
+2. What to call you (optional).
+3. "this is a place to get on your own side."
+4. The person writes their first kind line to themselves, with ideas to tap. It becomes the first line in their book.
+5. "how does it land?", where every answer is welcome.
+6. The promises.
+7. Home.
+
+Closing it at any point skips it, and it can be replayed from settings. The voice check is offered later, from practice and you, never as the first thing.
 
 ### Home
 
-A sky (dawn, day, dusk, night, following the clock) with sol, a greeting with the person's name, and one line from sol for that time of day. Below: **your next step** (the first unfinished lesson, path by path, with a progress ring), two shortcuts (voice check until one is done, then catch it; and "it's loud right now" → answer it), and "you told yourself", which stays hidden until tapped (shared-phone safe; never shows what the inner voice said; can be turned off). A "check in" chip in the sky opens the check-in. Nothing else.
+A sky (dawn, day, dusk, night, following the clock) with sol, a greeting with the person's name, and one line from sol for that time of day. Below: **your next step** (the first unfinished lesson, path by path, with a progress ring), two shortcuts (a kind minute, or a good moment when the kind minute is already the next step; and "it's loud right now" → answer it), and "you told yourself", which stays hidden until tapped (shared-phone safe; never shows what the inner voice said; can be turned off). A "check in" chip in the sky opens the check-in. Nothing else.
 
 ### Learn
 
@@ -20,6 +29,7 @@ Paths (`index.json` → `paths`), each with a color, an icon, and a progress row
 
 | path | lessons |
 | --- | --- |
+| be on your side | a kind minute · what's good in you · thank you, you · savor it |
 | meet your inner voice | everyone has one · where it comes from · a thought is not a fact · turn down the volume |
 | your voice habits | one lesson per habit (generated from `habits.json`) |
 | talk to you | the "you" trick · the friend test · three kind lines · why to what |
