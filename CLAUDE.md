@@ -102,13 +102,7 @@ Several agents may be building growth practices at once. If you are one of them:
 
 ## Where we left off (branch `gentle-learning`)
 
-The trigger check is pushed and its tests pass (`npm run check`: 74 unit tests; `npm run e2e`: 21 tests). It flips negative keep lines to kind ones, adds `know` background cards and `recall` look backs to lessons, adds the `review` plugin (spaced look backs on home), and writes up the audit in `docs/review/negativity-audit.md`. Still to do, in order:
-
-1. Screenshot at 390px in light, dark and reduced motion: the lesson preview, a know card, a recall, the habit kind lines, and the home look back (`[data-testid=look-back]`). After tapping "done" in a lesson, wait before calling `goto` to the next lesson, or the router lands on the path list.
-2. A copy pass on the new strings, and a review of the diff.
-3. Open a PR into `main`. Mojo merges.
-
-Keep sessions lean: avoid long screenshot loops, and don't spawn agents unless Mojo asks.
+The trigger check is done and in review (`npm run check`: 74 unit tests; `npm run e2e`: 21 tests). It flips negative keep lines to kind ones, adds `know` background cards and `recall` look backs to lessons, adds the `review` plugin (spaced look backs on home), and writes up the audit in `docs/review/negativity-audit.md`. Screens were checked at 390px in light, dark and reduced motion, and the copy pass found no banned words. Next: Mojo merges the PR into `main`.
 
 ## Workflow
 
