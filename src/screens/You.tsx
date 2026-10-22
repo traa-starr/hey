@@ -9,7 +9,7 @@ import { Icon } from "../ui/icons";
 import { HabitGlyph, PageTitle, Screen, Tabs, colorVar } from "../ui/kit";
 
 // bubbles sized by how often each habit shows up; positions are fixed so the map is calm and readable
-const SPOTS: [number, number, number][] = [[50, 42, 9.5], [21, 74, 7], [79, 74, 7], [19, 22, 5.6], [81, 22, 5.6], [50, 86, 4.6]];
+const SPOTS: [number, number, number][] = [[50, 42, 9.5], [21, 72, 7], [79, 72, 7], [19, 21, 5.6], [81, 21, 5.6], [50, 82, 4.6]];
 
 export function VoiceMap() {
   const c = content();
@@ -61,7 +61,7 @@ export function VoiceMap() {
       <p className="label">{even ? t.even : t.top}</p>
       {ranked.slice(0, 3).map(({ habit, caught }) => (
         <a key={habit.id} className="habit-row" href={href({ name: "habit", id: habit.id })}>
-          <HabitGlyph habit={habit} />
+          <HabitGlyph habit={habit} morph />
           <span style={{ minWidth: 0 }}>
             <b>{habit.name}</b>
             <small>{habit.job}{caught ? ` · ${caught === 1 ? c.copy.you.caughtOnce : format(c.copy.you.caught, { n: caught })}` : ""}</small>
@@ -144,7 +144,7 @@ export function You() {
           <Trend />
         </section>
         <a className="habit-row" href={href({ name: "book" })}>
-          <span className="glyph" style={{ background: "var(--primary)" }}>{Icon.book}</span>
+          <span className="glyph" style={{ background: "var(--primary)", viewTransitionName: "book-cover" }}>{Icon.book}</span>
           <span><b>{t.book}</b><small>{t.bookSub}</small></span>
         </a>
         <a className="habit-row" href={href({ name: "settings" })}>

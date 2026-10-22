@@ -7,7 +7,8 @@ import { dailyIndex, timeOfDay } from "../lib/time";
 import { href } from "../router";
 import { useData } from "../store/useStore";
 import { Icon } from "../ui/icons";
-import { Screen, Tabs, useCompanion } from "../ui/kit";
+import { Screen, Tabs, colorVar, useCompanion } from "../ui/kit";
+import { pathArt } from "../ui/art";
 import { Sol } from "../ui/Sol";
 
 function Stars() {
@@ -57,7 +58,7 @@ export function Home() {
         {next ? (
           <a className="next" href={href({ name: "lesson", key: next.item.key })} onClick={() => buzz(6)}>
             <span className="art ring" style={{ ["--p" as string]: Math.round(((next.n - 1) / next.total) * 100) }}>
-              <span>{comp.on ? <Sol mood="curious" /> : null}</span>
+              <span style={{ background: colorVar(next.path.color), color: "var(--on-primary)", ["--art-bg" as string]: colorVar(next.path.color) }}>{pathArt(next.path.id)}</span>
             </span>
             <span style={{ minWidth: 0 }}>
               <b data-say>{next.item.lesson.title}</b>

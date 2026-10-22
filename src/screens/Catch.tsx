@@ -61,7 +61,7 @@ export function Catch({ habit }: { habit?: string }) {
             <SolSays mood="happy">{t.saved}</SolSays>
             {picked ? (() => {
               const h = c.habits.find((x) => x.id === picked)!;
-              return <a className="habit-row" href={href({ name: "habit", id: h.id })}><HabitGlyph habit={h} /><span><b>{h.name}</b><small>{h.job}</small></span></a>;
+              return <a className="habit-row" href={href({ name: "habit", id: h.id })}><HabitGlyph habit={h} morph /><span><b>{h.name}</b><small>{h.job}</small></span></a>;
             })() : null}
             <div className="actions">
               <a className="btn" href={href({ name: "answer", habit: picked ?? undefined })}>{t.answerNow}</a>

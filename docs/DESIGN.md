@@ -51,10 +51,11 @@ Radius: 18–20px controls, 22–26px cards, 30px large panels, pill chips. Gutt
 ## Motion
 
 - One easing, `cubic-bezier(.2,.8,.2,1)`; small springs only for the voice map bubbles.
-- Screens rise 10px and fade in (450ms). Taps press to 97%.
+- Moving between screens uses the View Transitions API. Going deeper (a path, a lesson, your book's pages) slides in from the right, coming back slides away to the right, and tabs cross-fade. The tab bar stays put. Your book opens out of its icon on "you", and a habit's glyph grows into its page. Browsers without view transitions just swap screens; the first screen after opening still rises 10px and fades in. Taps press to 97%.
+- The top bar is clear at the top of a screen and gathers a soft blurred shade as the screen scrolls under it (a scroll-driven animation; solid under reduced motion).
 - The voice check card flies off in the direction of the answer (right: that's me, left: not really, up: sometimes). Swiping right or left answers too; "sometimes" is its button.
 - Breathing: 4s in, 6s out.
-- Under reduced motion: no movement anywhere; the breathing circle becomes a counted text guide.
+- Under reduced motion: no movement anywhere, including screen transitions; the breathing circle becomes a counted text guide.
 
 ## Sound and haptics
 
@@ -76,6 +77,10 @@ A speaker button in the top bar when turned on; reads the screen's main text (`d
 
 Visible focus (2px primary outline). Touch targets at least 44px. Every control is a real button, link or input. Focus moves to each new step's heading. Charts have text alternatives. Swipes always have buttons.
 
+## Art
+
+Each learning path has its own illustrated mark (`src/ui/art.tsx`): 64×64, 3px round strokes in currentColor on the path's color, at three opacities. A path without art falls back to a plain mark. Brief: `docs/art/path-marks.brief.md`.
+
 ## Icon
 
-A lowercase serif "y" at dawn.
+A white Newsreader italic "y" (as an outline) on a dusk sky, with the sun rising at the bottom edge. Neutral on a shared phone.

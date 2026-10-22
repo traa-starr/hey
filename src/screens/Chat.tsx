@@ -9,7 +9,9 @@ import { go } from "../router";
 import { store } from "../store/store";
 import { useData } from "../store/useStore";
 import { Breath } from "../ui/Breath";
-import { Chips, FlowTop, Ideas, Screen, Sentence, SolSays, useLine } from "../ui/kit";
+import { timeOfDay } from "../lib/time";
+import { Chips, FlowTop, Ideas, Screen, Sentence, SolSays, useCompanion, useLine } from "../ui/kit";
+import { Sol } from "../ui/Sol";
 
 // what the person did at each step
 type Local = { pick?: number; picks?: string[]; text?: string; kept?: boolean; done?: boolean; at?: number; tot?: string[]; saved?: boolean; started?: boolean };
@@ -101,6 +103,7 @@ export function Chat({ lessonKey, isWelcome }: { lessonKey: string; isWelcome?: 
       <FlowTop at={i} of={lesson.steps.length} onClose={leave} />
       <Screen id={`lesson-${lessonKey}`}>
         <h1 className="sr">{lesson.title}</h1>
+        {isWelcome ? <WelcomeSky /> : null}
         <div className="chat" ref={chat}>
           {visible.map((s, n) => (
             <div key={n} className="chat-step" data-step={n} tabIndex={-1} style={{ outline: "none" }}>
@@ -368,4 +371,16 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
     case "end":
       return <SolSays mood="happy">{line(step.text)}</SolSays>;
   }
+}
+
+// the first thing anyone sees: the sky at this hour, sol, and the name
+function WelcomeSky() {
+  const { on } = useCompanion();
+  const [tod] = useState(() => timeOfDay());
+  return (
+    <div className={`welcome-sky ${tod}`} style={{ background: `var(--sky-${tod})` }} aria-hidden="true">
+      {on ? <div className="welcome-sol"><Sol mood={tod === "night" ? "sleepy" : "happy"} /></div> : null}
+      <p className="welcome-name">{content().copy.app.name}</p>
+    </div>
+  );
 }

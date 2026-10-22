@@ -26,7 +26,7 @@ test("the welcome can be left early, resumes, and can be skipped", async ({ page
   await saved(page, "progress", (p) => (p as Record<string, { i: number }> | null)?.["start/welcome"]?.i === 2);
   await page.reload();
   await expect(page.getByText(/most of us carry one loud inner voice/)).toBeVisible();
-  await button(page, "close, nothing is lost").click();
+  await button(page, "close").click();
   await expect(page.locator(".sky")).toBeVisible();
   await page.reload();
   await expect(page.locator(".sky")).toBeVisible();

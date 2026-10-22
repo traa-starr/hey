@@ -24,6 +24,11 @@ const Settings = lazy(() => import("./screens/Settings").then((m) => ({ default:
 const Way = lazy(() => import("./screens/Way").then((m) => ({ default: m.Way })));
 const You = lazy(() => import("./screens/You").then((m) => ({ default: m.You })));
 
+// once the app is up and quiet, fetch the other screens so moving to them never waits
+const preload = () => {
+  for (const m of [import("./screens/Answer"), import("./screens/Book"), import("./screens/Chat"), import("./screens/Learn"), import("./screens/You"), import("./screens/Practice"), import("./screens/Habit"), import("./screens/Check")]) m.catch(() => {});
+};
+
 // light or dark follows the phone unless pinned in settings
 function useTheme() {
   const { settings } = useData();
@@ -45,6 +50,10 @@ function Routes() {
   const c = content();
   useTheme();
   useEffect(() => stopSpeaking, [route]);
+  useEffect(() => {
+    const t = window.setTimeout(preload, 600);
+    return () => window.clearTimeout(t);
+  }, []);
 
   // first open: the welcome comes before anything else
   const needsWelcome = data.ready && !data.welcomed && !!c.start && route.name === "home";
@@ -75,7 +84,7 @@ function Routes() {
   }
   return (
     <main className={`app${TABS.includes(route.name) ? "" : " flow"}`}>
-      <Suspense fallback={<p className="boot">{c.copy.app.loading}</p>}>{page}</Suspense>
+      <Suspense fallback={<p className="boot" data-loading>{c.copy.app.loading}</p>}>{page}</Suspense>
     </main>
   );
 }

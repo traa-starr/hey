@@ -3,11 +3,9 @@ import { content } from "../content/load";
 import { format } from "../lib/template";
 import { go, href } from "../router";
 import { useData } from "../store/useStore";
-import { Icon } from "../ui/icons";
+import { pathArt } from "../ui/art";
 import { FlowTop, HabitGlyph, PageTitle, Screen, Tabs, colorVar } from "../ui/kit";
 
-// each path gets its own picture
-const PATH_ICON: Record<string, keyof typeof Icon> = { "inner-voice": "answer", habits: "check", "talk-to-you": "speaker", "what-you-like": "tot", "what-you-think": "learn" };
 
 export function Learn() {
   const c = content();
@@ -19,7 +17,7 @@ export function Learn() {
         {c.paths.map((p) => (
           <a key={p.id} className="path" href={href({ name: "path", id: p.id })}>
             <span className="path-head">
-              <span className="art" style={{ background: colorVar(p.color) }}>{Icon[PATH_ICON[p.id] ?? "path"]}</span>
+              <span className="art" style={{ background: colorVar(p.color), ["--art-bg" as string]: colorVar(p.color), viewTransitionName: `path-${p.id}` }}>{pathArt(p.id)}</span>
               <span><b>{p.name}</b><small>{p.blurb}</small></span>
             </span>
             <span className="steps" aria-label={format(c.copy.learn.lessons, { n: p.items.length })}>
@@ -51,7 +49,10 @@ export function PathView({ id }: { id: string }) {
     <>
       <FlowTop onClose={back} title={p.name} />
       <Screen id={`path-${p.id}`}>
-        <p className="soft">{p.blurb}</p>
+        <div className="path-hero">
+          <span className="art" style={{ background: colorVar(p.color), ["--art-bg" as string]: colorVar(p.color), viewTransitionName: `path-${p.id}` }}>{pathArt(p.id)}</span>
+          <p className="soft">{p.blurb}</p>
+        </div>
         <div className="lessons">
           {p.items.map((it, n) => (
             <a key={it.key} className="lesson-row" href={href({ name: "lesson", key: it.key })}>
