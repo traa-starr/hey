@@ -1,0 +1,87 @@
+{
+  "id": "i-think-because",
+  "practice": "opinions",
+  "kind": "tool",
+  "title": "i think... because...",
+  "subtitle": "an opinion with a reason is easy to say",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "welcome",
+      "text": "today's tool: \"i think... because...\"",
+      "button": "okay"
+    },
+    {
+      "type": "show",
+      "text": "an opinion doesn't have to be big or right. it's just what you think, and \"because\" lets people see why.",
+      "button": "go on"
+    },
+    {
+      "type": "try-on",
+      "prompt": "someone asks which movie to watch. try each answer on:",
+      "options": [
+        "whatever you want is fine.",
+        "i think the comedy.",
+        "i think the comedy, because i could use a laugh tonight."
+      ],
+      "question": "which one would you say most days?",
+      "reply": "all of them are real answers. the last one just gives people a little more of you."
+    },
+    {
+      "type": "build",
+      "prompt": "low stakes. is breakfast for dinner better than breakfast?",
+      "template": "i think {view} because {reason}.",
+      "parts": [
+        { "key": "view", "label": "i think", "chips": ["breakfast for dinner wins", "breakfast belongs in the morning", "both are great", "i honestly don't care"], "allowCustom": true },
+        { "key": "reason", "label": "because", "input": true, "placeholder": "e.g. pancakes at night feel like a treat" }
+      ],
+      "reply": "that's an opinion. you just had one.",
+      "keep": "what-i-think",
+      "optional": true
+    },
+    {
+      "type": "build",
+      "prompt": "one more. does a messy room bother you?",
+      "template": "i think {view} because {reason}.",
+      "parts": [
+        { "key": "view", "label": "i think", "chips": ["a little mess is cozy", "i need things tidy", "it depends on the day", "i've never thought about it"], "allowCustom": true },
+        { "key": "reason", "label": "because", "input": true, "placeholder": "e.g. a clear space helps me think" }
+      ],
+      "reply": "saved. you can change your mind anytime.",
+      "keep": "what-i-think",
+      "optional": true
+    },
+    {
+      "type": "pocket",
+      "prompt": "opinion starters to keep handy:",
+      "phrases": [
+        "i think... because...",
+        "honestly, i'd go with...",
+        "my vote is...",
+        "i'm leaning toward..."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "try",
+      "prompt": "one small thing for today, if you want:",
+      "options": [
+        "next time someone asks what you'd prefer, give one small opinion with a \"because.\"",
+        "notice one thing you have an opinion about today, even silently."
+      ],
+      "skip": "not today"
+    },
+    {
+      "type": "close",
+      "text": "that's \"i think... because...\" your thoughts are worth saying out loud.",
+      "button": "done"
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "a clearer sense of who you are is linked to wellbeing",
+      "source": "Coutts, Al-Kire & Weidler, 2023, PLOS ONE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+    }
+  ]
+}

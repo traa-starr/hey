@@ -1,0 +1,23 @@
+{
+  "start": "start/welcome.json",
+  "practices": [
+    {
+      "id": "language",
+      "name": "words",
+      "blurb": "how you talk to yourself, and new ways to try",
+      "lessons": ["language/the-dial.json", "language/two-at-once.json"]
+    },
+    {
+      "id": "desires",
+      "name": "wants",
+      "blurb": "what you actually like, outside of everyone else",
+      "lessons": ["desires/want-words.json", "desires/this-or-that.json"]
+    },
+    {
+      "id": "opinions",
+      "name": "thoughts",
+      "blurb": "what you actually think, and saying it",
+      "lessons": ["opinions/i-think-because.json", "opinions/for-now.json"]
+    }
+  ]
+}

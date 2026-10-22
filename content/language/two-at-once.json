@@ -1,0 +1,80 @@
+{
+  "id": "two-at-once",
+  "practice": "language",
+  "kind": "tool",
+  "title": "two at once",
+  "subtitle": "you can feel more than one thing",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "welcome",
+      "text": "today's tool: \"and.\"",
+      "button": "okay"
+    },
+    {
+      "type": "show",
+      "text": "feelings don't take turns. they show up together, and one small word lets them all be true.",
+      "button": "go on"
+    },
+    {
+      "type": "try-on",
+      "prompt": "starting something new. try each one on:",
+      "options": [
+        "i'm excited.",
+        "i'm nervous.",
+        "i'm excited and nervous."
+      ],
+      "question": "which one feels the most complete?",
+      "reply": "\"and\" doesn't make you pick. it lets the whole picture in."
+    },
+    {
+      "type": "show",
+      "text": "a friend moves away. you say, \"i'm so happy for her, and i'm going to miss her a lot.\" both are real. neither cancels the other.",
+      "button": "yeah"
+    },
+    {
+      "type": "build",
+      "prompt": "make a two-at-once sentence. any pair works, even ones that seem opposite.",
+      "template": "i'm {first} and {second}.",
+      "parts": [
+        { "key": "first", "label": "one feeling", "chips": ["tired", "proud", "happy", "relieved", "excited", "calm"], "allowCustom": true },
+        { "key": "second", "label": "another", "chips": ["a little sad", "nervous", "restless", "unsure", "grateful", "ready"], "allowCustom": true }
+      ],
+      "reply": "both, at once. that's \"and.\"",
+      "keep": "my-words",
+      "optional": true
+    },
+    {
+      "type": "pocket",
+      "prompt": "\"and\" sentences to keep handy:",
+      "phrases": [
+        "i'm ___ and ___.",
+        "part of me ___, and part of me ___.",
+        "i love this, and it's a lot.",
+        "i'm okay, and it's been hard."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "try",
+      "prompt": "one small thing for today, if you want:",
+      "options": [
+        "next time a feeling shows up, check if another one came with it.",
+        "say one \"and\" sentence out loud, to someone or just to yourself."
+      ],
+      "skip": "not today"
+    },
+    {
+      "type": "close",
+      "text": "that's \"and.\" more than one thing can be true, and you get to say all of it.",
+      "button": "done"
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "describing feelings precisely is linked to healthier coping and can be practiced",
+      "source": "Kashdan, Barrett & McKnight, 2015, Current Directions in Psychological Science",
+      "url": "https://www.affective-science.org/pubs/2015/kashdan-et-all-unpacking-emotion-differentiation-2015.pdf"
+    }
+  ]
+}

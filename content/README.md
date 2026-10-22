@@ -8,7 +8,11 @@ All lessons, prompts, and shelf items live here as data files, separate from the
 - `opinions/` — low-stakes questions to form and say a view
 - `shelf/` — resource shelf items, each with source, license, and allowed use
 
-## Language lesson format
+## index.json
+
+`index.json` tells the app which lessons exist and in what order. To add a lesson: write its file, then add its path to the right practice in `index.json`. No code changes needed.
+
+## Lesson format
 
 Each lesson is one JSON file in `language/`. `language/its-fine.json` is the reference example.
 
@@ -25,6 +29,7 @@ Each step has a `type`. Most also carry a `stage` (`notice`, `understand`, `rewr
 | `try-on` | The same moment said a few ways, to notice how each lands. Never graded. | `prompt`, `options`, `question`, optional `answers`, `reply` |
 | `map` | A simple overview of the practices. | `prompt`, `items` (`name`, `practice`, `text`), `button` |
 | `promises` | What hey you promises the person. | `prompt`, `items`, `button` |
+| `this-or-that` | Quick gut picks between pairs, saved as likes. | `prompt`, `pairs`, `extras` (e.g. both, neither), `keep` |
 | `build` | Make your own sentence with the tool, from chips and optional typing. | `prompt`, `template` (with `{key}` slots), `parts` (`key`, `label`, `chips` and/or `input`, `placeholder`, `allowCustom`), `reply`, `keep`, `optional` |
 | `scene` | A small relatable moment, then what was underneath. | `scene`, `reveal`, optional `prompt` + `options` + `reply`, or `button` |
 | `understand` | Two or three short lines on what the pattern does. | `lines`, `button` |
