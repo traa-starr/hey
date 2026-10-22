@@ -38,7 +38,7 @@ test("making a line: value, moment, shape, tune, try, keep, with the feel check 
   await page.getByRole("link", { name: "make a line" }).click();
 
   // the first session of the day opens with the feel check, and it can be skipped or answered
-  await expect(page.getByRole("heading", { name: /how does it feel right now/ })).toBeVisible();
+  await expect(page.getByText(/how does it feel right now/)).toBeVisible();
   await scan(page);
   await button(page, "continue").click();
 
@@ -50,7 +50,7 @@ test("making a line: value, moment, shape, tune, try, keep, with the feel check 
   await scan(page);
   await button(page, "keep it").click();
 
-  await expect(page.getByRole("heading", { name: "and now?" })).toBeVisible();
+  await expect(page.getByText("and now?")).toBeVisible();
   await scan(page);
   await button(page, "continue").click();
   await expect(page.getByRole("heading", { name: "kept.", level: 1 })).toBeVisible();

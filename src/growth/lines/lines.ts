@@ -77,7 +77,7 @@ export function insertWord(text: string, word: string, from: number, to: number)
   return { text: out, caret: before.length + left.length + word.length };
 }
 
-const heavy = /^(sad|stupid|idiot|fail|failed|failing|hate|worthless|annoyed|embarrassed|disappointed|tired|anxious|worried|stressed|behind|never|always|toxic|broken|wrong|ugly|hopeless|useless)$/;
+const heavy = /^(sad|stupid|idiot|fail|failed|failing|hate|worthless|annoyed|embarrassed|disappointed|tired|anxious|worried|stressed|behind|never|always|toxic|broken|wrong|ugly|hopeless|useless|hard|difficult|struggle)$/;
 const stop = new Set(LINES.stopwords);
 
 // words from the person's own book and past lines: kind things only, never what an inner voice said
@@ -91,7 +91,7 @@ export function ownWords(entries: Entry[], lines: Line[], skip: string[] = [], m
   for (const t of texts) {
     for (const w of t.toLowerCase().match(/[a-z][a-z']{2,}/g) ?? []) {
       const word = w.replace(/'s$/, "");
-      if (word.length < 4 || word.length > 14 || stop.has(word) || heavy.test(word)) continue;
+      if (word.length < 4 || word.length > 14 || stop.has(word) || heavy.test(word) || /^(you|your|i')/.test(word)) continue;
       if (!counts.has(word)) order.push(word);
       counts.set(word, (counts.get(word) ?? 0) + 1);
     }
