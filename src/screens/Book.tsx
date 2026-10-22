@@ -224,7 +224,7 @@ function Range({ entries }: { entries: Entry[] }) {
             <div className="chips">
               {c.habits.filter((h) => met.has(h.id)).map((h) => (
                 <a key={h.id} className="met-chip" href={href({ name: "habit", id: h.id })} aria-label={h.name}>
-                  <HabitGlyph habit={h} size="sm" />{h.short}
+                  <HabitGlyph habit={h} size="sm" morph />{h.short}
                 </a>
               ))}
             </div>

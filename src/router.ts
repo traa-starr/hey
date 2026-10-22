@@ -1,5 +1,6 @@
 // A tiny hash router: GitHub Pages serves one file, and the back button just works.
 import { useSyncExternalStore } from "react";
+import { flushSync } from "react-dom";
 import type { Kind } from "./store/types";
 
 export type Route =
@@ -70,12 +71,62 @@ export function go(r: Route, replace = false) {
   window.dispatchEvent(new HashChangeEvent("hashchange"));
 }
 
+// how deep a screen sits: tabs, then what opens from them, then what opens from those
+const DEPTH: Partial<Record<Route["name"], number>> = { home: 0, learn: 0, practice: 0, you: 0, lesson: 2, way: 2 };
+const depth = (r: Route) => (r.name === "book" && r.tab ? 2 : DEPTH[r.name] ?? 1);
+
+// which way a change of screen moves: deeper slides in from the right, back slides away, tabs cross-fade
+export function direction(from: Route, to: Route): "forward" | "back" | "tab" | null {
+  if (href(from) === href(to)) return null;
+  // switching within one screen (the book's pages, say) needs no movement
+  if (from.name === to.name && depth(from) === depth(to)) return null;
+  const a = depth(from), b = depth(to);
+  if (a === 0 && b === 0) return "tab";
+  return b < a ? "back" : "forward";
+}
+
+let current: Route = typeof location === "undefined" ? { name: "home" } : parse(location.hash);
+let moving = false;
+const listeners = new Set<() => void>();
+
+// true while a view transition is swapping screens, so screens skip their own entrance
+export const isMoving = () => moving;
+
+function onHash() {
+  const next = parse(location.hash);
+  const type = direction(current, next);
+  if (href(next) === href(current)) return;
+  const apply = () => {
+    current = next;
+    listeners.forEach((l) => l());
+    if (type) window.scrollTo(0, 0);
+  };
+  const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  if (!type || reduce || !document.startViewTransition) {
+    apply();
+    return;
+  }
+  const root = document.documentElement;
+  root.dataset.nav = type;
+  moving = true;
+  // a screen that loads on first use shows a placeholder for a moment: wait for the real screen before sliding it in
+  const vt = document.startViewTransition(async () => {
+    flushSync(apply);
+    for (let i = 0; i < 60 && document.querySelector("[data-loading]"); i++) await new Promise((r) => requestAnimationFrame(r));
+  });
+  vt.finished.finally(() => {
+    moving = false;
+    delete root.dataset.nav;
+  });
+}
+
+if (typeof window !== "undefined") window.addEventListener("hashchange", onHash);
+
 const subscribe = (cb: () => void) => {
-  window.addEventListener("hashchange", cb);
-  return () => window.removeEventListener("hashchange", cb);
+  listeners.add(cb);
+  return () => listeners.delete(cb);
 };
 
 export function useRoute(): Route {
-  const hash = useSyncExternalStore(subscribe, () => location.hash, () => "");
-  return parse(hash);
+  return useSyncExternalStore(subscribe, () => current, () => current);
 }

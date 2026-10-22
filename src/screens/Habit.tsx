@@ -21,7 +21,7 @@ export function Habit({ id }: { id: string }) {
       <FlowTop onClose={back} title="" />
       <Screen id={`habit-${h.id}`}>
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-          <HabitGlyph habit={h} size="lg" />
+          <HabitGlyph habit={h} size="lg" morph />
           <h1 className="h2" style={{ fontSize: "2rem" }} data-say>{h.name}</h1>
         </div>
         <div className="card" style={{ background: colorVar(h.color, true) }}>

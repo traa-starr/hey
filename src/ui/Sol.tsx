@@ -4,13 +4,13 @@ import { useId } from "react";
 export type Mood = "calm" | "happy" | "curious" | "sleepy";
 
 const EYES: Record<Mood, React.ReactNode> = {
-  calm: <g className="lid"><ellipse cx="47" cy="66" rx="5" ry="7" /><ellipse cx="73" cy="66" rx="5" ry="7" /></g>,
+  calm: <g className="lid"><ellipse cx="47" cy="66" rx="4.6" ry="6.2" /><ellipse cx="73" cy="66" rx="4.6" ry="6.2" /></g>,
   happy: <path d="M41 68q6-8 12 0M67 68q6-8 12 0" fill="none" strokeWidth="4.5" strokeLinecap="round" />,
   curious: <g className="lid"><ellipse cx="47" cy="66" rx="5" ry="7" /><ellipse cx="74" cy="64" rx="6.5" ry="8.5" /></g>,
   sleepy: <path d="M41 68h12M67 68h12" fill="none" strokeWidth="4.5" strokeLinecap="round" />
 };
 const MOUTH: Record<Mood, React.ReactNode> = {
-  calm: <path d="M56 80q4 3 8 0" fill="none" strokeWidth="3" strokeLinecap="round" />,
+  calm: <path d="M54.5 79q5.5 5 11 0" fill="none" strokeWidth="3.2" strokeLinecap="round" />,
   happy: <path d="M54 80q6 6 12 0" fill="none" strokeWidth="3.5" strokeLinecap="round" />,
   curious: <circle cx="60" cy="81" r="2.8" />,
   sleepy: <path d="M56 81q4 2 8 0" fill="none" strokeWidth="3" strokeLinecap="round" />

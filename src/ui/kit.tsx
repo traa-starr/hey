@@ -7,7 +7,7 @@ import { buzz, stepChime } from "../lib/feedback";
 import { readScreen, screenText, speak } from "../lib/speech";
 import type { Piece } from "../lib/template";
 import { format } from "../lib/template";
-import { href, type Route } from "../router";
+import { href, isMoving, type Route } from "../router";
 import { useData } from "../store/useStore";
 import { GLYPH, Icon } from "./icons";
 import { Sol, type Mood } from "./Sol";
@@ -36,7 +36,7 @@ export function Screen({ children, id }: { children: ReactNode; id: string }) {
     }
   }, [id]);
   return (
-    <m.div key={id} ref={ref} className="screen" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }}>
+    <m.div key={id} ref={ref} className="screen" initial={isMoving() ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }}>
       {children}
     </m.div>
   );
@@ -120,8 +120,14 @@ export function useLine() {
   return (s: string) => format(s, { companion: comp.name, name: name.toLowerCase() || content().copy.greeting.noName });
 }
 
-export function HabitGlyph({ habit, size }: { habit: Pick<Habit, "glyph" | "color">; size?: "sm" | "lg" }) {
-  return <span className={`glyph${size ? ` ${size}` : ""}`} style={{ background: `var(--${habit.color})` }} aria-hidden="true">{GLYPH[habit.glyph]}</span>;
+// morph: a habit's glyph grows into its page when tapped (each habit appears once per screen where this is set)
+export function HabitGlyph({ habit, size, morph }: { habit: Pick<Habit, "glyph" | "color"> & { id?: string }; size?: "sm" | "lg"; morph?: boolean }) {
+  return (
+    <span
+      className={`glyph${size ? ` ${size}` : ""}`} aria-hidden="true"
+      style={{ background: `var(--${habit.color})`, ...(morph && habit.id ? { viewTransitionName: `habit-${habit.id}` } : {}) }}
+    >{GLYPH[habit.glyph]}</span>
+  );
 }
 export const colorVar = (c: Color, soft = false) => `var(--${c}${soft ? "-soft" : ""})`;
 
