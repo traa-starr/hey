@@ -1,4 +1,5 @@
 // Lessons as a conversation with sol: one bubble at a time, tap to reply. Progress is saved after every step.
+import { useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { content } from "../content/load";
 import type { Keep, Lesson, Step } from "../content/schema";
@@ -11,11 +12,15 @@ import { Breath } from "../ui/Breath";
 import { Chips, FlowTop, Ideas, Screen, Sentence, SolSays, useLine } from "../ui/kit";
 
 // what the person did at each step
-type Local = { pick?: number; picks?: string[]; text?: string; kept?: boolean; done?: boolean; at?: number; tot?: string[]; saved?: boolean };
+type Local = { pick?: number; picks?: string[]; text?: string; kept?: boolean; done?: boolean; at?: number; tot?: string[]; saved?: boolean; started?: boolean };
 
-export function keepEntry(keep: Keep, text: string, from: string) {
-  if (keep === "my-words") return store.add({ kind: "voice", text, from });
-  return store.add({ kind: "about", sub: keep === "what-i-like" ? "like" : "think", text, from });
+// keep something in the book; doing a lesson again never keeps the same line twice
+export function keepEntry(keep: Keep, text: string, from: string, holdsSaid = false) {
+  const kind = keep === "my-words" ? "voice" : "about";
+  const sub = keep === "what-i-like" ? "like" : keep === "what-i-think" ? "think" : undefined;
+  const t = text.trim();
+  if (store.get().entries.some((e) => e.kind === kind && e.sub === sub && e.text === t)) return null;
+  return store.add({ kind, ...(sub ? { sub } : {}), text: t, from, ...(holdsSaid ? { holdsSaid } : {}) });
 }
 
 // steps that need nothing from the person: a tap on continue moves on
@@ -31,13 +36,25 @@ export function Chat({ lessonKey, isWelcome }: { lessonKey: string; isWelcome?: 
   const [locals, setLocals] = useState<Record<number, Local>>(() => (resume?.locals as Record<number, Local>) ?? {});
   const [finished, setFinished] = useState(false);
   const end = useRef<HTMLDivElement>(null);
+  const chat = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const first = useRef(true);
 
   useEffect(() => {
     if (lesson && !finished && (i > 0 || Object.keys(locals).length)) store.setProgress(lessonKey, { i, locals });
   }, [lessonKey, i, locals, lesson, finished]);
   useEffect(() => {
-    end.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [i, locals]);
+    end.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "end" });
+  }, [i, locals, reduce]);
+  // each new step takes focus, so screen readers hear it and keyboards start there
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    const el = chat.current?.querySelector<HTMLElement>(`[data-step="${finished ? "end" : i}"]`);
+    el?.focus({ preventScroll: true });
+  }, [i, finished]);
 
   const pathOf = c.paths.find((p) => p.items.some((it) => it.key === lessonKey));
   const leave = () => {
@@ -84,13 +101,15 @@ export function Chat({ lessonKey, isWelcome }: { lessonKey: string; isWelcome?: 
       <FlowTop at={i} of={lesson.steps.length} onClose={leave} />
       <Screen id={`lesson-${lessonKey}`}>
         <h1 className="sr">{lesson.title}</h1>
-        <div className="chat">
+        <div className="chat" ref={chat}>
           {visible.map((s, n) => (
-            <StepView key={n} step={s} L={locals[n] ?? {}} active={n === i && !finished} set={(p) => set(n, p)} from={lesson.title} />
+            <div key={n} className="chat-step" data-step={n} tabIndex={-1} style={{ outline: "none" }}>
+              <StepView step={s} L={locals[n] ?? {}} active={n === i && !finished} set={(p) => set(n, p)} from={lesson.title} />
+            </div>
           ))}
           {finished ? (
             <>
-              <SolSays mood="happy">{copy.lesson.finished}</SolSays>
+              <div data-step="end" tabIndex={-1} style={{ outline: "none" }}><SolSays mood="happy">{copy.lesson.finished}</SolSays></div>
               <button className="btn continue" type="button" onClick={() => go(pathOf ? { name: "path", id: pathOf.id } : { name: "home" }, true)}>{copy.lesson.finish}</button>
             </>
           ) : last && step.type === "end" ? (
@@ -206,7 +225,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
               <Ideas ideas={step.ideas} picked={text} onPick={(v) => set({ text: v })} />
               <div className="actions">
                 <button className="btn" type="button" disabled={!text.trim()} onClick={() => {
-                  if (step.keep) keepEntry(step.keep, line(result), from);
+                  if (step.keep) keepEntry(step.keep, line(result), from, !!step.said);
                   buzz(20);
                   keptChime();
                   set({ kept: true, done: true });
@@ -219,7 +238,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       );
     }
     case "spot": {
-      const right = L.pick === step.answer;
+      // every reading is welcome: sol offers one, it never grades the pick
       return (
         <>
           <div className="card">
@@ -229,12 +248,12 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
           <SolSays mood="curious">{t.whichHabit}</SolSays>
           <div className="option-stack" role="group" aria-label={t.whichHabit}>
             {step.options.map((o, n) => (
-              <button key={o} type="button" className={`option${L.done && n === step.answer ? " right" : ""}`} aria-pressed={L.pick === n}
-                disabled={!active && L.pick !== n && n !== step.answer} style={{ fontFamily: "var(--display)", fontStyle: "normal" }}
-                onClick={() => { if (!active || L.done) return; buzz(n === step.answer ? 12 : 6); set({ pick: n, done: true }); }}>{o}</button>
+              <button key={o} type="button" className="option" aria-pressed={L.pick === n}
+                disabled={!active && L.pick !== n} style={{ fontFamily: "var(--display)", fontStyle: "normal" }}
+                onClick={() => { if (!active || L.done) return; buzz(8); set({ pick: n, done: true }); }}>{o}</button>
             ))}
           </div>
-          {L.done ? <SolSays mood={right ? "happy" : "calm"}>{right ? t.spotRight : t.spotOther} {step.explain}</SolSays> : null}
+          {L.done ? <SolSays mood="happy">{t.spotReply} {step.explain}</SolSays> : null}
         </>
       );
     }
@@ -311,12 +330,21 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
         </>
       );
     case "breathe":
-      return active && !L.done ? (
-        <>
-          <Breath onDone={() => set({ done: true })} />
-          <button className="btn ghost" type="button" onClick={() => set({ done: true })}>{c.copy.app.skip}</button>
-        </>
-      ) : null;
+      if (!active) return null;
+      if (!L.started) {
+        return (
+          <>
+            <SolSays mood="calm">{t.breatheAsk}</SolSays>
+            {!L.done ? (
+              <div className="replies">
+                <button type="button" className="reply" onClick={() => set({ started: true })}>{t.breatheYes}</button>
+                <button type="button" className="reply" onClick={() => set({ done: true })}>{c.copy.app.skip}</button>
+              </div>
+            ) : null}
+          </>
+        );
+      }
+      return <Breath onDone={() => set({ done: true })} />;
     case "name": {
       const value = L.text ?? name;
       return (

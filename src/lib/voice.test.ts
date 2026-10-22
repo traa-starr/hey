@@ -39,7 +39,14 @@ describe("voice map", () => {
   it("counts where habits show up", () => {
     expect(places(logs)).toEqual([{ place: "work", n: 2 }, { place: "home", n: 1 }]);
   });
-  it("averages loudness by day, oldest first", () => {
-    expect(loudness(logs).map((p) => p.loud)).toEqual([3, 5, 1]);
+  it("averages loudness by local day, oldest first, inside a real two-week window", () => {
+    const now = new Date(2026, 9, 5, 9);
+    expect(loudness(logs, 14, now).map((p) => [p.loud, p.ago])).toEqual([[3, 3], [5, 2], [1, 1]]);
+    expect(loudness(logs, 2, now).map((p) => p.loud)).toEqual([1]);
+  });
+  it("keeps a late-evening entry on the day it happened", () => {
+    const late = new Date(2026, 9, 3, 23, 30).toISOString();
+    const p = loudness([{ id: "x", type: "checkin", at: late, loud: 4, habits: [] }], 14, new Date(2026, 9, 4, 8));
+    expect(p[0]).toMatchObject({ ago: 1, loud: 4 });
   });
 });

@@ -6,7 +6,7 @@
   "steps": [
     {
       "type": "say",
-      "text": "let's start with something everyone has: an inner voice.",
+      "text": "let's start with something most people have: an inner voice.",
       "mood": "happy"
     },
     {
@@ -33,11 +33,11 @@
     },
     {
       "type": "say",
-      "text": "people who study inner speech find it's a normal part of thinking. we use it to plan, to remember, and to get through hard moments."
+      "text": "people who study inner speech find it's a common part of thinking. it helps us plan, remember, and get through hard moments."
     },
     {
       "type": "say",
-      "text": "it isn't always full sentences. sometimes it's just a word or two."
+      "text": "some people hear a lot of it, some barely any. both are normal. and it isn't always full sentences."
     },
     {
       "type": "pick",
@@ -59,12 +59,12 @@
     },
     {
       "type": "takeaway",
-      "text": "everyone has an inner voice. it's a habit of talking, and habits can grow.",
+      "text": "most people have an inner voice. it's a habit of talking, and habits can grow.",
       "source": {
         "label": "Alderson-Day & Fernyhough, 2015",
         "url": "https://doi.org/10.1037/bul0000021"
       },
-      "evidence": "strong (a large review)"
+      "evidence": "strong that inner speech is common; it varies a lot between people"
     },
     {
       "type": "experiment",

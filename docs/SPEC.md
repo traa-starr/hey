@@ -30,11 +30,11 @@ A path shows its lessons with done, pick up again, or minutes.
 
 ### A lesson
 
-A conversation with sol: one step at a time, a continue button for sol's lines, replies as tappable chips. Step types: `say`, `scene` (an inner-voice line), `mine` (a line in your voice), `ask` (chips, sol replies), `tryon` (try lines on), `pick` (multi-select, optionally kept), `write` (template plus ideas, optionally kept), `spot` (which habit is talking, with gentle feedback), `tot` (this or that), `takeaway` (keep this, with source and evidence, optionally saved as a keeper), `experiment` (try it today), `breathe`, `list`, `name`, `end`. Every lesson has a takeaway and an experiment. Progress is saved per lesson after every step; finishing marks it done.
+A conversation with sol: one step at a time, a continue button for sol's lines, replies as tappable chips. Step types: `say`, `scene` (an inner-voice line), `mine` (a line in your voice), `ask` (chips, sol replies), `tryon` (try lines on), `pick` (multi-select, optionally kept), `write` (template plus ideas, optionally kept), `spot` (which habit is talking; sol offers one reading and never grades the pick), `tot` (this or that), `takeaway` (keep this, with source and evidence, optionally saved as a keeper), `experiment` (try it today), `breathe` (asks first, skippable), `list`, `name`, `end`. Every lesson has a takeaway and an experiment. Progress is saved per lesson after every step; finishing marks it done.
 
 ### Voice check
 
-Twenty cards, two per habit, interleaved: "does your inner voice ever say…" → that's me / sometimes / not really (or swipe right or left). Scores each habit 0–1 and saves the check. Ends on the voice map.
+Twenty cards, two per habit, interleaved: "does your inner voice ever say…" → that's me / sometimes / not really (or swipe right or left). Back undoes the last card; a quick double tap never answers two. Scores each habit 0–1 and saves the check. Ends on the voice map, or a kind note when nothing matched; when habits score about evenly, the map says so instead of naming a "loudest".
 
 ### Practice
 
@@ -77,7 +77,7 @@ IndexedDB `heyyou` (Dexie). Version 1 tables carry over unchanged; version 2 add
 | `logs` | `id` | `type` `moment` (`habit`, `where`, `loud`) \| `checkin` (`loud`, `habits`) \| `check` (`scores`), `at` |
 | `kv` | `key` | `name`, `welcomed`, `tried`, `answered`, `settings`, `progress` (`{[lessonKey]: {i, locals}}`), `done` (`{[lessonKey]: iso}`), `companion` (`{name, on}`), `migratedV1` |
 
-A lesson key is its file path without `.json`, or `habit:<id>`. About-you text is stored in first person and shown in second person. If IndexedDB is unavailable, everything runs in memory.
+A lesson key is its file path without `.json`, or `habit:<id>`. About-you text is stored in first person and shown in second person. Entries that hold the inner voice's words (`said`, or `holdsSaid` for answers and lesson lines built on them) are kept but never resurfaced on home. Doing a lesson again never keeps the same line twice. If IndexedDB is unavailable, everything runs in memory.
 
 ## Migration
 

@@ -138,6 +138,7 @@ p { margin: 0; }
 
 /* chat */
 .chat { display: flex; flex-direction: column; gap: 12px; padding-bottom: 8px; }
+.chat-step { display: flex; flex-direction: column; gap: 12px; }
 .msg { display: flex; gap: 8px; align-items: flex-end; }
 .av { width: 2.9rem; height: 2.9rem; flex: none; margin: 0 -2px -4px -6px; }
 .av .sol { transform: scale(1.3); }

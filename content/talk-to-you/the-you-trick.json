@@ -15,7 +15,7 @@
     },
     {
       "type": "say",
-      "text": "the \"you\" group felt less anxious, gave better speeches, and replayed it less afterward."
+      "text": "the \"you\" group gave better speeches, saw the task more as a challenge than a threat, and dwelled on it less afterward."
     },
     {
       "type": "ask",
@@ -62,7 +62,7 @@
         "label": "Kross et al., 2014",
         "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
       },
-      "evidence": "strong (seven studies)"
+      "evidence": "moderate (seven studies from one lab)"
     },
     {
       "type": "experiment",

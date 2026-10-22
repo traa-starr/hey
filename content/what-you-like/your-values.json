@@ -77,10 +77,10 @@
       "type": "takeaway",
       "text": "values are directions, not finish lines. any small step that way counts.",
       "source": {
-        "label": "acceptance and commitment therapy (values work)",
-        "url": ""
+        "label": "acceptance and commitment therapy (Hayes et al., 2006)",
+        "url": "https://doi.org/10.1016/j.brat.2005.06.006"
       },
-      "evidence": "strong (as part of ACT)"
+      "evidence": "moderate (part of a larger therapy)"
     },
     {
       "type": "experiment",
@@ -89,9 +89,9 @@
   ],
   "grounding": [
     {
-      "idea": "clarifying values and taking small steps toward them is a core part of acceptance and commitment therapy",
-      "source": "Hayes, Strosahl & Wilson, acceptance and commitment therapy",
-      "url": ""
+      "idea": "values work is a core process of acceptance and commitment therapy",
+      "source": "Hayes et al., 2006, Behaviour Research and Therapy",
+      "url": "https://doi.org/10.1016/j.brat.2005.06.006"
     }
   ]
 }

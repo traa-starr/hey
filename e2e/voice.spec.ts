@@ -11,7 +11,8 @@ test("the voice check maps your habits without any typing", async ({ page }) => 
     const line = (await page.locator(".qcard:not(.under) .quote").last().textContent()) ?? "";
     const mind = /annoyed|invited me/.test(line);
     await button(page, mind ? "that's me" : "not really").click();
-    await page.waitForTimeout(60);
+    if (i < 19) await expect(page.getByText(`${i + 2} of 20`)).toBeVisible();
+    await page.waitForTimeout(260);
   }
   await expect(page.getByText(/here's how your inner voice tends to talk/)).toBeVisible();
   await expect(page.locator(".habit-row").first()).toContainText("the mind reader");

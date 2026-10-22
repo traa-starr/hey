@@ -80,7 +80,7 @@ export function buildContent(files: Files, strict: boolean): Content {
         fail(`${index.habits}: no habit "${ref.slice(6)}"`);
         return null;
       }
-      const lesson = habitLesson(h, habits, habitsSource, copy);
+      const lesson = habitLesson(h, habits, habitsSource, hf?.evidence ?? "", copy);
       lessons[key] = lesson;
       return { key, lesson, habit: h };
     }

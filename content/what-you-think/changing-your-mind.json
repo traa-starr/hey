@@ -6,11 +6,11 @@
   "steps": [
     {
       "type": "say",
-      "text": "knowing what you think is linked to feeling steadier in yourself. researchers call it self-concept clarity."
+      "text": "knowing where you stand is linked to feeling steadier in yourself. researchers call it self-concept clarity."
     },
     {
       "type": "say",
-      "text": "clarity isn't the same as never changing. it's knowing where you stand today.",
+      "text": "steady doesn't mean frozen. updating a view after real thought is part of knowing yourself.",
       "mood": "curious"
     },
     {
@@ -44,12 +44,12 @@
     },
     {
       "type": "takeaway",
-      "text": "changing your mind means you're still learning about yourself.",
+      "text": "changing your mind, thoughtfully, is part of getting to know yourself.",
       "source": {
-        "label": "Coutts, Al-Kire & Weidler, 2023",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+        "label": "design idea, inspired by self-concept clarity research (Campbell, 1990)",
+        "url": ""
       },
-      "evidence": "moderate"
+      "evidence": "not tested directly"
     },
     {
       "type": "experiment",

@@ -62,7 +62,7 @@ export const habit = z.object({
   keep: text,
   try: text
 });
-export const habitsFile = z.object({ intro: text, note: text, source, habits: list(z.unknown(), 1) });
+export const habitsFile = z.object({ intro: text, note: text, source, evidence: text, habits: list(z.unknown(), 1) });
 
 // ---------- chat lessons: sol talks, you tap ----------
 const mood = opt(z.enum(["calm", "happy", "curious", "sleepy"]));
@@ -75,7 +75,8 @@ export const step = z.discriminatedUnion("type", [
   z.object({ type: z.literal("ask"), text, options: list(option, 2) }),
   z.object({ type: z.literal("tryon"), prompt: text, lines: list(text, 2), reply: text }),
   z.object({ type: z.literal("pick"), prompt: text, options: list(text, 2), reply: text, keep: opt(keep), as: opt(z.string()), max: opt(z.number()) }),
-  z.object({ type: z.literal("write"), prompt: text, template: text.check(z.refine((t) => t.includes("{x}"), "needs {x}")), ideas: list(text, 1), keep: opt(keep), placeholder: opt(z.string()) }),
+  // said: the sentence wraps something the inner voice says, so it is never resurfaced on home
+  z.object({ type: z.literal("write"), prompt: text, template: text.check(z.refine((t) => t.includes("{x}"), "needs {x}")), ideas: list(text, 1), keep: opt(keep), placeholder: opt(z.string()), said: opt(z.boolean()) }),
   z.object({ type: z.literal("spot"), scene: text, quote: text, options: list(text, 2), answer: z.number(), explain: text }),
   z.object({ type: z.literal("tot"), prompt: text, pairs: list(z.tuple([text, text]), 1), keep: z.literal("what-i-like") }),
   z.object({ type: z.literal("takeaway"), text, source, evidence: opt(z.string()) }),

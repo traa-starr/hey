@@ -296,7 +296,7 @@
       "answers": [
         {
           "way": "what-i-know",
-          "line": "the thought says i did something. what i actually know is they had a long day."
+          "line": "the thought says i did something. what i actually know is they went to bed early."
         },
         {
           "way": "why-to-what",
@@ -386,5 +386,6 @@
       "keep": "feelings are real information. they're not always the whole truth.",
       "try": "when a big feeling shows up, name it, then ask: what else is true right now?"
     }
-  ]
+  ],
+  "evidence": "well established as a way to describe thinking, from cognitive behavioral therapy"
 }

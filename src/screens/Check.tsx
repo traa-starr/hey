@@ -1,7 +1,7 @@
 // voice check: swipe or tap through things inner voices say. no typing. ends on your voice map.
 import { AnimatePresence, useReducedMotion } from "motion/react";
 import * as m from "motion/react-m";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { content } from "../content/load";
 import { buzz, keptChime } from "../lib/feedback";
 import { format } from "../lib/template";
@@ -19,11 +19,16 @@ export function Check() {
   const [started, setStarted] = useState(false);
   const [answers, setAnswers] = useState<number[]>([]);
   const [dir, setDir] = useState(0);
+  // one answer per card, even with a quick double tap
+  const busy = useRef(false);
   const n = answers.length;
   const card = cards[n];
   const leave = () => go({ name: "home" });
 
   const answer = (v: number) => {
+    if (busy.current) return;
+    busy.current = true;
+    window.setTimeout(() => { busy.current = false; }, 250);
     buzz(v === 2 ? 12 : 6);
     setDir(v === 2 ? 1 : v === 0 ? -1 : 0);
     const next = [...answers, v];
@@ -39,6 +44,7 @@ export function Check() {
       <>
         <FlowTop onClose={leave} title={t.mapTitle} />
         <Screen id="check-intro">
+          <h2 className="sr">{c.copy.practice.check}</h2>
           <SolSays mood="curious">{t.intro}</SolSays>
           <p className="small">{c.habitsNote}</p>
           <button className="btn" type="button" onClick={() => setStarted(true)}>{t.start}</button>
@@ -52,6 +58,7 @@ export function Check() {
       <>
         <FlowTop onClose={leave} title={t.mapTitle} />
         <Screen id="check-done">
+          <h2 className="sr">{c.copy.you.map}</h2>
           <SolSays mood="happy">{t.mapSol}</SolSays>
           <VoiceMap />
         </Screen>
@@ -61,7 +68,7 @@ export function Check() {
 
   return (
     <>
-      <FlowTop at={n} of={cards.length} onClose={leave} />
+      <FlowTop at={n} of={cards.length} onClose={leave} back={n > 0 ? () => { setDir(0); setAnswers(answers.slice(0, -1)); } : undefined} />
       <Screen id="check">
         <h1 className="h2">{t.ask}</h1>
         <div className="deck">
@@ -84,7 +91,7 @@ export function Check() {
               }}
             >
               <span className="tag">{format(t.of, { n: n + 1, total: cards.length })}</span>
-              <p className="quote" data-say>“{card.line}”</p>
+              <p className="quote" data-say aria-live="polite">“{card.line}”</p>
               <span className="small">{t.note}</span>
             </m.div>
           </AnimatePresence>

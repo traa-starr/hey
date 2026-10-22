@@ -23,15 +23,15 @@
       "options": [
         {
           "label": "yes",
-          "reply": "that's really common. sometimes we carry someone else's words for years."
+          "reply": "that's common. sometimes we carry someone else's words for a long time."
         },
         {
           "label": "no",
           "reply": "okay. it might be a mix of a lot of places."
         },
         {
-          "label": "not sure",
-          "reply": "that's fine. you might notice it later, when you're not looking for it."
+          "label": "that's a hard one",
+          "reply": "that's okay. you don't have to go there. you can skip anything here, and real help is in settings if you ever want it."
         }
       ]
     },
@@ -41,7 +41,7 @@
     },
     {
       "type": "say",
-      "text": "most of those voices meant to help: to keep you safe, make you try harder, help you fit in."
+      "text": "some of those voices were trying to help. some weren't. either way, they don't get to be the only voice you have."
     },
     {
       "type": "pick",
@@ -59,21 +59,21 @@
     },
     {
       "type": "say",
-      "text": "here's what matters most: words you picked up, you can also put down. and you can pick up new ones.",
+      "text": "here's the hopeful part: you can add new words, in your own voice.",
       "mood": "happy"
     },
     {
       "type": "takeaway",
-      "text": "your inner voice is made of words you picked up. you get to choose which ones to keep.",
+      "text": "your inner voice picked up words along the way. you can add new ones.",
       "source": {
         "label": "Alderson-Day & Fernyhough, 2015",
         "url": "https://doi.org/10.1037/bul0000021"
       },
-      "evidence": "strong (a large review)"
+      "evidence": "a well-known theory of how inner speech develops, not tested as advice"
     },
     {
       "type": "experiment",
-      "text": "when your inner voice says something sharp today, ask quietly: whose words are these?"
+      "text": "today, notice one word your inner voice uses a lot. no need to change it."
     }
   ],
   "grounding": [

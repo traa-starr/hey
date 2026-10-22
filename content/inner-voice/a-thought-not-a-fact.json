@@ -62,7 +62,8 @@
         "i always mess things up."
       ],
       "keep": "my-words",
-      "placeholder": "what your inner voice says"
+      "placeholder": "what your inner voice says",
+      "said": true
     },
     {
       "type": "takeaway",

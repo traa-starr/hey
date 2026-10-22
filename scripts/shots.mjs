@@ -47,7 +47,7 @@ for (const scheme of (process.env.SCHEMES ?? "light,dark").split(",")) {
   await tap("start");
   await shot("11-check");
   const answers = ["that's me", "sometimes", "not really"];
-  for (let i = 0; i < 20; i++) { await tap(answers[i % 3 === 2 ? 0 : i % 3]); await page.waitForTimeout(80); }
+  for (let i = 0; i < 20; i++) { await tap(answers[i % 3 === 2 ? 0 : i % 3]); await page.waitForTimeout(300); }
   await shot("12-map", 1500);
 
   await page.goto(`${base}#/catch`);

@@ -25,7 +25,7 @@ export function Breath({ onDone, breaths = 3 }: { onDone?: () => void; breaths?:
     timers.push(window.setTimeout(() => { setWord(t.done); done.current?.(); }, breaths * 10000));
     return () => timers.forEach(clearTimeout);
   }, [reduce, breaths, t]);
-  if (reduce) return <p className="card" data-say>{t.static}</p>;
+  if (reduce) return <p className="card" data-say role="status">{t.static}</p>;
   return (
     <div className="calm" aria-live="polite">
       <m.div className="breath" animate={{ scale: [0.65, 1.2, 1.2, 0.65] }} transition={{ duration: 10, times: [0, 0.4, 0.42, 1], repeat: breaths - 1, ease: "easeInOut" }} />

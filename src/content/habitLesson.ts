@@ -2,7 +2,7 @@
 import { format } from "../lib/template";
 import type { Copy, Habit, Lesson, Step } from "./schema";
 
-export function habitLesson(h: Habit, all: Habit[], source: { label: string; url: string }, copy: Copy): Lesson {
+export function habitLesson(h: Habit, all: Habit[], source: { label: string; url: string }, evidence: string, copy: Copy): Lesson {
   const t = copy.lesson;
   // two other habits as alternatives for "spot it", always the same ones for this habit
   const at = all.findIndex((x) => x.id === h.id);
@@ -28,8 +28,8 @@ export function habitLesson(h: Habit, all: Habit[], source: { label: string; url
       answer: order.findIndex((x) => x.id === h.id), explain: `${h.name}: ${h.job}`
     },
     { type: "tryon", prompt: t.habitAnswers, lines: h.answers.map((a) => a.line), reply: t.habitAnswersReply },
-    { type: "write", prompt: t.habitWrite, template: "{x}", ideas: h.answers.map((a) => a.line), keep: "my-words" },
-    { type: "takeaway", text: h.keep, source },
+    { type: "write", prompt: t.habitWrite, template: "{x}", ideas: h.answers.map((a) => a.line), keep: "my-words", said: true },
+    { type: "takeaway", text: h.keep, source, evidence },
     { type: "experiment", text: h.try }
   ];
   return { id: `habit-${h.id}`, title: format(t.habitTitle, { name: h.name }), subtitle: h.job, minutes: 4, steps };

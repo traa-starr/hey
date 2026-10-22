@@ -21,20 +21,6 @@
       "text": "three: what do i need right now? something small and real."
     },
     {
-      "type": "ask",
-      "text": "want to take a breath before you try it?",
-      "options": [
-        {
-          "label": "yes",
-          "reply": "okay. follow the circle."
-        },
-        {
-          "label": "skip it",
-          "reply": "of course. let's go straight to it."
-        }
-      ]
-    },
-    {
       "type": "breathe"
     },
     {

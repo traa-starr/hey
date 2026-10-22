@@ -48,7 +48,7 @@ Radius: 18–20px controls, 22–26px cards, 30px large panels, pill chips. Gutt
 
 - One easing, `cubic-bezier(.2,.8,.2,1)`; small springs only for the voice map bubbles.
 - Screens rise 10px and fade in (450ms). Taps press to 97%.
-- The voice check card flies off in the direction of the answer (right: that's me, left: not really, up: sometimes) and can be swiped.
+- The voice check card flies off in the direction of the answer (right: that's me, left: not really, up: sometimes). Swiping right or left answers too; "sometimes" is its button.
 - Breathing: 4s in, 6s out.
 - Under reduced motion: no movement anywhere; the breathing circle becomes a counted text guide.
 

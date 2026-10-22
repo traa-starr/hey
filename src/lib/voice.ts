@@ -24,7 +24,7 @@ export function scoreCheck(cards: { habit: string }[], answers: number[]): Recor
 export const moments = (logs: Log[]) => logs.filter((l): l is Moment => l.type === "moment");
 export const lastCheck = (logs: Log[]) => logs.filter((l): l is VoiceCheck => l.type === "check").at(-1) ?? null;
 
-// how present each habit is: the latest voice check, nudged by what's been caught since
+// how present each habit is: the latest voice check, nudged by everything that's been caught
 export function weights(habits: Habit[], logs: Log[]): { habit: Habit; weight: number; caught: number }[] {
   const check = lastCheck(logs);
   const caught = moments(logs);
@@ -49,16 +49,28 @@ export function places(logs: Log[]): { place: string; n: number }[] {
   return Object.entries(counts).map(([place, n]) => ({ place, n })).sort((a, b) => b.n - a.n);
 }
 
-// loudness over time from check-ins and caught moments, one point per day (the day's average)
-export function loudness(logs: Log[], days = 14): { day: string; loud: number }[] {
+// a local calendar day, so an evening entry stays on the evening it happened
+export const localDay = (iso: string) => {
+  const d = new Date(iso);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+
+// loudness over the last `days` days from check-ins and caught moments: one point per day with data (the day's average),
+// with `ago` (days before today) so the chart can place points by date
+export function loudness(logs: Log[], days = 14, now = new Date()): { day: string; ago: number; loud: number }[] {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const byDay: Record<string, number[]> = {};
   logs.forEach((l) => {
     if (l.type === "check") return;
-    const d = l.at.slice(0, 10);
+    const d = localDay(l.at);
     (byDay[d] = byDay[d] ?? []).push(l.loud);
   });
   return Object.entries(byDay)
-    .sort(([a], [b]) => (a < b ? -1 : 1))
-    .slice(-days)
-    .map(([day, ls]) => ({ day, loud: Math.round((ls.reduce((x, y) => x + y, 0) / ls.length) * 10) / 10 }));
+    .map(([day, ls]) => {
+      const [y, m, dd] = day.split("-").map(Number) as [number, number, number];
+      const ago = Math.round((today.getTime() - new Date(y, m - 1, dd).getTime()) / 864e5);
+      return { day, ago, loud: Math.round((ls.reduce((x, z) => x + z, 0) / ls.length) * 10) / 10 };
+    })
+    .filter((p) => p.ago >= 0 && p.ago < days)
+    .sort((a, b) => b.ago - a.ago);
 }

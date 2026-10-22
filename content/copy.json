@@ -90,8 +90,6 @@
     "notToday": "maybe not today",
     "tryReply": "nice. no pressure either way.",
     "notReply": "that's okay. it'll be here.",
-    "spotRight": "that's how we'd read it too.",
-    "spotOther": "could be. here's how we'd read it:",
     "whichHabit": "which habit is talking?",
     "finish": "done",
     "finished": "lesson done. nice work.",
@@ -115,7 +113,10 @@
     "habitAnswers": "a few ways you could answer it. try each one on:",
     "habitAnswersReply": "none of these is the right one. pick whatever fits.",
     "habitWrite": "your own answer:",
-    "habitTitle": "{name}"
+    "habitTitle": "{name}",
+    "spotReply": "good noticing. one way to read it:",
+    "breatheAsk": "want to take a breath first?",
+    "breatheYes": "take a breath"
   },
   "check": {
     "ask": "does your inner voice ever say…",
@@ -130,7 +131,11 @@
     "mapSol": "here's how your inner voice tends to talk. bigger means more often. none of these are flaws: each one is trying to help.",
     "mapEmpty": "do a voice check to see your map.",
     "again": "check again",
-    "top": "your loudest habits"
+    "top": "your loudest habits",
+    "mapQuiet": "none of these matched much for you, and that's good to know. you can catch a habit any time it shows up.",
+    "even": "these show up about evenly for you",
+    "undo": "undo the last card",
+    "done": "done"
   },
   "habit": {
     "says": "it says things like",

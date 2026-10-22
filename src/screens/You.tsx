@@ -2,7 +2,7 @@
 import * as m from "motion/react-m";
 import { content } from "../content/load";
 import { format } from "../lib/template";
-import { loudness, places, weights } from "../lib/voice";
+import { lastCheck, loudness, places, weights } from "../lib/voice";
 import { href } from "../router";
 import { useData } from "../store/useStore";
 import { Icon } from "../ui/icons";
@@ -16,6 +16,14 @@ export function VoiceMap() {
   const t = c.copy.check;
   const { logs } = useData();
   const ranked = weights(c.habits, logs).slice(0, SPOTS.length);
+  if (!ranked.length && lastCheck(logs)) {
+    return (
+      <div className="empty" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <p>{t.mapQuiet}</p>
+        <a className="btn quiet" href={href({ name: "catch" })}>{c.copy.home.catch}</a>
+      </div>
+    );
+  }
   if (!ranked.length) {
     return (
       <div className="empty" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -25,6 +33,8 @@ export function VoiceMap() {
     );
   }
   const top = ranked[0]!.weight || 1;
+  // when everything scores about the same, say so instead of naming a "loudest"
+  const even = ranked.length > 3 && top - ranked[ranked.length - 1]!.weight < 0.05;
   return (
     <>
       <div className="map" role="img" aria-label={`${t.mapTitle}: ${ranked.map((r) => r.habit.name).join(", ")}`}>
@@ -48,7 +58,7 @@ export function VoiceMap() {
           );
         })}
       </div>
-      <p className="label">{t.top}</p>
+      <p className="label">{even ? t.even : t.top}</p>
       {ranked.slice(0, 3).map(({ habit, caught }) => (
         <a key={habit.id} className="habit-row" href={href({ name: "habit", id: habit.id })}>
           <HabitGlyph habit={habit} />
@@ -88,8 +98,9 @@ function Trend() {
   const { logs } = useData();
   const pts = loudness(logs);
   if (pts.length < 2) return <p className="empty">{c.copy.you.trendEmpty}</p>;
-  const W = 320, H = 130, L = 26, B = 22, T = 8;
-  const x = (i: number) => L + (i / (pts.length - 1)) * (W - L - 8);
+  const W = 320, H = 130, L = 26, B = 22, T = 8, DAYS = 14;
+  // points sit on their real date across the last two weeks, so gaps look like gaps
+  const x = (i: number) => L + ((DAYS - 1 - pts[i]!.ago) / (DAYS - 1)) * (W - L - 8);
   const y = (v: number) => T + (1 - (v - 1) / 4) * (H - T - B);
   const line = pts.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.loud).toFixed(1)}`).join("");
   const names = c.copy.loudness.names;

@@ -58,8 +58,10 @@ export function FlowTop({ at, of, onClose, back, title }: { at?: number; of?: nu
       {back ? <button className="ibtn" type="button" onClick={back} aria-label={copy.back}>{Icon.back}</button> : null}
       {of ? (
         <div className="bar" role="progressbar" aria-label={copy.progress} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}><span style={{ width: `${pct}%` }} /></div>
-      ) : (
+      ) : title ? (
         <h1 className="h2" style={{ flex: 1, fontSize: "1.35rem" }}>{title}</h1>
+      ) : (
+        <span style={{ flex: 1 }} />
       )}
       <Speaker />
     </div>

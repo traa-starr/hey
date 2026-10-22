@@ -6,11 +6,11 @@
   "steps": [
     {
       "type": "say",
-      "text": "when a feeling is loud, giving it a precise name can turn the volume down."
+      "text": "when a feeling is loud, giving it a precise name can help turn the volume down."
     },
     {
       "type": "say",
-      "text": "it sounds too simple. but in brain imaging studies, putting feelings into words calmed the brain's alarm response.",
+      "text": "it sounds too simple. but in lab studies, putting feelings into words quieted the brain's alarm response.",
       "mood": "curious"
     },
     {
@@ -81,12 +81,12 @@
     },
     {
       "type": "takeaway",
-      "text": "a precise word for a feeling can turn its volume down.",
+      "text": "a precise word for a feeling can help turn its volume down.",
       "source": {
         "label": "Lieberman et al., 2007; Kashdan et al., 2015",
         "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
       },
-      "evidence": "strong"
+      "evidence": "moderate (lab studies of labeling feelings)"
     },
     {
       "type": "experiment",

@@ -12,6 +12,8 @@ export type Entry = {
   after?: number;
   // what the inner voice said, kept only when the person opted in
   said?: boolean;
+  // an answer that still holds the inner voice's words: kept, but never resurfaced on home
+  holdsSaid?: boolean;
 };
 
 // what gets noticed over time: a habit caught in the moment, a daily check-in, a voice check

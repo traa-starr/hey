@@ -195,7 +195,7 @@ export function Answer({ way, habit }: { way?: string; habit?: string }) {
               <div className="actions">
                 <button className="btn" type="button" onClick={() => {
                   if (d.keepSaid && d.said.trim()) store.add({ kind: "voice", text: format(copy.answer.saidAs, { said: d.said.trim() }), from: f?.name ?? "", said: true });
-                  const e = store.add({ kind: "voice", text: result, from: f?.name ?? "", ...(d.loud ? { before: d.loud } : {}), ...(d.loud2 ? { after: d.loud2 } : {}) });
+                  const e = store.add({ kind: "voice", text: result, from: f?.name ?? "", ...(f && includesSaid(f, d.vals, d.said) ? { holdsSaid: true } : {}), ...(d.loud ? { before: d.loud } : {}), ...(d.loud2 ? { after: d.loud2 } : {}) });
                   buzz(20);
                   keptChime();
                   saveDraft(null);

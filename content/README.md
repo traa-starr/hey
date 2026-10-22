@@ -32,12 +32,12 @@ Top level: `id`, `title`, `subtitle`, `minutes`, `steps`, `grounding` (sources).
 | `ask` | a question with tap replies; sol answers each | `text`, `options` (`label`, `reply`) |
 | `tryon` | lines to try on and notice | `prompt`, `lines`, `reply` |
 | `pick` | choose any; optionally kept | `prompt`, `options`, `reply`, optional `keep`, `as` (with `{x}`), `max` |
-| `write` | finish a sentence; ideas always offered | `prompt`, `template` (with `{x}`), `ideas`, optional `keep`, `placeholder` |
-| `spot` | which habit is talking? gentle feedback | `scene`, `quote`, `options`, `answer` (index), `explain` |
+| `write` | finish a sentence; ideas always offered | `prompt`, `template` (with `{x}`), `ideas`, optional `keep`, `placeholder`, `said` (true when the sentence wraps something the inner voice says, so it's never resurfaced on home) |
+| `spot` | which habit is talking? sol offers one reading, never a grade | `scene`, `quote`, `options`, `answer` (the reading sol offers), `explain` |
 | `tot` | quick this or that, kept as likes | `prompt`, `pairs`, `keep` |
 | `takeaway` | a line to keep, with its source | `text`, `source` (`label`, `url`), optional `evidence` |
 | `experiment` | one small thing to try today | `text` |
-| `breathe` | three slow breaths | none |
+| `breathe` | asks, then three slow breaths; skippable | none |
 | `list` | a short list | `text`, `items` |
 | `name` | what to call the person (welcome) | `text`, `placeholder` |
 | `end` | the welcome's last line | `text`, `button`, `then` (check or home), `later` |

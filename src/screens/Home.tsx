@@ -32,7 +32,7 @@ export function Home() {
   const solLine = lines[dailyIndex(lines.length)] ?? lines[0];
   const next = nextLesson(c, data.done);
   const checked = data.logs.some((l) => l.type === "check");
-  const told = data.entries.filter((e) => e.kind === "voice" && !e.said);
+  const told = data.entries.filter((e) => e.kind === "voice" && !e.said && !e.holdsSaid);
   const line = told[dailyIndex(told.length)];
 
   return (

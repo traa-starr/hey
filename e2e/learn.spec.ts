@@ -31,6 +31,11 @@ test("a lesson is a chat: tap through, try it, keep what you like", async ({ pag
   await expect(page.locator(".entries")).toContainText("i'm noticing the thought that they're annoyed with me.");
   await page.getByRole("tab", { name: "keepers" }).click();
   await expect(page.locator(".entries")).toContainText("a thought is something your mind said");
+
+  // a line that holds the inner voice's words is kept, but never resurfaced on home
+  await page.goto("./");
+  await button(page, "tap to read it").click();
+  await expect(page.locator(".told")).not.toContainText("noticing the thought");
 });
 
 test("a voice habit lesson: spot it in the wild", async ({ page }) => {
@@ -42,7 +47,7 @@ test("a voice habit lesson: spot it in the wild", async ({ page }) => {
   for (let i = 0; i < 4; i++) await cont(page);
   await expect(page.getByText("“i'm getting fired.”")).toBeVisible();
   await button(page, "the forecaster").click();
-  await expect(page.getByText(/that's how we'd read it too/)).toBeVisible();
+  await expect(page.getByText(/good noticing\. one way to read it/)).toBeVisible();
 });
 
 test("this or that keeps picks in about you", async ({ page }) => {
