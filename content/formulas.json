@@ -21,7 +21,13 @@
         {
           "key": "rest",
           "label": "you...",
-          "placeholder": "e.g. are tired, and you still showed up today."
+          "placeholder": "e.g. are tired, and you still showed up today.",
+          "ideas": [
+            "are doing better than you think.",
+            "are tired, and that makes sense.",
+            "have gotten through hard days before.",
+            "don't have to figure it all out tonight."
+          ]
         }
       ],
       "source": {
@@ -72,7 +78,13 @@
         {
           "key": "reply",
           "label": "i'd tell them...",
-          "placeholder": "e.g. one bad day isn't who they are."
+          "placeholder": "e.g. one bad day isn't who they are.",
+          "ideas": [
+            "one bad day isn't who they are.",
+            "they're being harder on themselves than they deserve.",
+            "it makes sense they feel that way, and it isn't the whole story.",
+            "they're allowed to mess up and still be loved."
+          ]
         }
       ],
       "source": {
@@ -95,7 +107,13 @@
         {
           "key": "need",
           "label": "what i need right now is...",
-          "placeholder": "e.g. a glass of water and an early night."
+          "placeholder": "e.g. a glass of water and an early night.",
+          "ideas": [
+            "rest.",
+            "a glass of water and an early night.",
+            "to talk to someone who gets it.",
+            "to be gentle with myself today."
+          ]
         }
       ],
       "source": {
@@ -128,7 +146,13 @@
         {
           "key": "feeling",
           "label": "feeling",
-          "placeholder": "e.g. disappointed in how that went."
+          "placeholder": "e.g. disappointed in how that went.",
+          "ideas": [
+            "disappointed in how that went.",
+            "tired.",
+            "frustrated with myself.",
+            "nervous about tomorrow."
+          ]
         }
       ],
       "source": {
@@ -156,7 +180,13 @@
         {
           "key": "second",
           "label": "and...",
-          "placeholder": "e.g. i'm still learning."
+          "placeholder": "e.g. i'm still learning.",
+          "ideas": [
+            "i'm still learning.",
+            "i'm still someone who tries.",
+            "i'm allowed to start again.",
+            "that's not all i am."
+          ]
         }
       ],
       "source": {
@@ -179,12 +209,24 @@
         {
           "key": "happened",
           "label": "what actually happened was...",
-          "placeholder": "e.g. i was late to the meeting."
+          "placeholder": "e.g. i was late to the meeting.",
+          "ideas": [
+            "i made a mistake at work.",
+            "i said something i regret.",
+            "i didn't get to everything today.",
+            "plans didn't go the way i hoped."
+          ]
         },
         {
           "key": "step",
           "label": "one small next step is...",
-          "placeholder": "e.g. setting an earlier alarm."
+          "placeholder": "e.g. setting an earlier alarm.",
+          "ideas": [
+            "taking a breath first.",
+            "sending one honest text.",
+            "writing down one thing for tomorrow.",
+            "letting it rest until morning."
+          ]
         }
       ],
       "source": {
@@ -212,7 +254,13 @@
         {
           "key": "know",
           "label": "what i actually know is...",
-          "placeholder": "e.g. they replied fine yesterday."
+          "placeholder": "e.g. they replied fine yesterday.",
+          "ideas": [
+            "i don't actually know what they think.",
+            "i've handled things like this before.",
+            "one moment doesn't decide everything.",
+            "people have shown me they care."
+          ]
         }
       ],
       "source": {
@@ -244,5 +292,13 @@
       },
       "evidence": "not tested on its own"
     }
+  ],
+  "catchIdeas": [
+    "i always mess things up.",
+    "i'm too much.",
+    "i should be further along by now.",
+    "nobody really cares.",
+    "i'm not good enough.",
+    "they're probably annoyed with me."
   ]
 }

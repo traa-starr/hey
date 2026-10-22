@@ -39,8 +39,30 @@
       "prompt": "pick a want word and finish the sentence. anything goes, big or tiny.",
       "template": "{starter} {rest}",
       "parts": [
-        { "key": "starter", "label": "want word", "chips": ["i'd love", "i'm craving", "i'm curious about", "i miss", "i'd rather", "i'm in the mood for"] },
-        { "key": "rest", "label": "finish it", "input": true, "placeholder": "e.g. a long walk with no plan" }
+        {
+          "key": "starter",
+          "label": "want word",
+          "chips": [
+            "i'd love",
+            "i'm craving",
+            "i'm curious about",
+            "i miss",
+            "i'd rather",
+            "i'm in the mood for"
+          ]
+        },
+        {
+          "key": "rest",
+          "label": "finish it",
+          "input": true,
+          "placeholder": "e.g. a long walk with no plan",
+          "ideas": [
+            "a long walk with no plan.",
+            "something sweet tonight.",
+            "learning to cook one new thing.",
+            "a quiet morning to myself."
+          ]
+        }
       ],
       "reply": "noted. that's a little more of you, found.",
       "keep": "what-i-like",

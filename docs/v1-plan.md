@@ -1,6 +1,6 @@
 # hey you — v1 plan
 
-hey you v1 is a relationship-with-yourself app: a home-screen web app with three short practices (language, desires, and opinions) that help people rebuild who they are by learning how their words shape their mind, what they actually want, and what they actually think. Everything someone discovers is kept privately in **me, collected**, and a small **resource shelf** offers free, trustworthy material to go deeper.
+hey you v1 is a relationship-with-yourself app: a home-screen web app with three short practices (language, desires, and opinions) that help people rebuild who they are by learning how their words shape their mind, what they actually want, and what they actually think. Everything someone discovers is kept privately in their **foundation**, and a small **resource shelf** offers free, trustworthy material to go deeper.
 
 ## Three practices, one engine
 
@@ -8,7 +8,7 @@ Every practice runs on the same card flow:
 
 1. **Prompt:** a scene, question, or choice.
 2. **Respond:** pick, rewrite, or type, with no right answers.
-3. **Keep:** saved to me, collected.
+3. **Keep:** saved to your foundation.
 4. **Try it (optional):** one tiny way to use it in real life today.
 
 | Practice | What it builds | Example |
@@ -21,7 +21,7 @@ First language patterns: "always" and "never" · "I should" · "I am [a label]" 
 
 Language lessons draw on established, well-documented practice: thinking traps from cognitive behavioral therapy, noticing thoughts from acceptance and commitment therapy, self-compassion research, and studies on naming feelings.
 
-## me, collected
+## foundation (formerly me, collected)
 
 A private, growing portrait built from your own answers: **my words**, **what I like**, **what I think** (dated, so you can see opinions change). Stored only on the device. Editable and deletable.
 
@@ -50,7 +50,7 @@ Each item records: title, source, license, how we can use it, related practice, 
 - [ ] Build the engine with that one lesson, installable on a phone
 - [ ] Try it for a week and adjust
 - [ ] Add desires and opinions prompts
-- [ ] Build me, collected
+- [ ] Build the foundation
 - [ ] Add the remaining language patterns
 - [ ] Compile the first resource shelf with license tags
 - [ ] Share with a few testers with different stories

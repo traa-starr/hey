@@ -2,127 +2,75 @@
   "id": "welcome",
   "practice": "start",
   "title": "hey you",
-  "subtitle": "what we're doing here",
-  "minutes": 3,
+  "subtitle": "a place to come back to yourself",
+  "minutes": 2,
   "steps": [
     {
       "type": "welcome",
-      "text": "hey you. glad you're here.",
+      "text": "hey you.",
       "button": "hi"
     },
     {
       "type": "show",
-      "text": "here's something you already do: you talk to yourself. all day. planning, remembering, wondering, commenting.",
-      "button": "true"
-    },
-    {
-      "type": "show",
-      "text": "that voice is made of words. and the words you use quietly shape what you notice, what you want, and who you think you are.",
-      "button": "huh"
-    },
-    {
-      "type": "try-on",
-      "prompt": "here's the same day, said three ways. just notice how each one lands.",
-      "options": [
-        "today was long.",
-        "today was full.",
-        "today was a lot, and i got through it."
-      ],
-      "question": "which one sounds most like you today?",
-      "reply": "none of them is better. they're just different lenses on the same day."
-    },
-    {
-      "type": "try-on",
-      "prompt": "one more. you're heading to work.",
-      "options": [
-        "i have to go to work.",
-        "i'm going to work.",
-        "i'm choosing to go to work, because i want the paycheck."
-      ],
-      "question": "notice a difference?",
-      "answers": ["a little", "a lot", "not really"],
-      "reply": "any of those is okay. the more you play with words, the more you'll notice."
-    },
-    {
-      "type": "show",
-      "text": "your words aren't a problem to solve. they've been doing a lot of work for you, for a long time.",
+      "text": "this is a place to get to know yourself again, one small step at a time.",
       "button": "okay"
     },
     {
       "type": "show",
-      "text": "hey you is a place to see how your words work, and to collect more of them. more ways to say what's true. more room to be yourself.",
-      "button": "i like that"
+      "text": "here, the heavy things your inner voice says can become lighter, truer words. in your own voice.",
+      "button": "i'd like that"
     },
     {
       "type": "show",
-      "text": "one thing researchers found: talking to yourself as \"you,\" or by your own name, instead of \"i,\" helped people feel less distress under stress. it's like getting advice from a friend who happens to be you.",
-      "button": "so that's the name"
-    },
-    {
-      "type": "map",
-      "prompt": "what you can do here, in any order:",
-      "items": [
-        { "name": "weigh it", "practice": "weigh", "text": "catch something your inner voice said, feel its weight, and reshape it in your own words" },
-        { "name": "formulas", "practice": "formulas", "text": "frames from real research that help you find new words. you bring the words." },
-        { "name": "wants and thoughts", "practice": "know", "text": "find out what you actually like and think, outside of everyone else" }
-      ],
-      "button": "next"
+      "text": "and every new sentence you make becomes a stone in your foundation. something steady to build a life on.",
+      "button": "a foundation"
     },
     {
       "type": "show",
-      "text": "everything you discover lands in one place: me, collected. a picture of you, in your own words. it stays on this phone.",
-      "button": "next"
+      "text": "a little secret behind the name: speaking to yourself as \"you,\" the way a friend would, has been shown to make hard moments feel lighter.",
+      "button": "hey you"
     },
     {
       "type": "promises",
       "prompt": "a few promises:",
       "items": [
-        "there are no right answers.",
+        "there are no right answers here.",
         "you can skip anything.",
-        "no streaks, ever. come back whenever you want.",
-        "this isn't therapy, and you never have to share anything you don't want to."
+        "no streaks, ever. come back whenever you like.",
+        "everything stays on your phone.",
+        "this isn't therapy. it's a place to practice."
       ],
-      "button": "got it"
+      "button": "sounds good"
     },
     {
       "type": "write",
       "optional": true,
-      "prompt": "what should hey you call you? a name, a nickname, anything.",
+      "prompt": "what would you like to be called?",
       "input": {
         "label": "call me:",
-        "placeholder": "your name"
+        "placeholder": "a name, a nickname, anything"
       },
       "keep": "name",
       "skip": "skip for now"
     },
     {
-      "type": "write",
-      "optional": true,
-      "prompt": "let's start your collection. what's one thing you like? anything at all.",
-      "chips": ["rain", "late-night drives", "a certain song", "my pet", "not sure yet"],
-      "input": {
-        "label": "i like:",
-        "placeholder": "e.g. the smell of coffee"
-      },
-      "keep": "what-i-like",
-      "skip": "skip for now"
-    },
-    {
       "type": "close",
-      "text": "that's the first piece of you, collected. welcome.",
-      "button": "look around"
+      "text": "whenever you're ready, let's lay your first stone.",
+      "button": "lay my first stone",
+      "then": "weigh",
+      "later": "look around first"
     }
   ],
   "grounding": [
     {
+      "idea": "talking to yourself as \"you\" or by name reduces distress under stress",
+      "source": "Kross et al., 2014, Journal of Personality and Social Psychology",
+      "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+    },
+    {
       "idea": "putting experiences into words can change how intense they feel",
       "source": "Lieberman et al., 2007, Psychological Science",
       "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
-    },
-    {
-      "idea": "a clearer sense of who you are is linked to wellbeing",
-      "source": "Coutts, Al-Kire & Weidler, 2023, PLOS ONE",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
     }
   ]
 }

@@ -8,7 +8,7 @@ hey you helps you rebuild who you are, one small practice at a time:
 - **desires:** find out what you actually like and want.
 - **opinions:** practice knowing what you think, and saying it.
 
-Everything you discover is kept privately on your own phone, in **me, collected**.
+Everything you discover is kept privately on your own phone, in your **foundation**.
 
 hey you is a practice space, not therapy. It never asks you to revisit painful memories.
 

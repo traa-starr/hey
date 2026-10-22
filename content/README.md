@@ -39,7 +39,7 @@ Each step has a `type`. Most also carry a `stage` (`notice`, `understand`, `rewr
 | `try` | One optional small thing for real life today. | `prompt`, `options`, `skip` |
 | `close` | A short ending. | `text`, `button` |
 
-`keep` names where the answer is saved in me, collected (`my-words`, `what-i-like`, `what-i-think`).
+`keep` names where the answer is saved in your foundation (`my-words`, `what-i-like`, `what-i-think`).
 
 ## Writing rules
 

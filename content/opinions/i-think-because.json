@@ -32,8 +32,28 @@
       "prompt": "low stakes. is breakfast for dinner better than breakfast?",
       "template": "i think {view} because {reason}.",
       "parts": [
-        { "key": "view", "label": "i think", "chips": ["breakfast for dinner wins", "breakfast belongs in the morning", "both are great", "i honestly don't care"], "allowCustom": true },
-        { "key": "reason", "label": "because", "input": true, "placeholder": "e.g. pancakes at night feel like a treat" }
+        {
+          "key": "view",
+          "label": "i think",
+          "chips": [
+            "breakfast for dinner wins",
+            "breakfast belongs in the morning",
+            "both are great",
+            "i honestly don't care"
+          ],
+          "allowCustom": true
+        },
+        {
+          "key": "reason",
+          "label": "because",
+          "input": true,
+          "placeholder": "e.g. pancakes at night feel like a treat",
+          "ideas": [
+            "pancakes at night feel like a treat.",
+            "morning food belongs in the morning.",
+            "good food is good any time."
+          ]
+        }
       ],
       "reply": "that's an opinion. you just had one.",
       "keep": "what-i-think",
@@ -44,8 +64,28 @@
       "prompt": "one more. does a messy room bother you?",
       "template": "i think {view} because {reason}.",
       "parts": [
-        { "key": "view", "label": "i think", "chips": ["a little mess is cozy", "i need things tidy", "it depends on the day", "i've never thought about it"], "allowCustom": true },
-        { "key": "reason", "label": "because", "input": true, "placeholder": "e.g. a clear space helps me think" }
+        {
+          "key": "view",
+          "label": "i think",
+          "chips": [
+            "a little mess is cozy",
+            "i need things tidy",
+            "it depends on the day",
+            "i've never thought about it"
+          ],
+          "allowCustom": true
+        },
+        {
+          "key": "reason",
+          "label": "because",
+          "input": true,
+          "placeholder": "e.g. a clear space helps me think",
+          "ideas": [
+            "a clear space helps me think.",
+            "a little mess feels lived in.",
+            "it depends how my head feels."
+          ]
+        }
       ],
       "reply": "saved. you can change your mind anytime.",
       "keep": "what-i-think",

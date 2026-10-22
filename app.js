@@ -14,6 +14,14 @@
     { n: 5, name: "boulder", size: 42 }
   ];
   const weightName = (n) => (WEIGHTS.find((w) => w.n === n) || {}).name || "";
+  const MILESTONES = [
+    [1, "your first stone. every foundation starts this way."],
+    [3, "a little ground to stand on."],
+    [7, "a foundation is forming."],
+    [15, "this is starting to hold weight."],
+    [30, "look at what you've built."],
+    [60, "a foundation you can build a life on."]
+  ];
 
   function freshData() {
     return { welcomed: false, name: "", tried: {}, collected: { "my-words": [], "what-i-like": [], "what-i-think": [] } };
@@ -36,11 +44,24 @@
   function save() {
     try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { /* keeps working in memory */ }
   }
+  let lastAddedId = null;
   function addEntry(kind, text, from, meta) {
     const t = String(text || "").trim();
     if (!t || !data.collected[kind]) return;
-    data.collected[kind].unshift(Object.assign({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text: t, from: from || "", at: new Date().toISOString() }, meta || {}));
+    const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    data.collected[kind].unshift(Object.assign({ id, text: t, from: from || "", at: new Date().toISOString() }, meta || {}));
+    lastAddedId = id;
     save();
+  }
+  function allStones() {
+    const out = [];
+    KINDS.forEach((k) => data.collected[k].forEach((e) => out.push(Object.assign({ kind: k }, e))));
+    return out.sort((a, b) => (a.at < b.at ? -1 : 1));
+  }
+  function milestoneFor(n) {
+    let line = "your foundation starts with a single stone.";
+    MILESTONES.forEach(([at, text]) => { if (n >= at) line = text; });
+    return line;
   }
 
   // ---------- helpers ----------
@@ -59,8 +80,9 @@
     return res.json();
   }
   const trimEnd = (s) => String(s || "").trim().replace(/[.!?]+$/, "");
+  const tidy = (s) => String(s).replace(/([.!?])\.+/g, "$1").replace(/\s+([.,!?])/g, "$1");
   function finish(s) {
-    const t = String(s || "").trim();
+    const t = tidy(String(s || "").trim());
     return /[.!?"”]$/.test(t) ? t : t + ".";
   }
 
@@ -68,12 +90,14 @@
   let index = null;
   let formulas = [];
   let formulaIntro = "";
+  let catchIdeas = [];
   const lessons = {};
   async function loadContent() {
     index = await getJSON("content/index.json");
     const f = await getJSON("content/" + index.formulas);
     formulas = f.formulas;
     formulaIntro = f.intro || "";
+    catchIdeas = f.catchIdeas || [];
     const paths = [index.start].concat(...index.practices.map((p) => p.lessons));
     await Promise.all(paths.map(async (p) => { try { lessons[p] = await getJSON("content/" + p); } catch (e) { /* skip missing */ } }));
   }
@@ -84,7 +108,7 @@
 
   function go(view) {
     state.view = view;
-    if (["home", "me", "more"].includes(view)) state.tab = view;
+    if (["home", "tools", "me"].includes(view)) state.tab = view;
     state.editing = null;
     state.confirm = null;
     render();
@@ -98,7 +122,7 @@
     go("lesson");
   }
   function startWeigh(formulaId) {
-    state.w = { step: "catch", original: "", before: null, body: [], doing: null, whose: null, formula: formulaId || null, preset: !!formulaId, vals: {}, after: null, kept: false, keepOriginal: false, nudge: false };
+    state.w = { step: "catch", original: "", before: null, body: [], doing: null, whose: null, formula: formulaId || null, preset: !!formulaId, vals: {}, after: null, kept: false, keepOriginal: false };
     go("weigh");
   }
 
@@ -108,7 +132,7 @@
     appEl.classList.toggle("in-lesson", full);
     tabs.hidden = full;
     tabs.querySelectorAll("button").forEach((b) => b.setAttribute("aria-current", b.dataset.tab === state.tab ? "page" : "false"));
-    const views = { home: renderHome, me: renderMe, more: renderMore, lesson: renderLesson, weigh: renderWeigh, formula: renderFormula };
+    const views = { home: renderHome, tools: renderTools, me: renderMe, lesson: renderLesson, weigh: renderWeigh, formula: renderFormula };
     main.innerHTML = (views[state.view] || renderHome)();
   }
 
@@ -128,20 +152,63 @@
     return `<span class="wt" title="${esc(w.name)}"><span class="wt-dot" style="width:${px}px;height:${px}px"></span>${label ? `<span>${esc(w.name)}</span>` : ""}</span>`;
   }
 
+  // the foundation: every kept entry is a stone
+  function stonesHTML(limit, highlight) {
+    const stones = allStones();
+    const shown = stones.slice(-limit);
+    if (!shown.length) return `<div class="stones empty-stones" aria-hidden="true"><span class="stone ghost"></span></div>`;
+    return `<div class="stones" aria-hidden="true">${shown.map((s) => {
+      const w = 30 + Math.min(52, Math.round(s.text.length * 0.9));
+      const cls = s.kind === "what-i-like" ? "like" : s.kind === "what-i-think" ? "think" : "word";
+      return `<span class="stone ${cls}${highlight && s.id === highlight ? " new" : ""}" style="width:${w}px"></span>`;
+    }).join("")}</div>`;
+  }
+  function foundationCard() {
+    const n = allStones().length;
+    return `<button class="foundation" data-action="tab" data-tab="me">
+      ${stonesHTML(40)}
+      <span class="f-meta"><span class="f-count">${n} ${n === 1 ? "stone" : "stones"}</span><span class="f-line">${esc(milestoneFor(n))}</span></span>
+    </button>`;
+  }
+
+  function suggestion() {
+    const paths = index.practices.flatMap((p) => p.lessons);
+    const untried = paths.filter((p) => lessons[p] && !data.tried[lessons[p].id]);
+    const day = new Date().getDate();
+    if (untried.length) {
+      const p = untried[day % untried.length];
+      return { action: "open", attr: `data-path="${esc(p)}"`, label: "something light", title: lessons[p].title, text: lessons[p].subtitle };
+    }
+    const f = formulas[day % formulas.length];
+    return { action: "formula", attr: `data-id="${esc(f.id)}"`, label: "a formula to try", title: f.name, text: f.frame };
+  }
+
   function renderHome() {
-    let html = `<header class="home-top"><h1>hey <span>you</span>.</h1><p class="soft">${esc(greeting())} nothing to do here unless you want to.</p></header>`;
-    html += `<button class="next-card" data-action="weigh">
-      <span class="label">weigh it</span>
-      <span class="title">heard something heavy in there?</span>
-      <span>catch what your inner voice said, feel its weight, and reshape it in your own words.</span></button>`;
-    html += `<section class="practice"><header><h2>formulas</h2><p class="soft small">${esc(formulaIntro)}</p></header><div class="lessons">`;
+    const s = suggestion();
+    return `<header class="home-top"><h1>hey <span>you</span>.</h1><p class="soft">${esc(greeting())} glad you're here.</p></header>
+      ${foundationCard()}
+      <button class="cta" data-action="weigh">
+        <span class="label">lay a new stone</span>
+        <span class="title">heard something heavy in there?</span>
+        <span>turn it into words of your own.</span>
+      </button>
+      <button class="light-card" data-action="${s.action}" ${s.attr}>
+        <span class="label">${esc(s.label)}</span>
+        <span class="t">${esc(s.title)}</span>
+        <span class="soft small">${esc(s.text)}</span>
+      </button>
+      <div class="actions center"><button class="link-btn" data-action="tab" data-tab="tools">see all tools</button></div>`;
+  }
+
+  function renderTools() {
+    let html = `<header class="page-top"><h1>tools</h1><p class="soft">pick anything, in any order.</p></header>`;
+    html += `<section class="section"><h2>formulas</h2><p class="soft small">${esc(formulaIntro)}</p><div class="lessons">`;
     formulas.forEach((f) => {
       html += `<button class="lesson-card" data-action="formula" data-id="${esc(f.id)}">
         <span class="meta"><span class="t">${esc(f.name)}</span><span class="s">${esc(f.frame)}</span></span>
-        <span class="tried" aria-hidden="true">›</span></button>`;
+        <span class="chev" aria-hidden="true">›</span></button>`;
     });
-    html += `</div></section>`;
-    html += `<section class="practice"><header><h2>wants and thoughts</h2><p class="soft small">find out what you actually like and think, outside of everyone else.</p></header><div class="lessons">`;
+    html += `</div></section><section class="section"><h2>wants and thoughts</h2><p class="soft small">find out what you actually like and think.</p><div class="lessons">`;
     index.practices.forEach((p) => {
       p.lessons.forEach((path) => {
         const l = lessons[path];
@@ -151,14 +218,13 @@
           <span class="tried">${data.tried[l.id] ? "tried" : esc(l.minutes) + " min"}</span></button>`;
       });
     });
-    html += `</div></section>`;
-    return html;
+    return html + `</div></section>`;
   }
 
   function renderFormula() {
     const f = formulaById(state.formulaId);
     if (!f) return renderHome();
-    return `<div class="lesson-bar"><button class="icon-btn" data-action="home" aria-label="back">${backIcon()}</button></div>
+    return `<div class="lesson-bar"><button class="icon-btn" data-action="back" aria-label="back">${backIcon()}</button></div>
       <section class="step">
         <p class="eyebrow">formula</p>
         <h1>${esc(f.name)}</h1>
@@ -174,11 +240,13 @@
   }
 
   function renderMe() {
-    let html = `<header class="page-top"><h1>me, collected</h1><p class="soft">a picture of you, in your own words. it stays on this phone.</p></header>`;
+    const n = allStones().length;
+    let html = `<header class="page-top"><h1>your foundation</h1><p class="soft">everything you've made and discovered here. it stays on this phone.</p></header>
+      <div class="foundation big-foundation">${stonesHTML(80)}<span class="f-meta"><span class="f-count">${n} ${n === 1 ? "stone" : "stones"}</span><span class="f-line">${esc(milestoneFor(n))}</span></span></div>`;
     KINDS.forEach((k) => {
       const list = data.collected[k];
-      html += `<section class="section"><h2>${KIND_NAMES[k]}</h2>`;
-      if (!list.length) html += `<p class="empty">nothing here yet. it fills up as you practice.</p>`;
+      html += `<section class="section"><h2><span class="key ${k === "what-i-like" ? "like" : k === "what-i-think" ? "think" : "word"}"></span>${KIND_NAMES[k]}</h2>`;
+      if (!list.length) html += `<p class="empty">nothing here yet. it grows as you go.</p>`;
       list.forEach((e) => {
         if (state.editing === e.id) {
           html += `<div class="entry"><label class="soft small" for="edit-${esc(e.id)}">edit</label>
@@ -186,7 +254,7 @@
             <div class="entry-actions"><button class="btn primary" data-action="save-edit" data-kind="${k}" data-id="${esc(e.id)}">save</button>
             <button class="btn quiet" data-action="cancel-edit">cancel</button></div></div>`;
         } else if (state.confirm === e.id) {
-          html += `<div class="entry"><p>${esc(e.text)}</p><p class="soft small">remove this?</p>
+          html += `<div class="entry"><p>${esc(e.text)}</p><p class="soft small">remove this stone?</p>
             <div class="entry-actions"><button class="btn primary" data-action="remove" data-kind="${k}" data-id="${esc(e.id)}">remove</button>
             <button class="btn quiet" data-action="cancel-edit">keep it</button></div></div>`;
         } else {
@@ -199,26 +267,16 @@
       });
       html += `</section>`;
     });
-    return html;
+    return html + renderSettings();
   }
 
-  function renderMore() {
+  function renderSettings() {
     const clearing = state.confirm === "clear-all";
-    return `<header class="page-top"><h1>more</h1></header>
+    return `<div class="divider"></div>
       <section class="section"><h2>what should we call you?</h2>
-        <div class="field"><label for="name-in">your name, or anything you like</label><input class="input" id="name-in" value="${esc(data.name)}" placeholder="your name" autocomplete="off"></div>
+        <div class="field"><label for="name-in">a name, a nickname, anything</label><input class="input" id="name-in" value="${esc(data.name)}" placeholder="your name" autocomplete="off"></div>
         <div class="actions"><button class="btn quiet" data-action="save-name">save</button></div>
         ${state.local.nameSaved ? `<p class="soft small">saved.</p>` : ""}
-      </section>
-      <section class="section"><h2>about hey you</h2>
-        <p>a place to notice how your inner voice talks, feel the weight of its words, and find new ones that sound like you. every formula comes from published research or a recognized therapy approach, and each one shows its source.</p>
-        <div class="stack-sm">
-          <p class="promise">there are no right answers.</p>
-          <p class="promise">you can skip anything.</p>
-          <p class="promise">no streaks, ever. come back whenever you want.</p>
-          <p class="promise">this isn't therapy, and you never have to share anything you don't want to.</p>
-        </div>
-        <div class="actions"><button class="btn quiet" data-action="open" data-path="${esc(index.start)}">replay the welcome</button></div>
       </section>
       <section class="section"><h2>real help, if you ever want it</h2>
         <p class="soft small">hey you isn't crisis support. these are free and confidential. in the us:</p>
@@ -227,13 +285,17 @@
         <div class="help-item"><span>national domestic violence hotline</span><span class="num">1-800-799-7233</span><span class="soft small">or text START to 88788</span></div>
         <div class="help-item"><span>outside the us</span><a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a></div>
       </section>
+      <section class="section"><h2>about hey you</h2>
+        <p class="soft">a place to feel the weight of your inner voice and find new words that sound like you. every formula comes from published research or a recognized therapy approach, and shows its source. it isn't therapy.</p>
+        <div class="actions"><button class="btn quiet" data-action="open" data-path="${esc(index.start)}">replay the welcome</button></div>
+      </section>
       <section class="section"><h2>add to your home screen</h2>
         <p class="soft">on iphone, open this in safari, tap the share button, then "add to home screen." on android, use the browser menu.</p>
       </section>
       <section class="section"><h2>your data</h2>
         <p class="soft">everything stays on this phone. nothing is sent anywhere, and there's no account. sentences you weigh aren't saved unless you choose to keep them.</p>
         ${clearing
-          ? `<div class="confirm"><p>clear everything you've collected and start fresh?</p><div class="actions"><button class="btn primary" data-action="clear-all">clear it all</button><button class="btn quiet" data-action="cancel-edit">keep it</button></div></div>`
+          ? `<div class="confirm"><p>clear your whole foundation and start fresh?</p><div class="actions"><button class="btn primary" data-action="clear-all">clear it all</button><button class="btn quiet" data-action="cancel-edit">keep it</button></div></div>`
           : `<div class="actions"><button class="btn quiet" data-action="ask-clear">clear everything</button></div>`}
       </section>`;
   }
@@ -247,11 +309,20 @@
   function progressBar(pct) {
     return `<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="progress"><span style="width:${pct}%"></span></div>`;
   }
+  function ideaChips(ideas, action, key) {
+    if (!ideas || !ideas.length) return "";
+    return `<div class="ideas"><span class="ideas-label">ideas, if you want one</span><div class="chips">${ideas.map((x) => `<button class="chip idea" data-action="${action}" data-key="${esc(key || "")}" data-val="${esc(x)}">${esc(x)}</button>`).join("")}</div></div>`;
+  }
+  function rewardHTML(text) {
+    const n = allStones().length;
+    const crossed = MILESTONES.find(([at]) => at === n);
+    return `<div class="reward"><span class="reward-label">a new stone for your foundation</span>${stonesHTML(24, lastAddedId)}
+      <span class="f-line">${esc(crossed ? crossed[1] : text || `${n} ${n === 1 ? "stone" : "stones"} so far.`)}</span></div>`;
+  }
 
   // ---------- weigh it ----------
   const BODY = ["chest", "stomach", "throat", "shoulders", "head", "nowhere specific"];
   const DOING = ["grading me", "warning me", "replaying something", "pushing me", "not sure"];
-  const NUDGES = ["always / never", "i'm such a ___", "i should have...", "they probably think...", "why did i..."];
 
   function weighSteps() {
     return ["catch", "weight", "look"].concat(state.w.preset ? [] : ["formula"]).concat(["make", "reweight", "done"]);
@@ -300,12 +371,11 @@
     const f = formulaById(w.formula);
     switch (w.step) {
       case "catch":
-        body = `<p class="eyebrow">weigh it${f ? " · " + esc(f.name) : ""}</p>
+        body = `<p class="eyebrow">lay a new stone${f ? " · " + esc(f.name) : ""}</p>
           <p class="big">what did your inner voice say?</p>
-          <p class="soft">type it the way it sounded. it isn't saved unless you choose to keep it.</p>
-          <textarea class="input area" id="w-orig" data-input="orig" rows="3" placeholder="e.g. you always mess things up." autocomplete="off">${esc(w.original)}</textarea>
-          <button class="link-btn" data-action="nudge">${w.nudge ? "hide examples" : "need a nudge?"}</button>
-          ${w.nudge ? `<div class="stack-sm"><p class="soft small">heavy self-talk often sounds like:</p><div class="chips">${NUDGES.map((n) => `<span class="chip quiet-chip">${esc(n)}</span>`).join("")}</div></div>` : ""}
+          <p class="soft">write it the way it sounded, or pick one that feels familiar. it isn't saved unless you choose to keep it.</p>
+          <textarea class="input area" id="w-orig" data-input="orig" rows="3" placeholder="in its words..." autocomplete="off">${esc(w.original)}</textarea>
+          <div class="ideas"><span class="ideas-label">sound familiar?</span><div class="chips">${catchIdeas.map((x) => `<button class="chip idea" data-action="w-catch-idea" data-val="${esc(x)}" aria-pressed="${w.original === x}">${esc(x)}</button>`).join("")}</div></div>
           <div class="actions"><button class="btn primary" data-action="w-next" ${w.original.trim() ? "" : "disabled"}>next</button></div>`;
         break;
       case "weight":
@@ -327,22 +397,20 @@
           <div class="actions"><button class="btn primary" data-action="w-next">next</button><button class="btn quiet" data-action="w-next">skip</button></div>`;
         break;
       case "formula":
-        body = `<p class="big">pick a formula. you bring the words.</p>
+        body = `<p class="big">pick a formula. it gives you the shape, you bring the words.</p>
           <div class="stack-sm">${formulas.map((x) => `<button class="choice" data-action="w-formula" data-id="${esc(x.id)}"><b>${esc(x.name)}</b><span class="note">${esc(x.frame)}</span></button>`).join("")}</div>`;
         break;
       case "make": {
         const filled = f.slots.every((s) => (w.vals[s.key] || "").trim());
         body = `<p class="eyebrow">${esc(f.name)}</p>
-          <p class="soft small">your inner voice said: "${esc(w.original)}"</p>
           <p class="preview" aria-live="polite">${fillTemplateHTML(f.template, w.vals)}</p>`;
         f.slots.forEach((s) => {
           body += `<div class="part"><span class="part-label">${esc(s.label)}</span>`;
           if (s.chips) body += `<div class="chips">${s.chips.map((c) => `<button class="chip" data-action="w-slot-chip" data-key="${esc(s.key)}" data-val="${esc(c)}" aria-pressed="${w.vals[s.key] === c}">${esc(c)}</button>`).join("")}</div>`;
-          else body += `<input class="input" data-input="w-slot" data-key="${esc(s.key)}" value="${esc(w.vals[s.key] || "")}" placeholder="${esc(s.placeholder || "")}" aria-label="${esc(s.label)}" autocomplete="off">`;
+          else body += `<input class="input" data-input="w-slot" data-key="${esc(s.key)}" value="${esc(w.vals[s.key] || "")}" placeholder="${esc(s.placeholder || "")}" aria-label="${esc(s.label)}" autocomplete="off">${ideaChips(s.ideas, "w-slot-chip", s.key)}`;
           body += `</div>`;
         });
-        body += `<p class="soft small">for example: "${esc(f.example.after)}"</p>
-          <div class="actions"><button class="btn primary" data-action="w-next" ${filled ? "" : "disabled"}>this is mine</button>
+        body += `<div class="actions"><button class="btn primary" data-action="w-next" ${filled ? "" : "disabled"}>this is mine</button>
           ${w.preset ? "" : `<button class="btn quiet" data-action="w-change">different formula</button>`}</div>`;
         break;
       }
@@ -359,20 +427,20 @@
           else if (w.after === w.before) msg = "still about the same weight, and that's okay. a truer sentence counts, even when it's heavy.";
           else msg = "that one landed harder. that happens. want to try a different formula?";
         }
-        body = `<p class="eyebrow">your version</p>
+        body = `<p class="eyebrow">your words</p>
           <p class="huge-ish">${esc(weighResult())}</p>
           ${w.before && w.after ? `<div class="wt-move big-move">${weightDots(w.before, true)}<span aria-hidden="true">→</span>${weightDots(w.after, true)}</div>` : ""}
-          <p class="reply">${esc(msg)}</p>
-          ${w.kept ? `<p class="soft">kept in my words.</p>` : `<label class="check"><input type="checkbox" data-input="keep-orig" ${w.keepOriginal ? "checked" : ""}> also keep what my inner voice said</label>`}
+          ${w.kept ? rewardHTML() : `<p class="reply">${esc(msg)}</p>
+          <label class="check"><input type="checkbox" data-input="keep-orig" ${w.keepOriginal ? "checked" : ""}> also keep what my inner voice said</label>`}
           <div class="actions">
-            ${w.kept ? "" : `<button class="btn primary" data-action="w-keep">keep it</button>`}
+            ${w.kept ? `<button class="btn primary" data-action="back">done</button>` : `<button class="btn primary" data-action="w-keep">add it to my foundation</button>`}
             <button class="btn quiet" data-action="w-again">try another formula</button>
-            <button class="btn quiet" data-action="home">done</button>
+            ${w.kept ? "" : `<button class="btn quiet" data-action="back">not this time</button>`}
           </div>`;
         break;
       }
     }
-    return `<div class="lesson-bar"><button class="icon-btn" data-action="home" aria-label="leave">${closeIcon()}</button>${progressBar(pct)}</div>
+    return `<div class="lesson-bar"><button class="icon-btn" data-action="back" aria-label="leave">${closeIcon()}</button>${progressBar(pct)}</div>
       <section class="step" data-step="${esc(w.step)}">${body}</section>`;
   }
 
@@ -401,7 +469,7 @@
   function renderLesson() {
     const l = lesson();
     const pct = Math.round(((state.i + 1) / l.steps.length) * 100);
-    return `<div class="lesson-bar"><button class="icon-btn" data-action="home" aria-label="leave this lesson">${closeIcon()}</button>${progressBar(pct)}</div>
+    return `<div class="lesson-bar"><button class="icon-btn" data-action="back" aria-label="leave this lesson">${closeIcon()}</button>${progressBar(pct)}</div>
       <section class="step" data-step="${state.i}">${renderStep(step())}</section>`;
   }
 
@@ -417,7 +485,7 @@
       case "show":
         return `<p class="big">${esc(s.text)}</p>${nextBtn(s.button)}`;
       case "close":
-        return `<p class="big">${esc(s.text)}</p>${nextBtn(s.button || "done")}`;
+        return `<p class="big">${esc(s.text)}</p><div class="actions"><button class="btn primary" data-action="next">${esc(s.button || "done")}</button>${s.later ? `<button class="btn quiet" data-action="finish-later">${esc(s.later)}</button>` : ""}</div>`;
       case "understand":
         return `<div class="stack">${s.lines.map((x) => `<p class="big">${esc(x)}</p>`).join("")}</div>${nextBtn(s.button)}`;
       case "scene": {
@@ -445,7 +513,7 @@
         return `<p class="big">${esc(s.prompt)}</p><div class="stack-sm">${s.items.map((it) => `<p class="promise">${esc(it)}</p>`).join("")}</div>${nextBtn(s.button)}`;
       case "write": {
         const chips = L.chips || [];
-        if (L.kept) return `<p class="reply">${s.keep === "name" ? `nice to meet you, ${esc((L.text || "").trim().toLowerCase())}.` : "kept. it's in me, collected."}</p>${nextBtn()}`;
+        if (L.kept) return `<p class="reply">${s.keep === "name" ? `nice to meet you, ${esc((L.text || "").trim().toLowerCase())}.` : "added to your foundation."}</p>${nextBtn()}`;
         const text = L.text || "";
         return `<p class="big">${esc(s.prompt)}</p>
           ${s.chips ? `<div class="chips">${s.chips.map((c, n) => `<button class="chip" data-action="chip" data-n="${n}" aria-pressed="${chips.includes(n)}">${esc(c)}</button>`).join("")}</div>` : ""}
@@ -456,7 +524,7 @@
       case "build": {
         const vals = L.vals || {};
         const filled = s.parts.every((p) => (vals[p.key] || "").trim());
-        if (L.kept) return `<p class="preview">${esc(fillTemplate(s.template, vals))}</p><p class="reply">${esc(s.reply || "kept.")}</p>${nextBtn()}`;
+        if (L.kept) return `<p class="preview">${esc(finish(fillTemplate(s.template, vals)))}</p><p class="reply">${esc(s.reply || "kept.")}</p>${rewardHTML()}${nextBtn()}`;
         let h = `<p class="big">${esc(s.prompt)}</p><p class="preview" aria-live="polite">${fillTemplateHTML(s.template, vals)}</p>`;
         s.parts.forEach((p) => {
           h += `<div class="part"><span class="part-label">${esc(p.label)}</span>`;
@@ -464,6 +532,7 @@
           if (p.input || p.allowCustom) {
             const v = p.input ? vals[p.key] || "" : (L.custom || {})[p.key] ? vals[p.key] : "";
             h += `<input class="input" data-input="part" data-key="${esc(p.key)}" data-custom="${p.allowCustom ? "1" : ""}" value="${esc(v)}" placeholder="${esc(p.placeholder || "or your own")}" aria-label="${esc(p.label)}" autocomplete="off">`;
+            if (p.input) h += ideaChips(p.ideas, "part-idea", p.key);
           }
           h += `</div>`;
         });
@@ -487,7 +556,7 @@
         const picks = L.picks || [];
         if (at >= s.pairs.length) {
           const kept = picks.filter((p) => p);
-          return `<p class="big">your picks</p><div class="chips">${kept.map((p) => `<span class="chip">${esc(p)}</span>`).join("") || `<span class="soft">no picks this time, and that's okay.</span>`}</div>${nextBtn()}`;
+          return `<p class="big">your picks</p><div class="chips">${kept.map((p) => `<span class="chip">${esc(p)}</span>`).join("") || `<span class="soft">no picks this time, and that's okay.</span>`}</div>${kept.length ? rewardHTML(`${kept.length} new ${kept.length === 1 ? "stone" : "stones"} in your foundation.`) : ""}${nextBtn()}`;
         }
         const [a, b] = s.pairs[at];
         return `<p class="soft">${esc(s.prompt)}</p><div class="tot"><span class="tot-count">${at + 1} of ${s.pairs.length}</span>
@@ -500,12 +569,18 @@
   }
 
   function fillTemplate(t, vals) {
-    return t.replace(/\{(\w+)\}/g, (_, k) => (vals[k] || "").trim());
+    return tidy(t.replace(/\{(\w+)\}/g, (_, k) => (vals[k] || "").trim()));
   }
   function fillTemplateHTML(t, vals) {
-    return esc(t).replace(/\{(\w+)\}/g, (_, k) => (vals[k] || "").trim() ? esc(vals[k].trim()) : `<span class="slot">___</span>`);
+    return tidy(esc(t).replace(/\{(\w+)\}/g, (_, k) => (vals[k] || "").trim() ? esc(vals[k].trim()) : `<span class="slot">___</span>`));
   }
 
+  function finishLesson() {
+    const l = lesson();
+    data.tried[l.id] = new Date().toISOString();
+    if (state.lessonPath === index.start) data.welcomed = true;
+    save();
+  }
   function nextStep() {
     const l = lesson();
     if (state.i < l.steps.length - 1) {
@@ -514,10 +589,10 @@
       render();
       window.scrollTo(0, 0);
     } else {
-      data.tried[l.id] = new Date().toISOString();
-      if (state.lessonPath === index.start) data.welcomed = true;
-      save();
-      go("home");
+      const last = step();
+      finishLesson();
+      if (last.then === "weigh") startWeigh();
+      else go(state.tab || "home");
     }
   }
 
@@ -529,11 +604,13 @@
     const L = state.local;
     const w = state.w;
     switch (a) {
-      case "home": go(state.tab || "home"); break;
+      case "back": go(state.tab || "home"); break;
+      case "tab": state.local = {}; go(t.dataset.tab); break;
       case "open": startLesson(t.dataset.path); break;
       case "formula": state.formulaId = t.dataset.id; go("formula"); break;
       case "weigh": startWeigh(t.dataset.id); break;
       case "next": nextStep(); break;
+      case "finish-later": finishLesson(); go("home"); break;
       case "pick": L.pick = Number(t.dataset.n); render(); break;
       case "chip": {
         const n = Number(t.dataset.n);
@@ -561,9 +638,15 @@
         render();
         break;
       }
+      case "part-idea": {
+        L.vals = L.vals || {};
+        L.vals[t.dataset.key] = t.dataset.val;
+        render();
+        break;
+      }
       case "keep-build": {
         const s = step();
-        addEntry(s.keep, fillTemplate(s.template, L.vals || {}), lesson().title);
+        addEntry(s.keep, finish(fillTemplate(s.template, L.vals || {})), lesson().title);
         L.kept = true;
         render();
         break;
@@ -590,7 +673,7 @@
         break;
       }
       // weigh it
-      case "nudge": w.nudge = !w.nudge; render(); break;
+      case "w-catch-idea": w.original = t.dataset.val; render(); break;
       case "w-next": weighNext(); break;
       case "w-before": w.before = Number(t.dataset.n); render(); break;
       case "w-after": w.after = Number(t.dataset.n); render(); break;
@@ -604,8 +687,8 @@
       case "w-slot-chip": w.vals[t.dataset.key] = t.dataset.val; render(); break;
       case "w-keep": {
         const f = formulaById(w.formula);
-        addEntry("my-words", weighResult(), f ? f.name : "", { before: w.before, after: w.after });
         if (w.keepOriginal && w.original.trim()) addEntry("my-words", `my inner voice said: "${w.original.trim()}"`, "weigh it");
+        addEntry("my-words", weighResult(), f ? f.name : "", { before: w.before, after: w.after });
         w.kept = true;
         render();
         break;
@@ -615,7 +698,7 @@
         render();
         window.scrollTo(0, 0);
         break;
-      // me, collected
+      // foundation
       case "edit": state.editing = t.dataset.id; state.confirm = null; render(); break;
       case "ask-remove": state.confirm = t.dataset.id; state.editing = null; render(); break;
       case "cancel-edit": state.editing = null; state.confirm = null; render(); break;
@@ -634,7 +717,6 @@
         render();
         break;
       }
-      // more
       case "save-name": {
         const input = document.getElementById("name-in");
         data.name = input ? input.value.trim() : data.name;
@@ -673,6 +755,7 @@
       if (btn) btn.disabled = !s.parts.every((p) => (L.vals[p.key] || "").trim());
     } else if (kind === "orig") {
       w.original = el.value;
+      main.querySelectorAll('[data-action="w-catch-idea"]').forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.val === el.value)));
       const btn = main.querySelector('[data-action="w-next"]');
       if (btn) btn.disabled = !el.value.trim();
     } else if (kind === "w-slot") {

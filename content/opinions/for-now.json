@@ -37,7 +37,18 @@
       "prompt": "say something you think, for now. big or small.",
       "template": "for now, {thought}.",
       "parts": [
-        { "key": "thought", "label": "for now", "input": true, "placeholder": "e.g. i think i'm more of a morning person than i thought" }
+        {
+          "key": "thought",
+          "label": "for now",
+          "input": true,
+          "placeholder": "e.g. i think i'm more of a morning person than i thought",
+          "ideas": [
+            "i'd like more quiet in my life.",
+            "i'm more of a night person than i thought.",
+            "i want to make more things with my hands.",
+            "i'm done pretending to like things i don't."
+          ]
+        }
       ],
       "reply": "saved with today's date, so you can see how it grows.",
       "keep": "what-i-think",
@@ -48,7 +59,7 @@
       "prompt": "one small thing for today, if you want:",
       "options": [
         "add \"for now\" to one opinion you've been holding back.",
-        "look in me, collected and notice one thought you'd update."
+        "look at your foundation and notice one thought you'd update."
       ],
       "skip": "not today"
     },

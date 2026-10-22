@@ -1,6 +1,6 @@
 # hey you
 
-A relationship-with-yourself app. People rebuild who they are by learning how their words shape their mind (language), what they actually want (desires), and what they actually think (opinions). Everything they discover is kept privately in "me, collected."
+A relationship-with-yourself app. People rebuild who they are by learning how their words shape their mind (language), what they actually want (desires), and what they actually think (opinions). Everything they keep becomes a stone in their **foundation**, a private, growing picture of who they are.
 
 The name is always lowercase: **hey you**.
 
@@ -10,7 +10,9 @@ The name is always lowercase: **hey you**.
 - **Formulas** (`content/formulas.json`): frames from published research or recognized therapy approaches that people fill with their own words. Never auto-rewrite someone's sentence. Each formula shows its source and an honest evidence label. Talking to yourself as "you" (Kross et al., 2014) is the namesake technique.
 - **start:** `content/start/welcome.json` shows what hey you is before anything else, and asks (optionally) what to call the person.
 - **wants and thoughts:** short tool lessons (`content/desires/`, `content/opinions/`) for discovering what you like and think. Lessons are tools, not corrections.
-- **me, collected:** my words (with before → after weights), what I like, what I think. Editable and deletable.
+- **foundation:** every kept sentence, like, and thought is a stone. Shown as a stacking visual with gentle milestones (never streaks), and listed as my words (with before → after weights), what I like, what I think. Editable and deletable. Settings, real help, and data controls live at the bottom of the foundation tab.
+- **Never leave an empty box alone.** Every open text field offers tappable ideas so nobody has to start from nothing.
+- **Home is simple:** greeting, the foundation, one main action (lay a new stone), one light suggestion, and a link to all tools. Tabs: home, tools, foundation.
 - **resource shelf:** small, curated, every item tagged with its license and how we may use it (not built yet).
 
 Out of scope for v1 (do not build unless asked): rooms hub, customizable space, rehearsal room, garden, out-there steps, library, AI companion, accounts, notifications, streaks.
