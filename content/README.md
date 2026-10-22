@@ -39,7 +39,7 @@ One JSON file per set. Top-level: `id`, `practice`, `kind` (`tool`), `title`, `s
 | `try` | one optional small thing for real life today. | `prompt`, `options`, `skip` |
 | `close` | a short ending. | `text`, `button`, optional `then` (`answer`) and `later` |
 
-`visual` (welcome only) picks a typographic scene: `hey`, `inner`, `answer`, `you`.
+`visual` (welcome and show) draws a small typographic scene above the text: `inner` (what the inner voice says, in grey), `mine` (an answer in your voice), and optional `loud` (1 to 5) to show the inner voice at that volume.
 
 `keep` says where an answer goes: `my-words` (things you've told yourself), `what-i-like` or `what-i-think` (about you), or `name`. Write kept sentences in first person; the book turns about-you entries into second person when it shows them.
 

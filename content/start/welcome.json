@@ -8,27 +8,38 @@
     {
       "type": "welcome",
       "text": "hey you.",
-      "visual": "hey",
       "button": "hi"
     },
     {
       "type": "show",
       "text": "most of us carry one loud inner voice.",
-      "visual": "inner",
+      "visual": {
+        "inner": "you always mess things up.",
+        "loud": 4
+      },
       "button": "go on"
     },
     {
       "type": "show",
       "text": "here, you grow a second one. yours, in your own words.",
-      "visual": "answer",
+      "visual": {
+        "inner": "you always mess things up.",
+        "mine": "i messed up, and i'm still learning."
+      },
       "button": "i'd like that"
     },
     {
       "type": "show",
       "text": "why \"you\"? talking to yourself as \"you\" makes hard moments feel lighter.",
       "more": "in seven studies, people who talked to themselves by name or as \"you\", the way they'd talk to a friend, felt less distress and handled stress better.",
-      "source": { "label": "Kross et al., 2014", "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf" },
-      "visual": "you",
+      "source": {
+        "label": "Kross et al., 2014",
+        "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+      },
+      "visual": {
+        "inner": "i can't do this.",
+        "mine": "hey you. you've done hard things before."
+      },
       "button": "hey you"
     },
     {
