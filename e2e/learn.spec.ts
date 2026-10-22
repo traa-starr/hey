@@ -19,7 +19,7 @@ test("a lesson is a chat: tap through, try it, keep what you like", async ({ pag
   await button(page, "they're annoyed with me.").click();
   await button(page, "keep it").click();
   await cont(page);
-  await button(page, "save to my book").click();
+  await button(page, "keep it in my book").click();
   await cont(page);
   await button(page, "i'll try it").click();
   await cont(page);

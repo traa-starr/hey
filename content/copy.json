@@ -2,7 +2,7 @@
   "app": {
     "name": "hey you",
     "loading": "hey you",
-    "close": "close, nothing is lost",
+    "close": "close",
     "back": "back",
     "readAloud": "read this screen aloud",
     "next": "next",
@@ -83,8 +83,8 @@
     "both": "both",
     "neither": "neither",
     "takeaway": "keep this",
-    "saveTakeaway": "save to my book",
-    "savedTakeaway": "saved to your book.",
+    "saveTakeaway": "keep it in my book",
+    "savedTakeaway": "kept in your book.",
     "experiment": "try it today",
     "tryIt": "i'll try it",
     "notToday": "maybe not today",
@@ -200,7 +200,7 @@
     "letGo": "let it go",
     "kept": "kept in your book.",
     "seeBook": "see your book",
-    "backToday": "back to today",
+    "backToday": "back home",
     "includesSaid": "this answer includes your inner voice's words. it's yours to keep or change.",
     "change": "change it",
     "fromHabit": "what did {habit} say?"
@@ -319,7 +319,7 @@
     "voiceNone": "this browser can't read aloud.",
     "soundTitle": "soft sounds",
     "soundOn": "soft chimes when you set and keep things",
-    "resurface": "show a line from your book on today",
+    "resurface": "show a line from your book on home",
     "lookTitle": "appearance",
     "lookTime": "match my phone",
     "lookLight": "always light",
@@ -346,7 +346,7 @@
   },
   "errors": {
     "content": "something in this part didn't load. the rest of hey you still works.",
-    "missing": "that page isn't here anymore."
+    "missing": "that page isn't here anymore. everything else is where you left it."
   },
   "way": {
     "title": "ways to answer",

@@ -48,6 +48,8 @@
 html, body { min-height: 100%; }
 /* an installed app doesn't bounce into pull-to-refresh, and long presses don't select button labels */
 html { overscroll-behavior-y: none; }
+/* keyboard focus never lands under the sticky top bar or the floating tabs */
+html { scroll-padding-top: 5.5rem; scroll-padding-bottom: 7rem; }
 button, .tabs, .tile, .chip, .reply, .ans, .habit-pick, .page-tile, .shelf-set { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.5 var(--ui); -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; text-size-adjust: 100%; }
 button, input, textarea, select { font: inherit; color: inherit; }
@@ -208,7 +210,8 @@ p { margin: 0; }
 .glyph.lg svg { width: 38px; height: 38px; }
 .glyph.sm { width: 2.2rem; height: 2.2rem; border-radius: 12px; }
 .glyph.sm svg { width: 18px; height: 18px; }
-.habit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+/* two columns while names fit; one column with large text */
+.habit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: 10px; }
 .habit-pick { border: 2px solid transparent; background: var(--surface); border-radius: 20px; padding: 12px; display: flex; align-items: center; gap: 10px; text-align: left; font-weight: 600; font-size: .95rem; box-shadow: var(--shadow); min-height: 60px; }
 .habit-pick[aria-pressed="true"] { border-color: var(--primary); background: var(--primary-soft); }
 
