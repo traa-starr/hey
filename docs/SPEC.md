@@ -57,7 +57,17 @@ As before (v2): catch → how loud → optional breath at loud or all i can hear
 - **your voice map**: up to six habits as bubbles sized by the latest voice check (75%) and what's been caught (25%), then the top three with what each is trying to do. Tap a habit for its page.
 - **when it shows up**: where caught habits happen, as bars.
 - **how loud it's been**: one point per day from check-ins and caught moments, last 14 days.
-- **your book** (words, about you, keepers; edit and remove) and **settings**.
+- **your book** and **settings**.
+
+### Your book
+
+A cover and, one tap away, the pages.
+
+- **the cover**: a night sky with one star for each thing kept (gold for words, teal for about you, pink for keepers). The oldest sit in the middle and the sky grows outward; each star joins its nearest older neighbour. Something kept in the last few seconds lands with a small burst. Shows the person's name and the month the book began; never the words themselves.
+- **pages**: three tiles (words, about you, keepers) with how many each holds. Each opens its list (`#/book/voice`, `#/book/about`, `#/book/keeper`), grouped by month, with edit and remove tucked behind one button per entry.
+- **what you've read**: every lesson is a book on a shelf, grouped by path. Read ones stand in their color; the rest stay pale, as room. Tap a set to open its path.
+- **after you answered**: for kept answers with a loudness before and after, a line from one to the other (last ten). Shown only once there is one.
+- **your range**: the ways to answer, filled when used with how many times, dashed when not tried yet; and the voice habits met (lesson done or caught). Range, never a score.
 
 ### Habit page
 
@@ -104,9 +114,9 @@ Wrap the same build with Capacitor for native haptics and store distribution. No
 | part | check |
 | --- | --- |
 | content | unit tests parse every file; every path item loads; every lesson has a takeaway, an experiment and at least three interactive steps; sol's bubbles stay short; habit lessons spot the right habit; avoided words never appear (except inside the inner voice's own lines) |
-| voice logic | unit tests for the deck, scoring, weights, places and loudness trend |
+| voice logic | unit tests for the deck, scoring, weights, places and loudness trend; the book's stars, shifts, range and months |
 | store and migration | unit tests (v1 blob, malformed input, retry, logs, memory fallback) |
-| flows | Playwright at 390px: welcome, voice check to map to habit, catch it to answer it, check-in, a full lesson with resume, a habit lesson, this or that, answer it, book, settings, offline |
+| flows | Playwright at 390px: welcome, voice check to map to habit, catch it to answer it, check-in, a full lesson with resume, a habit lesson, this or that, answer it, the book cover and pages, settings, offline |
 | accessibility | axe (WCAG 2.2 AA) on every screen in light and dark |
 | look | screenshots of every screen at 390px in light and dark (`scripts/shots.mjs`) |
 | quality | Lighthouse mobile: 90+ performance, accessibility, best practices |

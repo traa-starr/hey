@@ -27,7 +27,7 @@ test("a lesson is a chat: tap through, try it, keep what you like", async ({ pag
   await button(page, "done").click();
   await expect(page.locator(".lesson-row").nth(2)).toContainText("done");
 
-  await page.goto("./#/book");
+  await page.goto("./#/book/voice");
   await expect(page.locator(".entries")).toContainText("i'm noticing the thought that they're annoyed with me.");
   await page.getByRole("tab", { name: "keepers" }).click();
   await expect(page.locator(".entries")).toContainText("a thought is something your mind said");
@@ -59,7 +59,7 @@ test("this or that keeps picks in about you", async ({ page }) => {
   await button(page, "sunrise").click();
   await button(page, "rain on the window").click();
   for (let i = 0; i < 6; i++) await button(page, "neither").click();
-  await page.goto("./#/book");
+  await page.goto("./#/book/voice");
   await page.getByRole("tab", { name: "about you" }).click();
   await expect(page.locator(".entries")).toContainText("you'd pick rain on the window.");
 });

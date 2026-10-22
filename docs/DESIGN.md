@@ -21,6 +21,10 @@ Habit colors (light / dark): violet #5b3fd9 / #a08cff, pink #c2306f / #ff86bd, c
 
 Skies (home only): dawn peach to lavender, day sky blue, dusk violet to pink to apricot, night navy with stars.
 
+## Your book
+
+The cover is always a night sky (deep violet to plum, a darker spine on the left), in light and dark alike, so its stars use the bright habit colors: gold #ffc764 for words, teal #4fd6c6 for about you, pink #ff86bd for keepers, each with a soft radial glow. Pages, entries and tabs carry the same three colors as a left edge or dot. The shelf uses path and habit colors; unread books are the same color at 22%. Under reduced motion the stars don't twinkle, the newest doesn't burst, and the books don't rise.
+
 ## Type
 
 | role | face | use |
