@@ -1,0 +1,28 @@
+/* your lines */
+.lines-card { background: var(--surface); border-radius: 22px; padding: 14px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 6px; }
+.lines-card p { margin: 0; }
+.lines-quote { font-family: var(--voice); font-style: italic; font-size: 1.5rem; line-height: 1.22; overflow-wrap: anywhere; margin: 0; }
+.lines-card .lines-quote { font-size: 1.25rem; }
+.lines-tag { align-self: flex-start; font-size: .78rem; font-weight: 600; padding: 3px 10px; border-radius: 99px; background: var(--plum-soft); color: var(--ink); }
+.lines-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.lines-pick { display: block; width: 100%; text-align: left; border: 2px solid var(--hair); background: var(--surface); border-radius: 22px; padding: 14px 16px; min-height: 56px; transition: transform .15s var(--ease), border-color .2s; }
+.lines-pick .lines-quote { font-size: 1.3rem; }
+.lines-pick[aria-pressed="true"] { border-color: var(--plum); background: var(--plum-soft); }
+.lines-pick:active { transform: scale(.98); }
+.lines-frame { display: flex; flex-direction: column; gap: 4px; }
+.lines-field { min-height: 7rem; font-family: var(--voice); font-style: italic; font-size: 1.35rem; }
+.lines-stage { background: var(--plum-soft); border-radius: 26px; padding: 22px 18px; }
+.lines-stage .lines-quote { font-size: 1.7rem; }
+.lines-value { font-size: 1.9rem; font-family: var(--display); font-weight: 650; }
+.lines-star { color: var(--plum); font-size: 1.4rem; line-height: 1; }
+.lines-gallery { display: flex; flex-direction: column; gap: 10px; }
+.lines-sources { display: flex; flex-direction: column; gap: 12px; }
+.lines-sources .source { margin: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .lines-pick { transition: none; }
+  .lines-pick:active { transform: none; }
+}
+/* home's card, in the same quiet shape as "you told yourself" */
+.lines-today { background: var(--surface); border-radius: 22px; padding: 14px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 4px; }
+.lines-today p { margin: 0; }
+.lines-today blockquote { margin: 4px 0; font-family: var(--voice); font-style: italic; font-size: 1.3rem; line-height: 1.25; }

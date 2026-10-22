@@ -1,0 +1,499 @@
+{
+ "copy": {
+  "hubTitle": "your lines",
+  "hubSol": "a line is a sentence about what you value, made from something that really happened. no one hands it to you.",
+  "hubSolReturn": "welcome back. a line can be tuned any time, or you can make a new one.",
+  "make": "make a line",
+  "why": "why this works",
+  "galleryLabel": "lines so far",
+  "tune": "still true?",
+  "letGo": "let it go",
+  "letGoSure": "let this line go?",
+  "yes": "yes, let it go",
+  "no": "no, keep it",
+  "none": "nothing here yet, and that's fine. when you'd like to, make the first one.",
+  "gone": "let go.",
+  "skip": "skip",
+  "continue": "continue",
+  "next": "next",
+  "back": "back",
+  "beforeIntro": "thanks for coming by. a quick look at how it feels right now, only if you'd like.",
+  "afterIntro": "thanks for taking this time.",
+  "afterNote": "any shift counts, and so does none.",
+  "valueAsk": "what matters most to be?",
+  "valueSol": "pick a word that already matters. it can be small.",
+  "valueTeach": "people who write about what they value tend to feel steadier afterward. it works best when the value is their own.",
+  "ownWord": "my own word",
+  "ownLabel": "a word of my own",
+  "ownIdeas": "some words people use",
+  "ownVerbSol": "good word. we'll build the line around it.",
+  "momentAsk": "when did {value} show up lately?",
+  "momentAskOwn": "when did {word} show up lately?",
+  "momentSol": "something small and recent. a minute, not a memory.",
+  "momentTeach": "using a name, the way a friend would, puts a little distance between a person and a line. that can make it easier to believe.",
+  "momentTeachFirst": "a line grounded in something that really happened is easier to believe than a big claim.",
+  "momentLabel": "a small moment, finishing the sentence",
+  "momentFrame": "like…",
+  "momentIdeas": "ideas",
+  "momentSkip": "no moment today",
+  "shapeAsk": "here's how that sounds.",
+  "shapeSol": "pick the one that feels closest. you can change any word next.",
+  "tuneAsk": "make it sound like you.",
+  "tuneSol": "change any word. select one and tap a word to swap it in, or write it all your own way.",
+  "tuneLabel": "the line",
+  "tuneSoft": "smaller can be truer",
+  "tuneLead": "sometimes, quietly, usually: tap to add",
+  "tuneTail": "or end it softer",
+  "tuneBank": "words from the book",
+  "tuneSuggest": "more words to try",
+  "tuneEmpty": "the line can't be empty.",
+  "tryAsk": "try it on.",
+  "trySol": "read it slowly. notice how it lands. any answer is welcome.",
+  "tryRead": "read it out loud",
+  "tryStop": "stop reading",
+  "truthLabel": "how true does this feel?",
+  "truthEnds": [
+   "not yet",
+   "very"
+  ],
+  "truthValue": "{n} of 100",
+  "truthLow": "thanks for being honest. a smaller line may fit better. a believable line does more than a big one.",
+  "truthMid": "that's a good sign. it's close, and a word or two can bring it closer.",
+  "truthHigh": "that sounds like it fits. thanks for taking it seriously.",
+  "keep": "keep it",
+  "tuneMore": "tune it more",
+  "tuneItAgain": "tune it",
+  "keptAsk": "kept.",
+  "keptSol": "{name} made that, from something real. it's in the book now.",
+  "keptSolNoName": "made from something real. it's in the book now.",
+  "another": "make another",
+  "done": "done for now",
+  "doneThanks": "thanks for coming by. the line is there whenever you want it.",
+  "tuned": "tuned and kept.",
+  "missing": "that line isn't here anymore.",
+  "todayLabel": "today's line",
+  "todayShow": "show me",
+  "todayEmpty": "when you'd like, make a line of your own. it takes a few minutes.",
+  "todayStart": "make one",
+  "todayMade": "made by {name}, from something real.",
+  "todayMadeNoName": "made from something real.",
+  "todayThanks": "thanks for coming by.",
+  "bookTitle": "lines",
+  "bookNote": "lines made from values and real moments. tap one to see if it's still true.",
+  "bookAll": "all lines",
+  "whyTitle": "why this works",
+  "whyIntro": "three ideas sit under this practice. each has a source and an honest label.",
+  "sources": "source",
+  "evidence": "evidence"
+ },
+ "templates": {
+  "moment": [
+   "{who} {verb}, like {moment}.",
+   "{moment}, {who} {verb}.",
+   "{moment}: {who} {verb}."
+  ],
+  "plain": [
+   "{who} {verb}.",
+   "{who} {verb}, and that counts.",
+   "{who} {verb} sometimes, and that counts."
+  ],
+  "ownMoment": [
+   "{word} is real in {whoObj}, like {moment}.",
+   "{moment} was {word}, and that was {whoObj}."
+  ],
+  "ownPlain": [
+   "{word} is real in {whoObj}.",
+   "{word} matters to {whoObj}, and that counts."
+  ]
+ },
+ "lead": [
+  "sometimes",
+  "quietly",
+  "usually",
+  "often"
+ ],
+ "tail": [
+  "in small ways",
+  "even on slow days",
+  "a little at a time",
+  "in my own way"
+ ],
+ "suggest": [
+  "gently",
+  "again",
+  "today",
+  "plainly",
+  "on purpose",
+  "with care",
+  "kindly",
+  "slowly"
+ ],
+ "ownIdeas": [
+  "loyalty",
+  "adventure",
+  "family",
+  "beauty",
+  "freedom",
+  "peace",
+  "growth",
+  "fun"
+ ],
+ "ownMoments": [
+  "yesterday, with someone close",
+  "this morning, at home",
+  "last week, at work",
+  "today, on a small errand"
+ ],
+ "stopwords": [
+  "the",
+  "and",
+  "for",
+  "you",
+  "your",
+  "with",
+  "that",
+  "this",
+  "have",
+  "from",
+  "they",
+  "them",
+  "what",
+  "when",
+  "where",
+  "which",
+  "about",
+  "into",
+  "just",
+  "like",
+  "been",
+  "were",
+  "was",
+  "are",
+  "not",
+  "but",
+  "all",
+  "any",
+  "can",
+  "had",
+  "has",
+  "her",
+  "him",
+  "his",
+  "she",
+  "how",
+  "its",
+  "let",
+  "may",
+  "our",
+  "out",
+  "own",
+  "say",
+  "see",
+  "too",
+  "use",
+  "way",
+  "who",
+  "why",
+  "yes",
+  "yet",
+  "also",
+  "then",
+  "than",
+  "there",
+  "their",
+  "these",
+  "those",
+  "would",
+  "could",
+  "will",
+  "shall",
+  "does",
+  "did",
+  "done",
+  "more",
+  "most",
+  "some",
+  "such",
+  "very",
+  "much",
+  "many",
+  "make",
+  "made",
+  "being",
+  "because",
+  "while",
+  "still",
+  "really",
+  "only",
+  "over",
+  "under",
+  "after",
+  "before",
+  "again",
+  "between",
+  "through",
+  "during",
+  "each",
+  "other",
+  "another"
+ ],
+ "values": [
+  {
+   "id": "showing-up",
+   "word": "showing up",
+   "third": "shows up",
+   "first": "show up",
+   "moments": [
+    "yesterday, when a friend needed a hand",
+    "this morning, when staying in was easier",
+    "last week, at that meeting",
+    "today, on a slow day"
+   ]
+  },
+  {
+   "id": "honesty",
+   "word": "honesty",
+   "third": "tells the truth",
+   "first": "tell the truth",
+   "moments": [
+    "yesterday, when a small answer was easier",
+    "last week, in a quick text",
+    "this morning, kindly and plainly",
+    "the other day, when someone asked what fits"
+   ]
+  },
+  {
+   "id": "humor",
+   "word": "humor",
+   "third": "finds the funny side",
+   "first": "find the funny side",
+   "moments": [
+    "yesterday, over something small",
+    "last night, with a friend",
+    "this morning, in traffic",
+    "the other day, in the grocery store"
+   ]
+  },
+  {
+   "id": "care",
+   "word": "care",
+   "third": "looks out for people",
+   "first": "look out for people",
+   "moments": [
+    "yesterday, with a neighbor",
+    "this week, with a friend",
+    "today, at work",
+    "last weekend, with family"
+   ]
+  },
+  {
+   "id": "courage",
+   "word": "courage",
+   "third": "tries the hard thing",
+   "first": "try the hard thing",
+   "moments": [
+    "last week, picking up the phone",
+    "yesterday, asking a question",
+    "this morning, saying hello first",
+    "the other day, starting before feeling ready"
+   ]
+  },
+  {
+   "id": "curiosity",
+   "word": "curiosity",
+   "third": "asks the real question",
+   "first": "ask the real question",
+   "moments": [
+    "yesterday, about a stranger's story",
+    "this week, reading about something new",
+    "today, wondering how it works",
+    "last night, asking a friend for more"
+   ]
+  },
+  {
+   "id": "patience",
+   "word": "patience",
+   "third": "takes the time",
+   "first": "take the time",
+   "moments": [
+    "yesterday, in a long line",
+    "this morning, with a slow computer",
+    "last week, with a friend running late",
+    "today, with a new recipe"
+   ]
+  },
+  {
+   "id": "generosity",
+   "word": "generosity",
+   "third": "gives freely",
+   "first": "give freely",
+   "moments": [
+    "yesterday, sharing lunch",
+    "this week, a ride for a friend",
+    "today, a few kind words",
+    "last weekend, an hour of help"
+   ]
+  },
+  {
+   "id": "gratitude",
+   "word": "gratitude",
+   "third": "notices the good",
+   "first": "notice the good",
+   "moments": [
+    "this morning, over a warm drink",
+    "yesterday, in the afternoon light",
+    "today, on the walk home",
+    "last night, at dinner"
+   ]
+  },
+  {
+   "id": "creativity",
+   "word": "creativity",
+   "third": "makes things",
+   "first": "make things",
+   "moments": [
+    "this week, a small drawing",
+    "yesterday, a better way to do something",
+    "last night, in the kitchen",
+    "today, a silly song"
+   ]
+  },
+  {
+   "id": "fairness",
+   "word": "fairness",
+   "third": "plays fair",
+   "first": "play fair",
+   "moments": [
+    "yesterday, sharing the last slice",
+    "this week, at work",
+    "last weekend, in a game",
+    "today, hearing both sides"
+   ]
+  },
+  {
+   "id": "loyalty",
+   "word": "loyalty",
+   "third": "keeps promises",
+   "first": "keep promises",
+   "moments": [
+    "yesterday, a small promise to a friend",
+    "this week, being there when it was said",
+    "last month, a call that was promised",
+    "today, doing what was said"
+   ]
+  },
+  {
+   "id": "rest",
+   "word": "rest",
+   "third": "rests when it's needed",
+   "first": "rest when it's needed",
+   "moments": [
+    "last night, an early bed",
+    "yesterday, a short break",
+    "this weekend, a slow morning",
+    "today, a few quiet minutes"
+   ]
+  },
+  {
+   "id": "learning",
+   "word": "learning",
+   "third": "keeps learning",
+   "first": "keep learning",
+   "moments": [
+    "this week, a new skill",
+    "yesterday, asking for help",
+    "today, reading something new",
+    "last night, trying a recipe"
+   ]
+  },
+  {
+   "id": "independence",
+   "word": "independence",
+   "third": "makes the call",
+   "first": "make the call",
+   "moments": [
+    "yesterday, a small decision",
+    "this week, picking what to do",
+    "today, saying what fits",
+    "last weekend, choosing the plan"
+   ]
+  },
+  {
+   "id": "calm",
+   "word": "calm",
+   "third": "stays steady",
+   "first": "stay steady",
+   "moments": [
+    "yesterday, in a busy moment",
+    "this week, in a long meeting",
+    "today, in the rush",
+    "last night, with a slow breath"
+   ]
+  },
+  {
+   "id": "warmth",
+   "word": "warmth",
+   "third": "welcomes people",
+   "first": "welcome people",
+   "moments": [
+    "yesterday, saying hi first",
+    "this week, with a new face",
+    "today, a kind hello",
+    "last weekend, hosting a friend"
+   ]
+  },
+  {
+   "id": "play",
+   "word": "play",
+   "third": "makes room for play",
+   "first": "make room for play",
+   "moments": [
+    "last weekend, a silly game",
+    "yesterday, dancing in the kitchen",
+    "this week, being goofy",
+    "today, a few minutes just for fun"
+   ]
+  },
+  {
+   "id": "keeping-going",
+   "word": "keeping going",
+   "third": "keeps going",
+   "first": "keep going",
+   "moments": [
+    "last week, a long task",
+    "yesterday, one more try",
+    "this morning, starting again",
+    "today, one small step"
+   ]
+  }
+ ],
+ "why": [
+  {
+   "id": "values",
+   "text": "writing briefly about what matters, in one's own words, has helped people stay steady when things felt threatening. it works best when the value is their own.",
+   "source": {
+    "label": "Steele, 1988; Cohen & Sherman, 2014, Annual Review of Psychology",
+    "url": "",
+    "evidence": "solid for short-term effects in many studies. effects vary by person and setting."
+   }
+  },
+  {
+   "id": "name",
+   "text": "talking to yourself by name, the way a friend would, adds a little distance. that can make a hard moment feel lighter.",
+   "source": {
+    "label": "Kross et al., 2014, Journal of Personality and Social Psychology",
+    "url": "",
+    "evidence": "good lab evidence for the distance effect. real-life effects are smaller and still being studied."
+   }
+  },
+  {
+   "id": "backfire",
+   "text": "big positive statements can backfire for people with low self-esteem: the further a line sits from what they believe, the worse it can feel. so lines here start small, from real moments.",
+   "source": {
+    "label": "Wood, Perunovic & Lee, 2009, Psychological Science",
+    "url": "",
+    "evidence": "one well-known set of studies. it's why every line here is checked against how true it feels."
+   }
+  }
+ ]
+}
