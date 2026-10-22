@@ -42,7 +42,7 @@ function useTheme() {
   }, [settings.appearance]);
 }
 
-const TABS = ["home", "learn", "practice", "you"];
+const TABS = ["home", "learn", "practice", "book", "you"];
 
 function Routes() {
   const route = useRoute();
@@ -83,7 +83,7 @@ function Routes() {
     default: page = <Home />;
   }
   return (
-    <main className={`app${TABS.includes(route.name) ? "" : " flow"}`}>
+    <main className={`app${TABS.includes(route.name) && !(route.name === "book" && route.tab) ? "" : " flow"}`}>
       <Suspense fallback={<p className="boot" data-loading>{c.copy.app.loading}</p>}>{page}</Suspense>
     </main>
   );

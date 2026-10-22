@@ -12,7 +12,7 @@ import { store } from "../store/store";
 import type { Entry, Kind } from "../store/types";
 import { useData } from "../store/useStore";
 import { Icon } from "../ui/icons";
-import { FlowTop, HabitGlyph, Screen, colorVar } from "../ui/kit";
+import { FlowTop, HabitGlyph, Screen, Speaker, Tabs, colorVar } from "../ui/kit";
 
 const KINDS: Kind[] = ["voice", "about", "keeper"];
 // the cover is always a night sky, so its stars use the bright colors in light mode too
@@ -45,7 +45,6 @@ function Cover() {
   const count = (k: Kind) => entries.filter((e) => e.kind === k).length;
   return (
     <>
-      <FlowTop onClose={() => go({ name: "you" })} />
       <Screen id="book">
         <Sky entries={entries} openedAt={openedAt} />
         <section className="section" aria-labelledby="pages-h">
@@ -65,6 +64,7 @@ function Cover() {
         <Range entries={entries} />
         <p className="small">{t.privacy}</p>
       </Screen>
+      <Tabs current="book" />
     </>
   );
 }
@@ -80,10 +80,11 @@ function Sky({ entries, openedAt }: { entries: Entry[]; openedAt: number }) {
   const label = !entries.length ? t.skyEmpty : entries.length === 1 ? t.skyOne : format(t.sky, { n: entries.length });
   return (
     <section className="cover" aria-labelledby="cover-h">
-      <div>
+      <div className="cover-head">
         <h1 id="cover-h">{t.title}</h1>
-        {name ? <p className="by">{format(t.by, { name: name.toLowerCase() })}</p> : null}
+        <Speaker />
       </div>
+      {name ? <p className="by">{format(t.by, { name: name.toLowerCase() })}</p> : null}
       <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label}>
         <defs>
           {KINDS.map((k) => (

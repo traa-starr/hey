@@ -1,4 +1,4 @@
-// you: your voice map, where your habits show up, how loud it's been, and your book.
+// you: your voice map, where your habits show up, how loud it's been, and settings.
 import * as m from "motion/react-m";
 import { content } from "../content/load";
 import { format } from "../lib/template";
@@ -143,10 +143,6 @@ export function You() {
           <div className="section-head"><h2 id="trend-h">{t.trend}</h2></div>
           <Trend />
         </section>
-        <a className="habit-row" href={href({ name: "book" })}>
-          <span className="glyph" style={{ background: "var(--primary)", viewTransitionName: "book-cover" }}>{Icon.book}</span>
-          <span><b>{t.book}</b><small>{t.bookSub}</small></span>
-        </a>
         <a className="habit-row" href={href({ name: "settings" })}>
           <span className="glyph" style={{ background: "var(--raise)", color: "var(--ink)" }}>{Icon.gear}</span>
           <span><b>{t.settings}</b></span>

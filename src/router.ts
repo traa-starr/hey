@@ -72,8 +72,8 @@ export function go(r: Route, replace = false) {
 }
 
 // how deep a screen sits: tabs, then what opens from them, then what opens from those
-const DEPTH: Partial<Record<Route["name"], number>> = { home: 0, learn: 0, practice: 0, you: 0, lesson: 2, way: 2 };
-const depth = (r: Route) => (r.name === "book" && r.tab ? 2 : DEPTH[r.name] ?? 1);
+const DEPTH: Partial<Record<Route["name"], number>> = { home: 0, learn: 0, practice: 0, you: 0, book: 0, lesson: 2, way: 2 };
+const depth = (r: Route) => (r.name === "book" && r.tab ? 1 : DEPTH[r.name] ?? 1);
 
 // which way a change of screen moves: deeper slides in from the right, back slides away, tabs cross-fade
 export function direction(from: Route, to: Route): "forward" | "back" | "tab" | null {

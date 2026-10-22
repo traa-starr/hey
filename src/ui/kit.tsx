@@ -42,7 +42,7 @@ export function Screen({ children, id }: { children: ReactNode; id: string }) {
   );
 }
 
-function Speaker() {
+export function Speaker() {
   const { settings } = useData();
   if (!settings.readAloud) return null;
   return <button className="ibtn" type="button" onClick={readScreen} aria-label={content().copy.app.readAloud}>{Icon.speaker}</button>;
@@ -77,13 +77,15 @@ export function PageTitle({ children }: { children: ReactNode }) {
   );
 }
 
-export type Tab = "home" | "learn" | "practice" | "you";
+export type Tab = "home" | "learn" | "practice" | "book" | "you";
 export function Tabs({ current }: { current: Tab }) {
   const t = content().copy.tabs;
+  // home sits in the middle, where a thumb rests
   const tabs: { name: Tab; route: Route }[] = [
-    { name: "home", route: { name: "home" } },
     { name: "learn", route: { name: "learn" } },
     { name: "practice", route: { name: "practice" } },
+    { name: "home", route: { name: "home" } },
+    { name: "book", route: { name: "book" } },
     { name: "you", route: { name: "you" } }
   ];
   return (
