@@ -109,10 +109,11 @@ function onHash() {
   const root = document.documentElement;
   root.dataset.nav = type;
   moving = true;
-  // a screen that loads on first use shows a placeholder for a moment: wait for the real screen before sliding it in
+  // a screen that loads on first use shows a placeholder for a moment: wait (briefly) for the real screen before
+  // sliding it in. timers, not animation frames: the browser holds frames back while a transition is being set up.
   const vt = document.startViewTransition(async () => {
     flushSync(apply);
-    for (let i = 0; i < 60 && document.querySelector("[data-loading]"); i++) await new Promise((r) => requestAnimationFrame(r));
+    for (let i = 0; i < 30 && document.querySelector("[data-loading]"); i++) await new Promise((r) => setTimeout(r, 16));
   });
   vt.finished.finally(() => {
     moving = false;

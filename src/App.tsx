@@ -51,7 +51,7 @@ function Routes() {
   useTheme();
   useEffect(() => stopSpeaking, [route]);
   useEffect(() => {
-    const t = window.setTimeout(preload, 2500);
+    const t = window.setTimeout(preload, 600);
     return () => window.clearTimeout(t);
   }, []);
 
