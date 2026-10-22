@@ -1,0 +1,4 @@
+/* home's look-back card, in the same quiet card shape as "you told yourself" */
+.look-back { background: var(--surface); border-radius: 22px; padding: 14px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 4px; }
+.look-back p { margin: 0; }
+.look-back blockquote { margin: 4px 0; font-family: var(--voice); font-style: italic; font-size: 1.2rem; line-height: 1.3; }

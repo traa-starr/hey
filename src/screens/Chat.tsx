@@ -26,13 +26,13 @@ export function keepEntry(keep: Keep, text: string, from: string, holdsSaid = fa
 }
 
 // steps that need nothing from the person: a tap on continue moves on
-const passive = (s: Step) => s.type === "say" || s.type === "scene" || s.type === "mine" || s.type === "list" || s.type === "takeaway";
+const passive = (s: Step) => s.type === "say" || s.type === "scene" || s.type === "mine" || s.type === "list" || s.type === "takeaway" || s.type === "know";
 
 export function Chat({ lessonKey, isWelcome }: { lessonKey: string; isWelcome?: boolean }) {
   const c = content();
   const copy = c.copy;
   const lesson: Lesson | undefined = isWelcome ? c.start ?? undefined : c.lessons[lessonKey];
-  const { progress } = useData();
+  const { progress, done } = useData();
   const resume = progress[lessonKey];
   const [i, setI] = useState(() => Math.min(resume?.i ?? 0, (lesson?.steps.length ?? 1) - 1));
   const [locals, setLocals] = useState<Record<number, Local>>(() => (resume?.locals as Record<number, Local>) ?? {});
@@ -95,7 +95,8 @@ export function Chat({ lessonKey, isWelcome }: { lessonKey: string; isWelcome?: 
   const visible = lesson.steps.slice(0, i + 1);
   const step = lesson.steps[i]!;
   const L = locals[i] ?? {};
-  const ready = passive(step) || !!L.done;
+  // a look back at a lesson not done yet is only a preview, so it needs no tap
+  const ready = passive(step) || !!L.done || (step.type === "recall" && !done[step.from]);
   const last = step.type === "end";
 
   return (
@@ -134,7 +135,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
   const c = content();
   const t = c.copy.lesson;
   const line = useLine();
-  const { name } = useData();
+  const { name, done: doneLessons } = useData();
   switch (step.type) {
     case "say":
       return <SolSays mood={step.mood ?? "calm"}>{line(step.text)}</SolSays>;
@@ -219,7 +220,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
         <>
           <SolSays>{line(step.prompt)}</SolSays>
           {L.done ? (
-            L.kept ? <><p className="me">{result}</p><SolSays mood="happy">{t.kept}</SolSays></> : null
+            L.kept ? <><p className="me">{result}</p>{step.keep ? <SolSays mood="happy">{t.kept}</SolSays> : null}</> : null
           ) : active ? (
             <div className="card">
               <Sentence parts={pieces(line(step.template), { x: text })} />
@@ -228,11 +229,13 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
               <Ideas ideas={step.ideas} picked={text} onPick={(v) => set({ text: v })} />
               <div className="actions">
                 <button className="btn" type="button" disabled={!text.trim()} onClick={() => {
-                  if (step.keep) keepEntry(step.keep, line(result), from, !!step.said);
+                  if (step.keep) {
+                    keepEntry(step.keep, line(result), from, !!step.said);
+                    keptChime();
+                  }
                   buzz(20);
-                  keptChime();
                   set({ kept: true, done: true });
-                }}>{t.keep}</button>
+                }}>{step.keep ? t.keep : c.copy.app.next}</button>
                 <button className="btn ghost" type="button" onClick={() => set({ done: true })}>{c.copy.app.skip}</button>
               </div>
             </div>
@@ -312,6 +315,44 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
           )}
         </div>
       );
+    case "know":
+      return (
+        <div className="know">
+          <span className="label">{t.knowLabel}</span>
+          <p data-say>{step.text}</p>
+          <span className="src">
+            {step.source.url ? <a href={step.source.url} target="_blank" rel="noopener noreferrer">{step.source.label}</a> : step.source.label}
+            {step.evidence ? ` · ${t.evidence}: ${step.evidence}` : ""}
+          </span>
+        </div>
+      );
+    case "recall": {
+      const title = c.lessons[step.from]?.title ?? "";
+      if (!doneLessons[step.from]) {
+        return (
+          <div className="know">
+            <span className="label">{format(t.previewLabel, { title })}</span>
+            <p data-say>{step.answer}</p>
+          </div>
+        );
+      }
+      return (
+        <>
+          <SolSays mood="curious">{format(t.recallIntro, { title })} {step.prompt}</SolSays>
+          {L.done ? (
+            <>
+              <div className="know recall"><span className="label">{t.recallLabel}</span><p data-say>{step.answer}</p></div>
+              <SolSays mood="happy">{L.pick === 0 ? t.recallRemembered : t.recallShown}</SolSays>
+            </>
+          ) : active ? (
+            <div className="replies">
+              <button className="reply" type="button" onClick={() => { buzz(6); set({ pick: 0, done: true }); }}>{t.recallYes}</button>
+              <button className="reply" type="button" onClick={() => { buzz(6); set({ pick: 1, done: true }); }}>{t.recallShow}</button>
+            </div>
+          ) : null}
+        </>
+      );
+    }
     case "experiment":
       return (
         <>

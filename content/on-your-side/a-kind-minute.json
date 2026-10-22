@@ -54,6 +54,15 @@
       ]
     },
     {
+      "type": "know",
+      "text": "self-compassion became a research topic in 2003, when psychologist kristin neff found a way to measure it. since then, hundreds of studies have looked at how people treat themselves on hard days.",
+      "source": {
+        "label": "Neff, 2003, Self and Identity",
+        "url": "https://doi.org/10.1080/15298860309027"
+      },
+      "evidence": "the measure is well established; what it predicts is still being studied"
+    },
+    {
       "type": "write",
       "prompt": "keep one kind line:",
       "template": "{name}, {x}",

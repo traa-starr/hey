@@ -59,6 +59,7 @@ Home card priorities, so cards never fight:
 | --- | --- |
 | proof, evening (after 17:00, with an open experiment) | 40 |
 | lines, morning (before 12:00) | 30 |
+| review, a look back at a finished lesson (foundation's, in `src/growth/review/`) | 20 |
 | lines, the rest of the day | 10 |
 | warm and ladder | no home card |
 

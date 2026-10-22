@@ -5,6 +5,12 @@
   "minutes": 4,
   "steps": [
     {
+      "type": "recall",
+      "from": "talk-to-you/the-you-trick",
+      "prompt": "why does talking to yourself as “you” help?",
+      "answer": "it gives the distance you'd have with a friend's problem."
+    },
+    {
       "type": "say",
       "text": "most of us are much kinder to friends than to ourselves."
     },
@@ -41,7 +47,7 @@
       "options": [
         {
           "label": "probably something harsh",
-          "reply": "most people say that. the gap between those two voices is what we're working with."
+          "reply": "most people say that. and the voice used for a friend is already in there, ready to turn inward."
         },
         {
           "label": "about the same as for a friend",
@@ -59,12 +65,17 @@
       "mood": "curious"
     },
     {
-      "type": "say",
-      "text": "in one set of studies, people who took a kind view of a mistake were more motivated to improve, and studied longer for a retest."
+      "type": "know",
+      "text": "in four experiments at uc berkeley, people who took a kind view of a mistake were more motivated to make up for it. after a hard test, they studied longer for a retest.",
+      "source": {
+        "label": "Breines & Chen, 2012",
+        "url": "https://doi.org/10.1177/0146167212445599"
+      },
+      "evidence": "moderate (four experiments)"
     },
     {
       "type": "write",
-      "prompt": "think of something that's been weighing on you. what would a good friend hear from you?",
+      "prompt": "picture a good friend in a tough spot. what would they hear from you?",
       "template": "i'd tell them {x}",
       "ideas": [
         "one bad day isn't who they are.",

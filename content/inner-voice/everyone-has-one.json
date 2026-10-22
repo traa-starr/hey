@@ -32,8 +32,13 @@
       ]
     },
     {
-      "type": "say",
-      "text": "people who study inner speech find it's a common part of thinking. it helps us plan, remember, and get through hard moments."
+      "type": "know",
+      "text": "psychologists have studied inner speech for nearly a century. a large 2015 review found it's a common part of thinking: it helps us plan, remember, and get through hard moments.",
+      "source": {
+        "label": "Alderson-Day & Fernyhough, 2015",
+        "url": "https://doi.org/10.1037/bul0000021"
+      },
+      "evidence": "strong that inner speech is common; it varies a lot between people"
     },
     {
       "type": "say",
@@ -43,12 +48,12 @@
       "type": "pick",
       "prompt": "which of these sound like your inner voice?",
       "options": [
-        "come on, hurry up.",
-        "don't forget the keys.",
-        "why did i say that?",
         "you've got this.",
-        "ugh.",
-        "not again."
+        "don't forget the keys.",
+        "come on, hurry up.",
+        "nice one.",
+        "why did i say that?",
+        "ugh."
       ],
       "reply": "every one of those counts. that's your inner voice at work."
     },

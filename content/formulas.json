@@ -42,8 +42,8 @@
       "frame": "i'm noticing the thought that ___.",
       "why": "putting a frame around a thought turns it from a fact into something the mind said. in a lab study it made harsh self-statements less uncomfortable.",
       "example": {
-        "before": "i'm a failure.",
-        "after": "i'm noticing the thought that i'm a failure."
+        "before": "i'm behind.",
+        "after": "i'm noticing the thought that i'm behind."
       },
       "template": "i'm noticing the thought that {thought}.",
       "slots": [
@@ -297,7 +297,7 @@
     "i always mess things up.",
     "i'm too much.",
     "i should be further along by now.",
-    "nobody really cares.",
+    "i'm behind on everything.",
     "i'm not good enough.",
     "they're probably annoyed with me."
   ]

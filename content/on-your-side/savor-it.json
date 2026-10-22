@@ -5,13 +5,19 @@
   "minutes": 3,
   "steps": [
     {
-      "type": "say",
-      "text": "minds are quick to replay what went badly, and quick to skip past what went well.",
-      "mood": "curious"
+      "type": "recall",
+      "from": "on-your-side/thank-you-you",
+      "prompt": "where can gratitude point, besides outward?",
+      "answer": "inward: a quiet thanks for small things done today."
     },
     {
       "type": "say",
-      "text": "savoring is the opposite: staying with a good moment a little longer, on purpose."
+      "text": "here's a small skill for the good moments.",
+      "mood": "happy"
+    },
+    {
+      "type": "say",
+      "text": "minds tend to skip past what went well. savoring is staying with a good moment a little longer, on purpose."
     },
     {
       "type": "ask",
@@ -30,6 +36,15 @@
           "reply": "that's okay. try one from this week, or something to look forward to."
         }
       ]
+    },
+    {
+      "type": "know",
+      "text": "psychologists fred bryant and joseph veroff describe savoring as a skill. it can point three ways: looking forward to something, staying in a moment, and remembering one.",
+      "source": {
+        "label": "Bryant & Veroff, 2007; Bryant, 2021",
+        "url": "https://doi.org/10.3389/fpsyg.2021.771698"
+      },
+      "evidence": "a well-studied idea; practices are still being tested"
     },
     {
       "type": "pick",

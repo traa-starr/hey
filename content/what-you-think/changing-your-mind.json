@@ -5,6 +5,12 @@
   "minutes": 3,
   "steps": [
     {
+      "type": "recall",
+      "from": "what-you-think/disagreeing-kindly",
+      "prompt": "what's a kind way to start disagreeing?",
+      "answer": "“i see it differently.”"
+    },
+    {
       "type": "say",
       "text": "knowing where we stand is linked to feeling steadier. researchers call it self-concept clarity."
     },
@@ -30,6 +36,15 @@
           "reply": "that's fine. it might come to you later."
         }
       ]
+    },
+    {
+      "type": "know",
+      "text": "in a 2013 study of over 19,000 people, most expected to change less in the next ten years than they said they'd changed in the last ten. it's called the end of history illusion.",
+      "source": {
+        "label": "Quoidbach, Gilbert & Wilson, 2013",
+        "url": "https://doi.org/10.1126/science.1229294"
+      },
+      "evidence": "moderate (large studies; based on how people remember their own change)"
     },
     {
       "type": "write",

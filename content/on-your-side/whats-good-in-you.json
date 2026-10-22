@@ -5,6 +5,12 @@
   "minutes": 4,
   "steps": [
     {
+      "type": "recall",
+      "from": "on-your-side/a-kind-minute",
+      "prompt": "what was the idea about kindness inward?",
+      "answer": "kindness inward isn't going easy. it tends to go along with greater well-being."
+    },
+    {
       "type": "say",
       "text": "let's look at what's already good. no modesty needed here.",
       "mood": "happy"
@@ -31,6 +37,15 @@
       "reply": "kept in the book, under about me. they were there all along.",
       "keep": "what-i-think",
       "as": "{x}."
+    },
+    {
+      "type": "know",
+      "text": "in the early 2000s, psychologists gathered a list of 24 character strengths, like kindness, humor and curiosity, from writing across many cultures and centuries.",
+      "source": {
+        "label": "Peterson & Seligman, 2004; Seligman et al., 2005",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16045394/"
+      },
+      "evidence": "a widely used way to describe strengths"
     },
     {
       "type": "ask",

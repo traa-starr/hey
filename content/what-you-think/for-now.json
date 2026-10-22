@@ -5,6 +5,12 @@
   "minutes": 3,
   "steps": [
     {
+      "type": "recall",
+      "from": "what-you-think/i-think-because",
+      "prompt": "what makes an opinion easy to say?",
+      "answer": "a reason. “i think… because…”"
+    },
+    {
       "type": "say",
       "text": "sometimes an opinion feels risky because it sounds permanent."
     },
@@ -26,6 +32,15 @@
     {
       "type": "say",
       "text": "changing one's mind isn't flaky. it's what thinking looks like while still learning."
+    },
+    {
+      "type": "know",
+      "text": "psychologists call holding a view with an open hand intellectual humility: knowing it could change with new information. in studies, it goes along with curiosity and openness.",
+      "source": {
+        "label": "Leary et al., 2017",
+        "url": "https://doi.org/10.1177/0146167217697695"
+      },
+      "evidence": "moderate (a set of studies; links, not proof of cause)"
     },
     {
       "type": "write",

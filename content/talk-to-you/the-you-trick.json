@@ -18,6 +18,15 @@
       "text": "the \"you\" group gave better speeches, saw the task more as a challenge than a threat, and dwelled on it less afterward."
     },
     {
+      "type": "know",
+      "text": "these studies come from ethan kross's lab at the university of michigan. the paper, published in 2014, reports seven experiments.",
+      "source": {
+        "label": "Kross et al., 2014",
+        "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+      },
+      "evidence": "moderate (seven studies from one lab)"
+    },
+    {
       "type": "ask",
       "text": "why do you think that helps?",
       "options": [
@@ -48,8 +57,8 @@
       "prompt": "try one. finish the sentence:",
       "template": "hey {name}, you {x}",
       "ideas": [
-        "are doing better than you think.",
-        "are tired, and that makes sense.",
+        "are allowed to rest.",
+        "can take this one step at a time.",
         "have gotten through hard days before.",
         "don't have to figure it all out tonight."
       ],

@@ -53,6 +53,34 @@ describe("content", () => {
     }
   });
 
+  it("gives every lesson a short background break with a source", () => {
+    for (const l of Object.values(c.lessons)) {
+      if (l === c.start) continue;
+      const know = l.steps.filter((s) => s.type === "know");
+      expect(know.length, `${l.id} needs a background card`).toBeGreaterThanOrEqual(1);
+      for (const k of know) {
+        expect(k.text.split(/\s+/).length, `${l.id}: ${k.text}`).toBeLessThanOrEqual(36);
+        expect(k.source.label, l.id).not.toBe("");
+      }
+    }
+  });
+
+  it("opens each later lesson in a path with a look back at the one before", () => {
+    for (const p of c.paths) p.items.forEach((it, i) => {
+      if (i === 0 || it.habit) return;
+      const first = it.lesson.steps[0];
+      expect(first?.type === "recall" && first.from, it.key).toBe(p.items[i - 1]!.key);
+    });
+  });
+
+  it("keeps the book for kind things: no hard feelings or harsh thoughts as keepable ideas", () => {
+    const heavy = /\b(sad|stupid|idiot|failed?|hate|worthless|annoyed|embarrassed|disappointed|tired|anxious|worried|stressed|behind)\b/i;
+    for (const l of Object.values(c.lessons)) for (const s of l.steps) {
+      if (s.type === "write" && s.keep) for (const idea of s.ideas) expect(heavy.test(idea), `${l.id}: ${idea}`).toBe(false);
+      if (s.type === "pick" && s.keep) for (const o of s.options) expect(heavy.test(o), `${l.id}: ${o}`).toBe(false);
+    }
+  });
+
   it("gives every way to answer a source and an evidence label", () => {
     for (const f of c.formulas) {
       expect(f.source.label, f.id).toBeTruthy();

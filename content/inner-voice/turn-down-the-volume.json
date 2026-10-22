@@ -5,18 +5,41 @@
   "minutes": 4,
   "steps": [
     {
+      "type": "recall",
+      "from": "inner-voice/a-thought-not-a-fact",
+      "prompt": "what small frame puts distance around a thought?",
+      "answer": "“i'm noticing the thought that…”"
+    },
+    {
       "type": "say",
       "text": "when a feeling is loud, giving it a precise name can help turn the volume down."
     },
     {
       "type": "say",
-      "text": "it sounds too simple. but in lab studies, putting feelings into words quieted the brain's alarm response.",
+      "text": "it sounds almost too simple. here's where it comes from.",
       "mood": "curious"
+    },
+    {
+      "type": "know",
+      "text": "in a 2007 brain imaging study at ucla, putting a feeling into words quieted the amygdala, part of the brain's alarm system. researchers call it affect labeling.",
+      "source": {
+        "label": "Lieberman et al., 2007",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
+      },
+      "evidence": "moderate (lab studies of labeling feelings)"
     },
     {
       "type": "ask",
       "text": "what's one feeling you've had today?",
       "options": [
+        {
+          "label": "good",
+          "reply": "nice. naming the good ones counts too."
+        },
+        {
+          "label": "calm",
+          "reply": "lovely. calm is worth noticing."
+        },
         {
           "label": "tired",
           "reply": "noted. just naming it is the practice."
@@ -28,14 +51,6 @@
         {
           "label": "annoyed",
           "reply": "noted. just naming it is the practice."
-        },
-        {
-          "label": "flat",
-          "reply": "noted. just naming it is the practice."
-        },
-        {
-          "label": "good",
-          "reply": "nice. naming the good ones counts too."
         }
       ]
     },
@@ -69,13 +84,13 @@
     },
     {
       "type": "write",
-      "prompt": "say how you are, with a volume:",
+      "prompt": "now one good feeling from today, with its volume. this one goes in the book:",
       "template": "i'm {x}",
       "ideas": [
-        "a little tired.",
-        "kind of nervous about tomorrow.",
-        "really proud of myself.",
-        "mostly okay, a little flat."
+        "a little proud of myself.",
+        "quietly content.",
+        "really relieved.",
+        "kind of excited about the weekend."
       ],
       "keep": "my-words"
     },
