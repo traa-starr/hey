@@ -1,0 +1,35 @@
+/* one rung up */
+.ladder-here { display: flex; flex-direction: column; gap: 4px; margin: 0; background: var(--orange-soft); border-radius: 22px; padding: 14px 16px; }
+.ladder-here-text { font-family: var(--voice); font-style: italic; font-size: 1.25rem; line-height: 1.25; overflow-wrap: anywhere; }
+.ladder-why { display: flex; flex-direction: column; gap: 12px; }
+.ladder-sources { display: flex; flex-direction: column; gap: 8px; }
+.ladder-sources ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+
+.ladder-believe { display: flex; flex-direction: column; gap: 6px; background: var(--surface); border-radius: 22px; padding: 14px 16px; box-shadow: var(--shadow); }
+.ladder-number { margin: 0; font-family: var(--display); font-weight: 700; font-size: 2.6rem; line-height: 1; text-align: center; color: var(--orange); font-variant-numeric: tabular-nums; }
+.ladder-believe input { width: 100%; accent-color: var(--primary); height: 2.75rem; margin: 0; cursor: pointer; }
+.ladder-believe .ends { display: flex; justify-content: space-between; font-size: .85rem; color: var(--soft); }
+
+/* the ladder: two rails, a rung between them for each thought. the start is first in the list and sits at the bottom */
+.ladder-steps { list-style: none; margin: 0; padding: 4px 26px; display: flex; flex-direction: column-reverse; position: relative; }
+.ladder-steps::before, .ladder-steps::after { content: ""; position: absolute; top: 0; bottom: 0; width: 5px; border-radius: 99px; background: var(--orange); opacity: .55; }
+.ladder-steps::before { left: 6px; }
+.ladder-steps::after { right: 6px; }
+.ladder-step { position: relative; margin-block: 7px; background: var(--surface); border-radius: 18px; padding: 12px 15px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 3px; min-width: 0; animation: ladder-rise .6s var(--ease) both; animation-delay: calc(var(--i, 0) * .14s); }
+.ladder-step::before, .ladder-step::after { content: ""; position: absolute; top: 50%; width: 22px; height: 5px; margin-top: -2px; background: var(--orange); opacity: .55; }
+.ladder-step::before { left: -22px; }
+.ladder-step::after { right: -22px; }
+.ladder-step.start { background: var(--orange-soft); box-shadow: none; }
+.ladder-step.peak { outline: 2px solid var(--orange); outline-offset: -2px; }
+.ladder-tag { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.ladder-text { font-family: var(--voice); font-style: italic; font-size: 1.3rem; line-height: 1.22; overflow-wrap: anywhere; }
+.ladder-text.start-word { font-family: var(--display); font-style: normal; font-weight: 650; font-size: 1.15rem; }
+.ladder-meta { font-size: .85rem; color: var(--soft); }
+.ladder-steps.compact .ladder-step { padding: 9px 13px; animation: none; box-shadow: none; background: var(--raise); }
+.ladder-steps.compact .ladder-step.start { background: var(--orange-soft); }
+.ladder-steps.compact .ladder-text { font-size: 1.1rem; }
+.ladder-past { gap: 12px; }
+@keyframes ladder-rise { from { opacity: 0; translate: 0 10px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ladder-step { animation: none; }
+}

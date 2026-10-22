@@ -1,0 +1,136 @@
+{
+  "points": [
+    {
+      "id": "heavy", "word": "heavy",
+      "says": ["everything feels like too much right now.", "i can't carry all of this.", "it just keeps weighing on me."],
+      "tiers": [
+        { "pick": ["it's heavy right now, and that makes sense.", "i'm carrying a lot, and i can feel it.", "this is a hard stretch, and i'm in it."], "softer": ["right now it's heavy. that's all i know."] },
+        { "pick": ["heavy isn't the same as forever.", "i've carried heavy days before and set them down.", "part of this weight is because i care."], "softer": ["a heavy feeling can still shift a little."] },
+        { "pick": ["i don't have to carry all of it at once.", "i can put one thing down for a minute.", "i only need to get through this next hour."], "softer": ["i can rest for a minute before anything else."] },
+        { "pick": ["one small thing is within reach today.", "i can ask for a little help with one piece.", "i'm still showing up, even carrying this."], "softer": ["i showed up here, and that took something."] },
+        { "pick": ["being gentle with myself fits, even while it's heavy.", "lighter moments have come before, and they can come again.", "this weight is not the whole of me."], "softer": ["there may be a lighter moment later today."] }
+      ]
+    },
+    {
+      "id": "overwhelmed", "word": "overwhelmed",
+      "says": ["there's too much and i can't keep up.", "i don't even know where to start.", "everything is landing at once."],
+      "tiers": [
+        { "pick": ["a lot is landing at once, and of course it feels like much.", "i'm looking at the whole pile, and it looks huge.", "it makes sense that my mind wants to stop."], "softer": ["there's a lot here. i can notice that."] },
+        { "pick": ["the pile feels bigger than any single thing in it.", "i don't have to see the whole pile to take one piece.", "feeling swamped doesn't mean i can't do any of it."], "softer": ["one piece of this is smaller than the whole."] },
+        { "pick": ["i can pick one thing and leave the rest for now.", "some of this can wait until tomorrow.", "i only need to know the very first step."], "softer": ["i can look at just one thing."] },
+        { "pick": ["i've sorted out a tangle before, one thread at a time.", "five minutes on one thing is a real start.", "a short list is easier to hold than a loud head."], "softer": ["i could write down one thing and call it a start."] },
+        { "pick": ["steady steps count, even small ones.", "i can do this in pieces, at a pace that works.", "not all of it is mine to carry today."], "softer": ["a small piece done is still done."] }
+      ]
+    },
+    {
+      "id": "worried", "word": "worried",
+      "says": ["what if it all goes badly?", "i keep running through what could happen.", "i can't stop thinking about it."],
+      "tiers": [
+        { "pick": ["my mind is trying to protect me by looking ahead.", "i'm worried because this matters to me.", "it makes sense that my thoughts keep circling."], "softer": ["i notice i'm worried, and that's okay."] },
+        { "pick": ["a worry is a guess, not a fact.", "my mind is showing me one possible ending, not the only one.", "the worry feels loud, and loud isn't the same as likely."], "softer": ["i don't know how this ends yet."] },
+        { "pick": ["i don't have to answer every what if tonight.", "there are other ways this could go, too.", "i can't know yet, and i can wait to find out."], "softer": ["i can leave some of the what ifs for later."] },
+        { "pick": ["i've handled things i was worried about before.", "if it comes, i'll meet it with what i have then.", "i can do one small thing about the part that's in my hands."], "softer": ["some things i worried about turned out okay."] },
+        { "pick": ["i can be a steady friend to myself while i wait.", "not knowing is hard, and i can get through it.", "a calmer thought is allowed to sit next to the worry."], "softer": ["i can breathe once, and the worry can stay."] }
+      ]
+    },
+    {
+      "id": "drained", "word": "drained",
+      "says": ["i have nothing left.", "i'm so tired of trying.", "even small things feel like too much."],
+      "tiers": [
+        { "pick": ["i've been giving a lot, and being drained makes sense.", "my body and mind are asking for rest.", "being this tired is a sign i've been doing a lot."], "softer": ["i'm drained, and i can say so."] },
+        { "pick": ["low energy is a state, not a verdict on me.", "tired is a reason to be gentle, not a flaw.", "some of this is just tiredness talking."], "softer": ["tired can make everything look heavier."] },
+        { "pick": ["i can lower the bar for today.", "rest counts as something i'm doing.", "i can do the smallest version of what's next."], "softer": ["the smallest version is plenty."] },
+        { "pick": ["one kind thing for my body is within reach: water, a sit, a stretch.", "i can say no to one thing without explaining.", "i've come back from empty before."], "softer": ["one glass of water is a kindness."] },
+        { "pick": ["rest is allowed to be part of the plan.", "energy tends to return when i'm kind to myself.", "i'm doing what i can, and that is enough for today."], "softer": ["tonight i can let some things wait."] }
+      ]
+    },
+    {
+      "id": "sad", "word": "sad",
+      "says": ["everything feels grey.", "i just feel so low.", "i don't want to be here right now."],
+      "tiers": [
+        { "pick": ["i'm sad, and there's room for that.", "sadness shows up when something matters.", "it makes sense that i feel low right now."], "softer": ["i'm sad, and i can let that be true."] },
+        { "pick": ["sadness moves, even when it doesn't feel like it.", "feeling low is not the same as being lost.", "i can feel sad and still be myself."], "softer": ["this feeling is here now, and it can change."] },
+        { "pick": ["i don't have to cheer up to be okay.", "i can be sad and do one small thing.", "i can let this wash through without arguing with it."], "softer": ["i can let the feeling be as big as it is."] },
+        { "pick": ["someone would be glad to hear from me.", "there's been warmth in my days before.", "a small comfort is within reach: tea, a song, a blanket."], "softer": ["a small comfort might help a little."] },
+        { "pick": ["i can be gentle with myself while this passes through.", "light has come back after low days before.", "i'm still here, and that counts."], "softer": ["even low days have a quiet moment in them."] }
+      ]
+    },
+    {
+      "id": "lonely", "word": "lonely",
+      "says": ["nobody really gets me.", "i feel so alone with all of this.", "everyone else has someone."],
+      "tiers": [
+        { "pick": ["wanting connection is human, and i'm feeling that want.", "feeling lonely means i care about people.", "it makes sense that this hurts."], "softer": ["i'm lonely right now, and that's allowed."] },
+        { "pick": ["lonely is a feeling, not a fact about my whole life.", "other people feel this too, even when it doesn't show.", "feeling alone doesn't mean i am unloved."], "softer": ["the feeling is real, and it isn't the whole picture."] },
+        { "pick": ["there's at least one person i've felt comfortable with.", "i can keep myself company kindly for now.", "connection can be small: a message, a wave, a shared laugh."], "softer": ["i can think of one person, even without reaching out."] },
+        { "pick": ["i could send one short message, no pressure.", "being around people, even quietly, counts.", "i've felt close to someone before, and i can again."], "softer": ["i could just think warmly of someone today."] },
+        { "pick": ["i can be a good companion to myself in the meantime.", "reaching out is brave, and i can do it at my own pace.", "there is room in my life for more connection."], "softer": ["a kind word to myself is a start."] }
+      ]
+    },
+    {
+      "id": "stuck", "word": "stuck",
+      "says": ["nothing is ever going to change.", "i keep doing the same thing.", "i can't move forward."],
+      "tiers": [
+        { "pick": ["feeling stuck is a real, tiring place to be.", "part of me wants change, and that part is awake.", "it makes sense that this feels slow."], "softer": ["right now it feels stuck. i can say that."] },
+        { "pick": ["stuck is how it feels, and feelings change.", "slow isn't the same as stopped.", "i don't have to see the whole road to move."], "softer": ["it may be slower than i'd like, not stopped."] },
+        { "pick": ["i can try one different small thing.", "i can ask what the smallest next step would be.", "i don't need a plan, just a direction."], "softer": ["i can wonder what one different thing might be."] },
+        { "pick": ["i've gotten unstuck before, in small ways.", "a tiny step still makes the picture different.", "someone could help me see it from another side."], "softer": ["i've moved before, even a little."] },
+        { "pick": ["change can start small and still be real.", "i can try something and learn from how it goes.", "i'm allowed to take my time and still move."], "softer": ["one small change is a change."] }
+      ]
+    },
+    {
+      "id": "behind", "word": "behind",
+      "says": ["everyone else is so far ahead of me.", "i thought i would be further along by now.", "i'm running out of time."],
+      "tiers": [
+        { "pick": ["it makes sense that i feel this pressure.", "i want things for myself, and that's why this stings.", "comparing is something minds do, and mine is doing it."], "softer": ["i feel behind, and i can notice that."] },
+        { "pick": ["i only see the surface of other people's timelines.", "there isn't one schedule everyone follows.", "being behind is a feeling about a comparison."], "softer": ["other people's paths aren't mine."] },
+        { "pick": ["i'm exactly where i am, and from here i can step.", "i've done more than i'm giving myself credit for.", "i can look at my own distance, not anyone else's."], "softer": ["i can name one thing i've done lately."] },
+        { "pick": ["one small piece of progress is available today.", "i've learned things this year that i didn't know before.", "my pace can be mine."], "softer": ["i know something now that i didn't before."] },
+        { "pick": ["moving at my own pace still counts as moving.", "there's time to do things that matter to me.", "i can be proud of one thing i've done, even small."], "softer": ["i can give myself a little credit."] }
+      ]
+    },
+    {
+      "id": "not-enough", "word": "not enough",
+      "says": ["i'm not good enough.", "everyone can see i'm not enough.", "i'm too much and not enough at once."],
+      "tiers": [
+        { "pick": ["it hurts to feel this way about myself.", "this thought is old and loud, and it's been trying to push me to do better.", "i can notice this thought without agreeing with it."], "softer": ["i'm hearing a harsh thought, and i'm noticing it."] },
+        { "pick": ["a thought being loud doesn't make it true.", "this is a feeling about me, not a fact about me.", "there are parts of me this thought leaves out."], "softer": ["this thought only tells part of the story."] },
+        { "pick": ["i've done things i'm glad about.", "someone has valued something about me.", "i don't need to be perfect to be worth caring about."], "softer": ["i can think of one small thing i did okay."] },
+        { "pick": ["i can name one thing i do reasonably well.", "i've shown care for someone, and that matters.", "trying counts, even when it isn't perfect."], "softer": ["i showed up today, and that counts for something."] },
+        { "pick": ["i'm allowed to be a work in progress and still worthy of kindness.", "i can speak to myself the way i would to a friend.", "i matter, even on days i can't feel it."], "softer": ["i can be a little kinder to myself, even if i don't feel it."] }
+      ]
+    },
+    {
+      "id": "embarrassed", "word": "embarrassed",
+      "says": ["i can't believe i did that.", "everyone is thinking about it.", "i want to disappear."],
+      "tiers": [
+        { "pick": ["feeling embarrassed means i care how i come across.", "this feeling is strong, and it's okay that it's here.", "it makes sense that it stings right now."], "softer": ["i'm embarrassed, and that's a normal feeling."] },
+        { "pick": ["most people are busy with their own worries.", "something small to me can look smaller to others.", "embarrassment fades faster than it feels like it will."], "softer": ["this feeling is big now, and it can get smaller."] },
+        { "pick": ["lots of people have done something like this.", "i can laugh about it with someone kind, later.", "one moment is not all of me."], "softer": ["it was one moment out of many."] },
+        { "pick": ["i've recovered from awkward moments before.", "people have seen me at my best, too.", "i can let myself off the hook a little."], "softer": ["i got through the last awkward moment, too."] },
+        { "pick": ["being human includes awkward moments, and i'm human.", "i can be on my own side about this.", "i can move on at my own pace."], "softer": ["tomorrow it will probably feel smaller."] }
+      ]
+    },
+    {
+      "id": "irritated", "word": "irritated",
+      "says": ["everything is annoying me today.", "i'm so tired of people.", "i'm about to snap."],
+      "tiers": [
+        { "pick": ["something matters to me, and that's why i'm irritated.", "irritation is a signal, and it's allowed to be here.", "it makes sense that my patience is thin."], "softer": ["i'm irritated, and i can say so."] },
+        { "pick": ["feeling irritated doesn't make me a bad person.", "underneath the edge, there may be tiredness or a need.", "i can feel this and choose what to do with it."], "softer": ["there may be something under the irritation."] },
+        { "pick": ["i can take a few breaths before i respond.", "i can step away for a minute, and come back.", "i can ask what i actually need right now."], "softer": ["i could take one slow breath."] },
+        { "pick": ["i can say what i need calmly, or write it down first.", "i've handled irritation well before.", "a short walk or a drink of water might help."], "softer": ["i could name what i need, just to myself."] },
+        { "pick": ["i can be firm and kind at the same time.", "feeling irritated and still caring can both be true.", "my patience can come back with some rest."], "softer": ["i can let the edge soften a little."] }
+      ]
+    },
+    {
+      "id": "numb", "word": "numb",
+      "says": ["i don't feel anything.", "everything feels flat.", "i'm just going through the motions."],
+      "tiers": [
+        { "pick": ["feeling numb can be a way of coping, and it has been helping.", "flat is a feeling, too, and it's allowed.", "it makes sense that part of me turned the volume down."], "softer": ["i feel flat, and that's allowed."] },
+        { "pick": ["numb doesn't mean something is missing from me.", "feelings can go quiet and return.", "i don't have to force a feeling."], "softer": ["quiet doesn't mean gone."] },
+        { "pick": ["i can notice one thing around me: a color, a sound.", "small sensations can be a gentle way back.", "i can go slowly."], "softer": ["i can notice one small thing in the room."] },
+        { "pick": ["something small used to feel good, and i could try it softly.", "i can warm my hands on a cup of something.", "even a flat day has an ordinary moment in it."], "softer": ["i could hold something warm."] },
+        { "pick": ["i can be patient with myself while feeling returns.", "i don't have to feel everything at once.", "i'm still here, and i can take small steps."], "softer": ["feeling can return slowly, and that's okay."] }
+      ]
+    }
+  ]
+}
