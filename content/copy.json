@@ -2,53 +2,171 @@
   "app": {
     "name": "hey you",
     "loading": "hey you",
-    "close": "leave, nothing is lost",
+    "close": "close, nothing is lost",
+    "back": "back",
     "readAloud": "read this screen aloud",
     "next": "next",
+    "continue": "continue",
     "skip": "skip",
     "done": "done",
     "tellMore": "tell me more",
-    "tellLess": "less",
     "ideas": "ideas, if you want one",
     "progress": "progress",
-    "back": "back"
+    "companionDefault": "sol"
   },
   "tabs": {
-    "today": "today",
-    "explore": "explore",
-    "book": "your book",
+    "home": "home",
+    "learn": "learn",
+    "practice": "practice",
+    "you": "you",
     "label": "main"
   },
   "greeting": {
-    "night": "hello, {name}.",
+    "night": "hey {name}.",
     "dawn": "morning, {name}.",
     "day": "hey {name}.",
     "dusk": "evening, {name}.",
     "noName": "you"
   },
-  "today": {
-    "toldYourself": "you told yourself",
-    "toldEmpty": "lines you write to yourself will come back here, one a day.",
-    "answerTitle": "did your inner voice say something?",
-    "answerSub": "answer it, in your words.",
-    "questionLabel": "getting to know you",
-    "questionNote": "no right answers. it goes in your book.",
-    "noted": "noted in your book.",
-    "explore": "more ways to get to know you",
+  "sol": {
+    "dawn": [
+      "new day. want to do one small thing together?",
+      "morning. one small step is plenty.",
+      "good to see you. let's keep it light."
+    ],
+    "day": [
+      "good to see you. your next step is a short one.",
+      "hey. a few minutes is enough.",
+      "nice to see you. no rush."
+    ],
+    "dusk": [
+      "how was today? no pressure to say.",
+      "evening. let's do something gentle.",
+      "you made it through today. that counts."
+    ],
+    "night": [
+      "it's late. let's keep it gentle.",
+      "still up? we can take it slow.",
+      "night mode. small and kind."
+    ]
+  },
+  "home": {
+    "checkIn": "check in",
+    "next": "your next step",
+    "nextDone": "you've finished every lesson. replay any of them in learn.",
+    "lessonOf": "{path} · lesson {n} of {total} · {min} min",
+    "check": "voice check",
+    "checkSub": "find your voice habits",
+    "loud": "it's loud right now",
+    "loudSub": "answer it, together",
+    "catch": "catch it",
+    "catchSub": "3 taps, no typing",
+    "told": "you told yourself",
     "reveal": "tap to read it"
   },
-  "loudness": {
-    "names": [
-      "a whisper",
-      "quiet",
-      "clear",
-      "loud",
-      "all i can hear"
+  "learn": {
+    "title": "learn",
+    "lessons": "{n} lessons",
+    "done": "done",
+    "start": "start",
+    "resume": "pick up again",
+    "again": "again",
+    "minutes": "{n} min"
+  },
+  "lesson": {
+    "keep": "keep it",
+    "kept": "kept in your book.",
+    "keepThese": "keep these",
+    "pickedNone": "nothing picked, and that's okay.",
+    "picks": "your picks",
+    "pickAs": "i'd pick {x}.",
+    "both": "both",
+    "neither": "neither",
+    "takeaway": "keep this",
+    "saveTakeaway": "save to my book",
+    "savedTakeaway": "saved to your book.",
+    "experiment": "try it today",
+    "tryIt": "i'll try it",
+    "notToday": "maybe not today",
+    "tryReply": "nice. no pressure either way.",
+    "notReply": "that's okay. it'll be here.",
+    "whichHabit": "which habit is talking?",
+    "finish": "done",
+    "finished": "lesson done. nice work.",
+    "evidence": "evidence",
+    "nameHello": "nice to meet you, {name}.",
+    "thatsMe": "that's me",
+    "writeOwn": "your words, or tap an idea",
+    "sources": "where this comes from",
+    "habitIntro": "this is {name}.",
+    "habitSounds": "it tends to say things like:",
+    "habitFamiliar": "does it sound familiar?",
+    "habitOften": "often",
+    "habitSometimes": "sometimes",
+    "habitRarely": "not really",
+    "habitOftenReply": "thanks for noticing. that's the hard part.",
+    "habitSometimesReply": "makes sense. most habits come and go.",
+    "habitRarelyReply": "good to know. it might be quieter for you.",
+    "habitJob": "what it's trying to do: {job}",
+    "habitMisses": "what it can leave out: {misses}",
+    "habitSpot": "let's spot it in the wild.",
+    "habitAnswers": "a few ways you could answer it. try each one on:",
+    "habitAnswersReply": "none of these is the right one. pick whatever fits.",
+    "habitWrite": "your own answer:",
+    "habitTitle": "{name}",
+    "spotReply": "good noticing. one way to read it:",
+    "breatheAsk": "want to take a breath first?",
+    "breatheYes": "take a breath"
+  },
+  "check": {
+    "ask": "does your inner voice ever say…",
+    "me": "that's me",
+    "sometimes": "sometimes",
+    "not": "not really",
+    "note": "no right answers. just notice.",
+    "of": "{n} of {total}",
+    "intro": "swipe through a few things inner voices say. takes about two minutes.",
+    "start": "start",
+    "mapTitle": "your voice map",
+    "mapSol": "here's how your inner voice tends to talk. bigger means more often. none of these are flaws: each one is trying to help.",
+    "mapEmpty": "do a voice check to see your map.",
+    "again": "check again",
+    "top": "your loudest habits",
+    "mapQuiet": "none of these matched much for you, and that's good to know. you can catch a habit any time it shows up.",
+    "even": "these show up about evenly for you",
+    "undo": "undo the last card",
+    "done": "done"
+  },
+  "habit": {
+    "says": "it says things like",
+    "job": "what it's trying to do",
+    "misses": "what it can leave out",
+    "answers": "ways to answer it",
+    "lesson": "learn about it",
+    "catch": "i caught it just now",
+    "answer": "answer it now"
+  },
+  "catch": {
+    "title": "catch it",
+    "which": "which habit just spoke up?",
+    "where": "where were you?",
+    "loud": "how loud was it?",
+    "places": [
+      "work",
+      "home",
+      "people",
+      "my body",
+      "money",
+      "the future",
+      "the past",
+      "online",
+      "something else"
     ],
-    "label": "how loud it is",
-    "unset": "drag to set it",
-    "notSet": "not set",
-    "hardToSay": "hard to say"
+    "save": "catch it",
+    "saved": "caught. that's how you get to know it.",
+    "answerNow": "answer it now",
+    "done": "done",
+    "notSure": "not sure which"
   },
   "answer": {
     "catchAsk": "what did your inner voice say?",
@@ -84,38 +202,70 @@
     "seeBook": "see your book",
     "backToday": "back to today",
     "includesSaid": "this answer includes your inner voice's words. it's yours to keep or change.",
-    "change": "change it"
+    "change": "change it",
+    "fromHabit": "what did {habit} say?"
   },
-  "explore": {
-    "title": "explore",
-    "waysTitle": "ways to answer",
-    "setsTitle": "getting to know you",
-    "tried": "tried",
-    "minutes": "{n} min",
-    "tryIt": "try it on one of yours",
-    "why": "why it works",
-    "example": "for example",
-    "source": "source",
-    "resume": "pick up again"
+  "loudness": {
+    "names": [
+      "a whisper",
+      "quiet",
+      "clear",
+      "loud",
+      "all i can hear"
+    ],
+    "label": "how loud it is",
+    "unset": "drag to set it",
+    "notSet": "not set",
+    "hardToSay": "hard to say"
   },
-  "lesson": {
-    "keep": "keep it",
-    "keepThese": "keep these",
-    "kept": "kept in your book.",
-    "noPicks": "no picks this time, and that's okay.",
-    "picks": "your picks",
-    "pickAs": "i'd pick {x}.",
-    "both": "both",
-    "neither": "neither",
-    "tryReply": "nice. no pressure either way.",
-    "nameHello": "nice to meet you, {name}.",
-    "thatsMe": "that's me",
-    "ofTotal": "{n} of {total}",
-    "orYourOwn": "or your own"
+  "breathe": {
+    "title": "breathe",
+    "sub": "one minute with {companion}",
+    "in": "breathe in",
+    "out": "and out",
+    "done": "nice. whenever you're ready.",
+    "static": "breathe in for four, out for six. three times, at your own pace.",
+    "start": "start",
+    "again": "again"
+  },
+  "checkin": {
+    "ask": "how loud is your inner voice today?",
+    "which": "anything in particular? (optional)",
+    "save": "that's it",
+    "saved": "thanks for checking in.",
+    "none": "skip"
+  },
+  "practice": {
+    "title": "practice",
+    "sol": "what would help right now?",
+    "catch": "catch it",
+    "catchSub": "3 taps, no typing",
+    "answer": "answer it",
+    "answerSub": "find new words, together",
+    "breathe": "breathe",
+    "breatheSub": "one minute, slow",
+    "check": "voice check",
+    "checkSub": "map your voice habits",
+    "tot": "this or that",
+    "totSub": "quick picks about you",
+    "ways": "ways to answer"
+  },
+  "you": {
+    "title": "you",
+    "map": "your voice map",
+    "when": "when it shows up",
+    "whenEmpty": "catch a habit a few times and you'll see where it shows up.",
+    "trend": "how loud it's been",
+    "trendEmpty": "check in a few times to see this.",
+    "book": "your book",
+    "bookSub": "everything you've kept",
+    "settings": "settings",
+    "caught": "caught {n} times",
+    "caughtOnce": "caught once"
   },
   "book": {
     "title": "your book",
-    "voiceTab": "things you've told yourself",
+    "voiceTab": "words",
     "aboutTab": "about you",
     "voiceEmpty": "every answer you keep lands here, in your words.",
     "aboutEmpty": "what you like and think lands here, a little at a time.",
@@ -126,7 +276,9 @@
     "removeAsk": "remove this from your book?",
     "keepIt": "keep it",
     "editLabel": "edit this entry",
-    "privacy": "only on this phone. edit or remove anything, anytime."
+    "privacy": "only on this phone. edit or remove anything, anytime.",
+    "keepTab": "keepers",
+    "keepEmpty": "lines you save from lessons land here."
   },
   "settings": {
     "title": "settings",
@@ -147,7 +299,7 @@
     "soundOn": "soft chimes when you set and keep things",
     "resurface": "show a line from your book on today",
     "lookTitle": "appearance",
-    "lookTime": "follow the time of day",
+    "lookTime": "match my phone",
     "lookLight": "always light",
     "lookDark": "always dark",
     "aboutTitle": "about hey you",
@@ -165,10 +317,20 @@
     "clearAsk": "clear your whole book and start fresh? this can't be undone.",
     "clearYes": "clear it all",
     "clearNo": "keep it",
-    "storageNote": "this browser isn't letting hey you save. it still works, but what you keep lasts only until you close it."
+    "storageNote": "this browser isn't letting hey you save. it still works, but what you keep lasts only until you close it.",
+    "companionTitle": "your companion",
+    "companionName": "name",
+    "companionOn": "show {companion}"
   },
   "errors": {
     "content": "something in this part didn't load. the rest of hey you still works.",
     "missing": "that page isn't here anymore."
+  },
+  "way": {
+    "title": "ways to answer",
+    "example": "for example",
+    "why": "why it works",
+    "source": "source",
+    "tryIt": "try it on one of yours"
   }
 }

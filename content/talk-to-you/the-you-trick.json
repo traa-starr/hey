@@ -1,0 +1,79 @@
+{
+  "id": "the-you-trick",
+  "title": "the \"you\" trick",
+  "subtitle": "the idea behind the name",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "here's the idea behind the name hey you.",
+      "mood": "happy"
+    },
+    {
+      "type": "say",
+      "text": "researchers asked people to give a speech with almost no time to prepare. before it, some talked to themselves as \"i\". others used \"you\" or their own name."
+    },
+    {
+      "type": "say",
+      "text": "the \"you\" group gave better speeches, saw the task more as a challenge than a threat, and dwelled on it less afterward."
+    },
+    {
+      "type": "ask",
+      "text": "why do you think that helps?",
+      "options": [
+        {
+          "label": "it's like a friend talking",
+          "reply": "exactly. it gives you the distance you'd have with a friend's problem."
+        },
+        {
+          "label": "it feels a bit weird",
+          "reply": "it can, at first. weird and useful can be the same thing."
+        },
+        {
+          "label": "not sure",
+          "reply": "it gives you a little distance, the way you'd see a friend's problem more clearly than your own."
+        }
+      ]
+    },
+    {
+      "type": "scene",
+      "quote": "i can't handle this."
+    },
+    {
+      "type": "mine",
+      "text": "hey {name}, you've handled hard weeks before."
+    },
+    {
+      "type": "write",
+      "prompt": "try one. finish the sentence:",
+      "template": "hey {name}, you {x}",
+      "ideas": [
+        "are doing better than you think.",
+        "are tired, and that makes sense.",
+        "have gotten through hard days before.",
+        "don't have to figure it all out tonight."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "talking to yourself as \"you\" gives you the distance you'd give a friend.",
+      "source": {
+        "label": "Kross et al., 2014",
+        "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+      },
+      "evidence": "moderate (seven studies from one lab)"
+    },
+    {
+      "type": "experiment",
+      "text": "next time something's hard, say one sentence to yourself using \"you\" or your name. out loud, if you can."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "talking to yourself as \"you\" or by name reduced anxiety and rumination under stress",
+      "source": "Kross et al., 2014, Journal of Personality and Social Psychology",
+      "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+    }
+  ]
+}

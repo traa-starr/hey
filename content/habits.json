@@ -1,0 +1,391 @@
+{
+  "intro": "most inner voices lean on a few habits. none of them are flaws. each one is trying to help, in its own way.",
+  "note": "these habits come from \"thinking traps\" in cognitive behavioral therapy. the voice check is for noticing, not a diagnosis.",
+  "source": {
+    "label": "Beck, 1963; Burns, 1980 (cognitive distortions)",
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK470241/"
+  },
+  "habits": [
+    {
+      "id": "rules",
+      "name": "the rule keeper",
+      "short": "rule keeper",
+      "color": "violet",
+      "glyph": "ruler",
+      "says": [
+        "i should be further along by now.",
+        "i should have known better.",
+        "i have to get this perfect."
+      ],
+      "quiz": [
+        "i should be further along by now.",
+        "i should have known better."
+      ],
+      "job": "holds you to a standard, so you keep going.",
+      "misses": "where the rule came from, and whether it still fits your life.",
+      "spot": {
+        "scene": "you finish a long week. you got a lot done. one email is still unanswered.",
+        "quote": "i should have answered that on tuesday."
+      },
+      "answers": [
+        {
+          "way": "the-dial",
+          "line": "i'd like to answer it. it's not urgent."
+        },
+        {
+          "way": "and",
+          "line": "i didn't get to it, and i got a lot of other things done."
+        },
+        {
+          "way": "talk-to-you",
+          "line": "hey, you're allowed to be one email behind."
+        }
+      ],
+      "keep": "\"should\" is often a rule someone handed you. you get to check if it's still yours.",
+      "try": "next time you hear \"i should,\" try swapping it for \"i'd like to\" and notice what changes."
+    },
+    {
+      "id": "mind",
+      "name": "the mind reader",
+      "short": "mind reader",
+      "color": "pink",
+      "glyph": "eye",
+      "says": [
+        "they're probably annoyed with me.",
+        "they only invited me to be nice.",
+        "everyone noticed."
+      ],
+      "quiz": [
+        "they're probably annoyed with me.",
+        "they only invited me to be nice."
+      ],
+      "job": "tries to stay one step ahead of what people think, so you're never caught off guard.",
+      "misses": "that you can't actually see inside anyone's head, and neither can it.",
+      "spot": {
+        "scene": "a friend replies to your long message with just \"ok\".",
+        "quote": "they're done with me."
+      },
+      "answers": [
+        {
+          "way": "what-i-know",
+          "line": "the thought says they're done with me. what i actually know is they replied."
+        },
+        {
+          "way": "i-notice",
+          "line": "i'm noticing the thought that they're done with me."
+        },
+        {
+          "way": "talk-to-you",
+          "line": "hey, you don't have to solve this tonight. you could just ask."
+        }
+      ],
+      "keep": "a guess about someone else's mind is still a guess. you're allowed to check.",
+      "try": "catch one mind-read today. ask yourself: what do i actually know?"
+    },
+    {
+      "id": "always",
+      "name": "the always-never",
+      "short": "always-never",
+      "color": "coral",
+      "glyph": "loop",
+      "says": [
+        "i always mess things up.",
+        "this never works out for me.",
+        "nothing ever changes."
+      ],
+      "quiz": [
+        "i always mess things up.",
+        "nothing ever works out for me."
+      ],
+      "job": "turns one moment into a rule, so you'll see it coming next time.",
+      "misses": "all the times it went differently.",
+      "spot": {
+        "scene": "you burn dinner while texting someone.",
+        "quote": "i ruin everything i touch."
+      },
+      "answers": [
+        {
+          "way": "and",
+          "line": "i burned dinner, and i've made a lot of good dinners."
+        },
+        {
+          "way": "the-dial",
+          "line": "i'm a little annoyed. it's one dinner."
+        },
+        {
+          "way": "for-now",
+          "line": "tonight didn't go how i wanted, for now."
+        }
+      ],
+      "keep": "one time is one time. \"always\" and \"never\" are rarely the whole story.",
+      "try": "when you hear \"always\" or \"never\" today, try \"this time\" instead."
+    },
+    {
+      "id": "forecast",
+      "name": "the forecaster",
+      "short": "forecaster",
+      "color": "gold",
+      "glyph": "cloud",
+      "says": [
+        "this is going to go terribly.",
+        "if i say something, it'll be a disaster.",
+        "i'll never be able to handle that."
+      ],
+      "quiz": [
+        "this is going to go terribly.",
+        "if i say something, it'll be a disaster."
+      ],
+      "job": "prepares you for the worst, just in case.",
+      "misses": "the other ways it could go, and how often you've coped before.",
+      "spot": {
+        "scene": "your manager asks for \"a quick chat tomorrow\".",
+        "quote": "i'm getting fired."
+      },
+      "answers": [
+        {
+          "way": "what-i-know",
+          "line": "the thought says i'm getting fired. what i actually know is they want to talk."
+        },
+        {
+          "way": "why-to-what",
+          "line": "what actually happened was a calendar invite. one small next step is asking what it's about."
+        },
+        {
+          "way": "talk-to-you",
+          "line": "hey, you've walked into hard conversations before. you can do this one."
+        }
+      ],
+      "keep": "a forecast isn't the weather. it's one guess about tomorrow.",
+      "try": "write down one worry today. look at it again in a week and see how it went."
+    },
+    {
+      "id": "compare",
+      "name": "the comparer",
+      "short": "comparer",
+      "color": "teal",
+      "glyph": "scales",
+      "says": [
+        "everyone else has it together.",
+        "they're so far ahead of me.",
+        "i'm the only one struggling."
+      ],
+      "quiz": [
+        "everyone else has it together.",
+        "they're so far ahead of me."
+      ],
+      "job": "measures where you stand, so you don't fall behind.",
+      "misses": "that you're comparing your inside to everyone else's outside.",
+      "spot": {
+        "scene": "you scroll past an old classmate's wedding, house, and new job.",
+        "quote": "i'm so behind."
+      },
+      "answers": [
+        {
+          "way": "three-kind-lines",
+          "line": "this is hard. other people feel this too. what i need right now is to put the phone down."
+        },
+        {
+          "way": "and",
+          "line": "they're doing well, and i'm on my own timeline."
+        },
+        {
+          "way": "i-notice",
+          "line": "i'm noticing the thought that i'm behind."
+        }
+      ],
+      "keep": "you only ever see other people's highlights. you see all of your own footage.",
+      "try": "notice one comparison today. ask: compared to what, exactly?"
+    },
+    {
+      "id": "label",
+      "name": "the labeler",
+      "short": "labeler",
+      "color": "plum",
+      "glyph": "tag",
+      "says": [
+        "i'm such an idiot.",
+        "i'm a failure.",
+        "i'm too much."
+      ],
+      "quiz": [
+        "i'm such an idiot.",
+        "i'm too much."
+      ],
+      "job": "sums you up in one word, so things feel simple and clear.",
+      "misses": "that you're a person who did one thing, not a word.",
+      "spot": {
+        "scene": "you forget a coworker's name, right as you introduce them.",
+        "quote": "i'm such an idiot."
+      },
+      "answers": [
+        {
+          "way": "the-dial",
+          "line": "i'm really embarrassed. that happens to everyone."
+        },
+        {
+          "way": "friend-test",
+          "line": "if a friend said \"i'm such an idiot\" about themselves, i'd tell them it was one awkward moment."
+        },
+        {
+          "way": "talk-to-you",
+          "line": "hey, you blanked on a name. you're still you."
+        }
+      ],
+      "keep": "you did a thing. you're not the thing.",
+      "try": "when a label shows up, try describing what you did instead of who you are."
+    },
+    {
+      "id": "discount",
+      "name": "the discounter",
+      "short": "discounter",
+      "color": "blue",
+      "glyph": "shrink",
+      "says": [
+        "that doesn't count, anyone could do it.",
+        "they're just being nice.",
+        "i got lucky."
+      ],
+      "quiz": [
+        "that doesn't count, anyone could have done it.",
+        "they're just being nice."
+      ],
+      "job": "keeps you humble, so you keep trying and nobody thinks you're full of yourself.",
+      "misses": "the good things that are actually true.",
+      "spot": {
+        "scene": "your friend says your presentation was really clear.",
+        "quote": "they're just saying that."
+      },
+      "answers": [
+        {
+          "way": "and",
+          "line": "maybe they're being nice, and maybe it was clear."
+        },
+        {
+          "way": "what-i-know",
+          "line": "the thought says they're just being nice. what i actually know is i prepared for it."
+        },
+        {
+          "way": "talk-to-you",
+          "line": "hey, you can let that one land."
+        }
+      ],
+      "keep": "you're allowed to keep the good stuff too.",
+      "try": "next time someone compliments you, just say \"thank you\" and stop there."
+    },
+    {
+      "id": "onme",
+      "name": "the it's-on-me",
+      "short": "it's-on-me",
+      "color": "orange",
+      "glyph": "target",
+      "says": [
+        "it's my fault they're upset.",
+        "if i'd done more, this wouldn't have happened.",
+        "i ruined the night."
+      ],
+      "quiz": [
+        "it's my fault they're upset.",
+        "if i'd done more, this wouldn't have happened."
+      ],
+      "job": "looks for what you can control, so you can make things right.",
+      "misses": "everything else that was going on, that had nothing to do with you.",
+      "spot": {
+        "scene": "your partner comes home quiet and goes straight to bed.",
+        "quote": "what did i do?"
+      },
+      "answers": [
+        {
+          "way": "what-i-know",
+          "line": "the thought says i did something. what i actually know is they went to bed early."
+        },
+        {
+          "way": "why-to-what",
+          "line": "what actually happened was they went to bed early. one small next step is asking how they are tomorrow."
+        },
+        {
+          "way": "three-kind-lines",
+          "line": "this is hard. other people feel this too. what i need right now is to let it rest until morning."
+        }
+      ],
+      "keep": "you matter to the people around you. you're not the cause of everything they feel.",
+      "try": "when you feel responsible for someone's mood, list three other things that could be going on for them."
+    },
+    {
+      "id": "allnone",
+      "name": "the all-or-nothing",
+      "short": "all-or-nothing",
+      "color": "lime",
+      "glyph": "split",
+      "says": [
+        "if it's not perfect, it's a failure.",
+        "i missed one day, so the whole thing is ruined.",
+        "either i do it right or not at all."
+      ],
+      "quiz": [
+        "if it's not perfect, it's a failure.",
+        "i missed one day, so the whole thing is ruined."
+      ],
+      "job": "keeps the bar high, so you aim for your best.",
+      "misses": "everything in between, which is where most of life happens.",
+      "spot": {
+        "scene": "you planned to work out four times this week. you went twice.",
+        "quote": "i've already blown it."
+      },
+      "answers": [
+        {
+          "way": "the-dial",
+          "line": "i'm a little disappointed. twice is more than zero."
+        },
+        {
+          "way": "and",
+          "line": "i went twice, and i can go again tomorrow."
+        },
+        {
+          "way": "for-now",
+          "line": "this week was two, for now."
+        }
+      ],
+      "keep": "between all and nothing there's a lot of \"some\". some counts.",
+      "try": "pick one thing today and aim for \"good enough\" on purpose."
+    },
+    {
+      "id": "feeling",
+      "name": "the feeling-as-fact",
+      "short": "feeling-as-fact",
+      "color": "mint",
+      "glyph": "wave",
+      "says": [
+        "i feel stupid, so i must be.",
+        "it feels like they don't want me there, so they don't.",
+        "it feels impossible, so it is."
+      ],
+      "quiz": [
+        "i feel stupid, so i must be.",
+        "it feels impossible, so it must be."
+      ],
+      "job": "takes your feelings seriously, which matters.",
+      "misses": "that a feeling tells you how things feel, not always how things are.",
+      "spot": {
+        "scene": "you ask a friend for help moving, and feel uneasy about it all day.",
+        "quote": "i'm just in the way."
+      },
+      "answers": [
+        {
+          "way": "i-notice",
+          "line": "i'm noticing the feeling that i'm in the way."
+        },
+        {
+          "way": "and",
+          "line": "i feel like i'm in the way, and they said yes."
+        },
+        {
+          "way": "friend-test",
+          "line": "if a friend said \"i'm just in the way\" about themselves, i'd tell them i'm glad they asked."
+        }
+      ],
+      "keep": "feelings are real information. they're not always the whole truth.",
+      "try": "when a big feeling shows up, name it, then ask: what else is true right now?"
+    }
+  ],
+  "evidence": "well established as a way to describe thinking, from cognitive behavioral therapy"
+}

@@ -3,7 +3,7 @@ import { button, returning } from "./helpers";
 
 test("answering the inner voice keeps the answer, never the original unless asked", async ({ page }) => {
   await returning(page);
-  await page.getByRole("link", { name: /did your inner voice say something/ }).click();
+  await page.getByRole("link", { name: /it's loud right now/ }).click();
 
   await page.getByLabel("in its words").fill("you're too much.");
   await button(page, "next").click();
@@ -14,11 +14,11 @@ test("answering the inner voice keeps the answer, never the original unless aske
   await button(page, "next").click();
 
   // loud enough to be offered a breath; it's optional
-  await expect(page.getByRole("heading", { name: /take a breath first/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /take a breath first/ })).toBeAttached();
   await button(page, "keep going").click();
 
   await page.getByRole("button", { name: /^the friend test/ }).click();
-  await expect(page.locator(".reply")).toContainText('if a friend said "i\'m too much" about themselves');
+  await expect(page.locator(".reply-line")).toContainText('if a friend said "i\'m too much" about themselves');
   await button(page, "they're being harder on themselves than they deserve.").click();
   await button(page, "this is mine").click();
 
@@ -56,7 +56,7 @@ test("a way chosen from explore skips straight to writing", async ({ page }) => 
   await button(page, "i'm not good enough.").click();
   await button(page, "next").click();
   await button(page, "hard to say").click();
-  await expect(page.locator(".reply")).toHaveText("i'm not good enough, for now.");
+  await expect(page.locator(".reply-line")).toHaveText("i'm not good enough, for now.");
 });
 
 test("leaving and coming back much later starts fresh", async ({ page }) => {

@@ -1,0 +1,82 @@
+{
+  "id": "small-wants",
+  "title": "small wants count",
+  "subtitle": "finding what you like, one tiny want at a time",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "for a lot of people, \"what do you want?\" is a hard question."
+    },
+    {
+      "type": "say",
+      "text": "that makes sense. many of us got more practice noticing what other people want."
+    },
+    {
+      "type": "say",
+      "text": "so let's start small. tiny wants count.",
+      "mood": "happy"
+    },
+    {
+      "type": "tryon",
+      "prompt": "same friday night, five different wants:",
+      "lines": [
+        "i'd love a quiet night in.",
+        "i'm craving noodles.",
+        "i'm curious about that new place downtown.",
+        "i miss dancing.",
+        "i'd rather not go out this time."
+      ],
+      "reply": "each want word finds something different. \"curious\" finds new things. \"miss\" finds what you've loved before. \"rather\" helps you choose."
+    },
+    {
+      "type": "pick",
+      "prompt": "which of these sound good right now?",
+      "options": [
+        "a long walk",
+        "a nap",
+        "something sweet",
+        "quiet",
+        "music",
+        "calling a friend",
+        "being outside",
+        "a really good meal"
+      ],
+      "reply": "noted in your book. a little more of you, found.",
+      "keep": "what-i-like",
+      "as": "i'd like {x}."
+    },
+    {
+      "type": "write",
+      "prompt": "finish this one however you like:",
+      "template": "i'd love {x}",
+      "ideas": [
+        "a long walk with no plan.",
+        "something sweet tonight.",
+        "to learn one new thing.",
+        "a quiet morning to myself."
+      ],
+      "keep": "what-i-like"
+    },
+    {
+      "type": "takeaway",
+      "text": "small wants are how bigger wants get easier to find.",
+      "source": {
+        "label": "design idea, inspired by self-concept clarity research (Campbell, 1990)",
+        "url": ""
+      },
+      "evidence": "not tested directly"
+    },
+    {
+      "type": "experiment",
+      "text": "notice one small want today, and let yourself have it."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "a clearer sense of who you are, including what you like, is linked to wellbeing",
+      "source": "Coutts, Al-Kire & Weidler, 2023, PLOS ONE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+    }
+  ]
+}

@@ -1,8 +1,7 @@
 // answer it: catch what the inner voice said, notice how loud it is, answer it in your own words.
 // The draft (including the inner voice's words) lives only in this tab's session, never in lasting storage.
-import { useReducedMotion } from "motion/react";
 import * as m from "motion/react-m";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { content } from "../content/load";
 import type { Formula } from "../content/schema";
 import { buzz, keptChime } from "../lib/feedback";
@@ -12,7 +11,8 @@ import { shortDate } from "../lib/time";
 import { go } from "../router";
 import { store } from "../store/store";
 import { useData } from "../store/useStore";
-import { FlowBar, Ideas, Loudness, Screen, Sentence } from "../ui/kit";
+import { Breath } from "../ui/Breath";
+import { FlowTop, Ideas, Loudness, Screen, Sentence, SolSays } from "../ui/kit";
 
 type Step = "catch" | "loud" | "calm" | "way" | "write" | "again" | "kept";
 type Draft = {
@@ -53,7 +53,7 @@ export function stepsFor(d: Pick<Draft, "loud" | "preset">): Step[] {
   return ["catch", "loud", ...(d.loud >= 4 ? (["calm"] as const) : []), ...(d.preset ? [] : (["way"] as const)), "write", "again", "kept"];
 }
 
-export function Answer({ way }: { way?: string }) {
+export function Answer({ way, habit }: { way?: string; habit?: string }) {
   const c = content();
   const copy = c.copy;
   const { name } = useData();
@@ -61,6 +61,9 @@ export function Answer({ way }: { way?: string }) {
   useEffect(() => saveDraft(d.keptId ? null : d), [d]);
 
   const f = c.formulas.find((x) => x.id === d.way);
+  // started from a caught habit: its own lines are the ideas, so nobody starts from an empty box
+  const h = c.habits.find((x) => x.id === habit);
+  const catchIdeas = h ? h.says : c.catchIdeas;
   const steps = stepsFor(d);
   const at = Math.max(0, steps.indexOf(d.step));
   const update = (patch: Partial<Draft>) => setD((x) => ({ ...x, ...patch }));
@@ -74,7 +77,7 @@ export function Answer({ way }: { way?: string }) {
     if (n === "write" && f) update({ vals: prefill(f, d.said, name, d.vals) });
     if (n) toStep(n);
   };
-  const leave = () => go({ name: "today" });
+  const leave = () => go({ name: "home" });
   const back = at > 0 && d.step !== "kept" ? () => toStep(steps[at - 1]!) : undefined;
 
   const result = f ? finish(fill(f.template, d.vals)) : "";
@@ -84,14 +87,14 @@ export function Answer({ way }: { way?: string }) {
     case "catch":
       body = (
         <>
-          <h1 className="ask" data-say>{copy.answer.catchAsk}</h1>
+          <h1 className="h2" data-say>{h ? format(copy.answer.fromHabit, { habit: h.name }) : copy.answer.catchAsk}</h1>
           <label className="sr" htmlFor="said">{copy.answer.catchLabel}</label>
           <textarea
             id="said" className="field" rows={2} autoComplete="off" placeholder={copy.answer.catchPlaceholder}
             value={d.said} onChange={(e) => update({ said: e.target.value })}
           />
           <p className="small">{copy.answer.catchNote}</p>
-          <Ideas ideas={c.catchIdeas} picked={d.said} onPick={(said) => update({ said })} label={copy.answer.catchIdeas} />
+          <Ideas ideas={catchIdeas} picked={d.said} onPick={(said) => update({ said })} label={copy.answer.catchIdeas} />
           <div className="actions"><button className="btn" type="button" disabled={!d.said.trim()} onClick={next}>{copy.app.next}</button></div>
         </>
       );
@@ -99,7 +102,7 @@ export function Answer({ way }: { way?: string }) {
     case "loud":
       body = (
         <>
-          <h1 className="ask" data-say>{copy.answer.loudAsk}</h1>
+          <h1 className="h2" data-say>{copy.answer.loudAsk}</h1>
           <Loudness said={d.said} value={d.loud} onChange={(loud) => update({ loud })} />
           <div className="actions">
             <button className="btn" type="button" disabled={!d.loud} onClick={next}>{copy.app.next}</button>
@@ -120,7 +123,7 @@ export function Answer({ way }: { way?: string }) {
       body = (
         <>
           <p className="said small-said">{d.said}</p>
-          <h1 className="ask" data-say>{copy.answer.wayAsk}</h1>
+          <h1 className="h2" data-say>{copy.answer.wayAsk}</h1>
           <div className="ways">
             {c.formulas.map((x) => (
               <button key={x.id} type="button" className="way" onClick={() => {
@@ -142,7 +145,7 @@ export function Answer({ way }: { way?: string }) {
     case "again":
       body = (
         <>
-          <h1 className="ask" data-say>{copy.answer.againAsk}</h1>
+          <h1 className="h2" data-say>{copy.answer.againAsk}</h1>
           <Loudness said={d.said} value={d.loud2} onChange={(loud2) => update({ loud2 })} reply={result} />
           <div className="actions">
             <button className="btn" type="button" disabled={!d.loud2} onClick={next}>{copy.app.next}</button>
@@ -192,7 +195,7 @@ export function Answer({ way }: { way?: string }) {
               <div className="actions">
                 <button className="btn" type="button" onClick={() => {
                   if (d.keepSaid && d.said.trim()) store.add({ kind: "voice", text: format(copy.answer.saidAs, { said: d.said.trim() }), from: f?.name ?? "", said: true });
-                  const e = store.add({ kind: "voice", text: result, from: f?.name ?? "", ...(d.loud ? { before: d.loud } : {}), ...(d.loud2 ? { after: d.loud2 } : {}) });
+                  const e = store.add({ kind: "voice", text: result, from: f?.name ?? "", ...(f && includesSaid(f, d.vals, d.said) ? { holdsSaid: true } : {}), ...(d.loud ? { before: d.loud } : {}), ...(d.loud2 ? { after: d.loud2 } : {}) });
                   buzz(20);
                   keptChime();
                   saveDraft(null);
@@ -211,7 +214,7 @@ export function Answer({ way }: { way?: string }) {
 
   return (
     <>
-      <FlowBar at={at} of={steps.length} onClose={leave} back={back} />
+      <FlowTop at={at} of={steps.length} onClose={leave} back={back} />
       <Screen id={`answer-${d.step}`}>{body}</Screen>
     </>
   );
@@ -277,33 +280,16 @@ function Write({ f, said, vals, onVals, onDone }: { f: Formula; said: string; va
 }
 
 // an optional breath before answering something loud
-function Calm({ calmed, onBreathe, onNext }: { calmed: boolean; onBreathe: () => void; onNext: () => void }) {
+function Calm({ onNext }: { calmed: boolean; onBreathe: () => void; onNext: () => void }) {
   const copy = content().copy;
-  const reduce = useReducedMotion();
   const [breathing, setBreathing] = useState(false);
-  const [word, setWord] = useState(copy.answer.calmIn);
-  const done = useRef(onBreathe);
-  useEffect(() => {
-    done.current = onBreathe;
-  });
-  useEffect(() => {
-    if (!breathing || reduce) return;
-    // three breaths: 4s in, 6s out
-    const timers: number[] = [];
-    for (let i = 0; i < 3; i++) {
-      timers.push(window.setTimeout(() => setWord(copy.answer.calmIn), i * 10000));
-      timers.push(window.setTimeout(() => setWord(copy.answer.calmOut), i * 10000 + 4000));
-    }
-    timers.push(window.setTimeout(() => { setWord(copy.answer.calmDone); done.current(); }, 30000));
-    return () => timers.forEach(clearTimeout);
-  }, [breathing, reduce, copy]);
-
   if (!breathing) {
     return (
       <>
-        <h1 className="ask" data-say>{copy.answer.calmAsk}</h1>
+        <h1 className="sr">{copy.answer.calmAsk}</h1>
+        <SolSays mood="calm">{copy.answer.calmAsk}</SolSays>
         <div className="actions">
-          <button className="btn" type="button" onClick={() => { setBreathing(true); if (reduce) onBreathe(); }}>{copy.answer.calmYes}</button>
+          <button className="btn" type="button" onClick={() => setBreathing(true)}>{copy.answer.calmYes}</button>
           <button className="btn quiet" type="button" onClick={onNext}>{copy.answer.calmNo}</button>
         </div>
       </>
@@ -311,21 +297,9 @@ function Calm({ calmed, onBreathe, onNext }: { calmed: boolean; onBreathe: () =>
   }
   return (
     <>
-      {reduce ? (
-        <p className="lede" data-say style={{ marginTop: "var(--s8)" }}>{copy.answer.calmStatic}</p>
-      ) : (
-        <div className="calm" aria-live="polite">
-          <m.div
-            className="breath"
-            animate={{ scale: [0.7, 1.25, 1.25, 0.7] }}
-            transition={{ duration: 10, times: [0, 0.4, 0.42, 1], repeat: 2, ease: "easeInOut" }}
-          />
-          <span className="calm-word">{word}</span>
-        </div>
-      )}
-      <div className="actions">
-        <button className="btn" type="button" onClick={onNext}>{calmed || reduce ? copy.app.next : copy.answer.calmNo}</button>
-      </div>
+      <h1 className="sr">{copy.answer.calmYes}</h1>
+      <Breath />
+      <div className="actions"><button className="btn" type="button" onClick={onNext}>{copy.app.next}</button></div>
     </>
   );
 }

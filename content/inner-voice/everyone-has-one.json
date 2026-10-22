@@ -1,0 +1,81 @@
+{
+  "id": "everyone-has-one",
+  "title": "everyone has one",
+  "subtitle": "the voice that narrates your day",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "let's start with something most people have: an inner voice.",
+      "mood": "happy"
+    },
+    {
+      "type": "say",
+      "text": "it's the voice that narrates your day. it reminds you of things. it comments on how it's going."
+    },
+    {
+      "type": "ask",
+      "text": "does yours talk a lot?",
+      "options": [
+        {
+          "label": "all day",
+          "reply": "a busy one. that's really common."
+        },
+        {
+          "label": "sometimes",
+          "reply": "makes sense. it comes and goes for most people."
+        },
+        {
+          "label": "not sure",
+          "reply": "that's a good place to start. we'll listen for it together."
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "text": "people who study inner speech find it's a common part of thinking. it helps us plan, remember, and get through hard moments."
+    },
+    {
+      "type": "say",
+      "text": "some people hear a lot of it, some barely any. both are normal. and it isn't always full sentences."
+    },
+    {
+      "type": "pick",
+      "prompt": "which of these sound like your inner voice?",
+      "options": [
+        "come on, hurry up.",
+        "don't forget the keys.",
+        "why did i say that?",
+        "you've got this.",
+        "ugh.",
+        "not again."
+      ],
+      "reply": "every one of those counts. that's your inner voice at work."
+    },
+    {
+      "type": "say",
+      "text": "here's the part we'll keep coming back to: your inner voice learned how to talk somewhere. it isn't the only way you can talk to yourself.",
+      "mood": "curious"
+    },
+    {
+      "type": "takeaway",
+      "text": "most people have an inner voice. it's a habit of talking, and habits can grow.",
+      "source": {
+        "label": "Alderson-Day & Fernyhough, 2015",
+        "url": "https://doi.org/10.1037/bul0000021"
+      },
+      "evidence": "strong that inner speech is common; it varies a lot between people"
+    },
+    {
+      "type": "experiment",
+      "text": "once today, just notice your inner voice. no need to change anything."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "inner speech is a common part of everyday thinking, used for planning, memory and self-regulation",
+      "source": "Alderson-Day & Fernyhough, 2015, Psychological Bulletin",
+      "url": "https://doi.org/10.1037/bul0000021"
+    }
+  ]
+}

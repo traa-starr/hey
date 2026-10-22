@@ -1,0 +1,66 @@
+{
+  "id": "changing-your-mind",
+  "title": "changing your mind",
+  "subtitle": "knowing where you stand, today",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "knowing where you stand is linked to feeling steadier in yourself. researchers call it self-concept clarity."
+    },
+    {
+      "type": "say",
+      "text": "steady doesn't mean frozen. updating a view after real thought is part of knowing yourself.",
+      "mood": "curious"
+    },
+    {
+      "type": "ask",
+      "text": "have you changed your mind about something big in the last few years?",
+      "options": [
+        {
+          "label": "yes",
+          "reply": "that's growth, not flakiness."
+        },
+        {
+          "label": "a few small things",
+          "reply": "small ones count. they add up."
+        },
+        {
+          "label": "not that i can think of",
+          "reply": "that's fine. it might come to you later."
+        }
+      ]
+    },
+    {
+      "type": "write",
+      "prompt": "something you used to think, and what you think now:",
+      "template": "{x}",
+      "ideas": [
+        "i used to think i hated running. now i kind of like it.",
+        "i used to think rest was lazy. now i think it's necessary.",
+        "i used to think i had to have a plan. now i'm okay with \"for now\"."
+      ],
+      "keep": "what-i-think"
+    },
+    {
+      "type": "takeaway",
+      "text": "changing your mind, thoughtfully, is part of getting to know yourself.",
+      "source": {
+        "label": "design idea, inspired by self-concept clarity research (Campbell, 1990)",
+        "url": ""
+      },
+      "evidence": "not tested directly"
+    },
+    {
+      "type": "experiment",
+      "text": "look through \"about you\" in your book, and notice one thing you'd update."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "self-concept clarity and wellbeing",
+      "source": "Coutts, Al-Kire & Weidler, 2023, PLOS ONE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+    }
+  ]
+}

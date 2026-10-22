@@ -1,0 +1,68 @@
+{
+  "id": "asking-for-it",
+  "title": "asking for it",
+  "subtitle": "saying what you want, kindly and clearly",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "knowing what you want is one half. saying it is the other."
+    },
+    {
+      "type": "scene",
+      "quote": "whatever you want is fine.",
+      "label": "you, often"
+    },
+    {
+      "type": "tryon",
+      "prompt": "someone asks where to eat. try each answer on:",
+      "lines": [
+        "whatever you want is fine.",
+        "i'd love thai, if you're up for it.",
+        "honestly, i'm craving pizza."
+      ],
+      "reply": "all of them are real answers. the last two give people something to work with."
+    },
+    {
+      "type": "say",
+      "text": "a small, clear want is a gift to the people you're with. it makes deciding easier for everyone.",
+      "mood": "happy"
+    },
+    {
+      "type": "say",
+      "text": "an easy shape to borrow: \"i'd like ___. how about you?\""
+    },
+    {
+      "type": "write",
+      "prompt": "try it:",
+      "template": "i'd like {x}. how about you?",
+      "ideas": [
+        "to stay in tonight",
+        "to walk instead of drive",
+        "a little more time on this",
+        "to pick the movie"
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "a clear want, kindly said, makes things easier for everyone.",
+      "source": {
+        "label": "assertiveness training (Speed, Goldstein & Goldfried, 2018)",
+        "url": ""
+      },
+      "evidence": "moderate (part of larger therapy programs)"
+    },
+    {
+      "type": "experiment",
+      "text": "say one small preference out loud today, like what you'd rather eat or watch."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "honest, respectful expression of needs and preferences (assertive communication)",
+      "source": "general clinical practice",
+      "url": ""
+    }
+  ]
+}

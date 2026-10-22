@@ -1,0 +1,89 @@
+{
+  "id": "a-thought-not-a-fact",
+  "title": "a thought is not a fact",
+  "subtitle": "a little distance from what your mind says",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "your inner voice says things with total confidence."
+    },
+    {
+      "type": "scene",
+      "quote": "i'm going to fail this."
+    },
+    {
+      "type": "say",
+      "text": "it sounds like a fact. but it's a thought: something your mind said.",
+      "mood": "curious"
+    },
+    {
+      "type": "say",
+      "text": "try reading it with a frame around it:"
+    },
+    {
+      "type": "mine",
+      "text": "i'm noticing the thought that i'm going to fail this."
+    },
+    {
+      "type": "ask",
+      "text": "did that land any differently?",
+      "options": [
+        {
+          "label": "a bit lighter",
+          "reply": "that's the frame doing its work. the words are the same. the distance grows."
+        },
+        {
+          "label": "about the same",
+          "reply": "that's okay. it often takes a few tries to feel the difference."
+        },
+        {
+          "label": "not sure",
+          "reply": "that's okay too. just trying it on is the practice."
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "text": "in a lab study, adding this small frame made harsh self-statements feel less uncomfortable and less believable."
+    },
+    {
+      "type": "say",
+      "text": "you don't have to argue with the thought, or believe it. you can just notice it."
+    },
+    {
+      "type": "write",
+      "prompt": "try it on one of yours:",
+      "template": "i'm noticing the thought that {x}",
+      "ideas": [
+        "i'm not good enough.",
+        "they're annoyed with me.",
+        "i'll never figure this out.",
+        "i always mess things up."
+      ],
+      "keep": "my-words",
+      "placeholder": "what your inner voice says",
+      "said": true
+    },
+    {
+      "type": "takeaway",
+      "text": "a thought is something your mind said. it isn't a verdict.",
+      "source": {
+        "label": "Healy et al., 2008",
+        "url": "https://mural.maynoothuniversity.ie/id/eprint/4954/1/YBH_experimental%20test.pdf"
+      },
+      "evidence": "moderate (one lab study)"
+    },
+    {
+      "type": "experiment",
+      "text": "once today, add \"i'm noticing the thought that…\" to something your inner voice says."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "framing a thought as a thought reduced discomfort and believability of negative self-statements",
+      "source": "Healy et al., 2008, The Psychological Record",
+      "url": "https://mural.maynoothuniversity.ie/id/eprint/4954/1/YBH_experimental%20test.pdf"
+    }
+  ]
+}

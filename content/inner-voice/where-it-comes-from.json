@@ -1,0 +1,86 @@
+{
+  "id": "where-it-comes-from",
+  "title": "where it comes from",
+  "subtitle": "the words you picked up along the way",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "your inner voice didn't come out of nowhere.",
+      "mood": "curious"
+    },
+    {
+      "type": "say",
+      "text": "as kids, we talk out loud to ourselves while we play and figure things out. slowly, that talk moves inside."
+    },
+    {
+      "type": "say",
+      "text": "on the way in, it picks up words from the people and places around us."
+    },
+    {
+      "type": "ask",
+      "text": "does your inner voice ever sound like someone you know?",
+      "options": [
+        {
+          "label": "yes",
+          "reply": "that's common. sometimes we carry someone else's words for a long time."
+        },
+        {
+          "label": "no",
+          "reply": "okay. it might be a mix of a lot of places."
+        },
+        {
+          "label": "that's a hard one",
+          "reply": "that's okay. you don't have to go there. you can skip anything here, and real help is in settings if you ever want it."
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "text": "a parent's warning. a teacher's red pen. a coach's push. the feed's opinion."
+    },
+    {
+      "type": "say",
+      "text": "some of those voices were trying to help. some weren't. either way, they don't get to be the only voice you have."
+    },
+    {
+      "type": "pick",
+      "prompt": "where might some of your inner voice's words come from?",
+      "options": [
+        "family",
+        "school",
+        "work",
+        "friends",
+        "the internet",
+        "my own experiences",
+        "not sure"
+      ],
+      "reply": "you don't have to know for sure. just being curious about it gives you a little room."
+    },
+    {
+      "type": "say",
+      "text": "here's the hopeful part: you can add new words, in your own voice.",
+      "mood": "happy"
+    },
+    {
+      "type": "takeaway",
+      "text": "your inner voice picked up words along the way. you can add new ones.",
+      "source": {
+        "label": "Alderson-Day & Fernyhough, 2015",
+        "url": "https://doi.org/10.1037/bul0000021"
+      },
+      "evidence": "a well-known theory of how inner speech develops, not tested as advice"
+    },
+    {
+      "type": "experiment",
+      "text": "today, notice one word your inner voice uses a lot. no need to change it."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "inner speech develops from the out-loud private speech of childhood",
+      "source": "Alderson-Day & Fernyhough, 2015, Psychological Bulletin",
+      "url": "https://doi.org/10.1037/bul0000021"
+    }
+  ]
+}

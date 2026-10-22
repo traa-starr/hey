@@ -3,12 +3,12 @@ import { button, returning } from "./helpers";
 
 test("data from the first version is all here", async ({ page }) => {
   await returning(page);
-  await expect(page.locator(".greet")).toContainText("sam.");
+  await expect(page.locator(".hello h1")).toContainText("sam.");
   // on a shared phone the line stays hidden until it's tapped
-  await expect(page.locator(".resurface")).not.toContainText("hard weeks");
+  await expect(page.locator(".told")).not.toContainText("hard weeks");
   await button(page, "tap to read it").click();
-  await expect(page.locator(".resurface")).toContainText("hey sam, you've handled hard weeks before.");
-  await page.getByRole("link", { name: "your book" }).click();
+  await expect(page.locator(".told")).toContainText("hey sam, you've handled hard weeks before.");
+  await page.goto("./#/book");
   await expect(page.locator(".entry").first()).toContainText("all i can hear → clear");
   await page.getByRole("tab", { name: "about you" }).click();
   await expect(page.locator(".entries")).toContainText("sunrise");
@@ -30,14 +30,15 @@ test("entries can be edited and removed", async ({ page }) => {
 
 test("settings: name, appearance, real help, and clearing everything", async ({ page }) => {
   await returning(page);
-  await page.goto("./#/book");
+  await page.getByRole("link", { name: "you", exact: true }).click();
+  await page.getByRole("link", { name: /settings/ }).click();
   await page.getByLabel("a name, a nickname, anything").fill("Sam B");
   await button(page, "save").click();
   await expect(page.getByText("saved.")).toBeVisible();
 
   await page.getByLabel("always dark").check();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await page.getByLabel("follow the time of day").check();
+  await page.getByLabel("match my phone").check();
   await expect(page.locator("html")).not.toHaveAttribute("data-theme", /.+/);
 
   await expect(page.getByText("call or text 988")).toBeVisible();
@@ -47,7 +48,8 @@ test("settings: name, appearance, real help, and clearing everything", async ({ 
 
   await button(page, "clear everything").click();
   await button(page, "clear it all").click();
+  await page.goto("./#/book");
   await expect(page.getByText("every answer you keep lands here, in your words.")).toBeVisible();
-  await page.getByRole("link", { name: "today" }).click();
-  await expect(page.locator(".greet")).toHaveText(/you\./);
+  await page.goto("./");
+  await expect(page.locator(".hello h1")).toHaveText(/you\./);
 });

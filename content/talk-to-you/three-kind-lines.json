@@ -1,0 +1,64 @@
+{
+  "id": "three-kind-lines",
+  "title": "three kind lines",
+  "subtitle": "a short practice for when it hurts",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "say",
+      "text": "when something hurts, there's a short practice with three parts."
+    },
+    {
+      "type": "say",
+      "text": "one: this is hard. you name it, instead of pushing past it."
+    },
+    {
+      "type": "say",
+      "text": "two: other people feel this too. you're not the only one."
+    },
+    {
+      "type": "say",
+      "text": "three: what do i need right now? something small and real."
+    },
+    {
+      "type": "breathe"
+    },
+    {
+      "type": "write",
+      "prompt": "now the three lines, with your own ending:",
+      "template": "this is hard. other people feel this too. what i need right now is {x}",
+      "ideas": [
+        "rest.",
+        "a glass of water and an early night.",
+        "to talk to someone who gets it.",
+        "to be gentle with myself today."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "say",
+      "text": "these three parts come from self-compassion research: noticing it's hard, remembering you're not alone, and offering yourself some kindness.",
+      "mood": "happy"
+    },
+    {
+      "type": "takeaway",
+      "text": "this is hard. other people feel this too. what do i need right now?",
+      "source": {
+        "label": "Greater Good in Action (self-compassion break)",
+        "url": "https://ggia.berkeley.edu/practice/self_compassion_break"
+      },
+      "evidence": "moderate (tested inside larger programs)"
+    },
+    {
+      "type": "experiment",
+      "text": "save the three lines somewhere you'll see them, like your phone's lock screen."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "the self-compassion break",
+      "source": "Greater Good in Action",
+      "url": "https://ggia.berkeley.edu/practice/self_compassion_break"
+    }
+  ]
+}

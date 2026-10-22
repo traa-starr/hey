@@ -1,0 +1,80 @@
+{
+  "id": "this-or-that",
+  "title": "this or that",
+  "subtitle": "quick picks, no thinking needed",
+  "minutes": 2,
+  "steps": [
+    {
+      "type": "say",
+      "text": "when \"what do you want?\" feels too big, two options make it small."
+    },
+    {
+      "type": "say",
+      "text": "go with your first pull. \"both\" and \"neither\" are always allowed.",
+      "mood": "happy"
+    },
+    {
+      "type": "tot",
+      "prompt": "quick picks:",
+      "pairs": [
+        [
+          "sunrise",
+          "sunset"
+        ],
+        [
+          "rain on the window",
+          "sun on your face"
+        ],
+        [
+          "a long walk",
+          "a long bath"
+        ],
+        [
+          "sweet",
+          "salty"
+        ],
+        [
+          "mountains",
+          "the ocean"
+        ],
+        [
+          "a big night out",
+          "a cozy night in"
+        ],
+        [
+          "old songs",
+          "new songs"
+        ],
+        [
+          "plans",
+          "surprises"
+        ]
+      ],
+      "keep": "what-i-like"
+    },
+    {
+      "type": "say",
+      "text": "every pick is a small clue about you. they're all in your book now."
+    },
+    {
+      "type": "takeaway",
+      "text": "small picks add up to a clearer picture of you.",
+      "source": {
+        "label": "design idea, inspired by self-concept clarity research (Campbell, 1990)",
+        "url": ""
+      },
+      "evidence": "not tested directly"
+    },
+    {
+      "type": "experiment",
+      "text": "next time someone asks \"what do you want?\", narrow it to two, and pick."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "self-concept clarity and wellbeing",
+      "source": "Coutts, Al-Kire & Weidler, 2023, PLOS ONE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+    }
+  ]
+}

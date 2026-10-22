@@ -3,6 +3,8 @@ import { expect, type Page } from "@playwright/test";
 export const button = (page: Page, name: string | RegExp) =>
   page.getByRole("button", typeof name === "string" ? { name, exact: true } : { name });
 
+export const cont = (page: Page) => button(page, "continue").click();
+
 // someone who has been here before, saved by the first version of hey you
 export const V1 = {
   welcomed: true,
@@ -23,7 +25,7 @@ export async function returning(page: Page) {
     }
   }, V1);
   await page.goto("./");
-  await page.locator(".greet").waitFor();
+  await page.locator(".sky").waitFor();
 }
 
 // wait until a value has really landed in IndexedDB (writes happen behind the screen)

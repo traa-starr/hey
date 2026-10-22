@@ -34,7 +34,7 @@
         "label": "Kross et al., 2014",
         "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
       },
-      "evidence": "strong (seven studies)"
+      "evidence": "moderate (seven studies, one lab)"
     },
     {
       "id": "i-notice",
@@ -230,8 +230,8 @@
         }
       ],
       "source": {
-        "label": "summary of Watkins et al., 2009",
-        "url": "https://psychlabs.torontomu.ca/caplab/why-vs-how-the-role-of-abstract-and-concrete-thinking-in-anxiety-and-depression-by-jenna-vieira/"
+        "label": "Watkins, Baeyens & Read, 2009",
+        "url": "https://doi.org/10.1037/a0013642"
       },
       "evidence": "emerging"
     },

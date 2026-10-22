@@ -1,0 +1,77 @@
+{
+  "id": "disagreeing-kindly",
+  "title": "disagreeing kindly",
+  "subtitle": "a different view doesn't have to be a fight",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "having a different opinion doesn't mean starting a fight."
+    },
+    {
+      "type": "tryon",
+      "prompt": "a friend says something you don't agree with. try each reply on:",
+      "lines": [
+        "no. that's just not true.",
+        "i see it differently, actually.",
+        "i hear you. for me it's more about the cost."
+      ],
+      "reply": "the last two keep it about your view, not their mistake. that's what makes them easier to hear."
+    },
+    {
+      "type": "say",
+      "text": "\"i\" sentences keep the focus on what you think, instead of what they missed.",
+      "mood": "curious"
+    },
+    {
+      "type": "ask",
+      "text": "which is hardest for you?",
+      "options": [
+        {
+          "label": "disagreeing at all",
+          "reply": "makes sense. if disagreeing ever caused trouble, of course you got careful."
+        },
+        {
+          "label": "staying calm while i do",
+          "reply": "that's really common. a slow breath before you speak helps."
+        },
+        {
+          "label": "neither, really",
+          "reply": "nice. then this is just more range."
+        }
+      ]
+    },
+    {
+      "type": "write",
+      "prompt": "try a kind disagreement:",
+      "template": "i see it a little differently: {x}",
+      "ideas": [
+        "i think it's worth trying.",
+        "i'd rather wait a week.",
+        "i actually liked it.",
+        "for me, it's more about time than money."
+      ],
+      "keep": "what-i-think"
+    },
+    {
+      "type": "takeaway",
+      "text": "you can disagree and stay kind. \"i see it differently\" is a full sentence.",
+      "source": {
+        "label": "assertiveness training (Speed, Goldstein & Goldfried, 2018)",
+        "url": ""
+      },
+      "evidence": "moderate (part of larger therapy programs)"
+    },
+    {
+      "type": "experiment",
+      "text": "the next time you disagree, try starting with \"i see it differently\"."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "assertive communication",
+      "source": "general clinical practice",
+      "url": ""
+    }
+  ]
+}

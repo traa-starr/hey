@@ -1,4 +1,4 @@
-import "@fontsource-variable/newsreader/opsz.css";
+import "@fontsource-variable/bricolage-grotesque/opsz.css";
 import "@fontsource-variable/newsreader/opsz-italic.css";
 import "@fontsource/instrument-sans/400.css";
 import "@fontsource/instrument-sans/500.css";
