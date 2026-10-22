@@ -262,11 +262,25 @@
       <span class="wt-dot" style="width:${w.size}px;height:${w.size}px"></span><span>${w.name}</span>${mark === w.n ? `<span class="was">before</span>` : ""}</button>`).join("")}</div>`;
   }
 
+  // turn second-person self-talk ("you always...") into how a person says it about themselves ("i always...")
+  function toFirstPerson(text) {
+    let t = " " + String(text || "").trim().toLowerCase() + " ";
+    const pairs = [
+      [/\bare you\b/g, "am i"], [/\bwere you\b/g, "was i"], [/\byou are\b/g, "i am"], [/\byou were\b/g, "i was"], [/\byou're\b/g, "i'm"], [/\byou've\b/g, "i've"],
+      [/\byou'll\b/g, "i'll"], [/\byou'd\b/g, "i'd"], [/\byourself\b/g, "myself"], [/\byours\b/g, "mine"], [/\byour\b/g, "my"]
+    ];
+    pairs.forEach(([re, to]) => { t = t.replace(re, to); });
+    t = t.replace(/(^|[.!?,]\s+|\b(?:and|but|so|because|that|if|when|then|do|does|did|can|could|would|should|will|won't|can't|don't|didn't|have|had)\s+|^\s+)you\b/g, (m) => m.replace(/you$/, "i"));
+    t = t.replace(/\byou\b/g, "me");
+    return t.trim();
+  }
+
   function makeVals(f) {
     const w = state.w;
     const vals = {};
     f.slots.forEach((s) => {
       if (s.fill === "original") vals[s.key] = trimEnd(w.original);
+      else if (s.fill === "original-i") vals[s.key] = trimEnd(toFirstPerson(w.original));
       else if (s.fill === "name") vals[s.key] = data.name || "";
       else vals[s.key] = "";
     });

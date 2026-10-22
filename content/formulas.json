@@ -6,13 +6,28 @@
       "name": "talk to you",
       "frame": "hey [your name], you ___.",
       "why": "talking to yourself as \"you\" or by name, instead of \"i,\" gives you a little distance, like advising a friend. in experiments, people felt less distress and handled stress better.",
-      "example": { "before": "i can't handle this.", "after": "hey sam, you're overwhelmed, and you've handled hard weeks before." },
+      "example": {
+        "before": "i can't handle this.",
+        "after": "hey sam, you're overwhelmed, and you've handled hard weeks before."
+      },
       "template": "hey {name}, you {rest}",
       "slots": [
-        { "key": "name", "label": "your name", "fill": "name", "placeholder": "your name" },
-        { "key": "rest", "label": "you...", "placeholder": "e.g. are tired, and you still showed up today." }
+        {
+          "key": "name",
+          "label": "your name",
+          "fill": "name",
+          "placeholder": "your name"
+        },
+        {
+          "key": "rest",
+          "label": "you...",
+          "placeholder": "e.g. are tired, and you still showed up today."
+        }
       ],
-      "source": { "label": "Kross et al., 2014", "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf" },
+      "source": {
+        "label": "Kross et al., 2014",
+        "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+      },
       "evidence": "strong (seven studies)"
     },
     {
@@ -20,12 +35,22 @@
       "name": "i notice",
       "frame": "i'm noticing the thought that ___.",
       "why": "putting a frame around a thought turns it from a fact into something your mind said. in a lab study it made harsh self-statements less uncomfortable.",
-      "example": { "before": "i'm a failure.", "after": "i'm noticing the thought that i'm a failure." },
+      "example": {
+        "before": "i'm a failure.",
+        "after": "i'm noticing the thought that i'm a failure."
+      },
       "template": "i'm noticing the thought that {thought}.",
       "slots": [
-        { "key": "thought", "label": "the thought", "fill": "original" }
+        {
+          "key": "thought",
+          "label": "the thought",
+          "fill": "original"
+        }
       ],
-      "source": { "label": "Healy et al., 2008", "url": "https://mural.maynoothuniversity.ie/id/eprint/4954/1/YBH_experimental%20test.pdf" },
+      "source": {
+        "label": "Healy et al., 2008",
+        "url": "https://mural.maynoothuniversity.ie/id/eprint/4954/1/YBH_experimental%20test.pdf"
+      },
       "evidence": "moderate (one lab study)"
     },
     {
@@ -33,13 +58,27 @@
       "name": "the friend test",
       "frame": "if a friend said \"___\" about themselves, i'd tell them ___.",
       "why": "most people are kinder to friends than to themselves. borrowing that voice is at the heart of compassion-based approaches.",
-      "example": { "before": "i'm so annoying.", "after": "if a friend said \"i'm so annoying\" about themselves, i'd tell them they're fun to be around, even when they're a lot." },
+      "example": {
+        "before": "i'm so annoying.",
+        "after": "if a friend said \"i'm so annoying\" about themselves, i'd tell them they're fun to be around, even when they're a lot."
+      },
       "template": "if a friend said \"{thought}\" about themselves, i'd tell them {reply}",
       "slots": [
-        { "key": "thought", "label": "what your inner voice said", "fill": "original" },
-        { "key": "reply", "label": "i'd tell them...", "placeholder": "e.g. one bad day isn't who they are." }
+        {
+          "key": "thought",
+          "label": "how you'd say it about yourself",
+          "fill": "original-i"
+        },
+        {
+          "key": "reply",
+          "label": "i'd tell them...",
+          "placeholder": "e.g. one bad day isn't who they are."
+        }
       ],
-      "source": { "label": "Greater Good in Action", "url": "https://ggia.berkeley.edu/practice/self_compassionate_letter" },
+      "source": {
+        "label": "Greater Good in Action",
+        "url": "https://ggia.berkeley.edu/practice/self_compassionate_letter"
+      },
       "evidence": "moderate"
     },
     {
@@ -47,12 +86,22 @@
       "name": "three kind lines",
       "frame": "this is hard. other people feel this too. what i need right now is ___.",
       "why": "three steps from self-compassion research: notice it's hard, remember you're not the only one, then ask what you need.",
-      "example": { "before": "everyone else has it together.", "after": "this is hard. other people feel this too. what i need right now is to stop comparing tonight." },
+      "example": {
+        "before": "everyone else has it together.",
+        "after": "this is hard. other people feel this too. what i need right now is to stop comparing tonight."
+      },
       "template": "this is hard. other people feel this too. what i need right now is {need}",
       "slots": [
-        { "key": "need", "label": "what i need right now is...", "placeholder": "e.g. a glass of water and an early night." }
+        {
+          "key": "need",
+          "label": "what i need right now is...",
+          "placeholder": "e.g. a glass of water and an early night."
+        }
       ],
-      "source": { "label": "Greater Good in Action", "url": "https://ggia.berkeley.edu/practice/self_compassion_break" },
+      "source": {
+        "label": "Greater Good in Action",
+        "url": "https://ggia.berkeley.edu/practice/self_compassion_break"
+      },
       "evidence": "moderate (tested inside larger programs)"
     },
     {
@@ -60,13 +109,32 @@
       "name": "the dial",
       "frame": "i'm [a little / kind of / really] ___.",
       "why": "naming a feeling precisely, including how strong it is, is linked to coping better. \"i'm ruined\" and \"i'm really disappointed\" land very differently.",
-      "example": { "before": "this is a disaster.", "after": "i'm really disappointed in how that went." },
+      "example": {
+        "before": "this is a disaster.",
+        "after": "i'm really disappointed in how that went."
+      },
       "template": "i'm {dial} {feeling}",
       "slots": [
-        { "key": "dial", "label": "how much", "chips": ["a little", "kind of", "pretty", "really"] },
-        { "key": "feeling", "label": "feeling", "placeholder": "e.g. disappointed in how that went." }
+        {
+          "key": "dial",
+          "label": "how much",
+          "chips": [
+            "a little",
+            "kind of",
+            "pretty",
+            "really"
+          ]
+        },
+        {
+          "key": "feeling",
+          "label": "feeling",
+          "placeholder": "e.g. disappointed in how that went."
+        }
       ],
-      "source": { "label": "Kashdan et al., 2015", "url": "https://www.affective-science.org/pubs/2015/kashdan-et-all-unpacking-emotion-differentiation-2015.pdf" },
+      "source": {
+        "label": "Kashdan et al., 2015",
+        "url": "https://www.affective-science.org/pubs/2015/kashdan-et-all-unpacking-emotion-differentiation-2015.pdf"
+      },
       "evidence": "moderate"
     },
     {
@@ -74,13 +142,27 @@
       "name": "and",
       "frame": "___, and ___.",
       "why": "\"and\" lets the hard thing stay true without it being the only true thing.",
-      "example": { "before": "i messed up again.", "after": "i messed up again, and i'm still someone who keeps trying." },
+      "example": {
+        "before": "i messed up again.",
+        "after": "i messed up again, and i'm still someone who keeps trying."
+      },
       "template": "{first}, and {second}",
       "slots": [
-        { "key": "first", "label": "what your inner voice said", "fill": "original" },
-        { "key": "second", "label": "and...", "placeholder": "e.g. i'm still learning." }
+        {
+          "key": "first",
+          "label": "what your inner voice said",
+          "fill": "original"
+        },
+        {
+          "key": "second",
+          "label": "and...",
+          "placeholder": "e.g. i'm still learning."
+        }
       ],
-      "source": { "label": "Kashdan et al., 2015", "url": "https://www.affective-science.org/pubs/2015/kashdan-et-all-unpacking-emotion-differentiation-2015.pdf" },
+      "source": {
+        "label": "Kashdan et al., 2015",
+        "url": "https://www.affective-science.org/pubs/2015/kashdan-et-all-unpacking-emotion-differentiation-2015.pdf"
+      },
       "evidence": "emerging"
     },
     {
@@ -88,13 +170,27 @@
       "name": "why to what",
       "frame": "what actually happened was ___. one small next step is ___.",
       "why": "\"why am i like this?\" tends to spin. \"what happened, and what's one next step?\" tends to move. practicing concrete thinking helped in an early study.",
-      "example": { "before": "why do i always ruin everything?", "after": "what actually happened was i forgot her birthday. one small next step is texting her tonight." },
+      "example": {
+        "before": "why do i always ruin everything?",
+        "after": "what actually happened was i forgot her birthday. one small next step is texting her tonight."
+      },
       "template": "what actually happened was {happened}. one small next step is {step}",
       "slots": [
-        { "key": "happened", "label": "what actually happened was...", "placeholder": "e.g. i was late to the meeting." },
-        { "key": "step", "label": "one small next step is...", "placeholder": "e.g. setting an earlier alarm." }
+        {
+          "key": "happened",
+          "label": "what actually happened was...",
+          "placeholder": "e.g. i was late to the meeting."
+        },
+        {
+          "key": "step",
+          "label": "one small next step is...",
+          "placeholder": "e.g. setting an earlier alarm."
+        }
       ],
-      "source": { "label": "summary of Watkins et al., 2009", "url": "https://psychlabs.torontomu.ca/caplab/why-vs-how-the-role-of-abstract-and-concrete-thinking-in-anxiety-and-depression-by-jenna-vieira/" },
+      "source": {
+        "label": "summary of Watkins et al., 2009",
+        "url": "https://psychlabs.torontomu.ca/caplab/why-vs-how-the-role-of-abstract-and-concrete-thinking-in-anxiety-and-depression-by-jenna-vieira/"
+      },
       "evidence": "emerging"
     },
     {
@@ -102,13 +198,27 @@
       "name": "what i know",
       "frame": "the thought says ___. what i actually know is ___.",
       "why": "a classic from cognitive behavioral therapy: set what the thought claims next to what you actually know.",
-      "example": { "before": "they're ignoring me.", "after": "the thought says they're ignoring me. what i actually know is they've had a busy week." },
+      "example": {
+        "before": "they're ignoring me.",
+        "after": "the thought says they're ignoring me. what i actually know is they've had a busy week."
+      },
       "template": "the thought says {thought}. what i actually know is {know}",
       "slots": [
-        { "key": "thought", "label": "the thought says...", "fill": "original" },
-        { "key": "know", "label": "what i actually know is...", "placeholder": "e.g. they replied fine yesterday." }
+        {
+          "key": "thought",
+          "label": "the thought says...",
+          "fill": "original"
+        },
+        {
+          "key": "know",
+          "label": "what i actually know is...",
+          "placeholder": "e.g. they replied fine yesterday."
+        }
       ],
-      "source": { "label": "cognitive behavioral therapy", "url": "" },
+      "source": {
+        "label": "cognitive behavioral therapy",
+        "url": ""
+      },
       "evidence": "strong (as part of cognitive behavioral therapy)"
     },
     {
@@ -116,12 +226,22 @@
       "name": "for now",
       "frame": "___, for now.",
       "why": "\"for now\" turns a permanent-sounding sentence into a current one. you're allowed to change.",
-      "example": { "before": "i'll never figure out what i want.", "after": "i haven't figured out what i want, for now." },
+      "example": {
+        "before": "i'll never figure out what i want.",
+        "after": "i haven't figured out what i want, for now."
+      },
       "template": "{thought}, for now.",
       "slots": [
-        { "key": "thought", "label": "your sentence, softened if you like", "fill": "original" }
+        {
+          "key": "thought",
+          "label": "your sentence, softened if you like",
+          "fill": "original"
+        }
       ],
-      "source": { "label": "design idea", "url": "" },
+      "source": {
+        "label": "design idea",
+        "url": ""
+      },
       "evidence": "not tested on its own"
     }
   ]
