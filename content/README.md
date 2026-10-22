@@ -2,7 +2,8 @@
 
 All lessons, prompts, and shelf items live here as data files, separate from the app's code. Adding content should never require changing code.
 
-- `language/` — one file per language pattern
+- `start/` — the first lesson, showing what hey you is (`welcome.json`)
+- `language/` — one file per everyday word or phrase (`its-fine.json` is an early draft, to be rewritten as exploration rather than correction)
 - `desires/` — prompt sets for what you like and want
 - `opinions/` — low-stakes questions to form and say a view
 - `shelf/` — resource shelf items, each with source, license, and allowed use
@@ -18,6 +19,10 @@ Each step has a `type`. Most also carry a `stage` (`notice`, `understand`, `rewr
 | type | What it shows | Fields |
 | --- | --- | --- |
 | `welcome` | A short, warm opener. Never asks how you feel. | `text`, `button` |
+| `show` | One short line that shows an idea, then a soft button. | `text`, `button` |
+| `try-on` | The same moment said a few ways, to notice how each lands. Never graded. | `prompt`, `options`, `question`, optional `answers`, `reply` |
+| `map` | A simple overview of the practices. | `prompt`, `items` (`name`, `practice`, `text`), `button` |
+| `promises` | What hey you promises the person. | `prompt`, `items`, `button` |
 | `scene` | A small relatable moment, then what was underneath. | `scene`, `reveal`, optional `prompt` + `options` + `reply`, or `button` |
 | `understand` | Two or three short lines on what the pattern does. | `lines`, `button` |
 | `rewrite` | A sentence in context and a few ways to say it, each with a gentle note on what it tends to do. No right answer. | `context`, `original`, `prompt`, `options` (`text`, `note`), optional `footer` |
@@ -30,4 +35,4 @@ Each step has a `type`. Most also carry a `stage` (`notice`, `understand`, `rewr
 
 ## Writing rules
 
-Follow the voice and feature tests in the root `CLAUDE.md`: lowercase, show don't tell, no grades, every option makes sense, always a way to skip.
+Follow the core stance, voice, and feature tests in the root `CLAUDE.md`: exploring, not correcting; lowercase; show don't tell; no grades; every option makes sense; always a way to skip. `start/welcome.json` is the reference for tone.

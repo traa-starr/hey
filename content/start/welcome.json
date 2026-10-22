@@ -1,0 +1,112 @@
+{
+  "id": "welcome",
+  "practice": "start",
+  "title": "hey you",
+  "subtitle": "what we're doing here",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "welcome",
+      "text": "hey you. glad you're here.",
+      "button": "hi"
+    },
+    {
+      "type": "show",
+      "text": "here's something you already do: you talk to yourself. all day. planning, remembering, wondering, commenting.",
+      "button": "true"
+    },
+    {
+      "type": "show",
+      "text": "that voice is made of words. and the words you use quietly shape what you notice, what you want, and who you think you are.",
+      "button": "huh"
+    },
+    {
+      "type": "try-on",
+      "prompt": "here's the same day, said three ways. just notice how each one lands.",
+      "options": [
+        "today was long.",
+        "today was full.",
+        "today was a lot, and i got through it."
+      ],
+      "question": "which one sounds most like you today?",
+      "reply": "none of them is better. they're just different lenses on the same day."
+    },
+    {
+      "type": "try-on",
+      "prompt": "one more. you're heading to work.",
+      "options": [
+        "i have to go to work.",
+        "i'm going to work.",
+        "i'm choosing to go to work, because i want the paycheck."
+      ],
+      "question": "notice a difference?",
+      "answers": ["a little", "a lot", "not really"],
+      "reply": "any of those is okay. the more you play with words, the more you'll notice."
+    },
+    {
+      "type": "show",
+      "text": "you're not doing anything wrong. your words have been doing a lot of work for you, for a long time.",
+      "button": "okay"
+    },
+    {
+      "type": "show",
+      "text": "hey you is a place to see how your words work, and to collect more of them. more ways to say what's true. more room to be yourself.",
+      "button": "i like that"
+    },
+    {
+      "type": "map",
+      "prompt": "three things you can explore here, in any order:",
+      "items": [
+        { "name": "words", "practice": "language", "text": "how you talk to yourself, and new ways to try" },
+        { "name": "wants", "practice": "desires", "text": "what you actually like, outside of everyone else" },
+        { "name": "thoughts", "practice": "opinions", "text": "what you actually think, and saying it" }
+      ],
+      "button": "next"
+    },
+    {
+      "type": "show",
+      "text": "everything you discover lands in one place: me, collected. a picture of you, in your own words. it stays on this phone.",
+      "button": "next"
+    },
+    {
+      "type": "promises",
+      "prompt": "a few promises:",
+      "items": [
+        "there are no right answers.",
+        "you can skip anything.",
+        "no streaks, ever. come back whenever you want.",
+        "this isn't therapy, and you never have to share anything you don't want to."
+      ],
+      "button": "got it"
+    },
+    {
+      "type": "write",
+      "optional": true,
+      "prompt": "let's start your collection. what's one thing you like? anything at all.",
+      "chips": ["rain", "late-night drives", "a certain song", "my pet", "not sure yet"],
+      "input": {
+        "label": "i like:",
+        "placeholder": "e.g. the smell of coffee"
+      },
+      "keep": "what-i-like",
+      "skip": "skip for now"
+    },
+    {
+      "type": "close",
+      "text": "that's the first piece of you, collected. welcome.",
+      "button": "look around"
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "putting experiences into words can change how intense they feel",
+      "source": "Lieberman et al., 2007, Psychological Science",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
+    },
+    {
+      "idea": "a clearer sense of who you are is linked to wellbeing",
+      "source": "Coutts, Al-Kire & Weidler, 2023, PLOS ONE",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+    }
+  ]
+}

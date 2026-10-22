@@ -7,7 +7,8 @@ The name is always lowercase: **hey you**.
 ## v1 scope (build only this)
 
 - **One engine, three practices.** Every practice is the same card flow: prompt → respond (pick, rewrite, or type; no right answers) → keep (saved to me, collected) → try it today (optional).
-  - **language:** one lesson per pattern ("always/never", "I should", "I am [label]" vs "I feel", "I have to" vs "I choose to", "but", "they probably think…", over-apologizing, "it's fine"). Notice → understand → rewrite → try.
+  - **start:** a first lesson (`content/start/welcome.json`) that shows what hey you is before any practice.
+  - **language:** one lesson per everyday word or phrase ("always/never", "I should", "I am…" and "I feel…", "I have to" and "I choose to", "but", "they probably think…", "sorry", "it's fine"). Explore what it means for you → appreciate what it does for you → try other ways on → collect the ones that feel like you → optional try it today.
   - **desires:** "this or that", small wants, what younger you loved.
   - **opinions:** low-stakes questions answered "I think… because…"; changing your mind is welcome.
 - **me, collected:** my words, what I like, what I think. Editable and deletable.
@@ -22,8 +23,17 @@ Out of scope for v1 (do not build unless asked): rooms hub, customizable space, 
 - User data stays on the device (localStorage). Wrap every storage read/write in try/catch; the app must still work if storage fails.
 - Mobile first. Check every screen at phone width in light and dark mode before calling it done.
 
+## Core stance: exploring, not correcting
+
+IMPORTANT: hey you never treats people as doing something wrong. Nothing a person says or does is a "pattern to fix." The app shows how their words, wants, and thoughts already work, with curiosity and appreciation, then offers more range: more words, more ways to say what's true, more room to be themselves. Like learning more of a language, nothing already known is wrong.
+
+- Explore what a word or habit means for this person; appreciate the work it has done for them.
+- Let people try things on and notice how each lands. Never grade options or attach a "cost" to the way they already speak.
+- Collect, don't replace. The goal is range, not better sentences.
+
 ## Voice
 
+- In the app, the three practices are called **words** (language), **wants** (desires), and **thoughts** (opinions).
 - Lowercase, warm, short sentences. Show, don't tell: scenes and examples, never definitions or lectures.
 - Never: toxic, broken, fix, should (as an instruction), wrong, disorder, healing journey.
 - Lean on: makes sense, of course, want to try, no pressure.
