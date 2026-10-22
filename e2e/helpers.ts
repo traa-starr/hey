@@ -1,4 +1,4 @@
-import type { Page } from "@playwright/test";
+import { expect, type Page } from "@playwright/test";
 
 export const button = (page: Page, name: string | RegExp) =>
   page.getByRole("button", typeof name === "string" ? { name, exact: true } : { name });
@@ -24,4 +24,23 @@ export async function returning(page: Page) {
   }, V1);
   await page.goto("./");
   await page.locator(".greet").waitFor();
+}
+
+// wait until a value has really landed in IndexedDB (writes happen behind the screen)
+export async function saved(page: Page, key: string, check: (value: unknown) => boolean) {
+  const read = () =>
+    page.evaluate(
+      (k) =>
+        new Promise<unknown>((resolve) => {
+          const open = indexedDB.open("heyyou");
+          open.onsuccess = () => {
+            const get = open.result.transaction("kv").objectStore("kv").get(k);
+            get.onsuccess = () => resolve(get.result?.value ?? null);
+            get.onerror = () => resolve(null);
+          };
+          open.onerror = () => resolve(null);
+        }),
+      key
+    );
+  await expect.poll(async () => check(await read())).toBe(true);
 }

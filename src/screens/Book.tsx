@@ -1,5 +1,5 @@
 // your book: things you've told yourself, and about you. editable, removable, private.
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 import { useState } from "react";
 import { content } from "../content/load";
 import { toSecondPerson } from "../lib/person";
@@ -53,7 +53,7 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
   const shown = e.kind === "about" ? toSecondPerson(e.text) : e.text;
   const meta = [shortDate(e.at), e.from, e.before && e.after ? `${names[e.before - 1]} → ${names[e.after - 1]}` : ""].filter(Boolean).join(" · ");
   return (
-    <motion.div
+    <m.div
       className="entry"
       initial={fresh ? { opacity: 0, y: 14, rotate: -0.8 } : false}
       animate={{ opacity: 1, y: 0, rotate: 0 }}
@@ -88,6 +88,6 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
           )}
         </>
       )}
-    </motion.div>
+    </m.div>
   );
 }

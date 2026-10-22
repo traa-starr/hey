@@ -1,21 +1,22 @@
 // Schemas for everything in content/. A file that doesn't match fails the tests,
 // and in the app the broken piece is skipped instead of taking everything down.
-import { z } from "zod";
+// Uses zod/mini to keep what ships to phones small.
+import * as z from "zod/mini";
 
-const text = z.string().min(1);
+const text = z.string().check(z.minLength(1));
+const list = <T extends z.ZodMiniType>(item: T, min = 0) => (min ? z.array(item).check(z.minLength(min)) : z.array(item));
+const opt = z.optional;
 
 export const source = z.object({ label: text, url: z.string() });
 
 export const slot = z.object({
   key: text,
   label: text,
-  fill: z.enum(["name", "original", "original-i"]).optional(),
-  chips: z.array(text).min(1).optional(),
-  placeholder: z.string().optional(),
-  ideas: z.array(text).optional()
-}).refine((s) => s.fill || s.chips || (s.ideas && s.ideas.length > 0), {
-  message: "a typed slot needs ideas, so nobody starts from an empty box"
-});
+  fill: opt(z.enum(["name", "original", "original-i"])),
+  chips: opt(list(text, 1)),
+  placeholder: opt(z.string()),
+  ideas: opt(list(text))
+}).check(z.refine((s) => !!(s.fill || s.chips || (s.ideas && s.ideas.length > 0)), "a typed slot needs ideas, so nobody starts from an empty box"));
 
 export const formula = z.object({
   id: text,
@@ -24,84 +25,69 @@ export const formula = z.object({
   why: text,
   example: z.object({ before: text, after: text }),
   template: text,
-  slots: z.array(slot),
+  slots: list(slot),
   source,
   evidence: text
-}).refine((f) => f.slots.every((s) => f.template.includes(`{${s.key}}`)), {
-  message: "every slot needs a {key} in the template"
-});
+}).check(z.refine((f) => f.slots.every((s) => f.template.includes(`{${s.key}}`)), "every slot needs a {key} in the template"));
 
-export const formulasFile = z.object({
-  intro: text,
-  formulas: z.array(z.unknown()),
-  catchIdeas: z.array(text).min(1)
-});
+export const formulasFile = z.object({ intro: text, formulas: list(z.unknown()), catchIdeas: list(text, 1) });
 
 export const question = z.object({
   id: text,
   prompt: text,
-  options: z.array(text).min(2),
+  options: list(text, 2),
   keep: z.enum(["like", "think"]),
-  as: text.refine((s) => s.includes("{x}"), "needs {x}")
+  as: text.check(z.refine((s) => s.includes("{x}"), "needs {x}"))
 });
-export const questionsFile = z.object({ intro: text, questions: z.array(z.unknown()) });
+export const questionsFile = z.object({ intro: text, questions: list(z.unknown()) });
 
 const keep = z.enum(["my-words", "what-i-like", "what-i-think"]);
 
 // a small typographic scene: the inner voice, your voice, or both
-export const visual = z.object({ inner: z.string().optional(), mine: z.string().optional(), loud: z.number().int().min(1).max(5).optional() });
+export const visual = z.object({
+  inner: opt(z.string()),
+  mine: opt(z.string()),
+  loud: opt(z.int().check(z.minimum(1), z.maximum(5)))
+});
 
 const buildPart = z.object({
   key: text,
   label: text,
-  chips: z.array(text).optional(),
-  input: z.boolean().optional(),
-  placeholder: z.string().optional(),
-  ideas: z.array(text).optional(),
-  allowCustom: z.boolean().optional()
+  chips: opt(list(text)),
+  input: opt(z.boolean()),
+  placeholder: opt(z.string()),
+  ideas: opt(list(text)),
+  allowCustom: opt(z.boolean())
 });
 
+const stage = opt(z.string());
+
 export const step = z.discriminatedUnion("type", [
-  z.object({ type: z.literal("welcome"), text, button: text, visual: visual.optional() }),
+  z.object({ type: z.literal("welcome"), text, button: text, visual: opt(visual) }),
+  z.object({ type: z.literal("show"), text, button: text, stage, more: opt(z.string()), source: opt(source), visual: opt(visual) }),
+  z.object({ type: z.literal("try-on"), prompt: text, options: list(text, 2), question: text, answers: opt(list(text)), reply: text, stage }),
+  z.object({ type: z.literal("promises"), prompt: text, items: list(text, 1), button: text }),
+  z.object({ type: z.literal("this-or-that"), prompt: text, pairs: list(z.tuple([text, text]), 1), extras: opt(list(text)), keep: z.literal("what-i-like") }),
+  z.object({ type: z.literal("build"), prompt: text, template: text, parts: list(buildPart, 1), reply: opt(z.string()), keep, optional: opt(z.boolean()) }),
   z.object({
-    type: z.literal("show"), text, button: text, stage: z.string().optional(),
-    more: z.string().optional(), source: source.optional(), visual: visual.optional()
+    type: z.literal("write"), prompt: text, chips: opt(list(text)),
+    input: opt(z.object({ label: text, placeholder: opt(z.string()) })),
+    keep: z.union([keep, z.literal("name")]), skip: opt(z.string()), optional: opt(z.boolean()), stage
   }),
-  z.object({
-    type: z.literal("try-on"), prompt: text, options: z.array(text).min(2), question: text,
-    answers: z.array(text).optional(), reply: text, stage: z.string().optional()
-  }),
-  z.object({ type: z.literal("promises"), prompt: text, items: z.array(text).min(1), button: text }),
-  z.object({
-    type: z.literal("this-or-that"), prompt: text, pairs: z.array(z.tuple([text, text])).min(1),
-    extras: z.array(text).optional(), keep: z.literal("what-i-like")
-  }),
-  z.object({
-    type: z.literal("build"), prompt: text, template: text, parts: z.array(buildPart).min(1),
-    reply: z.string().optional(), keep, optional: z.boolean().optional()
-  }),
-  z.object({
-    type: z.literal("write"), prompt: text, chips: z.array(text).optional(),
-    input: z.object({ label: text, placeholder: z.string().optional() }).optional(),
-    keep: z.union([keep, z.literal("name")]), skip: z.string().optional(), optional: z.boolean().optional(), stage: z.string().optional()
-  }),
-  z.object({ type: z.literal("pocket"), prompt: text, phrases: z.array(text).min(1), keep, stage: z.string().optional() }),
-  z.object({ type: z.literal("try"), prompt: text, options: z.array(text).min(1), skip: z.string().optional(), stage: z.string().optional() }),
-  z.object({
-    type: z.literal("close"), text, button: z.string().optional(),
-    then: z.literal("answer").optional(), later: z.string().optional()
-  })
+  z.object({ type: z.literal("pocket"), prompt: text, phrases: list(text, 1), keep, stage }),
+  z.object({ type: z.literal("try"), prompt: text, options: list(text, 1), skip: opt(z.string()), stage }),
+  z.object({ type: z.literal("close"), text, button: opt(z.string()), then: opt(z.literal("answer")), later: opt(z.string()) })
 ]);
 
 export const lesson = z.object({
   id: text,
   practice: text,
-  kind: z.string().optional(),
+  kind: opt(z.string()),
   title: text,
   subtitle: text,
-  minutes: z.number().positive(),
-  steps: z.array(step).min(1),
-  grounding: z.array(z.object({ idea: text, source: text, url: z.string().optional() })).optional()
+  minutes: z.number().check(z.positive()),
+  steps: list(step, 1),
+  grounding: opt(list(z.object({ idea: text, source: text, url: opt(z.string()) })))
 });
 
 export const index = z.object({
@@ -111,18 +97,18 @@ export const index = z.object({
   copy: text,
   help: text,
   credits: text,
-  practices: z.array(z.object({ id: text, name: text, blurb: text, lessons: z.array(text) }))
+  practices: list(z.object({ id: text, name: text, blurb: text, lessons: list(text) }))
 });
 
 export const help = z.object({
   title: text,
   note: text,
-  lines: z.array(z.object({ name: text, detail: text, url: z.string().optional() })).min(1)
+  lines: list(z.object({ name: text, detail: text, url: opt(z.string()) }), 1)
 });
 
 export const credits = z.object({
   note: text,
-  items: z.array(z.object({ name: text, by: text, license: text, use: text, url: z.string() }))
+  items: list(z.object({ name: text, by: text, license: text, use: text, url: z.string() }))
 });
 
 const strings = <T extends string>(...keys: T[]) => z.object(Object.fromEntries(keys.map((k) => [k, text])) as Record<T, typeof text>);
@@ -132,7 +118,7 @@ export const copy = z.object({
   tabs: strings("today", "explore", "book", "label"),
   greeting: strings("night", "dawn", "day", "dusk", "noName"),
   today: strings("toldYourself", "toldEmpty", "answerTitle", "answerSub", "questionLabel", "questionNote", "noted", "allAnswered", "explore"),
-  loudness: z.object({ names: z.array(text).length(5), label: text, unset: text, notSet: text, hardToSay: text }),
+  loudness: z.object({ names: z.array(text).check(z.length(5)), label: text, unset: text, notSet: text, hardToSay: text }),
   answer: strings(
     "catchAsk", "catchLabel", "catchPlaceholder", "catchNote", "catchIdeas", "loudAsk", "calmAsk", "calmYes", "calmNo",
     "calmIn", "calmOut", "calmDone", "calmStatic", "wayAsk", "aboutWay", "evidence", "slotPlaceholder", "thisIsMine",

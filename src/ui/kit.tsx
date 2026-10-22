@@ -1,5 +1,5 @@
 // Shared pieces: the screen wrapper, bars, idea chips, the loudness control, and a sentence being written.
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 import { useEffect, useRef, type ReactNode } from "react";
 import { content } from "../content/load";
 import { buzz, stepChime } from "../lib/feedback";
@@ -19,7 +19,7 @@ export function Screen({ children, id, label }: { children: ReactNode; id: strin
     if (auto && ref.current) speak(screenText(ref.current));
   }, [id, auto]);
   return (
-    <motion.div
+    <m.div
       key={id}
       ref={ref}
       className="screen"
@@ -29,7 +29,7 @@ export function Screen({ children, id, label }: { children: ReactNode; id: strin
       aria-label={label}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 

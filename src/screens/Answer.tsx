@@ -1,6 +1,7 @@
 // answer it: catch what the inner voice said, notice how loud it is, answer it in your own words.
 // The draft (including the inner voice's words) lives only in this tab's session, never in lasting storage.
-import { motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
+import * as m from "motion/react-m";
 import { useEffect, useRef, useState } from "react";
 import { content } from "../content/load";
 import type { Formula } from "../content/schema";
@@ -153,7 +154,7 @@ export function Answer({ way }: { way?: string }) {
       body = (
         <>
           <p className="label" style={{ marginTop: "var(--s4)" }}>{copy.answer.forBook}</p>
-          <motion.article
+          <m.article
             className="page"
             initial={{ opacity: 0, y: 18, rotate: -1.2 }}
             animate={{ opacity: 1, y: 0, rotate: 0 }}
@@ -162,7 +163,7 @@ export function Answer({ way }: { way?: string }) {
             <p className="mine" data-say>{result}</p>
             {both ? <p className="shift">{names[d.loud - 1]} <span aria-hidden="true">→</span><span className="sr">to</span> {names[d.loud2 - 1]}</p> : null}
             <div className="meta"><span>{f?.name}</span><span>{shortDate(new Date().toISOString())}</span></div>
-          </motion.article>
+          </m.article>
           {d.keptId ? (
             <>
               <p className="note" role="status">{copy.answer.kept}</p>
@@ -294,7 +295,7 @@ function Calm({ calmed, onBreathe, onNext }: { calmed: boolean; onBreathe: () =>
         <p className="lede" data-say style={{ marginTop: "var(--s8)" }}>{copy.answer.calmStatic}</p>
       ) : (
         <div className="calm" aria-live="polite">
-          <motion.div
+          <m.div
             className="breath"
             animate={{ scale: [0.7, 1.25, 1.25, 0.7] }}
             transition={{ duration: 10, times: [0, 0.4, 0.42, 1], repeat: 2, ease: "easeInOut" }}

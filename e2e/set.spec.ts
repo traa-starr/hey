@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { button, returning } from "./helpers";
+import { button, returning, saved } from "./helpers";
 
 test("a set plays, keeps answers in about you, and resumes", async ({ page }) => {
   await returning(page);
@@ -11,6 +11,7 @@ test("a set plays, keeps answers in about you, and resumes", async ({ page }) =>
   await button(page, "rain on the window").click();
 
   // leave halfway and come back: it picks up where it stopped
+  await saved(page, "progress", (p) => (p as { local?: { at?: number } } | null)?.local?.at === 2);
   await page.reload();
   await expect(page.getByText("3 of 8")).toBeVisible();
   for (let i = 0; i < 6; i++) await button(page, "neither").click();

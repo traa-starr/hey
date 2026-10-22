@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { button } from "./helpers";
+import { button, saved } from "./helpers";
 
 test("a first visit tells the two-voices story and ends with answering one", async ({ page }) => {
   await page.goto("./");
@@ -28,6 +28,7 @@ test("the welcome can be left early and resumes where it stopped", async ({ page
   await page.goto("./");
   await button(page, "hi").click();
   await button(page, "go on").click();
+  await saved(page, "progress", (p) => (p as { i?: number } | null)?.i === 2);
   await page.reload();
   await expect(page.getByText("here, you grow a second one. yours, in your own words.")).toBeVisible();
 });

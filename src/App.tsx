@@ -1,16 +1,20 @@
-import { MotionConfig } from "motion/react";
-import { Component, useEffect, type ReactNode } from "react";
+import { LazyMotion, MotionConfig } from "motion/react";
+import { Component, lazy, Suspense, useEffect, type ReactNode } from "react";
 import { content } from "./content/load";
 import { stopSpeaking } from "./lib/speech";
 import { HUES, timeOfDay } from "./lib/time";
 import { go, useRoute } from "./router";
-import { Answer } from "./screens/Answer";
-import { Book } from "./screens/Book";
-import { Explore } from "./screens/Explore";
-import { Lesson } from "./screens/Lesson";
 import { Today } from "./screens/Today";
-import { Way } from "./screens/Way";
 import { useData } from "./store/useStore";
+
+const loadMotion = () => import("./lib/motion-features").then((m) => m.default);
+
+// screens beyond today load on first use (and are cached for offline by the service worker)
+const Answer = lazy(() => import("./screens/Answer").then((m) => ({ default: m.Answer })));
+const Book = lazy(() => import("./screens/Book").then((m) => ({ default: m.Book })));
+const Explore = lazy(() => import("./screens/Explore").then((m) => ({ default: m.Explore })));
+const Lesson = lazy(() => import("./screens/Lesson").then((m) => ({ default: m.Lesson })));
+const Way = lazy(() => import("./screens/Way").then((m) => ({ default: m.Way })));
 
 // the page color follows the hour; appearance can pin light or dark
 function useTheme() {
@@ -62,7 +66,11 @@ function Routes() {
     case "book": page = <Book />; break;
     default: page = <Today />;
   }
-  return <main className={`app${flow ? " flow" : ""}`}>{page}</main>;
+  return (
+    <main className={`app${flow ? " flow" : ""}`}>
+      <Suspense fallback={<p className="boot">{c.copy.app.loading}</p>}>{page}</Suspense>
+    </main>
+  );
 }
 
 class Guard extends Component<{ children: ReactNode }, { failed: boolean }> {
@@ -90,9 +98,11 @@ class Guard extends Component<{ children: ReactNode }, { failed: boolean }> {
 export function App() {
   return (
     <Guard>
-      <MotionConfig reducedMotion="user">
-        <Routes />
-      </MotionConfig>
+      <LazyMotion features={loadMotion} strict>
+        <MotionConfig reducedMotion="user">
+          <Routes />
+        </MotionConfig>
+      </LazyMotion>
     </Guard>
   );
 }

@@ -1,6 +1,6 @@
 // Loads and validates content/. Files are bundled at build time, so the app works offline;
 // adding a lesson is still only a JSON change.
-import type { ZodType } from "zod";
+import type { ZodMiniType } from "zod/mini";
 import * as S from "./schema";
 
 export type Content = {
@@ -25,7 +25,7 @@ export class ContentError extends Error {}
 // strict: throw on the first problem (development and tests); otherwise skip broken pieces
 export function buildContent(files: Files, strict: boolean): Content {
   const problems: string[] = [];
-  const read = <T>(path: string, schema: ZodType<T>): T | null => {
+  const read = <T>(path: string, schema: ZodMiniType<T>): T | null => {
     const raw = files[path];
     if (raw === undefined) {
       problems.push(`${path}: missing`);
@@ -42,7 +42,7 @@ export function buildContent(files: Files, strict: boolean): Content {
     }
     return parsed.data;
   };
-  const each = <T>(path: string, items: unknown[], schema: ZodType<T>): T[] =>
+  const each = <T>(path: string, items: unknown[], schema: ZodMiniType<T>): T[] =>
     items.flatMap((item, n) => {
       const parsed = schema.safeParse(item);
       if (parsed.success) return [parsed.data];
