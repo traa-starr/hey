@@ -1,0 +1,189 @@
+{
+  "id": "its-fine",
+  "practice": "language",
+  "title": "it's fine",
+  "subtitle": "when two small words do a lot of work",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "welcome",
+      "text": "this one's about two small words you probably said today.",
+      "button": "okay"
+    },
+    {
+      "type": "scene",
+      "stage": "notice",
+      "scene": "your friend cancels an hour before. you'd been looking forward to it all week. you text back: \"no worries, it's fine!\"",
+      "reveal": "the text took four words. the evening felt a lot longer.",
+      "prompt": "ever sent a text like that?",
+      "options": ["all the time", "sometimes", "not really"],
+      "reply": "makes sense. most people have."
+    },
+    {
+      "type": "scene",
+      "stage": "notice",
+      "scene": "someone asks how your week was. it was a lot. you hear yourself say, \"it's fine, just busy.\"",
+      "reveal": "underneath \"fine\" there might have been: tired. a little alone. proud you got through it.",
+      "button": "next"
+    },
+    {
+      "type": "scene",
+      "stage": "notice",
+      "scene": "your coffee comes out different from what you ordered. \"it's fine,\" you say, and drink it.",
+      "reveal": "sometimes it really is fine. and sometimes \"fine\" is just quicker than wanting something.",
+      "button": "next"
+    },
+    {
+      "type": "understand",
+      "stage": "understand",
+      "lines": [
+        "\"it's fine\" isn't a lie. it's a shortcut.",
+        "it ends the moment quickly, keeps things smooth, and keeps you out of the way. if speaking up ever caused trouble for you, of course you got good at it.",
+        "the cost is quiet. the more often \"fine\" speaks for you, the harder it gets to know what you actually feel, or want."
+      ],
+      "button": "let's try it"
+    },
+    {
+      "type": "rewrite",
+      "stage": "rewrite",
+      "context": "your friend cancels last minute.",
+      "original": "no worries, it's fine!",
+      "prompt": "which one would you want to send?",
+      "options": [
+        {
+          "text": "no worries, it's fine!",
+          "note": "smooth for them. the disappointment stays with you."
+        },
+        {
+          "text": "aw, i was really looking forward to it. rain check?",
+          "note": "honest and still kind. they get to know you a little."
+        },
+        {
+          "text": "ugh. typical.",
+          "note": "the feeling gets out, just sideways."
+        }
+      ],
+      "footer": "all three make sense. you get to choose."
+    },
+    {
+      "type": "rewrite",
+      "stage": "rewrite",
+      "context": "someone safe asks how your week was.",
+      "original": "it's fine, just busy.",
+      "prompt": "what would feel true to say?",
+      "options": [
+        {
+          "text": "it's fine, just busy.",
+          "note": "quick, and the conversation moves on."
+        },
+        {
+          "text": "honestly, kind of a lot. but i got through it.",
+          "note": "true, and it gives them a way in."
+        },
+        {
+          "text": "long. i'll tell you about it sometime.",
+          "note": "honest without telling everything. you decide how much to share."
+        }
+      ]
+    },
+    {
+      "type": "rewrite",
+      "stage": "rewrite",
+      "context": "after a hard day, alone, you tell yourself:",
+      "original": "it's fine. other people have it worse.",
+      "prompt": "what if you said it a notch kinder?",
+      "options": [
+        {
+          "text": "it's fine. other people have it worse.",
+          "note": "it skips past your day without looking at it."
+        },
+        {
+          "text": "today was hard. that's allowed, even if others have it harder.",
+          "note": "both things can be true."
+        },
+        {
+          "text": "i'm tired. i think i could use some rest.",
+          "note": "names it, then asks what you need."
+        }
+      ]
+    },
+    {
+      "type": "rewrite",
+      "stage": "rewrite",
+      "context": "the coffee that came out different.",
+      "original": "it's fine.",
+      "prompt": "how would you like to handle it?",
+      "options": [
+        {
+          "text": "it's fine.",
+          "note": "sometimes it truly is. that's okay too."
+        },
+        {
+          "text": "sorry, i think i ordered an oat latte?",
+          "note": "a small want, said out loud. it usually goes better than we expect."
+        },
+        {
+          "text": "it's fine. next time i'll say something.",
+          "note": "not today, but you're practicing."
+        }
+      ]
+    },
+    {
+      "type": "write",
+      "stage": "rewrite",
+      "optional": true,
+      "prompt": "think of one \"fine\" from this week. what might have been underneath it?",
+      "chips": ["tired", "a little hurt", "disappointed", "didn't want to bother anyone", "it really was fine", "not sure yet"],
+      "input": {
+        "label": "i could have said:",
+        "placeholder": "e.g. actually, i'd rather stay in tonight"
+      },
+      "keep": "my-words",
+      "skip": "skip for now"
+    },
+    {
+      "type": "pocket",
+      "stage": "keep",
+      "prompt": "want to keep any of these for later?",
+      "phrases": [
+        "actually, i'd prefer...",
+        "i'm a little bummed, but it's okay.",
+        "it's not a big deal, but it does matter to me.",
+        "can i get back to you on that?"
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "try",
+      "stage": "try",
+      "prompt": "one small thing for today, if you want:",
+      "options": [
+        "next time you hear yourself say \"it's fine,\" just notice it. no need to change anything.",
+        "swap one \"it's fine\" for one honest word, like \"tired\" or \"bummed.\"",
+        "say one small preference out loud, like what you'd rather eat or watch."
+      ],
+      "skip": "not today"
+    },
+    {
+      "type": "close",
+      "text": "that's it. you don't have to stop saying \"fine.\" you just get to choose when it's true.",
+      "button": "done"
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "putting feelings into words can lower their intensity",
+      "source": "Lieberman et al., 2007, Psychological Science",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
+    },
+    {
+      "idea": "telling feelings apart is linked to healthier coping and can be practiced",
+      "source": "Kashdan, Barrett & McKnight, 2015, Current Directions in Psychological Science",
+      "url": "https://www.affective-science.org/pubs/2015/kashdan-et-all-unpacking-emotion-differentiation-2015.pdf"
+    },
+    {
+      "idea": "honest, respectful expression of needs and preferences (assertive communication) is a standard skill in cognitive behavioral approaches",
+      "source": "general clinical practice"
+    }
+  ]
+}
