@@ -7,11 +7,12 @@ describe("moving between screens", () => {
     expect(d("#/learn", "#/path/habits")).toBe("forward");
     expect(d("#/path/habits", "#/lesson/habit:mind")).toBe("forward");
     expect(d("#/lesson/habit:mind", "#/path/habits")).toBe("back");
-    expect(d("#/book", "#/you")).toBe("back");
     expect(d("#/book", "#/book/voice")).toBe("forward");
   });
   it("cross-fades between tabs and keeps still within one screen", () => {
     expect(d("#/", "#/you")).toBe("tab");
+    expect(d("#/book", "#/you")).toBe("tab");
+    expect(d("#/book/voice", "#/book")).toBe("back");
     expect(d("#/book/voice", "#/book/about")).toBeNull();
     expect(d("#/you", "#/you")).toBeNull();
   });

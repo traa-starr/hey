@@ -6,13 +6,14 @@ The name is always lowercase: **hey you**. It is the idea itself: talking to you
 
 ## v1 scope (build only this)
 
-- **Home is just home:** a sky that follows the hour, sol, a greeting, one next step, two shortcuts. Tabs: home, learn, practice, you.
+- **Home is just home:** a sky that follows the hour, sol, a greeting, one next step, two shortcuts. Tabs: learn, practice, home (in the middle, where the app opens), book, you.
 - **sol, the companion:** a small dawn-light character who teaches lessons as short chat bubbles and reacts with simple moods. Scripted, never AI. It can be renamed or turned off.
 - **Voice habits** (`content/habits.json`): ten common ways inner voices talk, from CBT thinking traps, each named warmly and described by what it's trying to do. The **voice check** (swipe or tap, no typing) maps them; **catch it** (three taps) logs when and where one shows up. A voice check is for noticing, never a diagnosis.
 - **Learn** (`content/index.json` paths): real lessons as chats with sol, built from interactive steps (spot it, try it on, pick, write with ideas, takeaways, experiments). Every voice habit gets a lesson generated from its data.
 - **Practice:** catch it, answer it, breathe, voice check, this or that, ways to answer.
 - **Answer it:** catch a sentence (or start from a caught habit and pick one of its lines) → set how loud it is → optional breath when it's loud → pick a way to answer (`content/formulas.json`, each with source and honest evidence label) → write your answer → set the loudness again → keep it, try another way, or let it go. The inner voice's sentence is never stored unless the person opts in.
-- **You:** your voice map, where habits show up, how loud it's been, your book (words, about you, keepers), settings with real help at the bottom.
+- **Book:** your book has its own tab: a cover that grows a star for each thing kept, what you've read, how answering moved the loudness, your range, and the pages (words, about you, keepers).
+- **You:** your voice map, where habits show up, how loud it's been, settings with real help at the bottom.
 - **Never leave an empty box alone.** Every text field offers tappable ideas.
 - **Read aloud** (on-device Web Speech) and **soft sounds**, both off by default. Haptics where the platform allows.
 - **Pick up where you left off:** every unfinished lesson resumes. An unfinished answer resumes only within the same session, for 30 minutes.

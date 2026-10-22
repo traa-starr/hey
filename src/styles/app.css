@@ -56,6 +56,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 10px; }
+/* headings take focus only so screen readers start at the top of a new screen; they aren't controls, so no ring */
+h1[tabindex="-1"]:focus-visible, h2[tabindex="-1"]:focus-visible { outline: none; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .boot { min-height: 60vh; display: grid; place-items: center; font-family: var(--display); font-weight: 650; color: var(--soft); margin: 0; }
 
@@ -115,7 +117,7 @@ p { margin: 0; }
 .bar span { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--violet), var(--pink)); transition: width .4s var(--ease); }
 
 /* tabs */
-.tabs { view-transition-name: tabs; position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: min(26rem, calc(100% - 28px)); display: grid; grid-template-columns: repeat(4, 1fr); background: var(--surface); border-radius: 26px; padding: 6px; box-shadow: 0 10px 30px -10px #1d173660, 0 0 0 1px var(--hair); z-index: 9; }
+.tabs { view-transition-name: tabs; position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: min(27rem, calc(100% - 28px)); display: grid; grid-template-columns: repeat(5, 1fr); background: var(--surface); border-radius: 26px; padding: 6px; box-shadow: 0 10px 30px -10px #1d173660, 0 0 0 1px var(--hair); z-index: 9; }
 .tabs a { text-decoration: none; border-radius: 20px; padding: 7px 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: .76rem; font-weight: 600; color: var(--soft); min-height: 48px; justify-content: center; }
 .tabs svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .tabs [aria-current="page"] { background: var(--primary-soft); color: var(--primary); }
@@ -307,12 +309,15 @@ p { margin: 0; }
 .tabs-row button i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
 
 /* book cover: always a night sky, one star for each thing kept */
-.cover { view-transition-name: book-cover; position: relative; overflow: hidden; color: #fff; border-radius: 10px 30px 30px 10px; padding: 22px 20px 18px 32px; display: flex; flex-direction: column; gap: 4px;
+.cover { position: relative; overflow: hidden; color: #fff; border-radius: 10px 30px 30px 10px; padding: 22px 20px 18px 32px; display: flex; flex-direction: column; gap: 4px;
   background: radial-gradient(120% 70% at 85% 0%, #b4489a66, transparent 60%), linear-gradient(165deg, #171140 0%, #2c2078 55%, #4e2a86 100%);
   box-shadow: 0 26px 40px -26px #2a1d6e, inset 0 0 0 1px #ffffff14; }
 .cover::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 14px; background: linear-gradient(90deg, #00000055, #ffffff22 70%, #00000030); }
 .cover h1 { font-size: 2.3rem; }
-.cover .by { font-family: var(--voice); font-style: italic; font-size: 1.15rem; color: #ffffffd9; margin-top: 4px; }
+.cover-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.cover-head .ibtn { background: #ffffff26; color: #fff; }
+.screen:has(> .cover) { padding-top: calc(18px + env(safe-area-inset-top, 0px)); }
+.cover .by { font-family: var(--voice); font-style: italic; font-size: 1.15rem; color: #ffffffd9; margin-top: -2px; }
 .cover svg { width: 100%; height: auto; display: block; overflow: visible; margin: 6px 0 2px; }
 .cover .dust { fill: #ffffff; opacity: .28; }
 .cover .link { stroke: #ffffff; stroke-opacity: .2; stroke-width: .8; }

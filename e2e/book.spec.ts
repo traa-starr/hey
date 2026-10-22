@@ -16,8 +16,10 @@ test("data from the first version is all here", async ({ page }) => {
 
 test("the book grows a star for each thing kept, and shows what's been read and tried", async ({ page }) => {
   await returning(page);
-  await page.getByRole("link", { name: "you", exact: true }).click();
-  await page.getByRole("link", { name: /your book/ }).click();
+  // the book has its own tab, between home and you
+  await expect(page.getByRole("navigation", { name: "main" }).getByRole("link")).toHaveText(["learn", "practice", "home", "book", "you"]);
+  await page.getByRole("link", { name: "book", exact: true }).click();
+  await expect(page.getByRole("link", { name: "book", exact: true })).toHaveAttribute("aria-current", "page");
   await expect(page.getByRole("heading", { name: "your book", level: 1 })).toBeVisible();
   await expect(page.getByText("by sam")).toBeVisible();
   await expect(page.getByRole("img", { name: "a sky of 2 things you've kept" })).toBeVisible();

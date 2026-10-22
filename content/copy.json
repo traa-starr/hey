@@ -15,9 +15,10 @@
     "companionDefault": "sol"
   },
   "tabs": {
-    "home": "home",
     "learn": "learn",
     "practice": "practice",
+    "home": "home",
+    "book": "book",
     "you": "you",
     "label": "main"
   },
@@ -257,8 +258,6 @@
     "whenEmpty": "catch a habit a few times and you'll see where it shows up.",
     "trend": "how loud it's been",
     "trendEmpty": "check in a few times to see this.",
-    "book": "your book",
-    "bookSub": "everything you've kept",
     "settings": "settings",
     "caught": "caught {n} times",
     "caughtOnce": "caught once"

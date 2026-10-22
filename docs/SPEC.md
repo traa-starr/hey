@@ -4,7 +4,7 @@ hey you helps adults grow a second inner voice: their own, in their own words. T
 
 ## Screens
 
-Four tabs in a floating bar: **home**, **learn**, **practice**, **you**. Full-screen flows (welcome, lessons, voice check, catch it, check-in, answer it, breathe, habit, book, settings) hide the tabs and show a close button, a progress bar where there are steps, and read aloud when it's on.
+Five tabs in a floating bar: **learn**, **practice**, **home** (in the middle; the app opens here), **book**, **you**. Full-screen flows (welcome, lessons, voice check, catch it, check-in, answer it, breathe, habit, the book's pages, settings) hide the tabs and show a close button, a progress bar where there are steps, and read aloud when it's on.
 
 ### Welcome (first open)
 
@@ -57,11 +57,11 @@ As before (v2): catch → how loud → optional breath at loud or all i can hear
 - **your voice map**: up to six habits as bubbles sized by the latest voice check (75%) and what's been caught (25%), then the top three with what each is trying to do. Tap a habit for its page.
 - **when it shows up**: where caught habits happen, as bars.
 - **how loud it's been**: one point per day from check-ins and caught moments, last 14 days.
-- **your book** and **settings**.
+- **settings**.
 
 ### Your book
 
-A cover and, one tap away, the pages.
+Its own tab. A cover and, one tap away, the pages.
 
 - **the cover**: a night sky with one star for each thing kept (gold for words, teal for about you, pink for keepers). The oldest sit in the middle and the sky grows outward; each star joins its nearest older neighbour. Something kept in the last few seconds lands with a small burst. Shows the person's name and the month the book began; never the words themselves.
 - **pages**: three tiles (words, about you, keepers) with how many each holds. Each opens its list (`#/book/voice`, `#/book/about`, `#/book/keeper`), grouped by month, with edit and remove tucked behind one button per entry.
