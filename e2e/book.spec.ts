@@ -26,7 +26,7 @@ test("the book grows a star for each thing kept, and shows what's been read and 
   await expect(page.getByRole("link", { name: "meet your inner voice: 0 of 4 read" })).toBeVisible();
   await expect(page.getByRole("img", { name: /^after you answered: .*all i can hear, then clear$/ })).toBeVisible();
   await expect(page.getByRole("link", { name: "talk to you, used once" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "the dial, not tried yet" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "the dial, open to try" })).toBeVisible();
   await page.getByRole("link", { name: "about you: 1" }).click();
   await expect(page.getByRole("tab", { name: "about you" })).toHaveAttribute("aria-selected", "true");
   await expect(page.locator(".entries")).toContainText("sunrise");
@@ -46,6 +46,8 @@ test("entries can be edited and removed", async ({ page }) => {
   await page.getByRole("button", { name: /^edit:/ }).first().click();
   await page.getByLabel("edit this entry").fill("hey sam, you've done hard weeks before.");
   await page.locator(".entries").getByRole("button", { name: "save", exact: true }).click();
+  // focus comes back to the entry, not the top of the page
+  await expect(page.getByRole("button", { name: /^edit or remove: hey sam, you've done/ })).toBeFocused();
   await expect(page.locator(".entry").first()).toContainText("you've done hard weeks before.");
   await page.reload();
   await expect(page.locator(".entry").first()).toContainText("you've done hard weeks before.");

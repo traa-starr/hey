@@ -290,18 +290,17 @@
     "shelfNote": "{n} of {total} lessons read",
     "shelfSet": "{name}: {n} of {total} read",
     "moved": "after you answered",
-    "movedNote": "each line is one answer: how loud it was, then how loud after.",
     "movedItem": "{date}: {before}, then {after}",
     "range": "your range",
     "ways": "ways you've answered",
     "wayTimes": "{name}, used {n} times",
     "wayOnce": "{name}, used once",
-    "wayNew": "{name}, not tried yet",
+    "wayNew": "{name}, open to try",
     "habits": "habits you've met",
-    "habitMet": "{name}, met",
-    "habitNew": "{name}, not met yet",
-    "rangeNote": "range, not a score. each new way is one more to reach for.",
-    "options": "edit or remove"
+    "rangeNote": "range, not a score. every way here is yours to use, or not.",
+    "options": "edit or remove",
+    "movedWas": "how loud it was",
+    "movedNow": "how loud after"
   },
   "settings": {
     "title": "settings",

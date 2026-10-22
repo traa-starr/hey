@@ -1,7 +1,7 @@
 // your book: a cover that grows a star for everything you keep, a shelf of what you've read,
 // how answering moved the loudness, and your range. the pages themselves are one tap away.
 import * as m from "motion/react-m";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { content } from "../content/load";
 import { byMonth, constellation, hash, metHabits, monthName, shifts, wayUse } from "../lib/book";
 import { toSecondPerson } from "../lib/person";
@@ -75,7 +75,8 @@ function Sky({ entries, openedAt }: { entries: Entry[]; openedAt: number }) {
   const stars = useMemo(() => constellation(entries, W, H), [entries]);
   const newest = stars.at(-1);
   const fresh = newest && openedAt - Date.parse(newest.at) < FRESH_MS ? newest.id : null;
-  const first = entries.reduce<string | null>((a, e) => (!a || e.at < a ? e.at : a), null);
+  // the month the book began, in local time like the pages; entries without a real date are left out
+  const first = byMonth(entries.filter((e) => Date.parse(e.at) > Date.UTC(2000, 0, 1))).at(-1)?.month;
   const label = !entries.length ? t.skyEmpty : entries.length === 1 ? t.skyOne : format(t.sky, { n: entries.length });
   return (
     <section className="cover" aria-labelledby="cover-h">
@@ -106,7 +107,7 @@ function Sky({ entries, openedAt }: { entries: Entry[]; openedAt: number }) {
         ))}
         {!stars.length ? <circle className="seed" cx={W / 2} cy={H / 2} r={2.6} /> : null}
       </svg>
-      <p className="cover-foot">{first ? format(t.since, { date: monthName(first.slice(0, 7)) }) : t.coverEmpty}</p>
+      <p className="cover-foot">{first ? format(t.since, { date: monthName(first) }) : t.coverEmpty}</p>
     </section>
   );
 }
@@ -146,6 +147,9 @@ function Shelf() {
             </a>
           ))}
         </div>
+        <ul className="shelf-key">
+          {c.paths.map((p) => <li key={p.id}><i aria-hidden="true" style={{ background: colorVar(p.color) }} />{p.name}</li>)}
+        </ul>
       </div>
     </section>
   );
@@ -181,7 +185,10 @@ function Moved({ entries }: { entries: Entry[] }) {
           ))}
         </svg>
       </div>
-      <p className="small">{t.movedNote}</p>
+      <p className="small legend">
+        <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle className="was" cx="6" cy="6" r="4" /></svg>{t.movedWas}</span>
+        <span><svg viewBox="0 0 12 12" aria-hidden="true"><circle className="now" cx="6" cy="6" r="4.5" /></svg>{t.movedNow}</span>
+      </p>
     </section>
   );
 }
@@ -211,14 +218,18 @@ function Range({ entries }: { entries: Entry[] }) {
             );
           })}
         </div>
-        <h3 className="label">{t.habits}</h3>
-        <div className="met">
-          {c.habits.map((h) => (
-            <a key={h.id} className={met.has(h.id) ? "on" : undefined} href={href({ name: "habit", id: h.id })} aria-label={format(met.has(h.id) ? t.habitMet : t.habitNew, { name: h.name })}>
-              <HabitGlyph habit={h} size="sm" />
-            </a>
-          ))}
-        </div>
+        {met.size ? (
+          <>
+            <h3 className="label">{t.habits}</h3>
+            <div className="chips">
+              {c.habits.filter((h) => met.has(h.id)).map((h) => (
+                <a key={h.id} className="met-chip" href={href({ name: "habit", id: h.id })} aria-label={h.name}>
+                  <HabitGlyph habit={h} size="sm" />{h.short}
+                </a>
+              ))}
+            </div>
+          </>
+        ) : null}
         <p className="small">{t.rangeNote}</p>
       </div>
     </section>
@@ -233,7 +244,7 @@ function Pages({ tab }: { tab: Kind }) {
   const newest = groups[0]?.items[0];
   return (
     <>
-      <FlowTop onClose={() => go({ name: "book" })} title={copy.book.title} />
+      <FlowTop onClose={() => go({ name: "book" }, true)} title={copy.book.title} />
       <Screen id="book-pages">
         <h2 className="sr">{copy.book.pages}</h2>
         <div className="tabs-row" role="tablist" aria-label={copy.book.pages}>
@@ -272,6 +283,16 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
   const copy = content().copy;
   const names = copy.loudness.names;
   const [mode, setMode] = useState<"view" | "open" | "edit" | "remove">("view");
+  // after save, cancel, or keep it, focus goes back to this entry's button instead of the top of the page
+  const btn = useRef<HTMLButtonElement>(null);
+  const refocus = useRef(false);
+  const toView = () => { refocus.current = true; setMode("view"); };
+  useEffect(() => {
+    if (mode === "view" && refocus.current) {
+      refocus.current = false;
+      btn.current?.focus();
+    }
+  }, [mode]);
   const [text, setText] = useState(e.text);
   const shown = e.kind === "about" ? toSecondPerson(e.text) : e.text;
   const meta = [shortDate(e.at), e.from, e.before && e.after ? `${names[e.before - 1]} → ${names[e.after - 1]}` : ""].filter(Boolean).join(" · ");
@@ -288,8 +309,8 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
           <label className="sr" htmlFor={`edit-${e.id}`}>{copy.book.editLabel}</label>
           <textarea id={`edit-${e.id}`} className="field voice" rows={2} value={text} autoFocus onChange={(x) => setText(x.target.value)} />
           <div className="entry-actions">
-            <button className="link" type="button" disabled={!text.trim()} onClick={() => { store.edit(e.id, text); setMode("view"); }}>{copy.book.save}</button>
-            <button className="link" type="button" onClick={() => { setText(e.text); setMode("view"); }}>{copy.book.cancel}</button>
+            <button className="link" type="button" disabled={!text.trim()} onClick={() => { store.edit(e.id, text); toView(); }}>{copy.book.save}</button>
+            <button className="link" type="button" onClick={() => { setText(e.text); toView(); }}>{copy.book.cancel}</button>
           </div>
         </div>
       ) : (
@@ -297,7 +318,7 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
           <div className="entry-head">
             <p className={e.said ? "inner-said" : "mine"}>{shown}</p>
             <button
-              className="ibtn" type="button" aria-expanded={mode !== "view"} aria-label={`${copy.book.options}: ${shown}`}
+              ref={btn} className="ibtn" type="button" aria-expanded={mode !== "view"} aria-label={`${copy.book.options}: ${shown}`}
               onClick={() => setMode(mode === "view" ? "open" : "view")}
             >{Icon.more}</button>
           </div>
@@ -307,7 +328,7 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
               <p>{copy.book.removeAsk}</p>
               <div className="row-btns">
                 <button className="btn" type="button" autoFocus onClick={() => { store.remove(e.id); document.getElementById("book-panel")?.focus(); }}>{copy.book.remove}</button>
-                <button className="btn quiet" type="button" onClick={() => setMode("view")}>{copy.book.keepIt}</button>
+                <button className="btn quiet" type="button" onClick={toView}>{copy.book.keepIt}</button>
               </div>
             </div>
           ) : mode === "open" ? (
