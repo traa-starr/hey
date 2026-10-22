@@ -1,0 +1,103 @@
+{
+  "id": "how-self-talk-reaches-others",
+  "title": "self-talk and the people around us",
+  "subtitle": "how treating ourselves can travel",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "recall",
+      "from": "how-your-mind-works/esteem-and-compassion",
+      "prompt": "what are the three parts of self-compassion?",
+      "answer": "kindness toward ourselves, knowing other people struggle too, and noticing a feeling without being swept away."
+    },
+    {
+      "type": "say",
+      "text": "the way we treat ourselves tends to travel. it can show up in how we are with people close to us."
+    },
+    {
+      "type": "know",
+      "text": "in a study of people in romantic relationships, partners described those higher in self-compassion as more caring and accepting, and less controlling.",
+      "source": {
+        "label": "Neff & Beretvas, 2013",
+        "url": "https://doi.org/10.1080/15298868.2011.639548"
+      },
+      "evidence": "moderate (one study, and it shows a link, not a cause)"
+    },
+    {
+      "type": "ask",
+      "text": "what might carry over most?",
+      "options": [
+        {
+          "label": "patience",
+          "reply": "patience is a good guess. it's easier to give when we have some."
+        },
+        {
+          "label": "asking for what i need",
+          "reply": "that one counts. it's easier when we're on our own side."
+        },
+        {
+          "label": "handling mistakes",
+          "reply": "yes. a mistake lands differently when the voice inside is steady."
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "text": "a link isn't a rule. the finding is about averages across many people, not about anyone in particular.",
+      "mood": "calm"
+    },
+    {
+      "type": "tryon",
+      "prompt": "two ways to meet a mistake. notice which is easier to say to someone else:",
+      "lines": [
+        "ugh, i'm hopeless at this.",
+        "that didn't go how i wanted. it happens."
+      ],
+      "reply": "most people find the second easier to say to a friend. it's there for us too."
+    },
+    {
+      "type": "pick",
+      "prompt": "where might a warmer inner voice show up with other people? pick any:",
+      "options": [
+        "listening without rushing to solve it",
+        "saying \"i'm not sure\" out loud",
+        "asking for a hand",
+        "letting a small mistake go",
+        "saying sorry and moving on"
+      ],
+      "reply": "each of those is a small thing, and small things add up."
+    },
+    {
+      "type": "write",
+      "prompt": "what's one thing to bring to the people close by?",
+      "template": "one thing i want to bring: {x}",
+      "ideas": [
+        "patience.",
+        "a sense of humor.",
+        "real listening.",
+        "the same kindness i give them."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "how we treat ourselves tends to show up in how we treat people close to us.",
+      "source": {
+        "label": "Neff & Beretvas, 2013",
+        "url": "https://doi.org/10.1080/15298868.2011.639548"
+      },
+      "evidence": "moderate (one study of couples; a link, not a cause)"
+    },
+    {
+      "type": "experiment",
+      "text": "once today, notice a moment of patience you gave someone. then give a little of it to yourself."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "self-compassionate people were described by partners as more caring and accepting, and less controlling",
+      "source": "Neff & Beretvas, 2013",
+      "url": "https://doi.org/10.1080/15298868.2011.639548"
+    }
+  ]
+}

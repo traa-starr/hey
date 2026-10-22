@@ -1,0 +1,115 @@
+{
+  "id": "why-the-mind-talks",
+  "title": "why the mind talks to itself",
+  "subtitle": "what inner speech is for, and why \"you\" helps",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "say",
+      "text": "most people have a voice that narrates, plans and comments. it's one of the mind's everyday tools.",
+      "mood": "happy"
+    },
+    {
+      "type": "say",
+      "text": "children start by talking out loud to themselves while they play or work something out. with time, that talk goes quiet and moves inside."
+    },
+    {
+      "type": "know",
+      "text": "researchers think inner speech helps with planning, remembering and sticking with a task. how much people use it varies a lot from person to person.",
+      "source": {
+        "label": "Alderson-Day & Fernyhough, 2015",
+        "url": "https://doi.org/10.1037/bul0000021"
+      },
+      "evidence": "moderate (a review of many studies; inner speech is hard to measure)"
+    },
+    {
+      "type": "ask",
+      "text": "when does the inner voice get busiest?",
+      "options": [
+        {
+          "label": "when i'm planning",
+          "reply": "that fits. planning is one of the jobs it seems to do well."
+        },
+        {
+          "label": "when something's on the line",
+          "reply": "that's common. the voice gets loud when things matter."
+        },
+        {
+          "label": "when it's quiet and i'm alone",
+          "reply": "that makes sense. with fewer distractions, it has room to talk."
+        }
+      ]
+    },
+    {
+      "type": "say",
+      "text": "so the voice is useful. the grammar it uses matters a little too. \"i\" keeps us close to the feeling. a name steps back a bit.",
+      "mood": "curious"
+    },
+    {
+      "type": "tryon",
+      "prompt": "try the same thought two ways:",
+      "lines": [
+        "i'm nervous about tomorrow.",
+        "{name}'s nervous about tomorrow, and that makes sense."
+      ],
+      "reply": "neither is the right one. the second one just adds some distance, the way a friend has."
+    },
+    {
+      "type": "know",
+      "text": "in seven studies, people who used \"you\" or their own name before a stressful task tended to feel less threatened by it, and dwelled on it less afterward.",
+      "source": {
+        "label": "Kross et al., 2014",
+        "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+      },
+      "evidence": "moderate (seven studies from one lab)"
+    },
+    {
+      "type": "pick",
+      "prompt": "when might a step back be useful? pick any:",
+      "options": [
+        "before a conversation i'm looking forward to",
+        "when i replay something",
+        "before something new",
+        "while i wait for news"
+      ],
+      "reply": "good ones. nothing to do about them right now. just worth knowing."
+    },
+    {
+      "type": "write",
+      "prompt": "write a line to borrow, using a name:",
+      "template": "{name} {x}",
+      "ideas": [
+        "can take this one step at a time.",
+        "has done hard things before.",
+        "is allowed to rest.",
+        "is learning, and that counts."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "inner speech is a tool, and a small change in grammar, a name instead of \"i\", can give the distance a friend has.",
+      "source": {
+        "label": "Kross et al., 2014",
+        "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+      },
+      "evidence": "moderate (seven studies from one lab)"
+    },
+    {
+      "type": "experiment",
+      "text": "once today, when your mind comments on something, say one sentence of it with your name instead of \"i\"."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "inner speech develops from talking aloud in childhood, and supports planning and self-regulation",
+      "source": "Alderson-Day & Fernyhough, 2015",
+      "url": "https://doi.org/10.1037/bul0000021"
+    },
+    {
+      "idea": "self-talk using \"you\" or one's name reduced anxiety and rumination under stress",
+      "source": "Kross et al., 2014",
+      "url": "https://rascl.studentorg.berkeley.edu/assets/files/self-talk_as_a_regulatory_mechanism_how_you_do_it_matters.pdf"
+    }
+  ]
+}

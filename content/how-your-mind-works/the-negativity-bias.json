@@ -1,0 +1,98 @@
+{
+  "id": "the-negativity-bias",
+  "title": "why the hard moment weighs more",
+  "subtitle": "how the mind keeps score of what went badly",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "recall",
+      "from": "how-your-mind-works/why-the-mind-talks",
+      "prompt": "what small change in grammar can give a bit of distance?",
+      "answer": "using a name, or \"you\", instead of \"i\". it's the distance a friend has."
+    },
+    {
+      "type": "say",
+      "text": "picture a day with nine good moments and one awkward one."
+    },
+    {
+      "type": "ask",
+      "text": "which one is most likely to replay tonight?",
+      "options": [
+        {
+          "label": "the awkward one",
+          "reply": "most people say that one. it's very common."
+        },
+        {
+          "label": "a couple of the good ones",
+          "reply": "lovely. that's worth noticing too."
+        },
+        {
+          "label": "honestly, all of it",
+          "reply": "fair. some days are like that."
+        }
+      ]
+    },
+    {
+      "type": "know",
+      "text": "a large review found that in many areas of life, bad events tend to leave a stronger mark than good ones of the same size. researchers call it the negativity bias.",
+      "source": {
+        "label": "Baumeister et al., 2001",
+        "url": "https://doi.org/10.1037/1089-2680.5.4.323"
+      },
+      "evidence": "strong (a review of many studies)"
+    },
+    {
+      "type": "say",
+      "text": "it likely helped once. noticing trouble fast kept people safe. it's the mind doing a job.",
+      "mood": "calm"
+    },
+    {
+      "type": "say",
+      "text": "the catch is that good moments can go uncounted, unless we help count them."
+    },
+    {
+      "type": "pick",
+      "prompt": "which of these usually go uncounted? pick any:",
+      "options": [
+        "a kind message",
+        "something that went smoothly",
+        "a thing i finished",
+        "a stranger's smile",
+        "a minute of quiet"
+      ],
+      "reply": "those count. they're real, and they happened."
+    },
+    {
+      "type": "write",
+      "prompt": "count one from this week:",
+      "template": "a good moment: {x}",
+      "ideas": [
+        "a message from a friend.",
+        "the first sip of coffee.",
+        "something that went smoothly.",
+        "a laugh i didn't expect."
+      ],
+      "keep": "what-i-like"
+    },
+    {
+      "type": "takeaway",
+      "text": "the mind holds on to hard moments more than good ones. noticing the good moments helps them count too.",
+      "source": {
+        "label": "Baumeister et al., 2001",
+        "url": "https://doi.org/10.1037/1089-2680.5.4.323"
+      },
+      "evidence": "strong for the bias itself (a large review); counting good moments is our suggestion, not tested here"
+    },
+    {
+      "type": "experiment",
+      "text": "tonight, name one thing that went okay today. just one, said plainly."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "bad events tend to outweigh good ones of similar size across many areas of life",
+      "source": "Baumeister et al., 2001",
+      "url": "https://doi.org/10.1037/1089-2680.5.4.323"
+    }
+  ]
+}
