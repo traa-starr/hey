@@ -9,6 +9,8 @@ import { go, href, type Route } from "../router";
 import { useData } from "../store/useStore";
 
 const ease = [0.2, 0.7, 0.2, 1] as const;
+// the first screen after opening the app keeps the browser's own focus
+let moved = false;
 
 // one screen: settles in, and reads itself aloud when the person asked for that
 export function Screen({ children, id, label }: { children: ReactNode; id: string; label?: string }) {
@@ -18,6 +20,18 @@ export function Screen({ children, id, label }: { children: ReactNode; id: strin
   useEffect(() => {
     if (auto && ref.current) speak(screenText(ref.current));
   }, [id, auto]);
+  // a new step: move focus to its heading so screen readers and keyboards start in the right place
+  useEffect(() => {
+    if (!moved) {
+      moved = true;
+      return;
+    }
+    const h = ref.current?.querySelector<HTMLElement>("h1, h2");
+    if (h) {
+      h.tabIndex = -1;
+      h.focus({ preventScroll: true });
+    }
+  }, [id]);
   return (
     <m.div
       key={id}
@@ -70,11 +84,8 @@ export function FlowBar({ at, of, onClose, back }: { at: number; of: number; onC
   const pct = Math.round((Math.min(at + 1, of) / of) * 100);
   return (
     <div className="top">
-      {back ? (
-        <button className="ibtn" type="button" onClick={back} aria-label="back">{Icon.back}</button>
-      ) : (
-        <button className="ibtn" type="button" onClick={onClose} aria-label={copy.app.close}>{Icon.close}</button>
-      )}
+      <button className="ibtn" type="button" onClick={onClose} aria-label={copy.app.close}>{Icon.close}</button>
+      {back ? <button className="ibtn" type="button" onClick={back} aria-label={copy.app.back}>{Icon.back}</button> : null}
       <div className="progress" role="progressbar" aria-label={copy.app.progress} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
         <span style={{ width: `${pct}%` }} />
       </div>
@@ -170,7 +181,7 @@ export function Loudness({ said, value, onChange, reply }: { said: string; value
 // a sentence with its blanks showing while it's being written
 export function Sentence({ parts, className = "reply" }: { parts: Piece[]; className?: string }) {
   return (
-    <p className={className} aria-live="polite" data-say>
+    <p className={className} data-say>
       {parts.map((p, n) =>
         p.slot ? (
           p.empty ? <span key={n} className="slot" aria-label="blank">&nbsp;</span> : <span key={n} className="filled">{p.text}</span>

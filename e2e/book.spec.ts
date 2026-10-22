@@ -4,6 +4,9 @@ import { button, returning } from "./helpers";
 test("data from the first version is all here", async ({ page }) => {
   await returning(page);
   await expect(page.locator(".greet")).toContainText("sam.");
+  // on a shared phone the line stays hidden until it's tapped
+  await expect(page.locator(".resurface")).not.toContainText("hard weeks");
+  await button(page, "tap to read it").click();
   await expect(page.locator(".resurface")).toContainText("hey sam, you've handled hard weeks before.");
   await page.getByRole("link", { name: "your book" }).click();
   await expect(page.locator(".entry").first()).toContainText("all i can hear → clear");

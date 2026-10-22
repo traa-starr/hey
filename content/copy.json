@@ -10,11 +10,17 @@
     "tellMore": "tell me more",
     "tellLess": "less",
     "ideas": "ideas, if you want one",
-    "progress": "progress"
+    "progress": "progress",
+    "back": "back"
   },
-  "tabs": { "today": "today", "explore": "explore", "book": "your book", "label": "main" },
+  "tabs": {
+    "today": "today",
+    "explore": "explore",
+    "book": "your book",
+    "label": "main"
+  },
   "greeting": {
-    "night": "still up, {name}.",
+    "night": "hello, {name}.",
     "dawn": "morning, {name}.",
     "day": "hey {name}.",
     "dusk": "evening, {name}.",
@@ -28,11 +34,17 @@
     "questionLabel": "getting to know you",
     "questionNote": "no right answers. it goes in your book.",
     "noted": "noted in your book.",
-    "allAnswered": "you've answered every question for now. new ones show up as hey you grows.",
-    "explore": "more ways to get to know you"
+    "explore": "more ways to get to know you",
+    "reveal": "tap to read it"
   },
   "loudness": {
-    "names": ["a whisper", "quiet", "clear", "loud", "all i can hear"],
+    "names": [
+      "a whisper",
+      "quiet",
+      "clear",
+      "loud",
+      "all i can hear"
+    ],
     "label": "how loud it is",
     "unset": "drag to set it",
     "notSet": "not set",
@@ -42,7 +54,7 @@
     "catchAsk": "what did your inner voice say?",
     "catchLabel": "in its words",
     "catchPlaceholder": "in its words…",
-    "catchNote": "it won't be saved unless you choose.",
+    "catchNote": "nothing here is saved unless you choose to keep it.",
     "catchIdeas": "sound familiar?",
     "loudAsk": "how loud is it?",
     "calmAsk": "that's loud. want to take a breath first?",
@@ -61,7 +73,7 @@
     "forBook": "for your book",
     "quieter": "a little quieter. you did that, in your own words.",
     "same": "same volume, and that's okay. a truer answer still counts.",
-    "louder": "louder this time. that happens. another way might fit better.",
+    "louder": "louder this time. that happens, and it's okay. want to try another way?",
     "plain": "you answered it. that's the whole practice.",
     "keepSaid": "also keep what the inner voice said",
     "saidAs": "my inner voice said: \"{said}\"",
@@ -70,7 +82,9 @@
     "letGo": "let it go",
     "kept": "kept in your book.",
     "seeBook": "see your book",
-    "backToday": "back to today"
+    "backToday": "back to today",
+    "includesSaid": "this answer includes your inner voice's words. it's yours to keep or change.",
+    "change": "change it"
   },
   "explore": {
     "title": "explore",
@@ -81,7 +95,8 @@
     "tryIt": "try it on one of yours",
     "why": "why it works",
     "example": "for example",
-    "source": "source"
+    "source": "source",
+    "resume": "pick up again"
   },
   "lesson": {
     "keep": "keep it",
@@ -136,7 +151,7 @@
     "lookLight": "always light",
     "lookDark": "always dark",
     "aboutTitle": "about hey you",
-    "about": "a place to answer your inner voice in your own words. every way to answer comes from published research or a recognized therapy approach, and shows its source. it isn't therapy.",
+    "about": "a place to answer your inner voice in your own words. each way to answer shows where it comes from and how strong the evidence is. it isn't therapy.",
     "credits": "made with",
     "replay": "replay the welcome",
     "installTitle": "add to your home screen",

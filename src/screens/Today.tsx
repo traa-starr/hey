@@ -14,6 +14,8 @@ export function Today() {
   const copy = c.copy;
   const data = useData();
   const [noted, setNoted] = useState<{ id: string; pick: string } | null>(null);
+  // shared-phone safe: the line stays hidden until the person taps it
+  const [revealed, setRevealed] = useState(false);
 
   const name = data.name.toLowerCase() || copy.greeting.noName;
   const greeting = format(copy.greeting[timeOfDay()], { name });
@@ -21,7 +23,9 @@ export function Today() {
   const lines = data.entries.filter((e) => e.kind === "voice" && !e.said);
   const line = lines[dailyIndex(lines.length)];
 
-  const open = c.questions.filter((q) => !data.answered[q.id]);
+  // unanswered questions first; once every one is answered, they come round again
+  const unanswered = c.questions.filter((q) => !data.answered[q.id]);
+  const open = unanswered.length ? unanswered : c.questions;
   const question = noted ? c.questions.find((q) => q.id === noted.id) : open[dailyIndex(open.length)];
 
   const answer = (pick: string) => {
@@ -41,8 +45,16 @@ export function Today() {
           line ? (
             <figure className="card resurface">
               <figcaption className="label">{copy.today.toldYourself}</figcaption>
-              <blockquote className="mine" data-say>{line.text}</blockquote>
-              <span className="when">{shortDate(line.at)}</span>
+              {revealed ? (
+                <>
+                  <blockquote className="mine" data-say tabIndex={-1} ref={(el) => el?.focus({ preventScroll: true })}>{line.text}</blockquote>
+                  <span className="when">{shortDate(line.at)}</span>
+                </>
+              ) : (
+                <button className="link" type="button" aria-expanded={false} onClick={() => { buzz(4); setRevealed(true); }}>
+                  {copy.today.reveal}
+                </button>
+              )}
             </figure>
           ) : (
             <p className="empty" style={{ paddingBlock: 0 }}>{copy.today.toldEmpty}</p>
@@ -66,9 +78,7 @@ export function Today() {
               </div>
               {noted ? <p className="note" role="status">{copy.today.noted}</p> : <p className="small">{copy.today.questionNote}</p>}
             </>
-          ) : (
-            <p className="small">{copy.today.allAnswered}</p>
-          )}
+          ) : null}
           <a className="link" href={href({ name: "explore" })}>{copy.today.explore}</a>
         </section>
       </Screen>

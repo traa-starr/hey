@@ -26,7 +26,8 @@ export type Settings = {
   appearance: Appearance;
 };
 
-export type Progress = { lessonPath: string; i: number; local: Record<string, unknown> } | null;
+// where each unfinished set stopped, keyed by lesson path
+export type Progress = Record<string, { i: number; locals: Record<number, Record<string, unknown>> }>;
 
 export type KV = {
   name: string;
@@ -43,7 +44,7 @@ export const DEFAULT_SETTINGS: Settings = {
 };
 
 export const freshKV = (): KV => ({
-  name: "", welcomed: false, tried: {}, answered: {}, settings: { ...DEFAULT_SETTINGS }, progress: null, migratedV1: false
+  name: "", welcomed: false, tried: {}, answered: {}, settings: { ...DEFAULT_SETTINGS }, progress: {}, migratedV1: false
 });
 
 export type State = KV & { entries: Entry[]; ready: boolean; persistent: boolean };

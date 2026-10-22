@@ -103,7 +103,7 @@ export const index = z.object({
 export const help = z.object({
   title: text,
   note: text,
-  lines: list(z.object({ name: text, detail: text, url: opt(z.string()) }), 1)
+  lines: list(z.object({ name: text, detail: text, url: opt(z.string()), href: opt(z.string()) }), 1)
 });
 
 export const credits = z.object({
@@ -114,18 +114,18 @@ export const credits = z.object({
 const strings = <T extends string>(...keys: T[]) => z.object(Object.fromEntries(keys.map((k) => [k, text])) as Record<T, typeof text>);
 
 export const copy = z.object({
-  app: strings("name", "loading", "close", "readAloud", "next", "skip", "done", "tellMore", "tellLess", "ideas", "progress"),
+  app: strings("name", "loading", "close", "back", "readAloud", "next", "skip", "done", "tellMore", "tellLess", "ideas", "progress"),
   tabs: strings("today", "explore", "book", "label"),
   greeting: strings("night", "dawn", "day", "dusk", "noName"),
-  today: strings("toldYourself", "toldEmpty", "answerTitle", "answerSub", "questionLabel", "questionNote", "noted", "allAnswered", "explore"),
+  today: strings("toldYourself", "toldEmpty", "answerTitle", "answerSub", "questionLabel", "questionNote", "noted", "reveal", "explore"),
   loudness: z.object({ names: z.array(text).check(z.length(5)), label: text, unset: text, notSet: text, hardToSay: text }),
   answer: strings(
     "catchAsk", "catchLabel", "catchPlaceholder", "catchNote", "catchIdeas", "loudAsk", "calmAsk", "calmYes", "calmNo",
     "calmIn", "calmOut", "calmDone", "calmStatic", "wayAsk", "aboutWay", "evidence", "slotPlaceholder", "thisIsMine",
     "againAsk", "forBook", "quieter", "same", "louder", "plain", "keepSaid", "saidAs", "keep", "another", "letGo",
-    "kept", "seeBook", "backToday"
+    "kept", "seeBook", "backToday", "includesSaid", "change"
   ),
-  explore: strings("title", "waysTitle", "setsTitle", "tried", "minutes", "tryIt", "why", "example", "source"),
+  explore: strings("title", "waysTitle", "setsTitle", "tried", "resume", "minutes", "tryIt", "why", "example", "source"),
   lesson: strings("keep", "keepThese", "kept", "noPicks", "picks", "pickAs", "both", "neither", "tryReply", "nameHello", "thatsMe", "ofTotal", "orYourOwn"),
   book: strings("title", "voiceTab", "aboutTab", "voiceEmpty", "aboutEmpty", "edit", "save", "cancel", "remove", "removeAsk", "keepIt", "editLabel", "privacy"),
   settings: strings(

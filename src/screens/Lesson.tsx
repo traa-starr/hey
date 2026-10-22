@@ -30,15 +30,23 @@ export function Lesson({ path, isWelcome }: { path: string; isWelcome?: boolean 
   const c = content();
   const lesson: LessonT | undefined = c.lessons[path];
   const { progress } = useData();
-  const resume = progress?.lessonPath === path ? progress : null;
+  const resume = progress[path];
   const [i, setI] = useState(resume?.i ?? 0);
-  const [local, setLocal] = useState<Local>((resume?.local as Local) ?? {});
+  // each step keeps its own answers, so going back never repeats what was already kept
+  const [locals, setLocals] = useState<Record<number, Local>>((resume?.locals as Record<number, Local>) ?? {});
 
   useEffect(() => {
-    if (lesson && (i > 0 || Object.keys(local).length)) store.setProgress({ lessonPath: path, i, local });
-  }, [path, i, local, lesson]);
+    if (lesson && (i > 0 || Object.keys(locals).length)) store.setProgress(path, { i, locals });
+  }, [path, i, locals, lesson]);
 
-  const leave = () => go({ name: isWelcome ? "today" : "explore" });
+  const leave = () => {
+    // closing the welcome is skipping it; it can be replayed from your book
+    if (isWelcome) {
+      store.setWelcomed();
+      store.setProgress(path, null);
+      go({ name: "today" }, true);
+    } else go({ name: "explore" });
+  };
   if (!lesson) {
     return (
       <>
@@ -48,20 +56,18 @@ export function Lesson({ path, isWelcome }: { path: string; isWelcome?: boolean 
     );
   }
   const step = lesson.steps[Math.min(i, lesson.steps.length - 1)]!;
-  const L = local;
-  const set = (patch: Partial<Local>) => setLocal((x) => ({ ...x, ...patch }));
+  const L = locals[i] ?? {};
+  const set = (patch: Partial<Local>) => setLocals((x) => ({ ...x, [i]: { ...(x[i] ?? {}), ...patch } }));
 
   const finishLesson = () => {
     store.markTried(lesson.id);
-    store.setProgress(null);
+    store.setProgress(path, null);
     if (isWelcome) store.setWelcomed();
   };
   const next = () => {
     window.scrollTo(0, 0);
-    if (i < lesson.steps.length - 1) {
-      setI(i + 1);
-      setLocal({});
-    } else {
+    if (i < lesson.steps.length - 1) setI(i + 1);
+    else {
       finishLesson();
       if (step.type === "close" && step.then === "answer") go({ name: "answer" }, true);
       else go({ name: isWelcome ? "today" : "explore" }, true);
@@ -74,7 +80,7 @@ export function Lesson({ path, isWelcome }: { path: string; isWelcome?: boolean 
 
   return (
     <>
-      <FlowBar at={i} of={lesson.steps.length} onClose={leave} back={i > 0 ? () => { setI(i - 1); setLocal({}); } : undefined} />
+      <FlowBar at={i} of={lesson.steps.length} onClose={leave} back={i > 0 ? () => setI(i - 1) : undefined} />
       <Screen id={`${path}-${i}`}>
         <StepView step={step} L={L} set={set} next={next} later={later} from={lesson.title} />
       </Screen>
@@ -188,7 +194,7 @@ function StepView({ step, L, set, next, later, from }: {
         if (v === "a") pick = a;
         else if (v === "b") pick = b;
         else if (v === copy.lesson.both) pick = `${a} and ${b}`;
-        if (pick) keepEntry("what-i-like", format(copy.lesson.pickAs, { x: pick }), from);
+        if (pick) keepEntry(step.keep, format(copy.lesson.pickAs, { x: pick }), from);
         set({ at: at + 1, tot: [...picks, pick] });
       };
       return (

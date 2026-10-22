@@ -16,11 +16,14 @@ import { FlowBar, Ideas, Loudness, Screen, Sentence } from "../ui/kit";
 
 type Step = "catch" | "loud" | "calm" | "way" | "write" | "again" | "kept";
 type Draft = {
+  updated?: number;
   step: Step; said: string; loud: number; calmed: boolean; way: string | null; preset: boolean;
   vals: Record<string, string>; loud2: number; keepSaid: boolean; keptId: string | null;
 };
 
 const KEY = "heyyou.draft";
+// an unfinished answer is kept for a short while only, so a shared phone never shows it later
+const DRAFT_LIFE = 30 * 60 * 1000;
 const blank = (way?: string): Draft => ({
   step: "catch", said: "", loud: 0, calmed: false, way: way ?? null, preset: !!way, vals: {}, loud2: 0, keepSaid: false, keptId: null
 });
@@ -29,7 +32,8 @@ function loadDraft(way?: string): Draft {
     const raw = sessionStorage.getItem(KEY);
     if (raw) {
       const d = JSON.parse(raw) as Draft;
-      if (!way || d.way === way) return d;
+      if (Date.now() - (d.updated ?? 0) > DRAFT_LIFE) sessionStorage.removeItem(KEY);
+      else if (!way || d.way === way) return d;
     }
   } catch {
     // start fresh
@@ -38,7 +42,7 @@ function loadDraft(way?: string): Draft {
 }
 function saveDraft(d: Draft | null) {
   try {
-    if (d) sessionStorage.setItem(KEY, JSON.stringify(d));
+    if (d) sessionStorage.setItem(KEY, JSON.stringify({ ...d, updated: Date.now() }));
     else sessionStorage.removeItem(KEY);
   } catch {
     // the flow still works without it
@@ -175,6 +179,12 @@ export function Answer({ way }: { way?: string }) {
           ) : (
             <>
               <p className="note" data-say>{msg}</p>
+              {f && includesSaid(f, d.vals, d.said) ? (
+                <p className="small">
+                  {copy.answer.includesSaid}{" "}
+                  <button className="link" type="button" style={{ minHeight: 0, padding: 0 }} onClick={() => toStep("write")}>{copy.answer.change}</button>
+                </p>
+              ) : null}
               <label className="check">
                 <input type="checkbox" checked={d.keepSaid} onChange={(e) => update({ keepSaid: e.target.checked })} />
                 {copy.answer.keepSaid}
@@ -207,6 +217,12 @@ export function Answer({ way }: { way?: string }) {
   );
 }
 
+// whether the answer still carries the inner voice's own words
+function includesSaid(f: Formula, vals: Record<string, string>, said: string) {
+  const own = [trimEnd(said), trimEnd(toFirstPerson(said))].map((x) => x.toLowerCase()).filter(Boolean);
+  return f.slots.some((s) => s.fill && own.includes((vals[s.key] ?? "").trim().toLowerCase()));
+}
+
 function prefill(f: Formula, said: string, name: string, vals: Record<string, string>) {
   const out: Record<string, string> = {};
   for (const s of f.slots) {
@@ -220,6 +236,7 @@ function prefill(f: Formula, said: string, name: string, vals: Record<string, st
 
 function Write({ f, said, vals, onVals, onDone }: { f: Formula; said: string; vals: Record<string, string>; onVals: (v: Record<string, string>) => void; onDone: () => void }) {
   const copy = content().copy;
+  const [about, setAbout] = useState(false);
   const ready = f.slots.every((s) => (vals[s.key] ?? "").trim());
   const set = (k: string, v: string) => onVals({ ...vals, [k]: v });
   return (
@@ -230,7 +247,7 @@ function Write({ f, said, vals, onVals, onDone }: { f: Formula; said: string; va
       </div>
       {f.slots.map((s) => (
         <div className="fieldset" key={s.key}>
-          <label className="label" htmlFor={`slot-${s.key}`} id={`lbl-${s.key}`}>{s.label}</label>
+          {s.chips ? <p className="label" id={`lbl-${s.key}`}>{s.label}</p> : <label className="label" htmlFor={`slot-${s.key}`} id={`lbl-${s.key}`}>{s.label}</label>}
           {s.chips ? (
             <div className="chips" role="group" aria-labelledby={`lbl-${s.key}`}>
               {s.chips.map((x) => (
@@ -248,6 +265,9 @@ function Write({ f, said, vals, onVals, onDone }: { f: Formula; said: string; va
           )}
         </div>
       ))}
+      {about ? <p className="small" data-say>{f.why}</p> : (
+        <button className="link" type="button" aria-expanded={false} onClick={() => setAbout(true)}>{copy.answer.aboutWay}</button>
+      )}
       <p className="source">
         {f.name} · {f.source.url ? <a href={f.source.url} target="_blank" rel="noopener noreferrer">{f.source.label}</a> : f.source.label} · {copy.answer.evidence}: {f.evidence}
       </p>

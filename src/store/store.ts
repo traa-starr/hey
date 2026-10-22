@@ -55,9 +55,11 @@ export class Store {
     }
     const kv = { ...freshKV(), ...(loaded.kv as Partial<KV>) };
     kv.settings = { ...DEFAULT_SETTINGS, ...(kv.settings ?? {}) };
+    if (!kv.progress || typeof kv.progress !== "object" || "lessonPath" in kv.progress) kv.progress = {};
     let entries = loaded.entries;
     if (!kv.migratedV1) {
       const old = fromV1(v1());
+      let ok = true;
       if (old) {
         const have = new Set(entries.map((e) => e.id));
         const add = old.entries.filter((e) => !have.has(e.id));
@@ -71,11 +73,20 @@ export class Store {
           await this.backend.putEntries(add);
           await Promise.all((["name", "welcomed", "tried"] as const).map((k) => this.backend.putKV(k, kv[k])));
         } catch {
-          persistent = false;
+          ok = false;
         }
       }
-      kv.migratedV1 = true;
-      try { await this.backend.putKV("migratedV1", true); } catch { persistent = false; }
+      // only mark it done once it has really been saved, so a failed move is tried again next time
+      if (ok && persistent) {
+        try {
+          await this.backend.putKV("migratedV1", true);
+          kv.migratedV1 = true;
+        } catch {
+          persistent = false;
+        }
+      } else {
+        persistent = false;
+      }
     }
     this.set({ ...kv, entries: entries.sort(byNewest), ready: true, persistent });
   }
@@ -89,8 +100,12 @@ export class Store {
   setWelcomed = () => this.setKV("welcomed", true);
   markTried = (lessonId: string) => this.setKV("tried", { ...this.state.tried, [lessonId]: new Date().toISOString() });
   markAnswered = (questionId: string) => this.setKV("answered", { ...this.state.answered, [questionId]: new Date().toISOString() });
-  resetAnswered = () => this.setKV("answered", {});
-  setProgress = (p: KV["progress"]) => this.setKV("progress", p);
+  setProgress = (path: string, p: KV["progress"][string] | null) => {
+    const next = { ...this.state.progress };
+    if (p) next[path] = p;
+    else delete next[path];
+    this.setKV("progress", next);
+  };
   setSettings = (patch: Partial<Settings>) => this.setKV("settings", { ...this.state.settings, ...patch });
 
   add = (e: Omit<Entry, "id" | "at"> & { at?: string }): Entry | null => {
@@ -115,6 +130,12 @@ export class Store {
   };
   clearAll = () => {
     const keep = { welcomed: true, migratedV1: true, settings: this.state.settings };
+    // the first version's copy goes too, so nothing old is left on the phone
+    try {
+      globalThis.localStorage?.removeItem(V1_KEY);
+    } catch {
+      // nothing more to clear
+    }
     this.set({ ...freshKV(), ...keep, entries: [] });
     this.save(async (b) => {
       await b.clear();

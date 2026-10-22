@@ -28,7 +28,19 @@ test("the welcome can be left early and resumes where it stopped", async ({ page
   await page.goto("./");
   await button(page, "hi").click();
   await button(page, "go on").click();
-  await saved(page, "progress", (p) => (p as { i?: number } | null)?.i === 2);
+  await saved(page, "progress", (p) => (p as Record<string, { i: number }> | null)?.["start/welcome.json"]?.i === 2);
   await page.reload();
   await expect(page.getByText("here, you grow a second one. yours, in your own words.")).toBeVisible();
+});
+
+test("the welcome can be skipped and replayed from your book", async ({ page }) => {
+  await page.goto("./");
+  await button(page, "hi").click();
+  await button(page, "leave, nothing is lost").click();
+  await expect(page.locator(".greet")).toBeVisible();
+  await page.reload();
+  await expect(page.locator(".greet")).toBeVisible();
+  await page.getByRole("link", { name: "your book" }).click();
+  await button(page, "replay the welcome").click();
+  await expect(page.getByRole("heading", { name: "hey you." })).toBeVisible();
 });

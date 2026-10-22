@@ -25,6 +25,8 @@ test("answering the inner voice keeps the answer, never the original unless aske
   await page.getByRole("slider", { name: "how loud it is" }).fill("2");
   await button(page, "next").click();
   await expect(page.getByText("a little quieter. you did that, in your own words.")).toBeVisible();
+  // the answer carries the inner voice's words, and the screen says so before anything is kept
+  await expect(page.getByText(/this answer includes your inner voice's words/)).toBeVisible();
   await button(page, "keep it in my book").click();
   await expect(page.getByText("kept in your book.")).toBeVisible();
 
@@ -55,4 +57,17 @@ test("a way chosen from explore skips straight to writing", async ({ page }) => 
   await button(page, "next").click();
   await button(page, "hard to say").click();
   await expect(page.locator(".reply")).toHaveText("i'm not good enough, for now.");
+});
+
+test("leaving and coming back much later starts fresh", async ({ page }) => {
+  await returning(page);
+  await page.goto("./#/answer");
+  await button(page, "i'm too much.").click();
+  await button(page, "next").click();
+  await page.evaluate(() => {
+    const d = JSON.parse(sessionStorage.getItem("heyyou.draft") ?? "{}");
+    sessionStorage.setItem("heyyou.draft", JSON.stringify({ ...d, updated: Date.now() - 31 * 60 * 1000 }));
+  });
+  await page.reload();
+  await expect(page.getByLabel("in its words")).toHaveValue("");
 });

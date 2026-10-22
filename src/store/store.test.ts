@@ -82,6 +82,38 @@ describe("store", () => {
     expect(s.get().welcomed).toBe(true);
   });
 
+  it("tries the move again next time if saving it failed", async () => {
+    const s = new Store();
+    const broken = memoryBackend();
+    broken.putEntries = () => Promise.reject(new Error("quota"));
+    await s.open(async () => broken, () => V1);
+    expect(s.get().entries).toHaveLength(5);
+    expect(s.get().migratedV1).toBe(false);
+    expect(s.get().persistent).toBe(false);
+  });
+
+  it("clearing everything also removes the first version's copy", async () => {
+    const mem = new Map<string, string>([["heyyou.v1", V1]]);
+    const ls = { getItem: (k: string) => mem.get(k) ?? null, removeItem: (k: string) => void mem.delete(k) };
+    Object.defineProperty(globalThis, "localStorage", { value: ls, configurable: true });
+    const s = new Store();
+    await s.open(fresh());
+    expect(s.get().entries).toHaveLength(5);
+    s.clearAll();
+    expect(mem.has("heyyou.v1")).toBe(false);
+    Reflect.deleteProperty(globalThis, "localStorage");
+  });
+
+  it("keeps each unfinished set's place separately", async () => {
+    const s = new Store();
+    await s.open(fresh(), () => null);
+    s.setProgress("a.json", { i: 2, locals: {} });
+    s.setProgress("b.json", { i: 4, locals: {} });
+    expect(s.get().progress).toEqual({ "a.json": { i: 2, locals: {} }, "b.json": { i: 4, locals: {} } });
+    s.setProgress("a.json", null);
+    expect(Object.keys(s.get().progress)).toEqual(["b.json"]);
+  });
+
   it("keeps working in memory when storage can't open", async () => {
     const s = new Store();
     await s.open(() => Promise.reject(new Error("blocked")), () => V1);

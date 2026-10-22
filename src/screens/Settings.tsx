@@ -88,7 +88,7 @@ export function Settings() {
             {c.help.lines.map((l) => (
               <div className="help-line" key={l.name}>
                 <b>{l.name}</b>
-                {l.url ? <a href={l.url} target="_blank" rel="noopener noreferrer"><span>{l.detail}</span></a> : <span>{l.detail}</span>}
+                {l.url ? <a href={l.url} target="_blank" rel="noopener noreferrer"><span>{l.detail}</span></a> : l.href ? <a href={l.href}><span>{l.detail}</span></a> : <span>{l.detail}</span>}
               </div>
             ))}
           </div>
@@ -105,7 +105,7 @@ export function Settings() {
             ))}. {c.credits.note}
           </p>
         ) : null}
-        <button className="btn quiet" type="button" onClick={() => go({ name: "welcome" })}>{s.replay}</button>
+        <button className="btn quiet" type="button" onClick={() => { store.setProgress(c.startPath, null); go({ name: "welcome" }); }}>{s.replay}</button>
       </div>
 
       <div className="set">
@@ -123,7 +123,7 @@ export function Settings() {
           <div className="confirm" role="alertdialog" aria-label={s.clearAsk}>
             <p>{s.clearAsk}</p>
             <div className="row-btns">
-              <button className="btn" type="button" onClick={() => { store.clearAll(); setClearing(false); }}>{s.clearYes}</button>
+              <button className="btn" type="button" autoFocus onClick={() => { store.clearAll(); setClearing(false); }}>{s.clearYes}</button>
               <button className="btn quiet" type="button" onClick={() => setClearing(false)}>{s.clearNo}</button>
             </div>
           </div>

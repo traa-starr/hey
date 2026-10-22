@@ -38,7 +38,7 @@ export function Explore() {
                   <a key={path} className="row" href={href({ name: "set", path })}>
                     <span><b>{lesson.title}</b><span>{lesson.subtitle}</span></span>
                     <span className="meta">
-                      {progress?.lessonPath === path ? "…" : tried[lesson.id] ? copy.tried : format(copy.minutes, { n: lesson.minutes })}
+                      {progress[path] ? copy.resume : tried[lesson.id] ? copy.tried : format(copy.minutes, { n: lesson.minutes })}
                     </span>
                   </a>
                 ))}

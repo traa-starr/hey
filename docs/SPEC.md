@@ -18,27 +18,27 @@ Driven by `content/start/welcome.json`. Eight screens or fewer, each one idea wi
 6. what should we call you? (optional, with skip)
 7. "whenever you're ready, answer one." → answer it, or "look around first"
 
-Finishing sets `welcomed`. Skipping any screen is always possible.
+Finishing sets `welcomed`. Closing the welcome at any point skips it (it can be replayed from your book, always from the start).
 
 ### Today
 
 - Greeting by time of day, with the name if given ("morning, sam.").
-- **you told yourself**: one line from the book, chosen once per day, with its date. Hidden when the book has none; replaced by a one-line explanation of what will appear there.
+- **you told yourself**: one line from the book, chosen once per day, with its date. Shared-phone safe: the line stays hidden behind "tap to read it" until the person taps. Lines that record what the inner voice said are never resurfaced. Without any lines, a one-line explanation of what will appear there. Can be turned off in settings.
 - **did your inner voice say something?** → starts answer it.
-- **getting to know you**: today's question from `content/questions.json` (rotates daily). Answering adds to about you and shows "noted in your book." Skippable, never repeats an answered question until all are answered.
+- **getting to know you**: today's question from `content/questions.json` (rotates daily). Answering adds to about you and shows "noted in your book." Skippable, never repeats an answered question until all are answered, then they come round again.
 - A quiet link to explore.
 
 ### Answer it (the core flow, under two minutes)
 
 Steps, shown by a thin progress line:
 
-1. **catch**: "what did your inner voice say?" Textarea plus "sound familiar?" ideas from `catchIdeas`. Note: "it won't be saved unless you choose."
+1. **catch**: "what did your inner voice say?" Textarea plus "sound familiar?" ideas from `catchIdeas`. Note: "nothing here is saved unless you choose to keep it."
 2. **how loud**: the sentence shown large; a 5-step range (a whisper, quiet, clear, loud, all i can hear). The sentence's size, weight, and contrast follow the value. "hard to say" skips.
 3. **calm moment** (offered only at loud or all i can hear, always optional): "want to take a breath first?" → three slow breaths with an expanding circle (static, counted text under reduced motion) → continue.
-4. **way**: "how do you want to answer it?" The list of ways, each with its name, evidence label, and a before → after example in the two voices. Opening one starts writing; "about this way" shows why, source link, and evidence.
-5. **write**: the inner sentence small in grey above, the answer forming in serif below. Slots filled from `name`, `original`, `original-i`, chips, or typed text, each with idea chips. "this is mine" enables once every slot is filled.
+4. **way**: "how do you want to answer it?" The list of ways, each with its name, evidence label, and a before → after example in the two voices. Opening one starts writing.
+5. **write**: the inner sentence small in grey above, the answer forming in serif below. Slots filled from `name`, `original`, `original-i`, chips, or typed text, each with idea chips; filled slots stay editable. "about this way" shows why it works; source and evidence are always shown. "this is mine" enables once every slot is filled.
 6. **again**: "and now?" The original at its earlier size with the answer beneath; the same range. Optional.
-7. **kept**: the answer as a page, loudness before → after, and a message by outcome (quieter / same / louder, never graded). Options: keep it in my book (with an opt-in "also keep what the inner voice said"), try another way, let it go.
+7. **kept**: the answer as a page, loudness before → after, and a message by outcome (quieter / same / louder, never graded). When the answer still contains the inner voice's own words (ways that build on them), the screen says so and offers "change it" before anything is kept. Options: keep it in my book (with an opt-in "also keep what the inner voice said" as its own entry), try another way, let it go.
 
 Started from a specific way (explore or today), step 4 is skipped.
 
@@ -49,7 +49,7 @@ Started from a specific way (explore or today), step 4 is skipped.
 
 ### A set (lesson player)
 
-Plays any lesson file. Supported step types: `welcome`, `show`, `try-on`, `promises`, `this-or-that`, `build`, `write`, `pocket`, `try`, `close`. One step per screen, progress line, close button. Progress (step index and answers) is saved after every step, so an unfinished set resumes where it left off.
+Plays any lesson file. Supported step types: `welcome`, `show`, `try-on`, `promises`, `this-or-that`, `build`, `write`, `pocket`, `try`, `close`. One step per screen, progress line, close and back buttons. Each step keeps its own answers, so going back never keeps the same thing twice. Progress is saved per set after every step, so every unfinished set resumes where it left off.
 
 ### Your book
 
@@ -66,13 +66,13 @@ IndexedDB database `heyyou` (Dexie), version 1:
 | table | key | fields |
 | --- | --- | --- |
 | `entries` | `id` | `kind` (`voice` \| `about`), `sub` (`like` \| `think`, about only), `text`, `from`, `at` (ISO), `before?`, `after?` (1–5) |
-| `kv` | `key` | `value` (JSON): `name`, `welcomed`, `tried` (`{lessonId: iso}`), `settings`, `progress` (`{lessonPath, i, local}`), `answered` (`{questionId: iso}`), `migratedV1` |
+| `kv` | `key` | `value` (JSON): `name`, `welcomed`, `tried` (`{lessonId: iso}`), `settings`, `progress` (`{[lessonPath]: {i, locals}}`), `answered` (`{questionId: iso}`), `migratedV1` |
 
 Settings: `{ readAloud: boolean, autoRead: boolean, voice: string | null, rate: number, sound: boolean, appearance: "time" | "light" | "dark" }`.
 
 Text is stored in first person, as written. About-you entries are shown in second person by `toSecondPerson()` at display time, so editing shows the person's own words.
 
-The in-progress answer (including the inner sentence) lives only in memory and `sessionStorage`, cleared when the flow ends or the tab closes.
+The in-progress answer (including the inner sentence) lives only in memory and `sessionStorage`. It is cleared when the answer is kept or let go, and expires after 30 minutes without changes, so a shared phone never shows it later.
 
 If IndexedDB is unavailable, the store runs in memory and the app still works.
 
@@ -89,7 +89,7 @@ On first load, if `localStorage["heyyou.v1"]` exists and `migratedV1` is not set
 | entry `id`, `text`, `from`, `at` | kept as is |
 | entry `before`, `after` (feather 1 … boulder 5) | kept as loudness 1 … 5 |
 
-Then `migratedV1` is set. The old key is left in place (never deleted), so nothing can be lost. Malformed JSON or entries are skipped, not fatal.
+Then `migratedV1` is set, only once the move has really been saved (a failed move is tried again next time). The old key is left in place, so nothing can be lost; only "clear everything" removes it. Malformed JSON or entries are skipped, not fatal.
 
 ## Content schema
 
@@ -99,13 +99,13 @@ Every file in `content/` is validated at build time (Vitest) and at load (Zod `s
 - `formulas.json`: `intro`, `catchIdeas[]`, `formulas[]` (`id`, `name`, `frame`, `why`, `example {before, after}`, `template`, `slots[]` (`key`, `label`, `fill?` name/original/original-i, `chips?`, `placeholder?`, `ideas?`), `source {label, url}`, `evidence`).
 - `questions.json`: `questions[]` (`id`, `prompt`, `options[]`, `keep` like/think, `as` template such as `i'd pick {x}.`).
 - `copy.json`: every UI string not in a lesson (greetings, loudness names, flow prompts, replies, settings text, empty states).
-- `help.json`: crisis lines (`name`, `detail`, `url?`), with region note.
+- `help.json`: crisis lines (`name`, `detail`, `url?`, `href?` for tel: and sms: links), with region note.
 - `credits.json`: third-party assets with license and use.
 - Lessons: as documented in `content/README.md`.
 
 ## Accessibility
 
-WCAG 2.2 AA contrast in every time of day in light and dark. Full keyboard use with visible focus. Screen-reader labels on every control. The loudness control is a native range input with `aria-valuetext`. Every animation has a static equivalent under `prefers-reduced-motion`. Text scales with browser settings. Touch targets of at least 44px.
+WCAG 2.2 AA contrast in every time of day in light and dark. Full keyboard use with visible focus. On every new step, focus moves to its heading; confirm dialogs take focus. Screen-reader labels on every control. The loudness control is a native range input with `aria-valuetext`. Every animation has a static equivalent under `prefers-reduced-motion`. Text scales with browser settings. Touch targets of at least 44px.
 
 ## Out of scope
 

@@ -32,7 +32,7 @@ export function Book() {
             </button>
           ))}
         </div>
-        <div className="entries" role="tabpanel" id="book-panel" aria-labelledby={`tab-${tab}`}>
+        <div className="entries" role="tabpanel" id="book-panel" tabIndex={-1} aria-labelledby={`tab-${tab}`}>
           {list.length ? list.map((e, n) => <Item key={e.id} e={e} fresh={n === 0 && openedAt - Date.parse(e.at) < 15000} />) : (
             <p className="empty">{tab === "voice" ? copy.book.voiceEmpty : copy.book.aboutEmpty}</p>
           )}
@@ -62,7 +62,7 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
       {mode === "edit" ? (
         <div className="fieldset">
           <label className="sr" htmlFor={`edit-${e.id}`}>{copy.book.editLabel}</label>
-          <textarea id={`edit-${e.id}`} className="field voice" rows={2} value={text} onChange={(x) => setText(x.target.value)} />
+          <textarea id={`edit-${e.id}`} className="field voice" rows={2} value={text} autoFocus onChange={(x) => setText(x.target.value)} />
           <div className="entry-actions">
             <button className="link" type="button" disabled={!text.trim()} onClick={() => { store.edit(e.id, text); setMode("view"); }}>{copy.book.save}</button>
             <button className="link" type="button" onClick={() => { setText(e.text); setMode("view"); }}>{copy.book.cancel}</button>
@@ -76,7 +76,7 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
             <div className="confirm" role="alertdialog" aria-label={copy.book.removeAsk}>
               <p>{copy.book.removeAsk}</p>
               <div className="row-btns">
-                <button className="btn" type="button" onClick={() => store.remove(e.id)}>{copy.book.remove}</button>
+                <button className="btn" type="button" autoFocus onClick={() => { store.remove(e.id); document.getElementById("book-panel")?.focus(); }}>{copy.book.remove}</button>
                 <button className="btn quiet" type="button" onClick={() => setMode("view")}>{copy.book.keepIt}</button>
               </div>
             </div>

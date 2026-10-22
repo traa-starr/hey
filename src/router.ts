@@ -11,7 +11,14 @@ export type Route =
   | { name: "set"; path: string };
 
 export function parse(hash: string): Route {
-  const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
+  const decode = (x: string) => {
+    try {
+      return decodeURIComponent(x);
+    } catch {
+      return x;
+    }
+  };
+  const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decode);
   const [head, ...rest] = parts;
   switch (head) {
     case "explore": return { name: "explore" };
