@@ -59,6 +59,8 @@ export const habit = z.object({
   misses: text,
   spot: z.object({ scene: text, quote: text }),
   answers: list(z.object({ way: text, line: text }), 1),
+  // kind lines offered to keep in the book; answers often quote the voice, so they stay in the lesson
+  kind: opt(list(text, 1)),
   keep: text,
   try: text
 });
@@ -81,6 +83,11 @@ export const step = z.discriminatedUnion("type", [
   z.object({ type: z.literal("tot"), prompt: text, pairs: list(z.tuple([text, text]), 1), keep: z.literal("what-i-like") }),
   z.object({ type: z.literal("takeaway"), text, source, evidence: opt(z.string()) }),
   z.object({ type: z.literal("experiment"), text }),
+  // a little background between steps: where an idea comes from, with its source (a short break that gives the mind something to hold)
+  z.object({ type: z.literal("know"), text, source, evidence: opt(z.string()) }),
+  // a gentle look back at an earlier lesson: think of it first, then see it. never graded.
+  // when the earlier lesson isn't done yet, it shows as a small preview instead
+  z.object({ type: z.literal("recall"), from: text, prompt: text, answer: text }),
   z.object({ type: z.literal("breathe") }),
   z.object({ type: z.literal("list"), text, items: list(text, 1) }),
   z.object({ type: z.literal("name"), text, placeholder: opt(z.string()) }),

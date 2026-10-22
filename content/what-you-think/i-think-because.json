@@ -14,6 +14,15 @@
       "mood": "curious"
     },
     {
+      "type": "know",
+      "text": "learning researchers found something similar. in a 1994 study, students who explained to themselves why, line by line, understood more than students who read the same text twice.",
+      "source": {
+        "label": "Chi et al., 1994",
+        "url": "https://education.asu.edu/lcl/publications/chi-m-t-h-de-leeuw-n-chiu-m-h-lavancher-c-1994-eliciting-self-explanations"
+      },
+      "evidence": "moderate (a classic study, about learning rather than opinions)"
+    },
+    {
       "type": "tryon",
       "prompt": "someone asks which movie to watch. try each answer on:",
       "lines": [

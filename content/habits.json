@@ -41,6 +41,11 @@
           "line": "hey, you're allowed to be one email behind."
         }
       ],
+      "kind": [
+        "i'd like to, and there's time.",
+        "done is often enough.",
+        "i'm allowed to go at my own pace."
+      ],
       "keep": "\"should\" is often a rule someone else handed over. it's worth checking if it still fits.",
       "try": "next time \"i should\" shows up, try swapping it for \"i'd like to\" and notice what changes."
     },
@@ -78,6 +83,11 @@
           "way": "talk-to-you",
           "line": "hey, you don't have to solve this tonight. you could just ask."
         }
+      ],
+      "kind": [
+        "i can ask instead of guess.",
+        "i don't have to know what they think.",
+        "i can let them tell me."
       ],
       "keep": "a guess about someone else's mind is still a guess. it's okay to check.",
       "try": "catch one mind-read today. ask: what do i actually know?"
@@ -117,6 +127,11 @@
           "line": "tonight didn't go how i wanted, for now."
         }
       ],
+      "kind": [
+        "one moment isn't the whole story.",
+        "i've had plenty of days that went well.",
+        "next time is its own time."
+      ],
       "keep": "one time is one time. \"always\" and \"never\" are rarely the whole story.",
       "try": "when \"always\" or \"never\" shows up today, try \"this time\" instead."
     },
@@ -154,6 +169,11 @@
           "way": "talk-to-you",
           "line": "hey, you've walked into hard conversations before. you can do this one."
         }
+      ],
+      "kind": [
+        "i've walked into hard things before.",
+        "i'll handle it when it gets here.",
+        "one step at a time is enough."
       ],
       "keep": "a forecast isn't the weather. it's one guess about tomorrow.",
       "try": "write down one worry today. look at it again in a week and see how it went."
@@ -193,6 +213,11 @@
           "line": "i'm noticing the thought that i'm behind."
         }
       ],
+      "kind": [
+        "i'm on my own timeline.",
+        "their good news doesn't take anything from me.",
+        "i'm growing at my own pace."
+      ],
       "keep": "other people show their highlights. our own footage shows everything.",
       "try": "notice one comparison today. ask: compared to what, exactly?"
     },
@@ -230,6 +255,11 @@
           "way": "talk-to-you",
           "line": "hey, you blanked on a name. you're still you."
         }
+      ],
+      "kind": [
+        "one moment isn't who i am.",
+        "i'm more than one word.",
+        "i'm still me, even on an awkward day."
       ],
       "keep": "doing a thing isn't being the thing.",
       "try": "when a label shows up, try describing what happened instead of who someone is."
@@ -269,6 +299,11 @@
           "line": "hey, you can let that one land."
         }
       ],
+      "kind": [
+        "i can let that one land.",
+        "i worked for that.",
+        "\"thank you\" is a full answer."
+      ],
       "keep": "the good stuff is allowed to stay too.",
       "try": "next time a compliment comes, just say \"thank you\" and stop there."
     },
@@ -306,6 +341,11 @@
           "way": "three-kind-lines",
           "line": "this is hard. other people feel this too. what i need right now is to let it rest until morning."
         }
+      ],
+      "kind": [
+        "i care, and it isn't all on me.",
+        "i can ask instead of guess.",
+        "i can let it rest until morning."
       ],
       "keep": "mattering to people doesn't mean causing everything they feel.",
       "try": "when someone's mood feels like a personal job, list three other things that could be going on for them."
@@ -345,6 +385,11 @@
           "line": "this week was two, for now."
         }
       ],
+      "kind": [
+        "some is more than none.",
+        "every bit counts.",
+        "i can pick it up again any day."
+      ],
       "keep": "between all and nothing there's a lot of \"some\". some counts.",
       "try": "pick one thing today and aim for \"good enough\" on purpose."
     },
@@ -382,6 +427,11 @@
           "way": "friend-test",
           "line": "if a friend said \"i'm just in the way\" about themselves, i'd tell them i'm glad they asked."
         }
+      ],
+      "kind": [
+        "i'm allowed to take up space.",
+        "a feeling is real, and so are the facts.",
+        "they said yes, and i can believe them."
       ],
       "keep": "feelings are real information. they're not always the whole truth.",
       "try": "when a big feeling shows up, name it, then ask: what else is true right now?"

@@ -5,6 +5,12 @@
   "minutes": 5,
   "steps": [
     {
+      "type": "recall",
+      "from": "what-you-like/this-or-that",
+      "prompt": "what's an easy way to make a big choice smaller?",
+      "answer": "narrow it to two, and pick."
+    },
+    {
       "type": "say",
       "text": "underneath wants are values: what matters most about how to live."
     },
@@ -12,6 +18,15 @@
       "type": "say",
       "text": "values aren't goals to finish. they're more like directions. there's always a step to take that way.",
       "mood": "curious"
+    },
+    {
+      "type": "know",
+      "text": "values work comes from acceptance and commitment therapy, developed by steven hayes and colleagues. it treats values like compass directions: there's no arriving, just heading that way.",
+      "source": {
+        "label": "Hayes et al., 2006",
+        "url": "https://doi.org/10.1016/j.brat.2005.06.006"
+      },
+      "evidence": "moderate (part of a larger therapy)"
     },
     {
       "type": "pick",

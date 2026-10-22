@@ -5,6 +5,12 @@
   "minutes": 4,
   "steps": [
     {
+      "type": "recall",
+      "from": "what-you-think/for-now",
+      "prompt": "what does “for now” do to an opinion?",
+      "answer": "it makes it light enough to say, and free to change."
+    },
+    {
       "type": "say",
       "text": "having a different opinion doesn't mean starting a fight."
     },
@@ -24,12 +30,21 @@
       "mood": "curious"
     },
     {
+      "type": "know",
+      "text": "psychologist thomas gordon called these \"i-messages\" in his 1970 book. the idea is to say how something lands for you, without blaming.",
+      "source": {
+        "label": "Gordon, 1970 (Parent Effectiveness Training)",
+        "url": ""
+      },
+      "evidence": "a widely taught idea; studied less than it's taught"
+    },
+    {
       "type": "ask",
       "text": "which is hardest for you?",
       "options": [
         {
           "label": "disagreeing at all",
-          "reply": "makes sense. if disagreeing ever caused trouble, of course you got careful."
+          "reply": "makes sense. a lot of us learned to keep the peace. that's a skill too, and there's room for both."
         },
         {
           "label": "staying calm while i do",
@@ -58,7 +73,7 @@
       "text": "you can disagree and stay kind. \"i see it differently\" is a full sentence.",
       "source": {
         "label": "assertiveness training (Speed, Goldstein & Goldfried, 2018)",
-        "url": ""
+        "url": "https://ehs.stonybrook.edu/commcms/psychology/_pdfs/faculty/Speed_et_al-2017-Clinical_Psychology__Science_and_Practice.pdf"
       },
       "evidence": "moderate (part of larger therapy programs)"
     },

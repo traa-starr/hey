@@ -5,6 +5,17 @@
   "minutes": 4,
   "steps": [
     {
+      "type": "recall",
+      "from": "talk-to-you/three-kind-lines",
+      "prompt": "what's the third kind line?",
+      "answer": "“what do i need right now?”"
+    },
+    {
+      "type": "say",
+      "text": "here's a small switch for when thoughts go in circles.",
+      "mood": "happy"
+    },
+    {
       "type": "scene",
       "quote": "why am i like this?"
     },
@@ -39,14 +50,19 @@
       "type": "tryon",
       "prompt": "try each one on:",
       "lines": [
-        "why do i always ruin everything?",
+        "why does this keep happening?",
         "what actually happened was i forgot her birthday. one small next step is texting her tonight."
       ],
       "reply": "the second one gives you something to do. that's the point."
     },
     {
-      "type": "say",
-      "text": "in early studies, practicing concrete \"what\" and \"how\" thinking helped people step out of rumination."
+      "type": "know",
+      "text": "this idea comes from psychologist edward watkins at the university of exeter. in early studies, practicing concrete \"what\" and \"how\" thinking helped people step out of loops.",
+      "source": {
+        "label": "Watkins, Baeyens & Read, 2009",
+        "url": "https://doi.org/10.1037/a0013642"
+      },
+      "evidence": "emerging (early studies)"
     },
     {
       "type": "write",

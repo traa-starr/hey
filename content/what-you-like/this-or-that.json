@@ -5,6 +5,12 @@
   "minutes": 2,
   "steps": [
     {
+      "type": "recall",
+      "from": "what-you-like/small-wants",
+      "prompt": "what makes “what do you want?” easier?",
+      "answer": "starting small. tiny wants count."
+    },
+    {
       "type": "say",
       "text": "when \"what do you want?\" feels too big, two options make it small."
     },
@@ -51,6 +57,15 @@
         ]
       ],
       "keep": "what-i-like"
+    },
+    {
+      "type": "know",
+      "text": "psychologists call knowing yourself self-concept clarity. jennifer campbell first used the term in 1990: how clearly and steadily someone can describe who they are.",
+      "source": {
+        "label": "Campbell, 1990",
+        "url": "https://doi.org/10.1037/0022-3514.59.3.538"
+      },
+      "evidence": "a well-established idea in self research"
     },
     {
       "type": "say",

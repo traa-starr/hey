@@ -5,6 +5,12 @@
   "minutes": 3,
   "steps": [
     {
+      "type": "recall",
+      "from": "talk-to-you/the-friend-test",
+      "prompt": "what's the friend test?",
+      "answer": "talking inward the way you'd talk to a good friend in a tough spot."
+    },
+    {
       "type": "say",
       "text": "when something hurts, there's a short practice with three parts."
     },
@@ -25,20 +31,24 @@
     },
     {
       "type": "write",
-      "prompt": "now the three lines, with your own ending:",
-      "template": "this is hard. other people feel this too. what i need right now is {x}",
+      "prompt": "the third line is the kind one. finish it for the book:",
+      "template": "when it's hard, i can give myself {x}",
       "ideas": [
         "rest.",
         "a glass of water and an early night.",
-        "to talk to someone who gets it.",
-        "to be gentle with myself today."
+        "a talk with someone who gets it.",
+        "a gentler pace today."
       ],
       "keep": "my-words"
     },
     {
-      "type": "say",
-      "text": "these three parts come from self-compassion research: noticing it's hard, remembering others feel it too, and offering some kindness.",
-      "mood": "happy"
+      "type": "know",
+      "text": "these three parts come from psychologist kristin neff's work on self-compassion: noticing it's hard, remembering others feel it too, and offering some kindness.",
+      "source": {
+        "label": "Greater Good in Action (self-compassion break)",
+        "url": "https://ggia.berkeley.edu/practice/self_compassion_break"
+      },
+      "evidence": "moderate (tested inside larger programs)"
     },
     {
       "type": "takeaway",

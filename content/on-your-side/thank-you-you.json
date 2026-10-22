@@ -5,6 +5,12 @@
   "minutes": 3,
   "steps": [
     {
+      "type": "recall",
+      "from": "on-your-side/whats-good-in-you",
+      "prompt": "what helps a strength grow?",
+      "answer": "using it on purpose, in a small new way."
+    },
+    {
       "type": "say",
       "text": "most of us thank other people all day. when was the last thank-you turned inward?",
       "mood": "curious"
@@ -29,6 +35,15 @@
       "reply": "thanks, given and received. kept in the book.",
       "keep": "my-words",
       "as": "thanks, {name}, for {x}."
+    },
+    {
+      "type": "know",
+      "text": "a classic 2003 study asked people to jot down a few things they were grateful for each week. compared with other groups, they tended to feel more upbeat.",
+      "source": {
+        "label": "Emmons & McCullough, 2003",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12585811/"
+      },
+      "evidence": "moderate (three experiments; later reviews find small effects)"
     },
     {
       "type": "ask",

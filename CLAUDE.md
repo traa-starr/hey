@@ -20,7 +20,7 @@ When a choice is unclear, choose the gentler, truer, more welcoming option.
 - **Home is just home:** a sky that follows the hour, sol, a greeting, one next step, two shortcuts. Tabs: learn, practice, home (in the middle, where the app opens), book, you.
 - **sol, the companion:** a small dawn-light character who teaches lessons as short chat bubbles and reacts with simple moods. Scripted, never AI. It can be renamed or turned off.
 - **Voice habits** (`content/habits.json`): ten common ways inner voices talk, from CBT thinking traps, each named warmly and described by what it's trying to do. The **voice check** (swipe or tap, no typing) maps them; **catch it** (three taps) logs when and where one shows up. A voice check is for noticing, never a diagnosis.
-- **Learn** (`content/index.json` paths): real lessons as chats with sol, built from interactive steps (spot it, try it on, pick, write with ideas, takeaways, experiments). Every voice habit gets a lesson generated from its data.
+- **Learn** (`content/index.json` paths): real lessons as chats with sol, built from interactive steps (spot it, try it on, pick, write with ideas, background cards, look backs, takeaways, experiments). Every voice habit gets a lesson generated from its data. Lessons open with a look back at the one before, and home brings finished ideas back, spaced out over days.
 - **Practice:** catch it, answer it, breathe, voice check, this or that, ways to answer.
 - **Answer it:** catch a sentence (or start from a caught habit and pick one of its lines) → set how loud it is → optional breath when it's loud → pick a way to answer (`content/formulas.json`, each with source and honest evidence label) → write your answer → set the loudness again → keep it, try another way, or let it go. The inner voice's sentence is never stored unless the person opts in.
 - **Book:** the book has its own tab: a cover that grows a star for each thing kept, what you've read, how answering moved the loudness, your range, and the pages (words, about me, keepers).
@@ -55,6 +55,7 @@ IMPORTANT: hey you never treats people as doing something wrong. Nothing a perso
 - Explore what a word or habit means for this person; appreciate the work it has done for them.
 - Let people try things on and notice how each lands. Never grade answers or attach a "cost" to how they already speak.
 - Collect, don't replace. The goal is range, not better sentences.
+- The book keeps kind things: kind lines, good moments, likes, values, opinions. Never offer a hard feeling or a harsh thought to keep. Meet a hard moment briefly, then turn toward something kinder.
 
 ## Voice
 
@@ -98,6 +99,16 @@ Several agents may be building growth practices at once. If you are one of them:
 - Shared files are off limits: store, router, app shell, home, practice, book, `content/copy.json`, `src/styles/app.css`, `src/ui/`, and the existing tests. Write what you need in `docs/growth/requests/<id>.md` instead.
 - Don't import another practice's code (lint blocks it). Read its records only through `useData().grown`, defensively.
 - Work on branch `growth/<id>`, never on `main`. Never merge pull requests.
+
+## Where we left off (branch `gentle-learning`)
+
+The trigger check is pushed and its tests pass (`npm run check`: 74 unit tests; `npm run e2e`: 21 tests). It flips negative keep lines to kind ones, adds `know` background cards and `recall` look backs to lessons, adds the `review` plugin (spaced look backs on home), and writes up the audit in `docs/review/negativity-audit.md`. Still to do, in order:
+
+1. Screenshot at 390px in light, dark and reduced motion: the lesson preview, a know card, a recall, the habit kind lines, and the home look back (`[data-testid=look-back]`). After tapping "done" in a lesson, wait before calling `goto` to the next lesson, or the router lands on the path list.
+2. A copy pass on the new strings, and a review of the diff.
+3. Open a PR into `main`. Mojo merges.
+
+Keep sessions lean: avoid long screenshot loops, and don't spawn agents unless Mojo asks.
 
 ## Workflow
 

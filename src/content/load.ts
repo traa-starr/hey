@@ -92,6 +92,9 @@ export function buildContent(files: Files, strict: boolean): Content {
   const startItem = lessonAt(index.start);
   const paths = index.paths.map((p) => ({ ...p, items: p.lessons.flatMap((ref) => lessonAt(ref) ?? []) }));
 
+  // a look back must point at a lesson that exists
+  for (const [key, l] of Object.entries(lessons)) for (const s of l.steps) if (s.type === "recall" && !lessons[s.from]) fail(`${key}: looks back at an unknown lesson "${s.from}"`);
+
   // ways to answer that a habit points to must exist
   for (const h of habits) for (const a of h.answers) if (!formulas.some((f) => f.id === a.way)) fail(`${index.habits}: ${h.id} names an unknown way "${a.way}"`);
 

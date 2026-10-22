@@ -6,16 +6,25 @@
   "steps": [
     {
       "type": "say",
-      "text": "for a lot of people, \"what do you want?\" is a hard question."
+      "text": "let's find a few things you like. small ones count most."
     },
     {
       "type": "say",
-      "text": "that makes sense. many of us got more practice noticing what other people want."
+      "text": "it can take a little practice. many of us got more practice noticing what other people want."
     },
     {
       "type": "say",
       "text": "so let's start small. tiny wants count.",
       "mood": "happy"
+    },
+    {
+      "type": "know",
+      "text": "a 2023 study found that people who are kinder to themselves tend to have a clearer sense of who they are, and that clarity went along with less stress and more life satisfaction.",
+      "source": {
+        "label": "Coutts, Al-Kire & Weidler, 2023",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10313035"
+      },
+      "evidence": "a link, not proof of cause"
     },
     {
       "type": "tryon",

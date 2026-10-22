@@ -5,13 +5,19 @@
   "minutes": 4,
   "steps": [
     {
+      "type": "recall",
+      "from": "what-you-like/your-values",
+      "prompt": "what's the difference between a value and a goal?",
+      "answer": "a value is a direction, not a finish line."
+    },
+    {
       "type": "say",
       "text": "knowing what you want is one half. saying it is the other."
     },
     {
       "type": "scene",
       "quote": "whatever you want is fine.",
-      "label": "you, often"
+      "label": "a common answer"
     },
     {
       "type": "tryon",
@@ -22,6 +28,15 @@
         "honestly, i'm craving pizza."
       ],
       "reply": "all of them are real answers. the last two give people something to work with."
+    },
+    {
+      "type": "know",
+      "text": "therapists have taught assertive communication since the 1970s: saying what you want, honestly and with respect. a 2018 review looks back at how it's still used.",
+      "source": {
+        "label": "Speed, Goldstein & Goldfried, 2018",
+        "url": "https://ehs.stonybrook.edu/commcms/psychology/_pdfs/faculty/Speed_et_al-2017-Clinical_Psychology__Science_and_Practice.pdf"
+      },
+      "evidence": "moderate (part of larger therapy programs)"
     },
     {
       "type": "say",
@@ -49,7 +64,7 @@
       "text": "a clear want, kindly said, makes things easier for everyone.",
       "source": {
         "label": "assertiveness training (Speed, Goldstein & Goldfried, 2018)",
-        "url": ""
+        "url": "https://ehs.stonybrook.edu/commcms/psychology/_pdfs/faculty/Speed_et_al-2017-Clinical_Psychology__Science_and_Practice.pdf"
       },
       "evidence": "moderate (part of larger therapy programs)"
     },

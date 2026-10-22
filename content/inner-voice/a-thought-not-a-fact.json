@@ -5,6 +5,12 @@
   "minutes": 4,
   "steps": [
     {
+      "type": "recall",
+      "from": "inner-voice/where-it-comes-from",
+      "prompt": "where did the inner voice pick up its words?",
+      "answer": "from the people and places around us. new words can join them."
+    },
+    {
       "type": "say",
       "text": "your inner voice says things with total confidence."
     },
@@ -44,8 +50,13 @@
       ]
     },
     {
-      "type": "say",
-      "text": "in a lab study, adding this small frame made harsh self-statements feel less uncomfortable and less believable."
+      "type": "know",
+      "text": "this frame comes from acceptance and commitment therapy, which calls it defusion: stepping back from a thought. in a lab study, it made harsh self-statements feel less believable.",
+      "source": {
+        "label": "Healy et al., 2008",
+        "url": "https://mural.maynoothuniversity.ie/id/eprint/4954/1/YBH_experimental%20test.pdf"
+      },
+      "evidence": "moderate (one lab study)"
     },
     {
       "type": "say",
@@ -53,17 +64,27 @@
     },
     {
       "type": "write",
-      "prompt": "try it on one of yours:",
+      "prompt": "try the frame on a common one. this stays here, it isn't kept:",
       "template": "i'm noticing the thought that {x}",
       "ideas": [
-        "i'm not good enough.",
+        "i'm behind.",
         "they're annoyed with me.",
         "i'll never figure this out.",
-        "i always mess things up."
+        "this won't go well."
       ],
-      "keep": "my-words",
-      "placeholder": "what your inner voice says",
-      "said": true
+      "placeholder": "what your inner voice says"
+    },
+    {
+      "type": "write",
+      "prompt": "now one kinder thought to sit beside it. this one goes in the book:",
+      "template": "{x}",
+      "ideas": [
+        "i've gotten through hard things before.",
+        "i'm learning as i go.",
+        "one moment isn't the whole story.",
+        "i'm allowed to take this slowly."
+      ],
+      "keep": "my-words"
     },
     {
       "type": "takeaway",

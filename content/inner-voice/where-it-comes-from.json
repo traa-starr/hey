@@ -5,13 +5,24 @@
   "minutes": 4,
   "steps": [
     {
+      "type": "recall",
+      "from": "inner-voice/everyone-has-one",
+      "prompt": "what does the inner voice help with?",
+      "answer": "planning, remembering, and getting through hard moments."
+    },
+    {
       "type": "say",
       "text": "your inner voice didn't come out of nowhere.",
       "mood": "curious"
     },
     {
-      "type": "say",
-      "text": "as kids, we talk out loud to ourselves while we play and figure things out. slowly, that talk moves inside."
+      "type": "know",
+      "text": "this idea goes back to lev vygotsky, a psychologist in the 1930s. he watched children talk out loud while they played, and saw that talk slowly move inside.",
+      "source": {
+        "label": "Alderson-Day & Fernyhough, 2015",
+        "url": "https://doi.org/10.1037/bul0000021"
+      },
+      "evidence": "a well-known theory of how inner speech develops"
     },
     {
       "type": "say",
@@ -23,7 +34,7 @@
       "options": [
         {
           "label": "yes",
-          "reply": "that's common. sometimes we carry someone else's words for a long time."
+          "reply": "that's common. words travel, and the kind ones do too."
         },
         {
           "label": "no",
@@ -37,25 +48,28 @@
     },
     {
       "type": "say",
-      "text": "a parent's warning. a teacher's red pen. a coach's push. the feed's opinion."
+      "text": "a parent's encouragement. a teacher's red pen. a coach's push. a friend's joke."
     },
     {
       "type": "say",
-      "text": "some of those voices were trying to help. some weren't. either way, they don't get to be the only voice you have."
+      "text": "most of those voices were trying to help, in their way. and there's room for more, including a kinder one of your own."
     },
     {
       "type": "pick",
-      "prompt": "where might some of your inner voice's words come from?",
+      "prompt": "whose kind words still come back sometimes?",
       "options": [
-        "family",
-        "school",
-        "work",
-        "friends",
-        "the internet",
-        "my own experiences",
-        "not sure"
+        "a grandparent",
+        "a parent",
+        "a friend",
+        "a teacher",
+        "a coach",
+        "a partner",
+        "a stranger, once",
+        "myself"
       ],
-      "reply": "no need to know for sure. just being curious about it makes a little room."
+      "reply": "those words are part of the inner voice too. they're worth turning up.",
+      "keep": "what-i-think",
+      "as": "i still carry kind words from {x}."
     },
     {
       "type": "say",
@@ -73,7 +87,7 @@
     },
     {
       "type": "experiment",
-      "text": "today, notice one word your inner voice uses a lot. no need to change it."
+      "text": "today, listen for one kind word the inner voice already uses."
     }
   ],
   "grounding": [
