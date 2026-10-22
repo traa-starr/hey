@@ -20,7 +20,7 @@
 .ladder-step::before { left: -22px; }
 .ladder-step::after { right: -22px; }
 .ladder-step.start { background: var(--orange-soft); box-shadow: none; }
-.ladder-step.top { outline: 2px solid var(--orange); outline-offset: -2px; }
+.ladder-step.peak { outline: 2px solid var(--orange); outline-offset: -2px; }
 .ladder-tag { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
 .ladder-text { font-family: var(--voice); font-style: italic; font-size: 1.3rem; line-height: 1.22; overflow-wrap: anywhere; }
 .ladder-text.start-word { font-family: var(--display); font-style: normal; font-weight: 650; font-size: 1.15rem; }

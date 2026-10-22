@@ -13,7 +13,7 @@ export function Ladder({ start, rungs, compact, showBelieve = true }: { start: s
         <span className="ladder-text start-word">{start}</span>
       </li>
       {rungs.map((r, n) => (
-        <li key={n} className={`ladder-step${n + 1 === top ? " top" : ""}`} style={{ ["--i" as string]: n + 1 }}>
+        <li key={n} className={`ladder-step${n + 1 === top ? " peak" : ""}`} style={{ ["--i" as string]: n + 1 }}>
           <span className="ladder-tag">{format(n + 1 === top && top > 1 ? COPY.topTag : COPY.rungTag, { n: n + 1 })}</span>
           <span className="ladder-text">{r.text}</span>
           {showBelieve ? <span className="ladder-meta">{format(COPY.believe, { n: r.believe })}</span> : null}
