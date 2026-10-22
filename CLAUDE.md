@@ -8,9 +8,10 @@ The name is always lowercase: **hey you**.
 
 - **One engine, three practices.** Every practice is the same card flow: prompt → respond (pick, rewrite, or type; no right answers) → keep (saved to me, collected) → try it today (optional).
   - **start:** a first lesson (`content/start/welcome.json`) that shows what hey you is before any practice.
-  - **language:** one lesson per everyday word or phrase ("always/never", "I should", "I am…" and "I feel…", "I have to" and "I choose to", "but", "they probably think…", "sorry", "it's fine"). Explore what it means for you → appreciate what it does for you → try other ways on → collect the ones that feel like you → optional try it today.
-  - **desires:** "this or that", small wants, what younger you loved.
-  - **opinions:** low-stakes questions answered "I think… because…"; changing your mind is welcome.
+  - **Lessons are tools, not corrections.** Each lesson hands people a small language technique that adds range ("today's tool: the dial"). Never start from a flaw. Shape: name the tool → show it in a tiny scene → try it on → build your own sentence with it → collect → optional try it today. References: `content/language/the-dial.json`, `content/desires/want-words.json`.
+  - **words (language) tools:** the dial (a little / really), two at once ("and"), i notice, for now, one word more (adding what's underneath), i choose to.
+  - **wants (desires) tools:** want words, this or that, younger you, small wants.
+  - **thoughts (opinions) tools:** i think… because…, for now (changing your mind), not sure yet, a little bit of both.
 - **me, collected:** my words, what I like, what I think. Editable and deletable.
 - **resource shelf:** small, curated, every item tagged with its license and how we may use it.
 

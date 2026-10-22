@@ -1,0 +1,99 @@
+{
+  "id": "the-dial",
+  "practice": "language",
+  "kind": "tool",
+  "title": "the dial",
+  "subtitle": "feelings have a volume",
+  "minutes": 3,
+  "steps": [
+    {
+      "type": "welcome",
+      "text": "today's tool: the dial.",
+      "button": "okay"
+    },
+    {
+      "type": "show",
+      "text": "most feelings aren't on or off. they have a volume. a few small words let you turn it up or down.",
+      "button": "go on"
+    },
+    {
+      "type": "try-on",
+      "prompt": "same feeling, three settings:",
+      "options": [
+        "i'm a little annoyed.",
+        "i'm annoyed.",
+        "i'm really fed up."
+      ],
+      "question": "notice how each one sends a different message?",
+      "answers": ["yeah", "kind of", "not really"],
+      "reply": "each one is true in different moments. the dial helps people know exactly where you are. including you."
+    },
+    {
+      "type": "show",
+      "text": "a friend asks how you are. you say, \"kind of tired, but mostly good.\" it takes two seconds, and it's exactly true.",
+      "button": "nice"
+    },
+    {
+      "type": "build",
+      "prompt": "try it. pick a setting and a word. just for play, it doesn't have to be about right now.",
+      "template": "i'm {dial} {word}.",
+      "parts": [
+        { "key": "dial", "label": "setting", "chips": ["a little", "kind of", "pretty", "really", "so"] },
+        { "key": "word", "label": "feeling", "chips": ["tired", "excited", "nervous", "calm", "hopeful", "bored", "proud", "restless"], "allowCustom": true }
+      ],
+      "reply": "that's the dial.",
+      "keep": "my-words",
+      "optional": true
+    },
+    {
+      "type": "try-on",
+      "prompt": "the dial works on good feelings too:",
+      "options": [
+        "i'm a little excited.",
+        "i'm excited.",
+        "i'm so excited i can't sit still."
+      ],
+      "question": "which setting do you reach for least?",
+      "answers": ["the low end", "the middle", "the high end", "not sure"],
+      "reply": "interesting to know. you can borrow any setting whenever it fits."
+    },
+    {
+      "type": "pocket",
+      "prompt": "dial words to keep handy:",
+      "phrases": [
+        "a little...",
+        "kind of...",
+        "more than i expected.",
+        "less than yesterday.",
+        "mostly ___, a little ___."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "try",
+      "prompt": "one small thing for today, if you want:",
+      "options": [
+        "once today, add a dial word to how you're doing, like \"a little\" or \"really.\"",
+        "notice someone else using the dial. it's everywhere once you hear it."
+      ],
+      "skip": "not today"
+    },
+    {
+      "type": "close",
+      "text": "that's the dial. small words, a lot more range.",
+      "button": "done"
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "describing feelings precisely is linked to healthier coping and can be practiced",
+      "source": "Kashdan, Barrett & McKnight, 2015, Current Directions in Psychological Science",
+      "url": "https://www.affective-science.org/pubs/2015/kashdan-et-all-unpacking-emotion-differentiation-2015.pdf"
+    },
+    {
+      "idea": "putting feelings into words can lower their intensity",
+      "source": "Lieberman et al., 2007, Psychological Science",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17576282/"
+    }
+  ]
+}

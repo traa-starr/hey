@@ -12,7 +12,9 @@ All lessons, prompts, and shelf items live here as data files, separate from the
 
 Each lesson is one JSON file in `language/`. `language/its-fine.json` is the reference example.
 
-Top-level fields: `id`, `practice`, `title`, `subtitle`, `minutes`, `steps` (in order), `grounding` (the research or practice the lesson draws on).
+Top-level fields: `id`, `practice`, `kind` (`tool` for practice lessons), `title`, `subtitle`, `minutes`, `steps` (in order), `grounding` (the research or practice the lesson draws on).
+
+Every practice lesson is a **tool**: a small technique that adds range, never a correction. See `language/the-dial.json` and `desires/want-words.json`.
 
 Each step has a `type`. Most also carry a `stage` (`notice`, `understand`, `rewrite`, `keep`, `try`) so the app can show progress.
 
@@ -23,6 +25,7 @@ Each step has a `type`. Most also carry a `stage` (`notice`, `understand`, `rewr
 | `try-on` | The same moment said a few ways, to notice how each lands. Never graded. | `prompt`, `options`, `question`, optional `answers`, `reply` |
 | `map` | A simple overview of the practices. | `prompt`, `items` (`name`, `practice`, `text`), `button` |
 | `promises` | What hey you promises the person. | `prompt`, `items`, `button` |
+| `build` | Make your own sentence with the tool, from chips and optional typing. | `prompt`, `template` (with `{key}` slots), `parts` (`key`, `label`, `chips` and/or `input`, `placeholder`, `allowCustom`), `reply`, `keep`, `optional` |
 | `scene` | A small relatable moment, then what was underneath. | `scene`, `reveal`, optional `prompt` + `options` + `reply`, or `button` |
 | `understand` | Two or three short lines on what the pattern does. | `lines`, `button` |
 | `rewrite` | A sentence in context and a few ways to say it, each with a gentle note on what it tends to do. No right answer. | `context`, `original`, `prompt`, `options` (`text`, `note`), optional `footer` |
