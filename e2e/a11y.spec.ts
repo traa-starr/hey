@@ -17,7 +17,7 @@ test("the welcome passes automated accessibility checks", async ({ page }) => {
 test("every main screen passes automated accessibility checks", async ({ page }) => {
   await returning(page);
   await scan(page);
-  for (const path of ["#/learn", "#/path/habits", "#/practice", "#/you", "#/habit/mind", "#/book", "#/settings", "#/catch", "#/checkin", "#/way/talk-to-you", "#/lesson/what-you-think/i-think-because"]) {
+  for (const path of ["#/learn", "#/path/habits", "#/practice", "#/you", "#/habit/mind", "#/book", "#/book/voice", "#/settings", "#/catch", "#/checkin", "#/way/talk-to-you", "#/lesson/what-you-think/i-think-because"]) {
     await page.goto(`./${path}`);
     await scan(page);
   }

@@ -1,5 +1,6 @@
 // A tiny hash router: GitHub Pages serves one file, and the back button just works.
 import { useSyncExternalStore } from "react";
+import type { Kind } from "./store/types";
 
 export type Route =
   | { name: "home" }
@@ -15,7 +16,7 @@ export type Route =
   | { name: "checkin" }
   | { name: "you" }
   | { name: "habit"; id: string }
-  | { name: "book" }
+  | { name: "book"; tab?: Kind }
   | { name: "settings" }
   | { name: "way"; id: string };
 
@@ -31,8 +32,9 @@ export function parse(hash: string): Route {
   const [head, ...rest] = parts;
   const one = rest[0];
   switch (head) {
-    case "learn": case "welcome": case "practice": case "check": case "breathe": case "checkin": case "you": case "book": case "settings":
+    case "learn": case "welcome": case "practice": case "check": case "breathe": case "checkin": case "you": case "settings":
       return { name: head };
+    case "book": return one === "voice" || one === "about" || one === "keeper" ? { name: "book", tab: one } : { name: "book" };
     case "path": return one ? { name: "path", id: one } : { name: "learn" };
     case "lesson": return rest.length ? { name: "lesson", key: rest.join("/") } : { name: "learn" };
     case "catch": return one ? { name: "catch", habit: one } : { name: "catch" };
@@ -56,6 +58,7 @@ export function href(r: Route): string {
     case "answer": return r.way ? `#/answer/way/${e(r.way)}` : r.habit ? `#/answer/habit/${e(r.habit)}` : "#/answer";
     case "habit": return `#/habit/${e(r.id)}`;
     case "way": return `#/way/${e(r.id)}`;
+    case "book": return r.tab ? `#/book/${r.tab}` : "#/book";
     default: return `#/${r.name}`;
   }
 }

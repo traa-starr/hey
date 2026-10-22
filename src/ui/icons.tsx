@@ -19,6 +19,7 @@ export const Icon = {
   tot: svg(<><circle cx="8" cy="12" r="5" /><circle cx="16" cy="12" r="5" /></>),
   book: svg(<><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" /><path d="M5 17a3 3 0 0 1 3-3h10" /></>),
   gear: svg(<><circle cx="12" cy="12" r="3" /><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4" /></>),
+  more: svg(<><circle cx="5" cy="12" r="1.3" /><circle cx="12" cy="12" r="1.3" /><circle cx="19" cy="12" r="1.3" /></>),
   path: svg(<><path d="M5 19c4-1 3-6 7-7s3-6 7-7" /><circle cx="5" cy="19" r="1.5" /><circle cx="19" cy="5" r="1.5" /></>)
 };
 

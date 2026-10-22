@@ -31,6 +31,8 @@ test("answering the inner voice keeps the answer, never the original unless aske
   await expect(page.getByText("kept in your book.")).toBeVisible();
 
   await button(page, "see your book").click();
+  await expect(page.getByRole("img", { name: "a sky of 3 things you've kept" })).toBeVisible();
+  await page.getByRole("link", { name: "words: 2" }).click();
   const first = page.locator(".entry").first();
   await expect(first).toContainText("they're being harder on themselves than they deserve.");
   await expect(first).toContainText("all i can hear → quiet");

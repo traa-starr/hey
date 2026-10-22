@@ -68,7 +68,7 @@ function Routes() {
     case "checkin": page = <CheckIn />; break;
     case "you": page = <You />; break;
     case "habit": page = <Habit id={route.id} />; break;
-    case "book": page = <Book />; break;
+    case "book": page = <Book tab={route.tab} />; break;
     case "settings": page = <Settings />; break;
     case "way": page = <Way id={route.id} />; break;
     default: page = <Home />;
