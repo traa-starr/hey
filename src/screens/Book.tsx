@@ -1,11 +1,10 @@
-// your book: a cover that grows a star for everything you keep, a shelf of what you've read,
+// the book: a cover that grows a star for everything you keep, a shelf of what you've read,
 // how answering moved the loudness, and your range. the pages themselves are one tap away.
 import * as m from "motion/react-m";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { content } from "../content/load";
 import { BookSections } from "../growth/BookSections";
 import { byMonth, constellation, hash, metHabits, monthName, shifts, wayUse } from "../lib/book";
-import { toSecondPerson } from "../lib/person";
 import { format } from "../lib/template";
 import { shortDate } from "../lib/time";
 import { go, href } from "../router";
@@ -28,6 +27,12 @@ const DUST = Array.from({ length: 34 }, (_, i) => {
   const h = hash(`dust${i}`);
   return { x: h % W, y: (h >>> 9) % H, r: 0.5 + ((h >>> 18) % 3) * 0.3 };
 });
+
+// "sam's book" when there's a name; "the book" otherwise
+const bookTitle = (name: string) => {
+  const t = content().copy.book;
+  return name.trim() ? format(t.titleNamed, { name: name.trim().toLowerCase() }) : t.title;
+};
 
 const tabName = (k: Kind) => {
   const t = content().copy.book;
@@ -83,10 +88,9 @@ function Sky({ entries, openedAt }: { entries: Entry[]; openedAt: number }) {
   return (
     <section className="cover" aria-labelledby="cover-h">
       <div className="cover-head">
-        <h1 id="cover-h">{t.title}</h1>
+        <h1 id="cover-h">{bookTitle(name)}</h1>
         <Speaker />
       </div>
-      {name ? <p className="by">{format(t.by, { name: name.toLowerCase() })}</p> : null}
       <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label}>
         <defs>
           {KINDS.map((k) => (
@@ -241,13 +245,13 @@ function Range({ entries }: { entries: Entry[] }) {
 
 function Pages({ tab }: { tab: Kind }) {
   const copy = content().copy;
-  const { entries } = useData();
+  const { entries, name } = useData();
   const [openedAt] = useState(() => Date.now());
   const groups = byMonth(entries.filter((e) => e.kind === tab));
   const newest = groups[0]?.items[0];
   return (
     <>
-      <FlowTop onClose={() => go({ name: "book" }, true)} title={copy.book.title} />
+      <FlowTop onClose={() => go({ name: "book" }, true)} title={bookTitle(name)} />
       <Screen id="book-pages">
         <h2 className="sr">{copy.book.pages}</h2>
         <div className="tabs-row" role="tablist" aria-label={copy.book.pages}>
@@ -297,7 +301,8 @@ function Item({ e, fresh }: { e: Entry; fresh: boolean }) {
     }
   }, [mode]);
   const [text, setText] = useState(e.text);
-  const shown = e.kind === "about" ? toSecondPerson(e.text) : e.text;
+  // the book is written by its person: lines show just as they were written
+  const shown = e.text;
   const meta = [shortDate(e.at), e.from, e.before && e.after ? `${names[e.before - 1]} → ${names[e.after - 1]}` : ""].filter(Boolean).join(" · ");
   return (
     <m.div

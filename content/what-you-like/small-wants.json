@@ -1,7 +1,7 @@
 {
   "id": "small-wants",
   "title": "small wants count",
-  "subtitle": "finding what you like, one tiny want at a time",
+  "subtitle": "finding likes, one tiny want at a time",
   "minutes": 3,
   "steps": [
     {
@@ -27,7 +27,7 @@
         "i miss dancing.",
         "i'd rather not go out this time."
       ],
-      "reply": "each want word finds something different. \"curious\" finds new things. \"miss\" finds what you've loved before. \"rather\" helps you choose."
+      "reply": "each want word finds something different. \"curious\" finds new things. \"miss\" finds what's been loved before. \"rather\" helps choose."
     },
     {
       "type": "pick",
@@ -42,7 +42,7 @@
         "being outside",
         "a really good meal"
       ],
-      "reply": "noted in your book. a little more of you, found.",
+      "reply": "noted in the book. a little more, found.",
       "keep": "what-i-like",
       "as": "i'd like {x}."
     },

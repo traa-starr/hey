@@ -24,6 +24,6 @@ test("installable, and works offline after the first load", async ({ page, conte
     await expect(page.locator("h1")).toBeVisible();
   }
   await page.goto("./#/answer");
-  await expect(page.getByRole("heading", { name: "what did your inner voice say?" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "what did the inner voice say?" })).toBeVisible();
   await context.setOffline(false);
 });

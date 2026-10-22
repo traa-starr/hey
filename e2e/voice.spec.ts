@@ -16,7 +16,7 @@ test("the voice check maps your habits without any typing", async ({ page }) => 
     if (i < 19) await expect(page.getByText(`${i + 2} of 20`)).toBeVisible();
     await page.waitForTimeout(260);
   }
-  await expect(page.getByText(/thank you for being honest with yourself/)).toBeVisible();
+  await expect(page.getByText(/thank you for being honest/)).toBeVisible();
   await expect(page.locator(".habit-row").first()).toContainText("the mind reader");
   await page.locator(".habit-row").first().click();
   await expect(page.getByRole("heading", { name: "the mind reader" })).toBeVisible();
@@ -30,7 +30,7 @@ test("catching a habit takes three taps and shows up in your patterns", async ({
   await button(page, "work").click();
   await page.getByRole("slider", { name: "how loud it is" }).fill("4");
   await button(page, "catch it").click();
-  await expect(page.getByText(/caught\. that's how you get to know it/)).toBeVisible();
+  await expect(page.getByText(/caught\. noticing is how a habit gets known/)).toBeVisible();
 
   // straight into answering it, with the habit's own lines as ideas
   await page.getByRole("link", { name: "answer it now" }).click();

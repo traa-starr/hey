@@ -127,10 +127,11 @@ function Trend() {
 export function You() {
   const c = content();
   const t = c.copy.you;
+  const { name } = useData();
   return (
     <>
       <Screen id="you">
-        <PageTitle>{t.title}</PageTitle>
+        <PageTitle>{name.trim().toLowerCase() || t.title}</PageTitle>
         <section className="section" aria-labelledby="map-h">
           <div className="section-head"><h2 id="map-h">{t.map}</h2></div>
           <VoiceMap />

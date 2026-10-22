@@ -1,7 +1,7 @@
 {
   "id": "where-it-comes-from",
   "title": "where it comes from",
-  "subtitle": "the words you picked up along the way",
+  "subtitle": "words picked up along the way",
   "minutes": 4,
   "steps": [
     {
@@ -19,7 +19,7 @@
     },
     {
       "type": "ask",
-      "text": "does your inner voice ever sound like someone you know?",
+      "text": "does the inner voice ever sound like someone familiar?",
       "options": [
         {
           "label": "yes",
@@ -31,7 +31,7 @@
         },
         {
           "label": "that's a hard one",
-          "reply": "that's okay. you don't have to go there. you can skip anything here, and real help is in settings if you ever want it."
+          "reply": "that's okay. no need to go there. anything here can be skipped, and real help is in settings if it's ever wanted."
         }
       ]
     },
@@ -55,16 +55,16 @@
         "my own experiences",
         "not sure"
       ],
-      "reply": "you don't have to know for sure. just being curious about it gives you a little room."
+      "reply": "no need to know for sure. just being curious about it makes a little room."
     },
     {
       "type": "say",
-      "text": "here's the hopeful part: you can add new words, in your own voice.",
+      "text": "here's the hopeful part: new words can be added, in your own voice.",
       "mood": "happy"
     },
     {
       "type": "takeaway",
-      "text": "your inner voice picked up words along the way. you can add new ones.",
+      "text": "the inner voice picked up words along the way. new ones can join them.",
       "source": {
         "label": "Alderson-Day & Fernyhough, 2015",
         "url": "https://doi.org/10.1037/bul0000021"

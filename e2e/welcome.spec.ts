@@ -11,12 +11,12 @@ test("a first visit starts with thanks, and a first kind line in your own book",
   await button(page, "that's me").click();
   await expect(page.getByText("nice to meet you, robin.")).toBeVisible();
   await cont(page);
-  await expect(page.getByText(/get on your own side/)).toBeVisible();
+  await expect(page.getByText(/kindness pointed inward/)).toBeVisible();
   await cont(page);
   // nothing about the inner voice yet: the first thing is a kind line, to yourself
   await button(page, "showed up today, and that counts.").click();
   await button(page, "keep it").click();
-  await expect(page.getByText("kept in your book.")).toBeVisible();
+  await expect(page.getByText("kept in the book.")).toBeVisible();
   await cont(page);
   await button(page, "a little strange").click();
   await expect(page.getByText(/they get easier with practice/)).toBeVisible();
@@ -31,7 +31,7 @@ test("a first visit starts with thanks, and a first kind line in your own book",
   await page.goto("./");
   await expect(page.locator(".hello h1")).toHaveText(/robin\./);
   await page.goto("./#/book/voice");
-  await expect(page.locator(".entries")).toContainText("hey robin, you showed up today, and that counts.");
+  await expect(page.locator(".entries")).toContainText("robin showed up today, and that counts.");
 });
 
 test("the welcome can be left early, resumes, and can be skipped", async ({ page }) => {

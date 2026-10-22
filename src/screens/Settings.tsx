@@ -1,4 +1,4 @@
-// settings, real help, and your data, quietly at the bottom of your book.
+// settings, real help, and data, quietly at the bottom of the you tab.
 import { useState, useSyncExternalStore } from "react";
 import { content } from "../content/load";
 import { canInstall, install, isIos, onInstallChange } from "../lib/install";

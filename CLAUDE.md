@@ -23,7 +23,7 @@ When a choice is unclear, choose the gentler, truer, more welcoming option.
 - **Learn** (`content/index.json` paths): real lessons as chats with sol, built from interactive steps (spot it, try it on, pick, write with ideas, takeaways, experiments). Every voice habit gets a lesson generated from its data.
 - **Practice:** catch it, answer it, breathe, voice check, this or that, ways to answer.
 - **Answer it:** catch a sentence (or start from a caught habit and pick one of its lines) → set how loud it is → optional breath when it's loud → pick a way to answer (`content/formulas.json`, each with source and honest evidence label) → write your answer → set the loudness again → keep it, try another way, or let it go. The inner voice's sentence is never stored unless the person opts in.
-- **Book:** your book has its own tab: a cover that grows a star for each thing kept, what you've read, how answering moved the loudness, your range, and the pages (words, about you, keepers).
+- **Book:** the book has its own tab: a cover that grows a star for each thing kept, what you've read, how answering moved the loudness, your range, and the pages (words, about me, keepers).
 - **You:** your voice map, where habits show up, how loud it's been, settings with real help at the bottom.
 - **Never leave an empty box alone.** Every text field offers tappable ideas.
 - **Read aloud** (on-device Web Speech) and **soft sounds**, both off by default. Haptics where the platform allows.
@@ -58,7 +58,13 @@ IMPORTANT: hey you never treats people as doing something wrong. Nothing a perso
 
 ## Voice
 
-- In the app: **voice habits**, **catch it**, **answer it**, **ways to answer** (formulas), **about you** (desires and opinions), **your book** (what's kept), **sol** (the companion).
+- In the app: **voice habits**, **catch it**, **answer it**, **ways to answer** (formulas), **about me** (likes and opinions), **the book** (what's kept; the cover reads "sam's book" when there's a name), **sol** (the companion).
+- **Go easy on "you".** A string full of "you" and "your" reads like an ad talking at people.
+  - Address people by name where it's natural, and keep "you" and "your" sparing.
+  - Labels go without "your": "the book", "voice map", "next up".
+  - Talking to yourself as "you" lives only in the "you" trick lesson and the "talk to you" way to answer.
+  - Kind lines elsewhere use the person's name ("sam showed up today, and that counts."). When there's no name, use first person or wording that works with "you" as the fallback, such as past tense ("you showed up").
+  - Never phrasing that reads oddly, like "what's good in you".
 - One idea per screen. sol's bubbles stay short (about 30 words at most); longer ideas become more bubbles.
 - Lowercase, warm, plain, adult. Short sentences. Show, don't tell: scenes and examples, never definitions or lectures. Never cute.
 - Never: toxic, broken, fix, should (as an instruction), wrong, disorder, healing journey.

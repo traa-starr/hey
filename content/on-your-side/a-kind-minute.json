@@ -1,17 +1,17 @@
 {
   "id": "a-kind-minute",
   "title": "a kind minute",
-  "subtitle": "try being on your side",
+  "subtitle": "kindness, pointed inward",
   "minutes": 3,
   "steps": [
     {
       "type": "say",
-      "text": "thanks for being here. let's spend one minute on your side.",
+      "text": "thanks for being here. let's spend one gentle minute.",
       "mood": "happy"
     },
     {
       "type": "say",
-      "text": "picture someone you love having a rough day. what would you want them to hear from you?"
+      "text": "picture someone dear having a rough day. what would they need to hear?"
     },
     {
       "type": "pick",
@@ -23,29 +23,29 @@
         "i'm glad you're here",
         "rest is allowed"
       ],
-      "reply": "those are kind. now let's turn them toward you."
+      "reply": "those are kind. now let's point them inward."
     },
     {
       "type": "tryon",
-      "prompt": "say one to yourself, slowly, with your name. out loud if you can. tap the one you tried.",
+      "prompt": "now the same kindness, inward, using your own name. slowly, out loud if possible. tap the one tried.",
       "lines": [
-        "{name}, you're doing what you can.",
         "{name}, it makes sense this is hard.",
-        "{name}, rest is allowed."
+        "{name}, rest is allowed.",
+        "{name}, it's okay to go slowly."
       ],
       "reply": "notice how that landed. that's the voice we're growing."
     },
     {
       "type": "ask",
-      "text": "compared to how you usually talk to yourself, how was that?",
+      "text": "compared to the usual inner talk, how was that?",
       "options": [
         {
           "label": "softer",
-          "reply": "that softness is the whole point. it's yours, any time you want it."
+          "reply": "that softness is the whole point. it's there any time."
         },
         {
           "label": "strange",
-          "reply": "of course. kind words to yourself can feel unfamiliar. they get easier with practice."
+          "reply": "of course. kind words inward can feel unfamiliar. they get easier with practice."
         },
         {
           "label": "about the same",
@@ -55,19 +55,19 @@
     },
     {
       "type": "write",
-      "prompt": "keep one kind line, in your own words:",
-      "template": "hey {name}, you {x}",
+      "prompt": "keep one kind line:",
+      "template": "{name}, {x}",
       "ideas": [
-        "are doing what you can.",
-        "are allowed to rest.",
-        "don't have to be perfect to be okay.",
-        "are more than one hard day."
+        "rest is allowed.",
+        "it makes sense this is hard.",
+        "one step at a time is enough.",
+        "this is one hard day, not a whole life."
       ],
       "keep": "my-words"
     },
     {
       "type": "takeaway",
-      "text": "being kind to yourself isn't going easy on yourself. across many studies, people who treat themselves kindly tend to report greater well-being.",
+      "text": "kindness inward isn't going easy. across many studies, people who treat themselves kindly tend to report greater well-being.",
       "source": {
         "label": "Zessin, Dickhäuser & Garbade, 2015 (meta-analysis)",
         "url": "https://self-compassion.org/wp-content/uploads/2015/09/Zessin.meta-analysis.pdf"
@@ -76,7 +76,7 @@
     },
     {
       "type": "experiment",
-      "text": "tonight, say your kind line to yourself once, using your name."
+      "text": "tonight, say the kind line once, using your own name."
     }
   ],
   "grounding": [

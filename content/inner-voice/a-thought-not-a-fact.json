@@ -1,7 +1,7 @@
 {
   "id": "a-thought-not-a-fact",
   "title": "a thought is not a fact",
-  "subtitle": "a little distance from what your mind says",
+  "subtitle": "a little distance from what the mind says",
   "minutes": 4,
   "steps": [
     {
@@ -49,7 +49,7 @@
     },
     {
       "type": "say",
-      "text": "you don't have to argue with the thought, or believe it. you can just notice it."
+      "text": "no need to argue with the thought, or believe it. noticing it is enough."
     },
     {
       "type": "write",

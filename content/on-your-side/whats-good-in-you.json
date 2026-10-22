@@ -1,21 +1,21 @@
 {
   "id": "whats-good-in-you",
-  "title": "what's good in you",
-  "subtitle": "strengths you already have",
+  "title": "the good stuff",
+  "subtitle": "strengths already there",
   "minutes": 4,
   "steps": [
     {
       "type": "say",
-      "text": "let's look at what's already good in you. no modesty needed here.",
+      "text": "let's look at what's already good. no modesty needed here.",
       "mood": "happy"
     },
     {
       "type": "say",
-      "text": "strengths aren't trophies. they're the things you do naturally, often without noticing you're doing them."
+      "text": "strengths aren't trophies. they're the things done naturally, often without noticing."
     },
     {
       "type": "pick",
-      "prompt": "which of these sound like you, even a little?",
+      "prompt": "which of these fit, even a little?",
       "options": [
         "i'm kind to people",
         "i keep going",
@@ -28,7 +28,7 @@
         "i'm honest",
         "i stay calm when it counts"
       ],
-      "reply": "kept in your book, under about you. they were there before you picked them.",
+      "reply": "kept in the book, under about me. they were there all along.",
       "keep": "what-i-think",
       "as": "{x}."
     },
@@ -46,19 +46,19 @@
         },
         {
           "label": "can't think of one",
-          "reply": "that's okay. strengths are easy to miss in ourselves. keep an eye out today."
+          "reply": "that's okay. strengths are easy to miss up close. keep an eye out today."
         }
       ]
     },
     {
       "type": "write",
-      "prompt": "say one back to yourself:",
-      "template": "hey {name}, you {x}",
+      "prompt": "say one back, using your name:",
+      "template": "{name} {x}",
       "ideas": [
-        "were kind to someone today.",
-        "kept going when it was hard.",
         "made someone laugh.",
-        "noticed something others missed."
+        "kept going when it was hard.",
+        "noticed something others missed.",
+        "helped someone today."
       ],
       "keep": "my-words"
     },
@@ -73,7 +73,7 @@
     },
     {
       "type": "experiment",
-      "text": "use one of your strengths on purpose today, in a small new way."
+      "text": "use one strength on purpose today, in a small new way."
     }
   ],
   "grounding": [

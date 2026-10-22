@@ -37,7 +37,7 @@
     },
     {
       "type": "say",
-      "text": "these three parts come from self-compassion research: noticing it's hard, remembering you're not alone, and offering yourself some kindness.",
+      "text": "these three parts come from self-compassion research: noticing it's hard, remembering others feel it too, and offering some kindness.",
       "mood": "happy"
     },
     {
@@ -51,7 +51,7 @@
     },
     {
       "type": "experiment",
-      "text": "save the three lines somewhere you'll see them, like your phone's lock screen."
+      "text": "save the three lines somewhere easy to see, like the phone's lock screen."
     }
   ],
   "grounding": [

@@ -8,8 +8,8 @@
   "paths": [
     {
       "id": "on-your-side",
-      "name": "be on your side",
-      "blurb": "kindness, strengths and small good things, starting now",
+      "name": "a kind start",
+      "blurb": "kindness, strengths and small good things",
       "color": "coral",
       "lessons": [
         "on-your-side/a-kind-minute.json",
@@ -32,7 +32,7 @@
     },
     {
       "id": "inner-voice",
-      "name": "meet your inner voice",
+      "name": "meet the inner voice",
       "blurb": "what it is, where it comes from, how to hear it",
       "color": "violet",
       "lessons": [
@@ -44,7 +44,7 @@
     },
     {
       "id": "habits",
-      "name": "your voice habits",
+      "name": "voice habits",
       "blurb": "ten ways inner voices talk, and what each one is trying to do",
       "color": "coral",
       "lessons": [
@@ -62,8 +62,8 @@
     },
     {
       "id": "what-you-like",
-      "name": "what you like",
-      "blurb": "small wants, your values, and saying it out loud",
+      "name": "what i like",
+      "blurb": "small wants, values, and saying it out loud",
       "color": "gold",
       "lessons": [
         "what-you-like/small-wants.json",
@@ -74,7 +74,7 @@
     },
     {
       "id": "what-you-think",
-      "name": "what you think",
+      "name": "what i think",
       "blurb": "having opinions, saying them, letting them grow",
       "color": "pink",
       "lessons": [

@@ -1,7 +1,7 @@
 {
   "id": "everyone-has-one",
   "title": "everyone has one",
-  "subtitle": "the voice that narrates your day",
+  "subtitle": "the voice that narrates the day",
   "minutes": 3,
   "steps": [
     {
@@ -11,7 +11,7 @@
     },
     {
       "type": "say",
-      "text": "it's the voice that narrates your day. it reminds you of things. it comments on how it's going."
+      "text": "it's the voice that narrates the day. it reminds, it plans, it comments on how things are going."
     },
     {
       "type": "ask",
@@ -54,7 +54,7 @@
     },
     {
       "type": "say",
-      "text": "here's the part we'll keep coming back to: your inner voice learned how to talk somewhere. it isn't the only way you can talk to yourself.",
+      "text": "here's the part we'll keep coming back to: the inner voice learned how to talk somewhere. it isn't the only way to talk inward.",
       "mood": "curious"
     },
     {

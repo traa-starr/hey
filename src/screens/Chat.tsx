@@ -202,7 +202,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
               }} />
               <button className="btn quiet" type="button" onClick={() => {
                 if (step.keep && picks.length) {
-                  picks.forEach((p) => keepEntry(step.keep!, step.as ? format(step.as, { x: p }) : p, from));
+                  picks.forEach((p) => keepEntry(step.keep!, step.as ? line(format(step.as, { x: p })) : p, from));
                   keptChime();
                 }
                 set({ done: true });

@@ -1,5 +1,5 @@
 {
-  "intro": "frames for reshaping what your inner voice says. you bring the words.",
+  "intro": "frames for reshaping what the inner voice says. the words are yours.",
   "formulas": [
     {
       "id": "talk-to-you",
@@ -23,7 +23,7 @@
           "label": "you...",
           "placeholder": "e.g. are tired, and you still showed up today.",
           "ideas": [
-            "are doing better than you think.",
+            "are tired, and still showing up.",
             "are tired, and that makes sense.",
             "have gotten through hard days before.",
             "don't have to figure it all out tonight."
@@ -40,7 +40,7 @@
       "id": "i-notice",
       "name": "i notice",
       "frame": "i'm noticing the thought that ___.",
-      "why": "putting a frame around a thought turns it from a fact into something your mind said. in a lab study it made harsh self-statements less uncomfortable.",
+      "why": "putting a frame around a thought turns it from a fact into something the mind said. in a lab study it made harsh self-statements less uncomfortable.",
       "example": {
         "before": "i'm a failure.",
         "after": "i'm noticing the thought that i'm a failure."
@@ -72,7 +72,7 @@
       "slots": [
         {
           "key": "thought",
-          "label": "how you'd say it about yourself",
+          "label": "the harsh line, as said about yourself",
           "fill": "original-i"
         },
         {
@@ -97,7 +97,7 @@
       "id": "three-kind-lines",
       "name": "three kind lines",
       "frame": "this is hard. other people feel this too. what i need right now is ___.",
-      "why": "three steps from self-compassion research: notice it's hard, remember you're not the only one, then ask what you need.",
+      "why": "three steps from self-compassion research: notice it's hard, remember others feel this too, then ask what's needed.",
       "example": {
         "before": "everyone else has it together.",
         "after": "this is hard. other people feel this too. what i need right now is to stop comparing tonight."
@@ -174,7 +174,7 @@
       "slots": [
         {
           "key": "first",
-          "label": "what your inner voice said",
+          "label": "what the inner voice said",
           "fill": "original"
         },
         {
@@ -239,7 +239,7 @@
       "id": "what-i-know",
       "name": "what i know",
       "frame": "the thought says ___. what i actually know is ___.",
-      "why": "a classic from cognitive behavioral therapy: set what the thought claims next to what you actually know.",
+      "why": "a classic from cognitive behavioral therapy: set what the thought claims next to what's actually known.",
       "example": {
         "before": "they're ignoring me.",
         "after": "the thought says they're ignoring me. what i actually know is they've had a busy week."
@@ -273,7 +273,7 @@
       "id": "for-now",
       "name": "for now",
       "frame": "___, for now.",
-      "why": "\"for now\" turns a permanent-sounding sentence into a current one. you're allowed to change.",
+      "why": "\"for now\" turns a permanent-sounding sentence into a current one. people are allowed to change.",
       "example": {
         "before": "i'll never figure out what i want.",
         "after": "i haven't figured out what i want, for now."
@@ -282,7 +282,7 @@
       "slots": [
         {
           "key": "thought",
-          "label": "your sentence, softened if you like",
+          "label": "the sentence, softened if it helps",
           "fill": "original"
         }
       ],

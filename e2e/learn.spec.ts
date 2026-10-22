@@ -4,7 +4,7 @@ import { button, cont, returning, saved } from "./helpers";
 test("a lesson is a chat: tap through, try it, keep what you like", async ({ page }) => {
   await returning(page);
   await page.getByRole("link", { name: "learn" }).click();
-  await page.getByRole("link", { name: /meet your inner voice/ }).click();
+  await page.getByRole("link", { name: /meet the inner voice/ }).click();
   await page.getByRole("link", { name: /a thought is not a fact/ }).click();
   for (let i = 0; i < 5; i++) await cont(page);
   await button(page, "a bit lighter").click();
@@ -23,7 +23,7 @@ test("a lesson is a chat: tap through, try it, keep what you like", async ({ pag
   await cont(page);
   await button(page, "i'll try it").click();
   await cont(page);
-  await expect(page.getByText("lesson done. thank you for spending this time on you.")).toBeVisible();
+  await expect(page.getByText("lesson done. thank you for taking this time.")).toBeVisible();
   await button(page, "done").click();
   await expect(page.locator(".lesson-row").nth(2)).toContainText("done");
 
@@ -50,7 +50,7 @@ test("a voice habit lesson: spot it in the wild", async ({ page }) => {
   await expect(page.getByText(/good noticing\. one way to read it/)).toBeVisible();
 });
 
-test("this or that keeps picks in about you", async ({ page }) => {
+test("this or that keeps picks in about me", async ({ page }) => {
   await returning(page);
   await page.goto("./#/practice");
   await page.getByRole("link", { name: /this or that/ }).click();
@@ -60,6 +60,6 @@ test("this or that keeps picks in about you", async ({ page }) => {
   await button(page, "rain on the window").click();
   for (let i = 0; i < 6; i++) await button(page, "neither").click();
   await page.goto("./#/book/voice");
-  await page.getByRole("tab", { name: "about you" }).click();
-  await expect(page.locator(".entries")).toContainText("you'd pick rain on the window.");
+  await page.getByRole("tab", { name: "about me" }).click();
+  await expect(page.locator(".entries")).toContainText("i'd pick rain on the window.");
 });

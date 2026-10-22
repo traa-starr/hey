@@ -10,7 +10,7 @@ test("data from the first version is all here", async ({ page }) => {
   await expect(page.locator(".told")).toContainText("hey sam, you've handled hard weeks before.");
   await page.goto("./#/book/voice");
   await expect(page.locator(".entry").first()).toContainText("all i can hear → clear");
-  await page.getByRole("tab", { name: "about you" }).click();
+  await page.getByRole("tab", { name: "about me" }).click();
   await expect(page.locator(".entries")).toContainText("sunrise");
 });
 
@@ -20,21 +20,20 @@ test("the book grows a star for each thing kept, and shows what's been read and 
   await expect(page.getByRole("navigation", { name: "main" }).getByRole("link")).toHaveText(["learn", "practice", "home", "book", "you"]);
   await page.getByRole("link", { name: "book", exact: true }).click();
   await expect(page.getByRole("link", { name: "book", exact: true })).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("heading", { name: "your book", level: 1 })).toBeVisible();
-  await expect(page.getByText("by sam")).toBeVisible();
-  await expect(page.getByRole("img", { name: "a sky of 2 things you've kept" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "sam's book", level: 1 })).toBeVisible();
+  await expect(page.getByRole("img", { name: "a sky of 2 kept things" })).toBeVisible();
   await expect(page.locator(".cover .star")).toHaveCount(2);
   await expect(page.getByText("0 of 30 lessons read")).toBeVisible();
-  await expect(page.getByRole("link", { name: "meet your inner voice: 0 of 4 read" })).toBeVisible();
-  await expect(page.getByRole("img", { name: /^after you answered: .*all i can hear, then clear$/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: "meet the inner voice: 0 of 4 read" })).toBeVisible();
+  await expect(page.getByRole("img", { name: /^after answering: .*all i can hear, then clear$/ })).toBeVisible();
   await expect(page.getByRole("link", { name: "talk to you, used once" })).toBeVisible();
   await expect(page.getByRole("link", { name: "the dial, open to try" })).toBeVisible();
-  await page.getByRole("link", { name: "about you: 1" }).click();
-  await expect(page.getByRole("tab", { name: "about you" })).toHaveAttribute("aria-selected", "true");
+  await page.getByRole("link", { name: "about me: 1" }).click();
+  await expect(page.getByRole("tab", { name: "about me" })).toHaveAttribute("aria-selected", "true");
   await expect(page.locator(".entries")).toContainText("sunrise");
   await page.getByRole("tab", { name: "words" }).press("ArrowRight");
   await expect(page).toHaveURL(/#\/book\/about$/);
-  await page.getByRole("tab", { name: "about you" }).press("ArrowRight");
+  await page.getByRole("tab", { name: "about me" }).press("ArrowRight");
   await expect(page).toHaveURL(/#\/book\/keeper$/);
   await expect(page.getByRole("tab", { name: "keepers" })).toBeFocused();
 });
@@ -56,7 +55,7 @@ test("entries can be edited and removed", async ({ page }) => {
   await page.getByRole("button", { name: /^edit or remove:/ }).first().click();
   await page.getByRole("button", { name: /^remove:/ }).first().click();
   await page.locator(".entries").getByRole("button", { name: "remove", exact: true }).click();
-  await expect(page.getByText("every answer you keep lands here, in your words.")).toBeVisible();
+  await expect(page.getByText("kept answers land here.")).toBeVisible();
 });
 
 test("settings: name, appearance, real help, and clearing everything", async ({ page }) => {
@@ -82,7 +81,7 @@ test("settings: name, appearance, real help, and clearing everything", async ({ 
   await page.goto("./#/book");
   await expect(page.getByRole("img", { name: "an empty sky, for now" })).toBeVisible();
   await page.goto("./#/book/voice");
-  await expect(page.getByText("every answer you keep lands here, in your words.")).toBeVisible();
+  await expect(page.getByText("kept answers land here.")).toBeVisible();
   await page.goto("./");
   await expect(page.locator(".hello h1")).toHaveText(/you\./);
 });

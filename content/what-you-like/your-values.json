@@ -1,16 +1,16 @@
 {
   "id": "your-values",
-  "title": "what matters to you",
+  "title": "what matters most",
   "subtitle": "values are directions, not finish lines",
   "minutes": 5,
   "steps": [
     {
       "type": "say",
-      "text": "underneath wants are values: what matters to you about how you live."
+      "text": "underneath wants are values: what matters most about how to live."
     },
     {
       "type": "say",
-      "text": "values aren't goals you finish. they're more like directions. you can always take a step that way.",
+      "text": "values aren't goals to finish. they're more like directions. there's always a step to take that way.",
       "mood": "curious"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "type": "write",
-      "prompt": "one small thing you could do this week that fits what matters to you:",
+      "prompt": "one small thing this week that fits what matters:",
       "template": "this week, i could {x}",
       "ideas": [
         "call someone i miss.",
