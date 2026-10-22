@@ -83,6 +83,20 @@
         "what-you-think/disagreeing-kindly.json",
         "what-you-think/changing-your-mind.json"
       ]
+    },
+    {
+      "id": "how-your-mind-works",
+      "name": "how the mind works",
+      "blurb": "the research behind these ideas, said plainly",
+      "color": "blue",
+      "lessons": [
+        "how-your-mind-works/why-the-mind-talks.json",
+        "how-your-mind-works/the-negativity-bias.json",
+        "how-your-mind-works/esteem-and-compassion.json",
+        "how-your-mind-works/how-self-talk-reaches-others.json",
+        "how-your-mind-works/naming-feelings.json",
+        "how-your-mind-works/how-change-really-happens.json"
+      ]
     }
   ],
   "habits": "habits.json"

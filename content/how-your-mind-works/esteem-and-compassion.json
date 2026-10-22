@@ -1,0 +1,109 @@
+{
+  "id": "esteem-and-compassion",
+  "title": "self-esteem and self-compassion",
+  "subtitle": "two ways of relating to ourselves",
+  "minutes": 5,
+  "steps": [
+    {
+      "type": "recall",
+      "from": "how-your-mind-works/the-negativity-bias",
+      "prompt": "what does the negativity bias do to a day?",
+      "answer": "it makes one hard moment loom larger than the good ones. noticing the good moments helps them count."
+    },
+    {
+      "type": "say",
+      "text": "self-esteem is how highly we rate ourselves. it often rises after wins and dips after setbacks."
+    },
+    {
+      "type": "ask",
+      "text": "how does that match everyday life?",
+      "options": [
+        {
+          "label": "it goes up and down with how things go",
+          "reply": "that's what the research describes, too. it tends to follow results."
+        },
+        {
+          "label": "it feels fairly steady",
+          "reply": "good. that can be a real strength."
+        },
+        {
+          "label": "depends on the day",
+          "reply": "that makes sense. most of us are some of each."
+        }
+      ]
+    },
+    {
+      "type": "know",
+      "text": "in a large survey study, self-compassion was linked with steadier feelings of self-worth than self-esteem was, and with less comparing to other people.",
+      "source": {
+        "label": "Neff & Vonk, 2009",
+        "url": "https://doi.org/10.1111/j.1467-6494.2008.00537.x"
+      },
+      "evidence": "moderate (surveys show links, not cause)"
+    },
+    {
+      "type": "say",
+      "text": "self-compassion has three parts: kindness toward ourselves, knowing other people struggle too, and noticing a feeling without being swept away.",
+      "mood": "curious"
+    },
+    {
+      "type": "tryon",
+      "prompt": "try each on, and notice which has more room in it:",
+      "lines": [
+        "i have to get this right to be okay.",
+        "i want to get this right, and i'm okay either way."
+      ],
+      "reply": "no score here. the second leaves a little room for a rough day."
+    },
+    {
+      "type": "know",
+      "text": "in four experiments, people encouraged to be self-compassionate about a failure were more willing to put in extra effort to improve afterward.",
+      "source": {
+        "label": "Breines & Chen, 2012",
+        "url": "https://doi.org/10.1177/0146167212445599"
+      },
+      "evidence": "moderate (four experiments)"
+    },
+    {
+      "type": "say",
+      "text": "so self-compassion isn't lowering the bar. it can sit beside caring a lot."
+    },
+    {
+      "type": "pick",
+      "prompt": "which of these feels like a small act of self-compassion? pick any to keep:",
+      "options": [
+        "i can want more and still be on my own side.",
+        "i'm allowed to be learning.",
+        "other people feel this too.",
+        "i can be gentle and still care about this."
+      ],
+      "reply": "lovely. these are yours now.",
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "self-esteem tends to follow how things go. self-compassion is a steadier way of treating ourselves, and it doesn't seem to cost motivation.",
+      "source": {
+        "label": "Neff & Vonk, 2009",
+        "url": "https://doi.org/10.1111/j.1467-6494.2008.00537.x"
+      },
+      "evidence": "moderate (surveys and experiments; links, not proof of cause)"
+    },
+    {
+      "type": "experiment",
+      "text": "once today, when something doesn't go as hoped, ask: what would i say to a friend about this?"
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "self-compassion was linked with steadier self-worth and less social comparison than self-esteem",
+      "source": "Neff & Vonk, 2009",
+      "url": "https://doi.org/10.1111/j.1467-6494.2008.00537.x"
+    },
+    {
+      "idea": "self-compassion after a failure increased motivation to improve",
+      "source": "Breines & Chen, 2012",
+      "url": "https://doi.org/10.1177/0146167212445599"
+    }
+  ]
+}

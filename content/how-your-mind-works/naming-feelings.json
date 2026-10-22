@@ -1,0 +1,104 @@
+{
+  "id": "naming-feelings",
+  "title": "putting a name to it",
+  "subtitle": "what words can do for a feeling",
+  "minutes": 4,
+  "steps": [
+    {
+      "type": "recall",
+      "from": "how-your-mind-works/how-self-talk-reaches-others",
+      "prompt": "what did the study of couples find about self-compassion?",
+      "answer": "partners described people higher in self-compassion as more caring and accepting. it's a link, not a cause."
+    },
+    {
+      "type": "say",
+      "text": "some feelings arrive as a fog: big, with no edges."
+    },
+    {
+      "type": "ask",
+      "text": "has saying what a feeling was ever helped?",
+      "options": [
+        {
+          "label": "yes, a bit",
+          "reply": "good. that fits what researchers have seen."
+        },
+        {
+          "label": "not really",
+          "reply": "that's fine. it doesn't work every time, or the same way for everyone."
+        },
+        {
+          "label": "never tried it",
+          "reply": "then this is a nice time to try."
+        }
+      ]
+    },
+    {
+      "type": "know",
+      "text": "in a brain-imaging study, people who put a feeling into words showed quieter activity in the amygdala, which responds to emotional images, than people who didn't.",
+      "source": {
+        "label": "Lieberman et al., 2007",
+        "url": "https://doi.org/10.1111/j.1467-9280.2007.01916.x"
+      },
+      "evidence": "moderate (a small imaging study; later work points the same way)"
+    },
+    {
+      "type": "say",
+      "text": "that doesn't mean the feeling goes away. it can mean it takes up a bit less room.",
+      "mood": "calm"
+    },
+    {
+      "type": "pick",
+      "prompt": "which of these words is nearest to something lately? pick any:",
+      "options": [
+        "restless",
+        "hopeful",
+        "stretched",
+        "content",
+        "wary",
+        "excited"
+      ],
+      "reply": "a word that fits can be enough for now."
+    },
+    {
+      "type": "tryon",
+      "prompt": "try each on, and notice which fits better:",
+      "lines": [
+        "i feel bad.",
+        "i feel stretched thin, and a little hopeful."
+      ],
+      "reply": "no score. some days \"bad\" is the honest word, and that's fine."
+    },
+    {
+      "type": "write",
+      "prompt": "put one into a sentence. it stays here:",
+      "template": "right now i'm feeling {x}",
+      "ideas": [
+        "a bit stretched.",
+        "quietly pleased.",
+        "restless, but okay.",
+        "curious about what's next."
+      ],
+      "placeholder": "the most exact word that fits"
+    },
+    {
+      "type": "takeaway",
+      "text": "putting a feeling into words can take a little of its edge off.",
+      "source": {
+        "label": "Lieberman et al., 2007",
+        "url": "https://doi.org/10.1111/j.1467-9280.2007.01916.x"
+      },
+      "evidence": "moderate (an imaging study; later work points the same way)"
+    },
+    {
+      "type": "experiment",
+      "text": "once today, finish \"right now i'm feeling…\" in your head, with the most exact word you can find."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "putting feelings into words was linked with reduced amygdala activity",
+      "source": "Lieberman et al., 2007",
+      "url": "https://doi.org/10.1111/j.1467-9280.2007.01916.x"
+    }
+  ]
+}

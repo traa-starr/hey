@@ -1,0 +1,116 @@
+{
+  "id": "how-change-really-happens",
+  "title": "what changing a habit of thought takes",
+  "subtitle": "practice, patience, and no shortcuts",
+  "minutes": 5,
+  "steps": [
+    {
+      "type": "recall",
+      "from": "how-your-mind-works/naming-feelings",
+      "prompt": "what did putting a feeling into words seem to do?",
+      "answer": "it was linked with quieter amygdala activity. it can take a little edge off. it doesn't remove the feeling."
+    },
+    {
+      "type": "say",
+      "text": "a lesson can change what we understand. a habit changes when we do the thing again, many times."
+    },
+    {
+      "type": "ask",
+      "text": "which has changed more for you in the past?",
+      "options": [
+        {
+          "label": "understanding it",
+          "reply": "that counts. understanding helps us know where to start."
+        },
+        {
+          "label": "doing it over and over",
+          "reply": "that's how most habits settle in."
+        },
+        {
+          "label": "both, in turn",
+          "reply": "yes. they seem to help each other."
+        }
+      ]
+    },
+    {
+      "type": "know",
+      "text": "a review of 47 experiments found that big changes in people's intentions led to only small to medium changes in what they then did.",
+      "source": {
+        "label": "Webb & Sheeran, 2006",
+        "url": "https://doi.org/10.1037/0033-2909.132.2.249"
+      },
+      "evidence": "strong (a review of experiments)"
+    },
+    {
+      "type": "say",
+      "text": "so knowing is a start. it's the repeating that carries it forward."
+    },
+    {
+      "type": "know",
+      "text": "in a study of 96 people building a simple habit, it took a typical 66 days to feel automatic, and from 18 to 254 days between people.",
+      "source": {
+        "label": "Lally et al., 2010",
+        "url": "https://doi.org/10.1002/ejsp.674"
+      },
+      "evidence": "moderate (one study of simple habits, like drinking water; thoughts may differ)"
+    },
+    {
+      "type": "say",
+      "text": "slow isn't a sign that anything is off. slow is how habits grow. in that study, missing a single day didn't undo it.",
+      "mood": "happy"
+    },
+    {
+      "type": "say",
+      "text": "people may see promises online to rewire a brain in a week. nobody can honestly promise that, so hey you won't."
+    },
+    {
+      "type": "pick",
+      "prompt": "what could make a small practice easier to repeat? pick any:",
+      "options": [
+        "tying it to something i already do",
+        "keeping it tiny",
+        "doing it somewhere i'll see it",
+        "doing it with someone",
+        "being easy on myself about days i skip"
+      ],
+      "reply": "any of these can help. one is plenty."
+    },
+    {
+      "type": "write",
+      "prompt": "name a small practice you'd like to try:",
+      "template": "a small practice for me: {x}",
+      "ideas": [
+        "one kind sentence after brushing my teeth.",
+        "naming one good thing at night.",
+        "a slow breath before replying.",
+        "one thing i like, written down."
+      ],
+      "keep": "my-words"
+    },
+    {
+      "type": "takeaway",
+      "text": "changing a habit of thought comes from repeating small things, and it's slower than most people expect. understanding alone doesn't carry it.",
+      "source": {
+        "label": "Lally et al., 2010",
+        "url": "https://doi.org/10.1002/ejsp.674"
+      },
+      "evidence": "moderate (one study of simple habits; thought habits may take their own time)"
+    },
+    {
+      "type": "experiment",
+      "text": "pick one tiny practice from this path and tie it to something that already happens each day. try it for a week, and skip a day without any fuss."
+    }
+  ],
+  "grounding": [
+    {
+      "idea": "intentions change behavior only modestly; most of the work is in what's done afterward",
+      "source": "Webb & Sheeran, 2006",
+      "url": "https://doi.org/10.1037/0033-2909.132.2.249"
+    },
+    {
+      "idea": "simple habits took a median of 66 days to feel automatic, with wide variation",
+      "source": "Lally et al., 2010",
+      "url": "https://doi.org/10.1002/ejsp.674"
+    }
+  ]
+}
