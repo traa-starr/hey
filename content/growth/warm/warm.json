@@ -1,0 +1,299 @@
+{
+  "copy": {
+    "title": "the warm room",
+    "hubSol": "this is a room for being on your own side. thank you for stopping in.",
+    "hubSolVoice": "{voice} is here. thank you for coming by.",
+    "enter": "come in",
+    "enterAgain": "come in again",
+    "voiceTitle": "the voice",
+    "voiceNone": "no voice built yet. that happens on the first visit.",
+    "voiceChange": "change the voice",
+    "why": "why this works",
+    "whyTitle": "why this works",
+    "skip": "skip",
+    "continue": "continue",
+    "next": "next",
+    "back": "back",
+    "settleSol": "let's land first. one slow breath, if that sounds good.",
+    "breathe": "breathe",
+    "settleDone": "settled enough. thank you.",
+    "touchTitle": "a hand on the chest",
+    "touchText": "if it feels okay, rest a hand on your chest, or hold your own hand, for a few breaths. just warmth, nothing to do.",
+    "touchEvidence": "in one study, self-soothing touch lowered the body's stress response (Dreisoerner et al., 2021). one study, a small effect, and no cure. skip it freely.",
+    "voiceSol": "a kind voice is easier to hear when it sounds like someone. pick two or three qualities for it.",
+    "voiceQualities": "qualities for the voice",
+    "voiceCount": "{n} of 3 picked. tap another to swap.",
+    "voiceNameLabel": "a name for the voice, if one fits",
+    "voiceNamePlaceholder": "optional",
+    "voiceNameIdeas": "name ideas",
+    "voiceDone": "this is the voice",
+    "voiceSaved": "the voice is yours to change any time.",
+    "voiceDefault": "the kind voice",
+    "thingSol": "what's one small hard thing from today? a few words is plenty. something small and recent, never from long ago.",
+    "thingLabel": "what's weighing a little",
+    "thingPlaceholder": "a few words",
+    "thingIdeas": "ideas",
+    "thingSkip": "nothing today, skip",
+    "thingNext": "tell {voice}",
+    "brought": "brought today",
+    "answerSol": "{voice} heard it.",
+    "answerSolNoThing": "{voice} is here anyway.",
+    "goOn": "go on",
+    "parts": {
+      "kindness": "kind to me",
+      "humanity": "not alone in this",
+      "mindfulness": "just noticing"
+    },
+    "weave": "and one of the lines kept in the book:",
+    "another": "another way to say it",
+    "enough": "that's enough",
+    "afterSol": "thank you for staying with that.",
+    "endSol": "thank you for taking this time. that's a kindness in itself.",
+    "endSolNoShift": "thank you for taking this time. any amount counts.",
+    "keep": "keep what {voice} said",
+    "keepThing": "keep what i brought, too",
+    "keepThingNote": "off by default. it stays on this phone.",
+    "kept": "kept in the book.",
+    "letGo": "let it go",
+    "letGone": "let go. thank you for the visit.",
+    "done": "done",
+    "bookTitle": "the warm room",
+    "bookVoice": "the voice",
+    "bookVisits": "kept visits",
+    "bookNote": "shown only when opened. the voice's words are kept; what was brought stays off unless kept on purpose.",
+    "bookLetGo": "let go",
+    "bookChange": "change the voice",
+    "bookEnter": "come in",
+    "evidence": "evidence",
+    "source": "source",
+    "whyDone": "that's the why. whenever it feels right, the room is open.",
+    "whyHelp": "this room is not therapy. help with heavier days lives in settings, quietly, always.",
+    "stepOf": "step {n} of {total}",
+    "beforeSol": "thank you for coming in. a quick look at how things feel first, if that sounds good.",
+    "knowLabel": "behind this",
+    "chooseOne": "pick at least two"
+  },
+  "thingIdeas": [
+    "a message i haven't answered",
+    "i was short with someone",
+    "a plan fell through",
+    "i'm behind on something",
+    "i said something i'd say differently now",
+    "i'm just tired today",
+    "something i expected didn't go well"
+  ],
+  "nameIdeas": [
+    "the kind one",
+    "old friend",
+    "north",
+    "ember",
+    "the one who stays",
+    "coach"
+  ],
+  "sources": {
+    "neff2003": {
+      "label": "Neff, 2003, Self and Identity",
+      "evidence": "an established framework, widely studied"
+    },
+    "neffgermer2013": {
+      "label": "Neff & Germer, 2013, Journal of Clinical Psychology",
+      "evidence": "one randomized trial, small sample"
+    },
+    "gilbert2009": {
+      "label": "Gilbert, 2009, Advances in Psychiatric Treatment",
+      "evidence": "a developing area, early studies look promising"
+    },
+    "breines2012": {
+      "label": "Breines & Chen, 2012, Personality and Social Psychology Bulletin",
+      "evidence": "four lab experiments"
+    },
+    "dreisoerner2021": {
+      "label": "Dreisoerner et al., 2021, Comprehensive Psychoneuroendocrinology",
+      "evidence": "one randomized study, small effect"
+    }
+  },
+  "why": [
+    {
+      "say": "self-compassion means being on your own side, the way a good friend is. Kristin Neff describes three parts."
+    },
+    {
+      "say": "part one is kindness: meeting a hard moment with warmth, not a scolding."
+    },
+    {
+      "say": "part two is common humanity: hard moments are shared ones. nobody gets through life without them."
+    },
+    {
+      "say": "part three is mindfulness: noticing what's here without shrinking it or blowing it up.",
+      "know": {
+        "text": "Neff described self-compassion as these three parts working together: kindness, common humanity and mindfulness.",
+        "source": "neff2003"
+      }
+    },
+    {
+      "say": "it isn't self-indulgence, and it doesn't lower the bar. kindness and caring about goals can sit together.",
+      "know": {
+        "text": "in four experiments, people who were asked to treat a setback with self-compassion spent longer preparing to do better next time.",
+        "source": "breines2012"
+      }
+    },
+    {
+      "say": "what does the research say about practicing it? early, honest, and encouraging.",
+      "know": {
+        "text": "in a small trial, adults in an eight week self-compassion program reported more self-compassion and less stress than those waiting. it needs bigger studies.",
+        "source": "neffgermer2013"
+      }
+    },
+    {
+      "say": "the voice you build here borrows from compassion-focused therapy: a kind inner voice, grown on purpose.",
+      "know": {
+        "text": "Paul Gilbert's compassion-focused therapy trains a warm, steady inner voice. studies are still growing, and the early ones look promising.",
+        "source": "gilbert2009"
+      }
+    },
+    {
+      "say": "the hand on the chest is optional. here is what's known.",
+      "know": {
+        "text": "in one study, self-soothing touch lowered the body's stress response. it is one study, and a small effect.",
+        "source": "dreisoerner2021"
+      }
+    }
+  ],
+  "qualities": [
+    {
+      "id": "steady",
+      "label": "steady",
+      "blurb": "calm when things wobble",
+      "kindness": [
+        "{n}this is heavy, and i've got it with you. one breath, then the next thing. that's all it asks.",
+        "{n}nothing has to be decided right now. i'm here, and the ground is still holding."
+      ],
+      "humanity": [
+        "{n}people everywhere have days like this. steady isn't never wobbling, it's coming back to center.",
+        "{n}nearly everyone has had this exact kind of day. it's part of being a person."
+      ],
+      "mindfulness": [
+        "{n}notice it without grabbing it. this is a hard moment, and it's only one moment.",
+        "{n}name it plainly: this is hard. just that, with no extra story on top."
+      ]
+    },
+    {
+      "id": "warm",
+      "label": "warm",
+      "blurb": "glad to be near",
+      "kindness": [
+        "{n}come here. that was a lot, and i'm glad it was said out loud.",
+        "{n}you did what you could with what you had at that moment. that deserves some warmth."
+      ],
+      "humanity": [
+        "{n}you're far from the only one who has felt this. a lot of good people have stood right here.",
+        "{n}so many kind people are hard on themselves in just this way. it comes from caring."
+      ],
+      "mindfulness": [
+        "{n}let's sit with it a second. a hard feeling is here, and it can be here without running things.",
+        "{n}hand on the feeling, not the story. it's allowed to be exactly this big."
+      ]
+    },
+    {
+      "id": "gentle",
+      "label": "gentle",
+      "blurb": "soft, unhurried",
+      "kindness": [
+        "{n}go slowly. there's no hurry to feel better, and no hurry to be anything.",
+        "{n}be soft with this one. it can hurt a little and still be handled kindly."
+      ],
+      "humanity": [
+        "{n}tender days are shared ones. someone, somewhere, is feeling this very thing right now.",
+        "{n}feeling this means a tender heart, like many. it's good company to be in."
+      ],
+      "mindfulness": [
+        "{n}notice where it sits in the body, and let it be there. nothing to push away.",
+        "{n}this is a hard moment. it will move, the way weather does."
+      ]
+    },
+    {
+      "id": "wise",
+      "label": "wise",
+      "blurb": "sees the bigger picture",
+      "kindness": [
+        "{n}a friend would hear something kind right now. the same words are allowed to be yours.",
+        "{n}one rough moment says very little about a whole person. take it as information, not a verdict."
+      ],
+      "humanity": [
+        "{n}struggle shows up in every life that's really being lived. it's the shared part.",
+        "{n}every person worth admiring has had a day like this, and gotten through it, usually imperfectly."
+      ],
+      "mindfulness": [
+        "{n}see it clearly: what happened, how it feels, and what's only the story around it.",
+        "{n}a feeling is a visitor with a message, not a ruling. notice it, hear it out, and carry on."
+      ]
+    },
+    {
+      "id": "funny",
+      "label": "funny",
+      "blurb": "lightens the air",
+      "kindness": [
+        "{n}okay, deep breath. a work in progress is also allowed to have a snack.",
+        "{n}if a friend told me this, i'd show up with cake. so, cake energy, right now."
+      ],
+      "humanity": [
+        "{n}humans are famously messy. welcome to the world's largest club, no dues.",
+        "{n}everyone is improvising at least one thing today. this is excellent company."
+      ],
+      "mindfulness": [
+        "{n}the feeling arrived uninvited, as feelings do. no need to throw it a party or throw it out.",
+        "{n}it's a hard moment, and also just a moment. even long days end."
+      ]
+    },
+    {
+      "id": "fierce",
+      "label": "fierce",
+      "blurb": "stands up for you",
+      "kindness": [
+        "{n}i'm on your side, no questions asked. anything rough, even a thought, can ease up.",
+        "{n}you matter, and that doesn't pause on bad days. i'm standing right next to you."
+      ],
+      "humanity": [
+        "{n}this is the price of caring about things, and so many brave people pay it. you're one of them.",
+        "{n}it takes strength to face a hard day honestly. you're doing it, and so are plenty of others."
+      ],
+      "mindfulness": [
+        "{n}look straight at it. it's hard, and you're still here. both are true.",
+        "{n}no flinching, no drama: this hurts, and it can be held."
+      ]
+    },
+    {
+      "id": "patient",
+      "label": "patient",
+      "blurb": "no deadline",
+      "kindness": [
+        "{n}there's room. this can take as long as it takes.",
+        "{n}no deadline on feeling better. i'll wait with you."
+      ],
+      "humanity": [
+        "{n}everyone learns this slowly. nobody gets it in one go, not once.",
+        "{n}being gentle with yourself takes practice for nearly everyone. you're in the middle of it, like them."
+      ],
+      "mindfulness": [
+        "{n}just notice what's here, one thing at a time. the rest can wait.",
+        "{n}this feeling is here now. watch it rise and soften, without hurrying it."
+      ]
+    },
+    {
+      "id": "honest",
+      "label": "honest",
+      "blurb": "kind and straight",
+      "kindness": [
+        "{n}that really was hard. no need to dress it up, and no need to be harsh about it either.",
+        "{n}the truth is, you cared, and that's why it stings. caring isn't a flaw."
+      ],
+      "humanity": [
+        "{n}honestly, this happens to everybody. it's common, and being ordinary here is a relief.",
+        "{n}plenty of people have made this same call on a tired day. it's very human."
+      ],
+      "mindfulness": [
+        "{n}say it as it is: this hurts, and it's today. nothing more has to be added.",
+        "{n}the feeling is real. the worst-case story on top of it isn't a fact yet."
+      ]
+    }
+  ]
+}
