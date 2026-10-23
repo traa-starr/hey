@@ -106,6 +106,12 @@ The trigger check is done and in review (`npm run check`: 74 unit tests; `npm ru
 
 ## Workflow
 
+- **GitHub runs the tests, not Claude.** Sam works straight from Claude on the web or desktop, with no local copy, and Claude's usage is limited. `.github/workflows/deploy.yml` runs `npm run check` and `npm run e2e` on every pull request and every push to `main`, then deploys `main`. So:
+  - Don't install packages or run `npm run check`, `npm run e2e` or builds just to verify a change. The container's browser can't run the e2e tests anyway.
+  - Make the change, commit, push, and let the check on the pull request be the test.
+  - Only when a run fails, read its logs (`get_job_logs` with `failed_only` and a small `tail_lines`), fix the cause, and push again. Don't re-run it blindly.
+  - Tests must not depend on the time of day or the date. Pin the clock in the test (see `e2e/learn.spec.ts`).
+  - Screens at 390px still get checked by eye before a feature is called done, which is the one thing CI can't do.
 - One piece at a time. Plan, build, check at phone size, then commit.
 - Real help (crisis lines) is always reachable in settings (you → settings), quietly, never stamped on every screen.
 - Spec: `docs/SPEC.md`. Design: `docs/DESIGN.md`. Content format: `content/README.md`.
