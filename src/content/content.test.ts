@@ -28,6 +28,14 @@ describe("content", () => {
     expect(c.start!.steps.length).toBeLessThanOrEqual(8);
   });
 
+  it("keeps the tour to a handful of short steps", () => {
+    const t = c.tour!;
+    expect(t.steps.length).toBeGreaterThanOrEqual(3);
+    expect(t.steps.length).toBeLessThanOrEqual(6);
+    for (const s of t.steps) expect(s.say.split(/\s+/).length, s.say).toBeLessThanOrEqual(30);
+    expect(new Set(t.steps.map((s) => s.tab)).size).toBe(t.steps.length);
+  });
+
   it("gives every voice habit a full lesson where spotting it has the right answer", () => {
     const habitPath = c.paths.find((p) => p.id === "habits")!;
     expect(habitPath.items.map((i) => i.habit?.id)).toEqual(c.habits.map((h) => h.id));

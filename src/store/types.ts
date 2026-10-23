@@ -55,7 +55,11 @@ export type KV = {
   // finished lessons, keyed by lesson key
   done: Record<string, string>;
   companion: { name: string; on: boolean };
+  tour: Tour | null;
 };
+
+// the quick look around: null until the welcome ends, then where it stopped; `end` is set once finished or skipped
+export type Tour = { i: number; end: "" | "done" | "skipped" };
 
 export const DEFAULT_SETTINGS: Settings = {
   readAloud: false, autoRead: false, voice: null, rate: 1, sound: false, resurface: true, appearance: "time"
@@ -63,7 +67,7 @@ export const DEFAULT_SETTINGS: Settings = {
 
 export const freshKV = (): KV => ({
   name: "", welcomed: false, tried: {}, answered: {}, settings: { ...DEFAULT_SETTINGS }, progress: {}, migratedV1: false,
-  done: {}, companion: { name: "", on: true }
+  done: {}, companion: { name: "", on: true }, tour: null
 });
 
 export type State = KV & { entries: Entry[]; logs: Log[]; grown: GrowthRecord[]; ready: boolean; persistent: boolean };

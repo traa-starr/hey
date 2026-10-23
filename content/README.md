@@ -4,6 +4,7 @@ Everything hey you says lives here as JSON, separate from the code. Adding a les
 
 - `index.json`: the welcome, ways to answer, questions, habits, copy, help, credits, and the learn **paths** (each with `id`, `name`, `blurb`, `color`, and `lessons`).
 - `start/welcome.json`: the welcome chat with sol.
+- `tour.json`: the quick look around after the welcome. Each step has a `tab` (home, learn, practice, book or you) to light up and a short `say`; `{companion}` is filled in. Edit, add or reorder steps with no code change.
 - `habits.json`: the ten voice habits, the voice check note, and their source.
 - `formulas.json`: the ways to answer, plus `catchIdeas`.
 - `questions.json`: quick this-or-that questions.

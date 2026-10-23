@@ -57,6 +57,7 @@ export class Store {
     kv.settings = { ...DEFAULT_SETTINGS, ...(kv.settings ?? {}) };
     kv.companion = { ...freshKV().companion, ...(kv.companion ?? {}) };
     kv.done = kv.done ?? {};
+    if (!kv.tour || typeof kv.tour !== "object") kv.tour = null;
     if (!kv.progress || typeof kv.progress !== "object" || "lessonPath" in kv.progress) kv.progress = {};
     let entries = loaded.entries;
     if (!kv.migratedV1) {
@@ -101,7 +102,12 @@ export class Store {
   }
 
   setName = (name: string) => this.setKV("name", name.trim());
-  setWelcomed = () => this.setKV("welcomed", true);
+  // the quick look around starts once, right after the welcome; anyone who was here before it existed never sees it unasked
+  setWelcomed = () => {
+    this.setKV("welcomed", true);
+    if (!this.state.tour) this.setTour({ i: 0, end: "" });
+  };
+  setTour = (tour: KV["tour"]) => this.setKV("tour", tour);
   markDone = (key: string) => this.setKV("done", { ...this.state.done, [key]: new Date().toISOString() });
   setCompanion = (patch: Partial<KV["companion"]>) => this.setKV("companion", { ...this.state.companion, ...patch });
   // logs are kept oldest first, so trends read left to right
@@ -160,7 +166,7 @@ export class Store {
     this.save((b) => b.deleteEntry(id));
   };
   clearAll = () => {
-    const keep = { welcomed: true, migratedV1: true, settings: this.state.settings, companion: this.state.companion };
+    const keep = { welcomed: true, migratedV1: true, settings: this.state.settings, companion: this.state.companion, tour: this.state.tour };
     // the first version's copy goes too, so nothing old is left on the phone
     try {
       globalThis.localStorage?.removeItem(V1_KEY);

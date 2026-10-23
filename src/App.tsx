@@ -5,6 +5,7 @@ import { stopSpeaking } from "./lib/speech";
 import { go, useRoute } from "./router";
 import { Home } from "./screens/Home";
 import { useData } from "./store/useStore";
+import { Tour } from "./ui/Tour";
 
 const loadMotion = () => import("./lib/motion-features").then((m) => m.default);
 
@@ -87,6 +88,7 @@ function Routes() {
   return (
     <main className={`app${TABS.includes(route.name) && !(route.name === "book" && route.tab) ? "" : " flow"}`}>
       <Suspense fallback={<p className="boot" data-loading>{c.copy.app.loading}</p>}>{page}</Suspense>
+      {route.name === "home" && data.tour && !data.tour.end ? <Tour /> : null}
     </main>
   );
 }
