@@ -417,11 +417,14 @@ html[data-nav="tab"]::view-transition-old(root), html[data-nav="tab"]::view-tran
 @keyframes vt-out-right { to { translate: 100% 0; } }
 @keyframes vt-in-left { from { translate: -25% 0; opacity: .4; } }
 
-/* the quick look around: the lit spot dims everything else, the companion sits above the tab it is talking about */
+/* the quick look around: the lit spot dims everything else; dawn talks from a card above or below it */
 .tour { position: fixed; inset: 0; z-index: 20; }
+.tour-dim { position: fixed; inset: 0; background: #120e2e80; }
 .tour-spot { position: fixed; border: 2px solid var(--gold); border-radius: 24px; background: transparent; padding: 0; box-shadow: 0 0 0 100vmax #120e2eb3; }
-.tour-sol { position: fixed; left: 0; bottom: calc(86px + env(safe-area-inset-bottom, 0px)); width: 56px; height: 56px; pointer-events: none; }
-.tour-card { position: fixed; left: 14px; right: 14px; bottom: calc(150px + env(safe-area-inset-bottom, 0px)); max-width: 27rem; margin: 0 auto; background: var(--surface); color: var(--ink); border-radius: 22px; padding: 14px 16px; box-shadow: var(--shadow), 0 0 0 1px var(--hair); display: grid; gap: 6px; }
+.tour-card { position: fixed; left: 14px; right: 14px; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); max-width: 27rem; margin: 0 auto; background: var(--surface); color: var(--ink); border-radius: 22px; padding: 14px 16px; box-shadow: var(--shadow), 0 0 0 1px var(--hair); display: grid; gap: 8px; }
+.tour-card.up { bottom: auto; top: calc(12px + env(safe-area-inset-top, 0px)); }
+.tour-body { display: flex; gap: 10px; align-items: center; }
+.tour-av { width: 3rem; height: 3rem; flex: none; }
 .tour-say { font-size: 1.05rem; line-height: 1.45; }
 .tour-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .tour-row .btn { width: auto; min-width: 7rem; }
