@@ -73,3 +73,27 @@ test("leaving and coming back much later starts fresh", async ({ page }) => {
   await page.reload();
   await expect(page.getByLabel("in its words")).toHaveValue("");
 });
+
+test("the inner voice's sentence can be skipped, and the answer still works", async ({ page }) => {
+  await returning(page);
+  await page.goto("./#/answer");
+  await button(page, "hard to say").click();
+  await page.getByRole("slider", { name: "how loud it is" }).fill("2");
+  await button(page, "next").click();
+
+  await page.getByRole("button", { name: /^for now/ }).click();
+  await expect(page.locator(".said")).toHaveCount(0);
+  await page.getByLabel("the sentence, softened if it helps").fill("i'm still learning");
+  await button(page, "this is mine").click();
+  await button(page, "hard to say").click();
+
+  // nothing to carry or keep from the inner voice
+  await expect(page.getByText(/this answer includes the inner voice's words/)).toHaveCount(0);
+  await expect(page.getByText("also keep what the inner voice said")).toHaveCount(0);
+  await button(page, "keep it in my book").click();
+  await expect(page.getByText("kept in the book.")).toBeVisible();
+
+  await button(page, "see the book").click();
+  await page.getByRole("link", { name: /^words/ }).click();
+  await expect(page.locator(".entry").first()).toContainText("i'm still learning, for now.");
+});
