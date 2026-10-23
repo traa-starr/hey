@@ -51,7 +51,10 @@ test("a lesson is a chat: tap through, try it, keep what you like", async ({ pag
   await expect(page.getByText("nice. bringing it back is what helps it stick.")).toBeVisible();
 
   // a couple of days later, home brings the idea back, hidden until tapped
-  await page.clock.setFixedTime(new Date(Date.now() + 2 * 864e5));
+  // (in the afternoon: before noon, today's line outranks the look back on home)
+  const later = new Date(Date.now() + 2 * 864e5);
+  later.setHours(14, 0, 0, 0);
+  await page.clock.setFixedTime(later);
   await page.goto("./");
   const look = page.getByTestId("look-back");
   await expect(look).toContainText("what was the main idea of “a thought is not a fact”?");
