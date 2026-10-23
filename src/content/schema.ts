@@ -123,7 +123,7 @@ export const help = z.object({
   lines: list(z.object({ name: text, detail: text, url: opt(z.string()), href: opt(z.string()) }), 1)
 });
 
-// the quick look around: a short story, then each tab in turn. a step shows one tab's page and lights one part of it
+// the quick look around: each tab in turn. a step shows one tab's page and lights one part of it
 // ("tab" is the tab itself); a step with no `show` just talks
 export const TOUR_TABS = ["home", "learn", "practice", "book", "you"] as const;
 export const TOUR_SHOWS = ["tab", "sky", "next", "shortcuts", "paths", "bars", "tiles", "ways", "cover", "pages", "shelf", "map", "settings"] as const;

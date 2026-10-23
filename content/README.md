@@ -4,7 +4,7 @@ Everything hey you says lives here as JSON, separate from the code. Adding a les
 
 - `index.json`: the welcome, ways to answer, questions, habits, copy, help, credits, and the learn **paths** (each with `id`, `name`, `blurb`, `color`, and `lessons`).
 - `start/welcome.json`: the welcome chat with dawn.
-- `tour.json`: the quick look around after the welcome: a short story, then each tab in turn. A step has `say` (`{companion}` is filled in), an optional `kicker` (a small label), and optionally a `tab` (home, learn, practice, book or you) to open and a `show` to light on its page: `tab` (the tab itself), `sky`, `next`, `shortcuts`, `paths`, `bars`, `tiles`, `ways`, `cover`, `pages`, `shelf`, `map` or `settings`. A step with no `show` just talks. Edit, add or reorder steps with no code change; a new `show` needs one selector in `src/ui/Tour.tsx`.
+- `tour.json`: the quick look around after the welcome: each tab in turn. A step has `say` (`{companion}` is filled in), an optional `kicker` (a small label), and optionally a `tab` (home, learn, practice, book or you) to open and a `show` to light on its page: `tab` (the tab itself), `sky`, `next`, `shortcuts`, `paths`, `bars`, `tiles`, `ways`, `cover`, `pages`, `shelf`, `map` or `settings`. A step with no `show` just talks. Edit, add or reorder steps with no code change; a new `show` needs one selector in `src/ui/Tour.tsx`.
 - `habits.json`: the ten voice habits, the voice check note, and their source.
 - `formulas.json`: the ways to answer, plus `catchIdeas`.
 - `questions.json`: quick this-or-that questions.
