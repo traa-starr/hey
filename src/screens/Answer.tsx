@@ -95,7 +95,10 @@ export function Answer({ way, habit }: { way?: string; habit?: string }) {
           />
           <p className="small">{copy.answer.catchNote}</p>
           <Ideas ideas={catchIdeas} picked={d.said} onPick={(said) => update({ said })} label={copy.answer.catchIdeas} />
-          <div className="actions"><button className="btn" type="button" disabled={!d.said.trim()} onClick={next}>{copy.app.next}</button></div>
+          <div className="actions">
+            <button className="btn" type="button" disabled={!d.said.trim()} onClick={next}>{copy.app.next}</button>
+            <button className="btn quiet" type="button" onClick={() => { update({ said: "" }); next(); }}>{copy.loudness.hardToSay}</button>
+          </div>
         </>
       );
       break;
@@ -122,7 +125,7 @@ export function Answer({ way, habit }: { way?: string; habit?: string }) {
     case "way":
       body = (
         <>
-          <p className="said small-said">{d.said}</p>
+          {d.said.trim() ? <p className="said small-said">{d.said}</p> : null}
           <h1 className="h2" data-say>{copy.answer.wayAsk}</h1>
           <div className="ways">
             {c.formulas.map((x) => (
@@ -188,10 +191,12 @@ export function Answer({ way, habit }: { way?: string; habit?: string }) {
                   <button className="link" type="button" style={{ minHeight: 0, padding: 0 }} onClick={() => toStep("write")}>{copy.answer.change}</button>
                 </p>
               ) : null}
-              <label className="check">
-                <input type="checkbox" checked={d.keepSaid} onChange={(e) => update({ keepSaid: e.target.checked })} />
-                {copy.answer.keepSaid}
-              </label>
+              {d.said.trim() ? (
+                <label className="check">
+                  <input type="checkbox" checked={d.keepSaid} onChange={(e) => update({ keepSaid: e.target.checked })} />
+                  {copy.answer.keepSaid}
+                </label>
+              ) : null}
               <div className="actions">
                 <button className="btn" type="button" onClick={() => {
                   if (d.keepSaid && d.said.trim()) store.add({ kind: "voice", text: format(copy.answer.saidAs, { said: d.said.trim() }), from: f?.name ?? "", said: true });
@@ -245,7 +250,7 @@ function Write({ f, said, vals, onVals, onDone }: { f: Formula; said: string; va
   return (
     <>
       <div className="exchange">
-        <p className="inner">{said}</p>
+        {said.trim() ? <p className="inner">{said}</p> : null}
         <Sentence parts={pieces(f.template, vals)} />
       </div>
       {f.slots.map((s) => (
