@@ -42,7 +42,7 @@ export function linesFrom(grown: GrowthRecord[]): Line[] {
 
 export type Make = { name: string; value: Value | null; own: string; moment: string | null };
 
-// the lines sol can offer for a value and a moment: first person without a name, never second person
+// the lines dawn can offer for a value and a moment: first person without a name, never second person
 export function candidates({ name, value, own, moment }: Make): string[] {
   const n = name.trim().toLowerCase();
   const who = n || "i";

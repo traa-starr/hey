@@ -65,7 +65,7 @@ describe("other practices' records", () => {
 });
 
 describe("proof's words", () => {
-  it("keeps sol's bubbles short and gives every idea list something to tap", () => {
+  it("keeps dawn's bubbles short and gives every idea list something to tap", () => {
     for (const b of T.whyBubbles) expect(b.split(/\s+/).length, b).toBeLessThanOrEqual(30);
     for (const l of [PROOF.ideas.claim, ...Object.values(PROOF.ideas.predict), ...Object.values(PROOF.ideas.plan), ...Object.values(PROOF.ideas.kept)]) expect(l.length).toBeGreaterThan(0);
     for (const s of T.sourcesList) { expect(s.evidence).toBeTruthy(); expect(s.url).toMatch(/^https:/); }

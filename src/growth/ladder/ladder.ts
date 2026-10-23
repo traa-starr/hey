@@ -1,5 +1,5 @@
 // One rung up: the content, the rules of the climb, and how a saved climb is read back.
-// A rung is a thought that feels at least 60 of 100 true; below that, sol offers a smaller step.
+// A rung is a thought that feels at least 60 of 100 true; below that, dawn offers a smaller step.
 import * as z from "zod/mini";
 import copyRaw from "../../../content/growth/ladder/copy.json";
 import pointsRaw from "../../../content/growth/ladder/points.json";

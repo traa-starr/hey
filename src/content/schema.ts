@@ -66,7 +66,7 @@ export const habit = z.object({
 });
 export const habitsFile = z.object({ intro: text, note: text, source, evidence: text, habits: list(z.unknown(), 1) });
 
-// ---------- chat lessons: sol talks, you tap ----------
+// ---------- chat lessons: dawn talks, you tap ----------
 const mood = opt(z.enum(["calm", "happy", "curious", "sleepy"]));
 const option = z.object({ label: text, reply: opt(z.string()) });
 

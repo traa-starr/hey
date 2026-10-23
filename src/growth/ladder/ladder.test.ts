@@ -30,7 +30,7 @@ describe("one rung up: content", () => {
     }
   });
 
-  it("keeps sol's bubbles short", () => {
+  it("keeps dawn's bubbles short", () => {
     for (const w of [...COPY.welcome, ...COPY.why, ...COPY.heldSol, ...COPY.shortSol, COPY.shortAgain, COPY.smallerSol, COPY.nearSol, COPY.afterSol, COPY.heldTop]) {
       expect(w.split(/\s+/).length, w).toBeLessThanOrEqual(30);
     }

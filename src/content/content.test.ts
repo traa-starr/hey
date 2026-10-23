@@ -55,7 +55,7 @@ describe("content", () => {
     }
   });
 
-  it("keeps sol's bubbles short enough to read at a glance", () => {
+  it("keeps dawn's bubbles short enough to read at a glance", () => {
     for (const l of Object.values(c.lessons)) for (const s of l.steps) {
       if (s.type === "say") expect(s.text.split(/\s+/).length, `${l.id}: ${s.text}`).toBeLessThanOrEqual(32);
     }

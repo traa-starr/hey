@@ -1,4 +1,4 @@
-// home: a sky that follows the hour, sol, a greeting, and one next step. nothing else competes.
+// home: a sky that follows the hour, dawn, a greeting, and one next step. nothing else competes.
 import { useState } from "react";
 import { content, nextLesson } from "../content/load";
 import { buzz } from "../lib/feedback";
