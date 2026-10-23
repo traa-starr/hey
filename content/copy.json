@@ -12,7 +12,7 @@
     "tellMore": "tell me more",
     "ideas": "ideas, if one helps",
     "progress": "progress",
-    "companionDefault": "sol"
+    "companionDefault": "dawn"
   },
   "tabs": {
     "learn": "learn",
@@ -339,6 +339,7 @@
     "about": "a place to answer the inner voice with kinder words. each way to answer shows where it comes from and how strong the evidence is. it isn't therapy.",
     "credits": "made with",
     "replay": "replay the welcome",
+    "replayTour": "replay the quick look around",
     "installTitle": "add to home screen",
     "installIos": "on iphone, open this in safari, tap share, then \"add to home screen.\"",
     "installButton": "add hey you to this device",

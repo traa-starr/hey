@@ -1,4 +1,4 @@
-// one minute, slow, with sol.
+// one minute, slow, with dawn.
 import { useState } from "react";
 import { content } from "../content/load";
 import { go } from "../router";

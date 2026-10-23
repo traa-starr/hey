@@ -83,6 +83,25 @@ describe("store", () => {
     expect(s.get().welcomed).toBe(true);
   });
 
+  it("starts the quick look around once, right after the welcome, and never for earlier readers", async () => {
+    const s = new Store();
+    await s.open(fresh(), () => null);
+    expect(s.get().tour).toBeNull();
+    s.setWelcomed();
+    expect(s.get().tour).toEqual({ i: 0, end: "" });
+    s.setTour({ i: 2, end: "" });
+    s.setWelcomed();
+    expect(s.get().tour).toEqual({ i: 2, end: "" });
+    s.setTour({ i: 2, end: "skipped" });
+    s.clearAll();
+    expect(s.get().tour).toEqual({ i: 2, end: "skipped" });
+
+    const before = new Store();
+    await before.open(fresh(), () => V1);
+    expect(before.get().welcomed).toBe(true);
+    expect(before.get().tour).toBeNull();
+  });
+
   it("tries the move again next time if saving it failed", async () => {
     const s = new Store();
     const broken = memoryBackend();

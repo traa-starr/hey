@@ -118,6 +118,7 @@ export function Settings() {
           </p>
         ) : null}
         <button className="btn quiet" type="button" onClick={() => { store.setProgress("start/welcome", null); go({ name: "welcome" }); }}>{s.replay}</button>
+        {c.tour ? <button className="btn quiet" type="button" onClick={() => { store.setTour({ i: 0, end: "" }); go({ name: "home" }); }}>{s.replayTour}</button> : null}
       </div>
 
       <div className="set">

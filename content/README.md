@@ -3,7 +3,8 @@
 Everything hey you says lives here as JSON, separate from the code. Adding a lesson, a voice habit, a way to answer, or a question never requires changing code. Every file is checked against a schema (`src/content/schema.ts`): a broken file fails the tests, and in the app the broken piece is skipped while the rest keeps working.
 
 - `index.json`: the welcome, ways to answer, questions, habits, copy, help, credits, and the learn **paths** (each with `id`, `name`, `blurb`, `color`, and `lessons`).
-- `start/welcome.json`: the welcome chat with sol.
+- `start/welcome.json`: the welcome chat with dawn.
+- `tour.json`: the quick look around after the welcome. Each step has a `tab` (home, learn, practice, book or you) to light up and a short `say`; `{companion}` is filled in. Edit, add or reorder steps with no code change.
 - `habits.json`: the ten voice habits, the voice check note, and their source.
 - `formulas.json`: the ways to answer, plus `catchIdeas`.
 - `questions.json`: quick this-or-that questions.
@@ -23,23 +24,23 @@ Each: `id`, `name` ("the rule keeper"), `short`, `color`, `glyph` (ruler, eye, l
 
 ## Lessons
 
-Top level: `id`, `title`, `subtitle`, `minutes`, `steps`, `grounding` (sources). In text, `{name}` is what the person is called and `{companion}` is sol's name.
+Top level: `id`, `title`, `subtitle`, `minutes`, `steps`, `grounding` (sources). In text, `{name}` is what the person is called and `{companion}` is dawn's name.
 
 | type | what it shows | fields |
 | --- | --- | --- |
-| `say` | a bubble from sol | `text`, optional `mood` (calm, happy, curious, sleepy) |
+| `say` | a bubble from dawn | `text`, optional `mood` (calm, happy, curious, sleepy) |
 | `scene` | a line the inner voice says | `quote`, optional `label` |
 | `mine` | a line in your own voice | `text` |
-| `ask` | a question with tap replies; sol answers each | `text`, `options` (`label`, `reply`) |
+| `ask` | a question with tap replies; dawn answers each | `text`, `options` (`label`, `reply`) |
 | `tryon` | lines to try on and notice | `prompt`, `lines`, `reply` |
 | `pick` | choose any; optionally kept | `prompt`, `options`, `reply`, optional `keep`, `as` (with `{x}`), `max` |
 | `write` | finish a sentence; ideas always offered | `prompt`, `template` (with `{x}`), `ideas`, optional `keep`, `placeholder`, `said` (true when the sentence wraps something the inner voice says, so it's never resurfaced on home) |
-| `spot` | which habit is talking? sol offers one reading, never a grade | `scene`, `quote`, `options`, `answer` (the reading sol offers), `explain` |
+| `spot` | which habit is talking? dawn offers one reading, never a grade | `scene`, `quote`, `options`, `answer` (the reading dawn offers), `explain` |
 | `tot` | quick this or that, kept as likes | `prompt`, `pairs`, `keep` |
 | `takeaway` | a line to keep, with its source | `text`, `source` (`label`, `url`), optional `evidence` |
 | `experiment` | one small thing to try today | `text` |
 | `know` | a short background card: where the idea comes from, as a break mid-lesson | `text` (about 35 words at most), `source` (`label`, `url`, which may be empty), optional `evidence` |
-| `recall` | a look back at an earlier lesson's idea: sol asks, the person thinks, then taps "show me" or "i remember it". If that lesson isn't done yet, it shows as a small preview instead | `from` (a lesson key, like `talk-to-you/the-you-trick`), `prompt`, `answer` |
+| `recall` | a look back at an earlier lesson's idea: dawn asks, the person thinks, then taps "show me" or "i remember it". If that lesson isn't done yet, it shows as a small preview instead | `from` (a lesson key, like `talk-to-you/the-you-trick`), `prompt`, `answer` |
 | `breathe` | asks, then three slow breaths; skippable | none |
 | `list` | a short list | `text`, `items` |
 | `name` | what to call the person (welcome) | `text`, `placeholder` |

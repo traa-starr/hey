@@ -1,0 +1,14 @@
+{
+  "label": "a quick look around",
+  "next": "next",
+  "done": "got it",
+  "skip": "skip the tour",
+  "count": "{n} of {total}",
+  "steps": [
+    { "tab": "home", "say": "this is home. a sky that follows the hour, a hello, and one next step. nothing else competes." },
+    { "tab": "learn", "say": "learn is short chats with me, one small idea at a time. tap it whenever you're curious." },
+    { "tab": "practice", "say": "practice is for the moment itself: catch a thought, answer it, breathe. no pressure, ever." },
+    { "tab": "book", "say": "the book keeps what's kind. it grows a star for each thing kept, and it stays on this phone." },
+    { "tab": "you", "say": "the you tab keeps the voice map and settings, with real help at the bottom. thanks for looking around. replay this any time in settings." }
+  ]
+}

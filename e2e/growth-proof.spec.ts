@@ -56,7 +56,7 @@ test("proof: pick an experiment in the morning, look back in the evening, keep w
   await expect(card).toContainText("thanks for trying something real today");
   await expect(card).not.toContainText("annoying");
   await scan(page);
-  await card.getByRole("link", { name: /tell sol what happened/ }).click();
+  await card.getByRole("link", { name: /tell dawn what happened/ }).click();
 
   // feel check before (twice skippable), what happened, what to keep
   await expect(page.getByText("before we start: how does it feel right now?")).toBeVisible();

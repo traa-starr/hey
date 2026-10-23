@@ -19,6 +19,7 @@ export type Content = {
   copy: S.Copy;
   help: S.Help | null;
   credits: S.Credits | null;
+  tour: S.Tour | null;
   problems: string[];
 };
 
@@ -112,6 +113,7 @@ export function buildContent(files: Files, strict: boolean): Content {
     copy,
     help: read(index.help, S.help),
     credits: read(index.credits, S.credits),
+    tour: index.tour ? read(index.tour, S.tour) : null,
     problems
   };
 }

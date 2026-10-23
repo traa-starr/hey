@@ -33,7 +33,7 @@ function VoiceAvatar() {
   );
 }
 
-// a bubble from the person's own compassionate voice (not sol)
+// a bubble from the person's own compassionate voice (not dawn)
 function VoiceSays({ children, label }: { children: React.ReactNode; label?: string }) {
   return (
     <div className="msg warm-msg">

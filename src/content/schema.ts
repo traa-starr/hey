@@ -66,7 +66,7 @@ export const habit = z.object({
 });
 export const habitsFile = z.object({ intro: text, note: text, source, evidence: text, habits: list(z.unknown(), 1) });
 
-// ---------- chat lessons: sol talks, you tap ----------
+// ---------- chat lessons: dawn talks, you tap ----------
 const mood = opt(z.enum(["calm", "happy", "curious", "sleepy"]));
 const option = z.object({ label: text, reply: opt(z.string()) });
 
@@ -113,6 +113,7 @@ export const index = z.object({
   copy: text,
   help: text,
   credits: text,
+  tour: opt(text),
   paths: list(path, 1)
 });
 
@@ -120,6 +121,17 @@ export const help = z.object({
   title: text,
   note: text,
   lines: list(z.object({ name: text, detail: text, url: opt(z.string()), href: opt(z.string()) }), 1)
+});
+
+// the quick look around after the welcome: one tab (or home itself) lit per step
+export const TOUR_TABS = ["home", "learn", "practice", "book", "you"] as const;
+export const tour = z.object({
+  label: text,
+  next: text,
+  done: text,
+  skip: text,
+  count: text,
+  steps: list(z.object({ tab: z.enum(TOUR_TABS), say: text }), 1)
 });
 
 export const credits = z.object({
@@ -147,5 +159,6 @@ export type Glyph = (typeof GLYPHS)[number];
 export type Lesson = z.infer<typeof lesson>;
 export type Copy = z.infer<typeof copy>;
 export type Help = z.infer<typeof help>;
+export type Tour = z.infer<typeof tour>;
 export type Credits = z.infer<typeof credits>;
 export type Keep = z.infer<typeof keep>;

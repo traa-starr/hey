@@ -17,10 +17,10 @@ When a choice is unclear, choose the gentler, truer, more welcoming option.
 
 ## v1 scope (build only this)
 
-- **Home is just home:** a sky that follows the hour, sol, a greeting, one next step, two shortcuts. Tabs: learn, practice, home (in the middle, where the app opens), book, you.
-- **sol, the companion:** a small dawn-light character who teaches lessons as short chat bubbles and reacts with simple moods. Scripted, never AI. It can be renamed or turned off.
+- **Home is just home:** a sky that follows the hour, dawn, a greeting, one next step, two shortcuts. Tabs: learn, practice, home (in the middle, where the app opens), book, you.
+- **dawn, the companion:** a small dawn-light character who teaches lessons as short chat bubbles and reacts with simple moods. Scripted, never AI. It can be renamed or turned off.
 - **Voice habits** (`content/habits.json`): ten common ways inner voices talk, from CBT thinking traps, each named warmly and described by what it's trying to do. The **voice check** (swipe or tap, no typing) maps them; **catch it** (three taps) logs when and where one shows up. A voice check is for noticing, never a diagnosis.
-- **Learn** (`content/index.json` paths): real lessons as chats with sol, built from interactive steps (spot it, try it on, pick, write with ideas, background cards, look backs, takeaways, experiments). Every voice habit gets a lesson generated from its data. Lessons open with a look back at the one before, and home brings finished ideas back, spaced out over days.
+- **Learn** (`content/index.json` paths): real lessons as chats with dawn, built from interactive steps (spot it, try it on, pick, write with ideas, background cards, look backs, takeaways, experiments). Every voice habit gets a lesson generated from its data. Lessons open with a look back at the one before, and home brings finished ideas back, spaced out over days.
 - **Practice:** catch it, answer it, breathe, voice check, this or that, ways to answer.
 - **Answer it:** catch a sentence (or start from a caught habit and pick one of its lines) → set how loud it is → optional breath when it's loud → pick a way to answer (`content/formulas.json`, each with source and honest evidence label) → write your answer → set the loudness again → keep it, try another way, or let it go. The inner voice's sentence is never stored unless the person opts in.
 - **Book:** the book has its own tab: a cover that grows a star for each thing kept, what you've read, how answering moved the loudness, your range, and the pages (words, about me, keepers).
@@ -37,7 +37,7 @@ When a choice is unclear, choose the gentler, truer, more welcoming option.
   
   Never generic affirmations: lines far from what someone believes can backfire (Wood et al., 2009).
 
-Out of scope for v1 (do not build unless asked): rooms hub, customizable space, rehearsal room, garden, out-there steps, library, AI companion (sol is scripted), accounts, notifications, streaks, points, resource shelf.
+Out of scope for v1 (do not build unless asked): rooms hub, customizable space, rehearsal room, garden, out-there steps, library, AI companion (dawn is scripted), accounts, notifications, streaks, points, resource shelf.
 
 ## Tech decisions
 
@@ -59,14 +59,14 @@ IMPORTANT: hey you never treats people as doing something wrong. Nothing a perso
 
 ## Voice
 
-- In the app: **voice habits**, **catch it**, **answer it**, **ways to answer** (formulas), **about me** (likes and opinions), **the book** (what's kept; the cover reads "sam's book" when there's a name), **sol** (the companion).
+- In the app: **voice habits**, **catch it**, **answer it**, **ways to answer** (formulas), **about me** (likes and opinions), **the book** (what's kept; the cover reads "sam's book" when there's a name), **dawn** (the companion).
 - **Go easy on "you".** A string full of "you" and "your" reads like an ad talking at people.
   - Address people by name where it's natural, and keep "you" and "your" sparing.
   - Labels go without "your": "the book", "voice map", "next up".
   - Talking to yourself as "you" lives only in the "you" trick lesson and the "talk to you" way to answer.
   - Kind lines elsewhere use the person's name ("sam showed up today, and that counts."). When there's no name, use first person or wording that works with "you" as the fallback, such as past tense ("you showed up").
   - Never phrasing that reads oddly, like "what's good in you".
-- One idea per screen. sol's bubbles stay short (about 30 words at most); longer ideas become more bubbles.
+- One idea per screen. dawn's bubbles stay short (about 30 words at most); longer ideas become more bubbles.
 - Lowercase, warm, plain, adult. Short sentences. Show, don't tell: scenes and examples, never definitions or lectures. Never cute.
 - Never: toxic, broken, fix, should (as an instruction), wrong, disorder, healing journey.
 - Lean on: makes sense, of course, want to try, no pressure.
@@ -75,7 +75,7 @@ IMPORTANT: hey you never treats people as doing something wrong. Nothing a perso
 
 ## Look
 
-Confident dusk violet with sunrise coral, gold and teal; every voice habit has its own color and glyph. Bricolage Grotesque for headings, Instrument Sans for text, Newsreader italic for quotes and the person's own words. sol and a sky that follows the hour carry warmth. Calm motion with small springs at key moments. Adult, never childish. See `docs/DESIGN.md`.
+Confident dusk violet with sunrise coral, gold and teal; every voice habit has its own color and glyph. Bricolage Grotesque for headings, Instrument Sans for text, Newsreader italic for quotes and the person's own words. dawn and a sky that follows the hour carry warmth. Calm motion with small springs at key moments. Adult, never childish. See `docs/DESIGN.md`.
 
 ## Every feature must pass
 

@@ -1,4 +1,4 @@
-// The workshop: pick a value, recall one small moment, let sol shape a line, tune it with words from
+// The workshop: pick a value, recall one small moment, let dawn shape a line, tune it with words from
 // the person's own book, try it on, say how true it feels, keep it. The feel check opens and closes
 // the first session of the day, and both halves can be skipped.
 import { useMemo, useRef, useState } from "react";

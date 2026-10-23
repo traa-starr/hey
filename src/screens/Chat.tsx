@@ -1,4 +1,4 @@
-// Lessons as a conversation with sol: one bubble at a time, tap to reply. Progress is saved after every step.
+// Lessons as a conversation with dawn: one bubble at a time, tap to reply. Progress is saved after every step.
 import { useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { content } from "../content/load";
@@ -244,7 +244,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       );
     }
     case "spot": {
-      // every reading is welcome: sol offers one, it never grades the pick
+      // every reading is welcome: dawn offers one, it never grades the pick
       return (
         <>
           <div className="card">
@@ -414,7 +414,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
   }
 }
 
-// the first thing anyone sees: the sky at this hour, sol, and the name
+// the first thing anyone sees: the sky at this hour, dawn, and the name
 function WelcomeSky() {
   const { on } = useCompanion();
   const [tod] = useState(() => timeOfDay());

@@ -1,4 +1,4 @@
-// Shared pieces: the screen wrapper, bars, tabs, sol's messages, chips, habit glyphs, the loudness control.
+// Shared pieces: the screen wrapper, bars, tabs, dawn's messages, chips, habit glyphs, the loudness control.
 import * as m from "motion/react-m";
 import { useEffect, useRef, type ReactNode } from "react";
 import { content } from "../content/load";
@@ -104,7 +104,7 @@ export function useCompanion() {
   return { name: companion.name || content().copy.app.companionDefault, on: companion.on };
 }
 
-// a message from sol (or a plain bubble when the companion is turned off)
+// a message from dawn (or a plain bubble when the companion is turned off)
 export function SolSays({ children, mood = "calm", say = true }: { children: ReactNode; mood?: Mood; say?: boolean }) {
   const { on } = useCompanion();
   return (
@@ -115,7 +115,7 @@ export function SolSays({ children, mood = "calm", say = true }: { children: Rea
   );
 }
 
-// fill {companion} and {name} in sol's lines
+// fill {companion} and {name} in dawn's lines
 export function useLine() {
   const { name } = useData();
   const comp = useCompanion();

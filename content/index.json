@@ -5,6 +5,7 @@
   "copy": "copy.json",
   "help": "help.json",
   "credits": "credits.json",
+  "tour": "tour.json",
   "paths": [
     {
       "id": "on-your-side",

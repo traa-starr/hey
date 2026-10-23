@@ -21,7 +21,7 @@ describe("your lines: content", () => {
       expect(w.text.split(/\s+/).length).toBeLessThanOrEqual(32);
     }
   });
-  it("keeps sol's lines short", () => {
+  it("keeps dawn's lines short", () => {
     for (const k of ["hubSol", "hubSolReturn", "valueSol", "valueTeach", "momentSol", "momentTeach", "shapeSol", "tuneSol", "trySol", "truthLow", "truthMid", "truthHigh", "keptSol"]) {
       expect(String((LINES.copy as Record<string, unknown>)[k]).split(/\s+/).length, k).toBeLessThanOrEqual(32);
     }
