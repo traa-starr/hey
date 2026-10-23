@@ -2,7 +2,7 @@
 // scripted from content/tour.json. tapping the lit spot or "next" moves on; skipping is always there.
 import * as m from "motion/react-m";
 import { useReducedMotion } from "motion/react";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { content } from "../content/load";
 import { buzz } from "../lib/feedback";
 import { format } from "../lib/template";
@@ -26,35 +26,34 @@ export function Tour() {
   const line = useLine();
   const reduce = useReducedMotion();
   const next = useRef<HTMLButtonElement>(null);
-  const [lit, setLit] = useState<{ tab: Box | null; spot: Box | null }>({ tab: null, spot: null });
+  const [, again] = useState(0);
   const i = Math.min(at?.i ?? 0, (tour?.steps.length ?? 1) - 1);
   const step = tour?.steps[i];
 
-  // measure the tab and the spot to light; the page holds still while the tour is up
-  const measure = useCallback(() => {
-    if (!step) return;
-    const tab = rectOf(document.querySelectorAll(".tabs a")[TAB_AT[step.tab]]);
-    setLit({ tab, spot: step.tab === "home" ? rectOf(document.querySelector(".sky")) : tab });
-  }, [step]);
+  // the page holds still while the tour is up
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
     document.body.style.overflow = "hidden";
     return () => void (document.body.style.overflow = "");
   }, []);
-  useLayoutEffect(measure, [measure]);
+  // measuring happens as it renders; home settles in for a moment when it first appears, so look again after that
   useEffect(() => {
-    // home settles in for a moment when it first appears, so measure once more after it has
-    const t = window.setTimeout(measure, 500);
-    window.addEventListener("resize", measure);
+    const remeasure = () => again((n) => n + 1);
+    const frame = requestAnimationFrame(remeasure);
+    const t = window.setTimeout(remeasure, 500);
+    window.addEventListener("resize", remeasure);
     return () => {
+      cancelAnimationFrame(frame);
       window.clearTimeout(t);
-      window.removeEventListener("resize", measure);
+      window.removeEventListener("resize", remeasure);
     };
-  }, [measure]);
+  }, []);
   // each step takes focus, so screen readers hear it and keyboards start there
   useEffect(() => next.current?.focus({ preventScroll: true }), [i]);
 
   if (!tour || !step || !at || at.end) return null;
+  const tab = rectOf(document.querySelectorAll(".tabs a")[TAB_AT[step.tab]]);
+  const spot = step.tab === "home" ? rectOf(document.querySelector(".sky")) : tab;
   const last = i === tour.steps.length - 1;
   const finish = (end: "done" | "skipped") => store.setTour({ i, end });
   const go = () => {
@@ -63,17 +62,17 @@ export function Tour() {
     else store.setTour({ i: i + 1, end: "" });
   };
   const move = reduce ? { duration: 0 } : { type: "spring" as const, stiffness: 260, damping: 26 };
-  const sol = lit.tab ? lit.tab.x + lit.tab.w / 2 - 28 : 0;
+  const sol = tab ? tab.x + tab.w / 2 - 28 : 0;
 
   return (
     <div className="tour" role="dialog" aria-label={tour.label}>
-      {lit.spot ? (
+      {spot ? (
         <m.button
           type="button" className="tour-spot" aria-hidden="true" tabIndex={-1} onClick={go}
-          initial={false} animate={{ left: lit.spot.x - 4, top: lit.spot.y - 4, width: lit.spot.w + 8, height: lit.spot.h + 8 }} transition={move}
+          initial={false} animate={{ left: spot.x - 4, top: spot.y - 4, width: spot.w + 8, height: spot.h + 8 }} transition={move}
         />
       ) : null}
-      {comp.on && lit.tab ? (
+      {comp.on && tab ? (
         <m.div className="tour-sol" aria-hidden="true" initial={false} animate={{ x: sol }} transition={move}>
           <Sol mood={step.tab === "home" ? "happy" : "curious"} />
         </m.div>
