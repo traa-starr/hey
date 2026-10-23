@@ -1,4 +1,4 @@
-// the quick look around: a short story, then each tab in turn. the app shows the real page, dawn lights one part of it
+// the quick look around: each tab in turn. the app shows the real page, dawn lights one part of it
 // and says a few words. scripted from content/tour.json. tapping the lit spot or "next" moves on; skipping is always there.
 import * as m from "motion/react-m";
 import { useReducedMotion } from "motion/react";
