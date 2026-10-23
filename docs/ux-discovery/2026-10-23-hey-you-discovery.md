@@ -1,5 +1,7 @@
 # hey you: UX discovery
 
+> **No user research yet. Everything in this document is an assumption, not evidence.** Treat it as a working hypothesis to be replaced once real people have used the app.
+
 Draft from the repo docs (MANIFESTO, SPEC, CLAUDE.md, study plan) plus one answer from Mojo. No real user data yet, so everything marked *assumption* needs the first study round (`docs/research/study-plan.md`) to confirm it.
 
 ## 1. Problem brief
