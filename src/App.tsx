@@ -88,7 +88,7 @@ function Routes() {
   return (
     <main className={`app${TABS.includes(route.name) && !(route.name === "book" && route.tab) ? "" : " flow"}`}>
       <Suspense fallback={<p className="boot" data-loading>{c.copy.app.loading}</p>}>{page}</Suspense>
-      {route.name === "home" && data.tour && !data.tour.end ? <Tour /> : null}
+      {TABS.includes(route.name) && !(route.name === "book" && route.tab) && data.tour && !data.tour.end ? <Tour /> : null}
     </main>
   );
 }

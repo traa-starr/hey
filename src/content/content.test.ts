@@ -28,12 +28,16 @@ describe("content", () => {
     expect(c.start!.steps.length).toBeLessThanOrEqual(8);
   });
 
-  it("keeps the tour to a handful of short steps", () => {
+  it("keeps the tour short, in order, and visiting every tab", () => {
     const t = c.tour!;
-    expect(t.steps.length).toBeGreaterThanOrEqual(3);
-    expect(t.steps.length).toBeLessThanOrEqual(6);
+    expect(t.steps.length).toBeLessThanOrEqual(20);
     for (const s of t.steps) expect(s.say.split(/\s+/).length, s.say).toBeLessThanOrEqual(30);
-    expect(new Set(t.steps.map((s) => s.tab)).size).toBe(t.steps.length);
+    // each tab is lit once, then its page is shown
+    for (const tab of ["home", "learn", "practice", "book", "you"]) {
+      const mine = t.steps.filter((s) => s.tab === tab);
+      expect(mine.length, tab).toBeGreaterThanOrEqual(2);
+    }
+    expect(t.steps.filter((s) => s.show === "tab").map((s) => s.tab)).toEqual(["learn", "practice", "book", "you"]);
   });
 
   it("gives every voice habit a full lesson where spotting it has the right answer", () => {

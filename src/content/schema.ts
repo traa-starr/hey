@@ -123,16 +123,18 @@ export const help = z.object({
   lines: list(z.object({ name: text, detail: text, url: opt(z.string()), href: opt(z.string()) }), 1)
 });
 
-// the quick look around after the welcome: one tab (or home itself) lit per step
+// the quick look around: a short story, then each tab in turn. a step shows one tab's page and lights one part of it
+// ("tab" is the tab itself); a step with no `show` just talks
 export const TOUR_TABS = ["home", "learn", "practice", "book", "you"] as const;
+export const TOUR_SHOWS = ["tab", "sky", "next", "shortcuts", "paths", "bars", "tiles", "ways", "cover", "pages", "shelf", "map", "settings"] as const;
 export const tour = z.object({
   label: text,
   next: text,
   done: text,
   skip: text,
   count: text,
-  steps: list(z.object({ tab: z.enum(TOUR_TABS), say: text }), 1)
-});
+  steps: list(z.object({ kicker: opt(z.string()), tab: opt(z.enum(TOUR_TABS)), show: opt(z.enum(TOUR_SHOWS)), say: text }), 1)
+}).check(z.refine((t) => t.steps.every((s) => !s.show || s.tab), "a step that lights something needs a tab"));
 
 export const credits = z.object({
   note: text,
