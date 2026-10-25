@@ -4,6 +4,10 @@ A relationship-with-yourself app for adults. Most people have one loud inner voi
 
 The name is always lowercase: **hey you**. It is the idea itself: talking to yourself as "you", the way you'd talk to a friend, makes hard moments lighter (Kross et al., 2014).
 
+**Status:** workflow set up on `dev` (2026-10-24). Now: B0, setup. See `docs/STATUS.md`.
+
+**Read first:** `MANIFESTO.md`, `docs/NEXT.md` (the one job for this session), the map section it names in `docs/map.md`, then `docs/STATUS.md`. Open other docs only when NEXT.md says to.
+
 ## The heart of it (read first)
 
 hey you exists because its maker cares. Read `MANIFESTO.md` before doing anything else. Everything here is built on genuine compassion, empathy, truth, kindness and peace:
@@ -89,29 +93,28 @@ The manifesto's questions come first; these make them concrete.
 6. Would people come back because they want to, not because they were nudged? (no streaks, points, or guilt; counts only where they help someone see their own patterns)
 7. Does it thank, welcome, or appreciate the person somewhere, and leave them a little lighter than they arrived?
 
-## Working in parallel (growth agents)
+## Growth agents (only if you are building a growth practice)
 
-Several agents may be building growth practices at once. If you are one of them:
+Read `docs/growth/PLAN.md` first. Change only your own paths (`src/growth/<id>/`, `content/growth/<id>/`, `e2e/growth-<id>.spec.ts`, `docs/growth/<id>.md`, `docs/growth/requests/<id>.md`). `npm run scope <id>` must pass before every push. Shared files (store, router, shell, home, practice, book, `content/copy.json`, `src/styles/app.css`, `src/ui/`, existing tests) are off limits: write needs in `docs/growth/requests/<id>.md`. Don't import another practice's code. Work on `growth/<id>`, never merge pull requests.
 
-- Read `docs/growth/PLAN.md` before anything else. It says which practice is yours, which paths you own, and the contracts you plug into.
-- Change only your own paths: `src/growth/<id>/`, `content/growth/<id>/`, `e2e/growth-<id>.spec.ts`, `docs/growth/<id>.md`, `docs/growth/requests/<id>.md`.
-- `npm run scope <id>` must pass before every push.
-- Shared files are off limits: store, router, app shell, home, practice, book, `content/copy.json`, `src/styles/app.css`, `src/ui/`, and the existing tests. Write what you need in `docs/growth/requests/<id>.md` instead.
-- Don't import another practice's code (lint blocks it). Read its records only through `useData().grown`, defensively.
-- Work on branch `growth/<id>`, never on `main`. Never merge pull requests.
+## Workflow (chat plans, Code builds, Sam tests)
 
-## Where we left off (branch `gentle-learning`)
+Full version: `docs/workflow.md`. The short form:
 
-The trigger check is done and in review (`npm run check`: 74 unit tests; `npm run e2e`: 21 tests). It flips negative keep lines to kind ones, adds `know` background cards and `recall` look backs to lessons, adds the `review` plugin (spaced look backs on home), and writes up the audit in `docs/review/negativity-audit.md`. Screens were checked at 390px in light, dark and reduced motion, and the copy pass found no banned words. Next: Mojo merges the PR into `main`.
-
-## Workflow
-
-- **GitHub runs the tests, not Claude.** Sam works straight from Claude on the web or desktop, with no local copy, and Claude's usage is limited. `.github/workflows/deploy.yml` runs `npm run check` and `npm run e2e` on every pull request and every push to `main`, then deploys `main`. So:
-  - Don't install packages or run `npm run check`, `npm run e2e` or builds just to verify a change. The container's browser can't run the e2e tests anyway.
-  - Make the change, commit, push, and let the check on the pull request be the test.
-  - Only when a run fails, read its logs (`get_job_logs` with `failed_only` and a small `tail_lines`), fix the cause, and push again. Don't re-run it blindly.
-  - Tests must not depend on the time of day or the date. Pin the clock in the test (see `e2e/learn.spec.ts`).
-  - Screens at 390px still get checked by eye before a feature is called done, which is the one thing CI can't do.
-- One piece at a time. Plan, build, check at phone size, then commit.
+- **Chat** (a claude.ai Project linked to this folder) plans, reviews, decides, and writes `docs/NEXT.md`. It never edits app code.
+- **Code** (a fresh session per step) does exactly what `docs/NEXT.md` says, nothing more, then reports.
+- **Sam** runs the app locally, tests on the phone, and does the git steps in VS Code (review, commit, push, merge).
+- Work on branch `dev`. `main` is the live site; it only gets a merge after Sam approves a batch on the phone.
+- Ask for a plan first on anything touching 3+ files. Default model Sonnet, medium effort.
+- Tests must not depend on the time of day or date. Pin the clock (see `e2e/learn.spec.ts`).
 - Real help (crisis lines) is always reachable in settings (you → settings), quietly, never stamped on every screen.
-- Spec: `docs/SPEC.md`. Design: `docs/DESIGN.md`. Content format: `content/README.md`.
+
+## End of every session (in this order)
+
+1. Run `npm run check`. Don't run e2e unless NEXT.md says to.
+2. Bump `BUILD` in `src/lib/build.ts` (once it exists; see `docs/map.md` B0).
+3. Overwrite `docs/REPORT.md` (use its template), update `docs/STATUS.md`, append to `docs/decisions.md`, and update `docs/map.md` (new steps, decisions and notes go under their batch).
+4. Don't commit or push for Sam unless NEXT.md says so. Give the VS Code steps instead.
+5. Last chat message, short: build number; how to run locally (`npm run dev -- --host`, phone URL; `npm install` first only if `package.json` changed); the exact phone taps; VS Code reminders (stage, commit message to use, push `dev`, merge only when approved); then: "open the Project and say: Review."
+
+Spec: `docs/SPEC.md`. Design: `docs/DESIGN.md`. Content format: `content/README.md`.
