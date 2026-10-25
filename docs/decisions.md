@@ -10,3 +10,4 @@ Append-only. One line each: date, id, answer. Settled means never re-ask.
 - 2026-10-24 D6: CI speed is worth investigating (B0 step 0.2), propose before changing.
 - 2026-10-24 D7: Chat is a claude.ai Project linked to the local folder; it reads the repo files directly.
 - 2026-10-24 D8: BUILD lives in `src/lib/build.ts`, shown in you → settings.
+- 2026-10-24 D9: The "build N" label is written in `Settings.tsx`, not in `content/copy.json`. It's a debug label, not copy.

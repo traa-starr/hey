@@ -1,6 +1,7 @@
 // settings, real help, and data, quietly at the bottom of the you tab.
 import { useState, useSyncExternalStore } from "react";
 import { content } from "../content/load";
+import { BUILD } from "../lib/build";
 import { canInstall, install, isIos, onInstallChange } from "../lib/install";
 import { canSpeak, speak, useVoices } from "../lib/speech";
 import { go } from "../router";
@@ -142,6 +143,8 @@ export function Settings() {
           </div>
         ) : <button className="btn quiet" type="button" onClick={() => setClearing(true)}>{s.clear}</button>}
       </div>
+
+      <p className="small">build {BUILD}</p>
     </section>
     </Screen>
     </>

@@ -19,7 +19,8 @@ B0 before everything. B1 (the mark) before B2 (audit) before B3 (rework). B4 dep
 Goal: workflow files, `dev`, BUILD number, local-run guide, a look at CI speed.
 Done when: Sam runs the app locally from Code's instructions and sees the build number on the phone.
 
-- 0.1 Add `src/lib/build.ts` (`BUILD`), show it quietly in you → settings. Write the local-run guide in `README.md` (install, dev server with `--host`, phone URL, firewall tip on Windows). Phone check: open settings on the phone, see "build 1".
+- 0.1 Add `src/lib/build.ts` (`BUILD`), show it quietly in you → settings. Write the local-run guide in `README.md` (install, dev server with `--host`, phone URL, firewall tip on Windows). Phone check: open settings on the phone, see "build 1". **Done (build 1), waiting on the phone check.**
+  - Note: `npm run check` fails on Windows only, from before this step: `src/growth/ladder/` has both `Ladder.tsx` and `ladder.ts` (they collide when case is ignored), and `content.test.ts` uses backslash keys from `path.relative`. Both pass on Linux CI. A fix is proposed in `REPORT.md`.
 - 0.2 Profile CI: read the last runs' time per step; propose (don't apply) speed-ups, e.g. e2e on PRs and `main` only, skip docs-only changes. Phone check: none.
 - 0.3 Sam pastes the Project instructions from `workflow.md` into the Project. Phone check: none.
 

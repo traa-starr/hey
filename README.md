@@ -20,6 +20,15 @@ npm run e2e        # end-to-end tests (Playwright)
 npm run build      # production build in dist/
 ```
 
+## Run it locally (and on a phone)
+
+1. `npm install` (first time, or after `package.json` changes).
+2. `npm run dev -- --host`
+3. Vite prints a `Network:` address, like `http://192.168.1.20:5173/hey/`. Open that on the phone. The phone and the computer need to be on the same Wi-Fi.
+4. On Windows, the first run may ask whether Node.js can use the network. Allow **private networks**. If the phone can't connect, check Windows Defender Firewall → allowed apps → Node.js → private.
+
+The build number shows at the bottom of you → settings.
+
 Content lives in [`content/`](content/README.md). The spec is [`docs/SPEC.md`](docs/SPEC.md) and the design system is [`docs/DESIGN.md`](docs/DESIGN.md).
 
 Pushing to `main` builds and deploys to GitHub Pages through `.github/workflows/deploy.yml` (repository settings → Pages → source: GitHub Actions).
