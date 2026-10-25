@@ -20,8 +20,8 @@ Goal: workflow files, `dev`, BUILD number, local-run guide, a look at CI speed.
 Done when: Sam runs the app locally from Code's instructions and sees the build number on the phone.
 
 - 0.1 Add `src/lib/build.ts` (`BUILD`), show it quietly in you → settings. Write the local-run guide in `README.md` (install, dev server with `--host`, phone URL, firewall tip on Windows). Phone check: open settings on the phone, see "build 1". **Done (build 1), phone-checked 2026-10-24.**
-- 0.1b Fix `npm run check` on Windows (D10): rename `src/growth/ladder/ladder.ts` to `ladder-logic.ts` (rename only), forward-slash file keys in `content.test.ts`. `npm run check` passes on Windows. Phone check: settings shows "build 2", the ladder still opens. **Done (build 2), waiting on phone check.**
-- 0.2 Profile CI: read the last runs' time per step; propose (don't apply) speed-ups, e.g. e2e on PRs and `main` only, skip docs-only changes. Phone check: none.
+- 0.1b Fix `npm run check` on Windows (D10): rename `src/growth/ladder/ladder.ts` to `ladder-logic.ts` (rename only), forward-slash file keys in `content.test.ts`. `npm run check` passes on Windows. Phone check: settings shows "build 2", the ladder still opens. **Done (build 2), phone-checked 2026-10-24.**
+- 0.2 CI speed (D12): chat profiled it (e2e ~370s of ~430s, runs twice per merge). Code skips e2e on push to `main` and on docs-only PRs, reports why e2e doubled, and adds a README tip (phone browser, not the home-screen icon). Phone check: none.
 - 0.3 Sam pastes the Project instructions from `workflow.md` into the Project. Phone check: none.
 
 ## B1 - the mark
