@@ -28,33 +28,33 @@ Commit: (Sam commits; leave blank or "not yet")
 
 ## This session
 
-Step / batch: B0 step 0.1
-Build: 1
+Step / batch: B0 step 0.1b (Windows check fix, D10)
+Build: 2
 Commit: not yet
 
 ## Verified by running
-- `npm install` (node_modules was missing; the lockfile change it made was reverted).
-- `npm run lint`: passes.
-- `npm run test`: 100 tests pass; 1 suite (`src/content/content.test.ts`) fails on Windows only, before this change too (see below).
-- `npm run typecheck`: the only errors are in `src/growth/ladder/` on Windows, from before this change. No errors in the changed files.
+- `npm run check` on Windows: typecheck, lint and unit tests all pass (13 files, 115 tests).
+- Grep: no importer of `./ladder` is left; the 4 named files now import `./ladder-logic`.
 
 ## Needs the phone (exact taps)
-- you → settings → scroll to the bottom → see "build 1".
+- you → settings → scroll to the bottom → see "build 2".
+- practice → open the growth ladder (one rung up) once; it loads as before.
 
 ## Changed files
-- `src/lib/build.ts` (new), `src/screens/Settings.tsx` (shows "build N" under the data section), `README.md` ("run it locally" section).
+- `src/growth/ladder/ladder.ts` → `src/growth/ladder/ladder-logic.ts` (`git mv`, contents unchanged).
+- `src/growth/ladder/book.tsx`, `Ladder.tsx`, `Screen.tsx`, `ladder.test.ts` (import path only).
+- `src/content/content.test.ts` (file keys use forward slashes).
+- `src/lib/build.ts` (BUILD 2).
+- `docs/growth/ladder.md` (path to the logic file), `docs/map.md`, `docs/STATUS.md`, `docs/decisions.md`, `docs/REPORT.md`.
 
 ## Differences from NEXT.md
-- "build" is written in `Settings.tsx`, not in `content/copy.json`, so that only the 3 files NEXT.md named changed. It's a debug label, not copy.
-- `npm run check` can't pass on Windows, for two reasons that came before this change. Both pass on Linux CI:
-  1. `src/growth/ladder/` has both `Ladder.tsx` and `ladder.ts`. Windows filenames ignore case, so tsc sees them as one file (TS1149/TS2305).
-  2. `content.test.ts` builds its file keys with `path.relative`, which gives backslashes on Windows (`start\welcome.json`), so the loader can't find `start/welcome.json`.
+- Also updated the one stale path in `docs/growth/ladder.md` (doc text only).
 
 ## Decisions needed (each: recommendation, default)
-- Make `npm run check` pass on Windows. Recommendation: one small step that renames `ladder.ts` to `ladder-logic.ts` (or similar) and changes the test's keys to forward slashes (`.replaceAll("\\", "/")`). Default: leave as is; CI stays green.
+- None.
 
 ## Map changes
-- B0 0.1 marked done (waiting on the phone check). Notes added for the Windows check failures.
+- B0: added 0.1b (done, waiting on phone check); removed the "fails on Windows" note from 0.1.
 
 ## Proposed next step
-- B0 step 0.2 (profile CI), or the Windows check fix first if Sam wants a clean local `npm run check`.
+- B0 step 0.2 (profile CI).

@@ -5,7 +5,7 @@ import { shortDate } from "../../lib/time";
 import { store } from "../../store/store";
 import { useData } from "../../store/useStore";
 import { Ladder } from "./Ladder";
-import { climbs, COPY } from "./ladder";
+import { climbs, COPY } from "./ladder-logic";
 import "./ladder.css";
 
 export function BookSection() {

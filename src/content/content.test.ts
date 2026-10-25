@@ -9,7 +9,7 @@ const root = join(__dirname, "../../content");
 const walk = (dir: string): string[] =>
   readdirSync(dir).flatMap((f) => (statSync(join(dir, f)).isDirectory() ? walk(join(dir, f)) : [join(dir, f)]));
 const files: Files = Object.fromEntries(
-  walk(root).filter((f) => f.endsWith(".json")).map((f) => [relative(root, f), JSON.parse(readFileSync(f, "utf8"))])
+  walk(root).filter((f) => f.endsWith(".json")).map((f) => [relative(root, f).replaceAll("\\", "/"), JSON.parse(readFileSync(f, "utf8"))])
 );
 
 describe("content", () => {

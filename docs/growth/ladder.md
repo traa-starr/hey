@@ -36,7 +36,7 @@ The feel shift is saved with `saveShift("ladder", before, after, climb.id)` only
 - `points.json`: `points[]`, each `{ id, word, says[], tiers[] }`. `says` are sentences that sound like the starting point (tappable ideas). Each of the 5 `tiers` is `{ pick: [3 thoughts], softer: [smaller steps] }`; tier *n* is used for rung *n+1*, and the last tier repeats if a climb runs longer. 12 starting points: heavy, overwhelmed, worried, drained, sad, lonely, stuck, behind, not enough, embarrassed, irritated, numb. Adding a starting point, a thought or a tier needs no code change.
 - `copy.json`: every string, `begins` (ways to begin), and `sources` (label, link, honest evidence label).
 
-Validated at load with `zod/mini` in `src/growth/ladder/ladder.ts`; unit tests check coverage (12+ points, 4+ tiers, first person, short bubbles, sources present).
+Validated at load with `zod/mini` in `src/growth/ladder/ladder-logic.ts`; unit tests check coverage (12+ points, 4+ tiers, first person, short bubbles, sources present).
 
 ## Sources
 

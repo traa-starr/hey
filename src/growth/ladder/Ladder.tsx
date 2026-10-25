@@ -1,6 +1,6 @@
 // The climb, drawn bottom to top in the person's own sentences.
 import { format } from "../../lib/template";
-import { COPY, type Rung } from "./ladder";
+import { COPY, type Rung } from "./ladder-logic";
 import "./ladder.css";
 
 export function Ladder({ start, rungs, compact, showBelieve = true }: { start: string; rungs: Rung[]; compact?: boolean; showBelieve?: boolean }) {

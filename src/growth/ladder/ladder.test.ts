@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { GrowthRecord } from "../../store/types";
-import { BELIEVED, COPY, MAX_RUNGS, POINTS, SOURCES, climbs, holds, pointForSentence, sentenceIdeas, tierFor, topOf } from "./ladder";
+import { BELIEVED, COPY, MAX_RUNGS, POINTS, SOURCES, climbs, holds, pointForSentence, sentenceIdeas, tierFor, topOf } from "./ladder-logic";
 
 const rec = (data: Record<string, unknown>, id = "r1", at = "2026-10-01T10:00:00.000Z", type = "climb", feature = "ladder"): GrowthRecord => ({ id, feature, type, at, data });
 

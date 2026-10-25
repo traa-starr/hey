@@ -1,20 +1,21 @@
 # next
 
-Fresh session. Do B0 step 0.1 only. Read `docs/map.md` section B0, `docs/STATUS.md`, and `CLAUDE.md`.
+Fresh session. Do B0 step 0.1b only (Windows check fix, decision D10). Read `docs/map.md` section B0, `docs/STATUS.md`, `docs/decisions.md` and `CLAUDE.md`.
 
 ## Do
 
-1. Add `src/lib/build.ts` exporting `BUILD` (a number, start at 1).
-2. Show it quietly at the bottom of you → settings, in the neutral style already used there (e.g. "build 1"). Look at `src/screens/Settings.tsx` and match its idiom. Don't touch copy rules: lowercase, no "you".
-3. Add a "run it locally" section to `README.md`: `npm install`, `npm run dev -- --host`, finding the phone URL (the Network address Vite prints; same Wi-Fi), and the Windows firewall prompt to allow private networks. Keep it short.
-4. Run `npm run check`. Fix only what you broke.
+1. Rename `src/growth/ladder/ladder.ts` to `src/growth/ladder/ladder-logic.ts` with `git mv`. Update the 4 imports of `"./ladder"` (`book.tsx`, `ladder.test.ts`, `Ladder.tsx`, `Screen.tsx`). Grep for any other importer before you finish.
+2. In `src/content/content.test.ts`, make the file keys use forward slashes (e.g. `.split(path.sep).join("/")` or `.replaceAll("\\", "/")`) so `start/welcome.json` is found on Windows.
+3. Bump `BUILD` to 2 in `src/lib/build.ts`.
+4. Run `npm run check`. It must pass fully on Windows now. Fix only what this step touches.
+5. In `docs/map.md`, add 0.1b under B0 (done, waiting on phone check) and remove the "fails on Windows" note from 0.1.
 
 ## Don't
 
+- Don't change ladder behaviour, exports or names inside the file. Rename only.
 - Don't start the dev server, run e2e, or commit/push.
-- Don't change anything else (CI is step 0.2).
-- This touches 3 small files; no plan needed (Sam waived it for this step).
+- Don't start 0.2 (CI profiling).
 
 ## Then
 
-Do the end-of-session steps in `CLAUDE.md`. In your last message, give Sam: the build number, the local-run commands, the phone tap (you → settings, scroll to bottom, see "build 1"), the suggested commit message, and the push-`dev` reminder.
+Do the end-of-session steps in `CLAUDE.md`. In your last message, give Sam: the build number, the phone tap (you → settings, scroll to bottom, see "build 2"; also open the growth ladder once to confirm it still loads), the suggested commit message, and the push-`dev` reminder.
