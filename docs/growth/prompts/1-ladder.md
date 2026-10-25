@@ -6,10 +6,10 @@ Before writing any code, read `CLAUDE.md`, then `docs/growth/PLAN.md` from start
 - **Open and close with the feel check** (`FeelCheck`, `saveShift("ladder", …)`); both are skippable.
 - **Start from a feeling word, or the loud sentence.** The sentence is never stored unless they opt in.
 - **Rung candidates come from content** (`content/growth/ladder/`), keyed to the starting point, each only slightly more hopeful. Write a rich, warm, adult set: at least 12 starting points with 4 or more steps each, plus ideas for every text field.
-- **Ask "how true does this feel?" (0 to 100) at every rung.** At 60 or more it becomes a rung. Below that, sol offers a smaller step, curious and never correcting.
+- **Ask "how true does this feel?" (0 to 100) at every rung.** At 60 or more it becomes a rung. Below that, dawn offers a smaller step, curious and never correcting.
 - **End on the climb, drawn bottom to top** in the person's own sentences, next to their before and after.
 - **Save** a `ladder`/`climb` record with at least `{ start, rungs: [{ text, believe }], top }`. Offer "take the top rung into today", which the proof agent reads.
-- **Teach the why in short sol bubbles:** big affirmations can backfire (Wood, Perunovic & Lee, 2009); believable steps are reappraisal (Gross). Sources and honest evidence labels go in content.
+- **Teach the why in short dawn bubbles:** big affirmations can backfire (Wood, Perunovic & Lee, 2009); believable steps are reappraisal (Gross). Sources and honest evidence labels go in content.
 - **Add a tile** (`orange`, order 1) and a book section of past ladders. No home card.
 
 **Rules:** stay in `src/growth/ladder/`, `content/growth/ladder/`, `e2e/growth-ladder.spec.ts`, `docs/growth/ladder.md` and `docs/growth/requests/ladder.md`. No streaks, points or grades. Follow the voice and never-words in CLAUDE.md. Everything must be accessible, and work fully with reduced motion.

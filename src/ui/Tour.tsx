@@ -10,7 +10,7 @@ import { format } from "../lib/template";
 import { go as goTo, parse, type Route } from "../router";
 import { store } from "../store/store";
 import { useData } from "../store/useStore";
-import { Sol } from "./Sol";
+import { Dawn } from "./Dawn";
 import { useCompanion, useLine } from "./kit";
 
 type Step = TourContent["steps"][number];
@@ -109,7 +109,7 @@ export function Tour() {
       <m.div key={i} className={`tour-card${high ? " up" : ""}`} initial={reduce ? false : { opacity: 0, y: high ? -8 : 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
         <p className="small">{step.kicker ? `${step.kicker} · ${count}` : count}</p>
         <div className="tour-body">
-          {comp.on ? <span className="tour-av" aria-hidden="true"><Sol mood={step.show ? "curious" : "happy"} /></span> : null}
+          {comp.on ? <span className="tour-av" aria-hidden="true"><Dawn mood={step.show ? "curious" : "happy"} /></span> : null}
           <p className="tour-say" aria-live="polite">{line(step.say)}</p>
         </div>
         <div className="tour-row">

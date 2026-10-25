@@ -12,7 +12,7 @@ import { go } from "../router";
 import { store } from "../store/store";
 import { useData } from "../store/useStore";
 import { Breath } from "../ui/Breath";
-import { FlowTop, Ideas, Loudness, Screen, Sentence, SolSays } from "../ui/kit";
+import { FlowTop, Ideas, Loudness, Screen, Sentence, DawnSays } from "../ui/kit";
 
 type Step = "catch" | "loud" | "calm" | "way" | "write" | "again" | "kept";
 type Draft = {
@@ -292,7 +292,7 @@ function Calm({ onNext }: { calmed: boolean; onBreathe: () => void; onNext: () =
     return (
       <>
         <h1 className="sr">{copy.answer.calmAsk}</h1>
-        <SolSays mood="calm">{copy.answer.calmAsk}</SolSays>
+        <DawnSays mood="calm">{copy.answer.calmAsk}</DawnSays>
         <div className="actions">
           <button className="btn" type="button" onClick={() => setBreathing(true)}>{copy.answer.calmYes}</button>
           <button className="btn quiet" type="button" onClick={onNext}>{copy.answer.calmNo}</button>

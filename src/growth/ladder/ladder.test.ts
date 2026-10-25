@@ -31,7 +31,7 @@ describe("one rung up: content", () => {
   });
 
   it("keeps dawn's bubbles short", () => {
-    for (const w of [...COPY.welcome, ...COPY.why, ...COPY.heldSol, ...COPY.shortSol, COPY.shortAgain, COPY.smallerSol, COPY.nearSol, COPY.afterSol, COPY.heldTop]) {
+    for (const w of [...COPY.welcome, ...COPY.why, ...COPY.heldDawn, ...COPY.shortDawn, COPY.shortAgain, COPY.smallerDawn, COPY.nearDawn, COPY.afterDawn, COPY.heldTop]) {
       expect(w.split(/\s+/).length, w).toBeLessThanOrEqual(30);
     }
   });

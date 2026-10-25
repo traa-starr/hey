@@ -10,8 +10,8 @@ import { store } from "../store/store";
 import { useData } from "../store/useStore";
 import { Breath } from "../ui/Breath";
 import { timeOfDay } from "../lib/time";
-import { Chips, FlowTop, Ideas, Screen, Sentence, SolSays, useCompanion, useLine } from "../ui/kit";
-import { Sol } from "../ui/Sol";
+import { Chips, FlowTop, Ideas, Screen, Sentence, DawnSays, useCompanion, useLine } from "../ui/kit";
+import { Dawn } from "../ui/Dawn";
 
 // what the person did at each step
 type Local = { pick?: number; picks?: string[]; text?: string; kept?: boolean; done?: boolean; at?: number; tot?: string[]; saved?: boolean; started?: boolean };
@@ -113,7 +113,7 @@ export function Chat({ lessonKey, isWelcome }: { lessonKey: string; isWelcome?: 
           ))}
           {finished ? (
             <>
-              <div data-step="end" tabIndex={-1} style={{ outline: "none" }}><SolSays mood="happy">{copy.lesson.finished}</SolSays></div>
+              <div data-step="end" tabIndex={-1} style={{ outline: "none" }}><DawnSays mood="happy">{copy.lesson.finished}</DawnSays></div>
               <button className="btn continue" type="button" onClick={() => go(pathOf ? { name: "path", id: pathOf.id } : { name: "home" }, true)}>{copy.lesson.finish}</button>
             </>
           ) : last && step.type === "end" ? (
@@ -138,7 +138,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
   const { name, done: doneLessons } = useData();
   switch (step.type) {
     case "say":
-      return <SolSays mood={step.mood ?? "calm"}>{line(step.text)}</SolSays>;
+      return <DawnSays mood={step.mood ?? "calm"}>{line(step.text)}</DawnSays>;
     case "scene":
       return (
         <div className="card">
@@ -151,7 +151,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
     case "list":
       return (
         <>
-          <SolSays>{step.text}</SolSays>
+          <DawnSays>{step.text}</DawnSays>
           <ul className="card list">{step.items.map((x) => <li key={x} data-say>{x}</li>)}</ul>
         </>
       );
@@ -159,11 +159,11 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       const picked = L.pick !== undefined ? step.options[L.pick] : undefined;
       return (
         <>
-          <SolSays mood="curious">{step.text}</SolSays>
+          <DawnSays mood="curious">{step.text}</DawnSays>
           {picked ? (
             <>
               <p className="me">{picked.label}</p>
-              {picked.reply ? <SolSays>{picked.reply}</SolSays> : null}
+              {picked.reply ? <DawnSays>{picked.reply}</DawnSays> : null}
             </>
           ) : active ? (
             <div className="replies" role="group" aria-label={step.text}>
@@ -176,13 +176,13 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
     case "tryon":
       return (
         <>
-          <SolSays>{line(step.prompt)}</SolSays>
+          <DawnSays>{line(step.prompt)}</DawnSays>
           <div className="option-stack" role="group" aria-label={line(step.prompt)}>
             {step.lines.map((x, n) => (
               <button key={x} type="button" className="option" aria-pressed={L.pick === n} disabled={!active && L.pick !== n} onClick={() => { if (!active) return; buzz(6); set({ pick: n, done: true }); }}>{line(x)}</button>
             ))}
           </div>
-          {L.done ? <SolSays mood="happy">{step.reply}</SolSays> : null}
+          {L.done ? <DawnSays mood="happy">{step.reply}</DawnSays> : null}
         </>
       );
     case "pick": {
@@ -190,11 +190,11 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       const max = step.max ?? step.options.length;
       return (
         <>
-          <SolSays>{step.prompt}</SolSays>
+          <DawnSays>{step.prompt}</DawnSays>
           {L.done ? (
             <>
               <p className="me">{picks.length ? picks.join(", ") : t.pickedNone}</p>
-              <SolSays mood="happy">{step.reply}</SolSays>
+              <DawnSays mood="happy">{step.reply}</DawnSays>
             </>
           ) : active ? (
             <>
@@ -218,9 +218,9 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       const result = finish(fill(step.template.replace("{name}", name.toLowerCase() || c.copy.greeting.noName), { x: text }));
       return (
         <>
-          <SolSays>{line(step.prompt)}</SolSays>
+          <DawnSays>{line(step.prompt)}</DawnSays>
           {L.done ? (
-            L.kept ? <><p className="me">{result}</p>{step.keep ? <SolSays mood="happy">{t.kept}</SolSays> : null}</> : null
+            L.kept ? <><p className="me">{result}</p>{step.keep ? <DawnSays mood="happy">{t.kept}</DawnSays> : null}</> : null
           ) : active ? (
             <div className="card">
               <Sentence parts={pieces(line(step.template), { x: text })} />
@@ -251,7 +251,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
             <p>{step.scene}</p>
             <p className="quote inner-quote" data-say>“{step.quote}”</p>
           </div>
-          <SolSays mood="curious">{t.whichHabit}</SolSays>
+          <DawnSays mood="curious">{t.whichHabit}</DawnSays>
           <div className="option-stack" role="group" aria-label={t.whichHabit}>
             {step.options.map((o, n) => (
               <button key={o} type="button" className="option" aria-pressed={L.pick === n}
@@ -259,7 +259,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
                 onClick={() => { if (!active || L.done) return; buzz(8); set({ pick: n, done: true }); }}>{o}</button>
             ))}
           </div>
-          {L.done ? <SolSays mood="happy">{t.spotReply} {step.explain}</SolSays> : null}
+          {L.done ? <DawnSays mood="happy">{t.spotReply} {step.explain}</DawnSays> : null}
         </>
       );
     }
@@ -270,7 +270,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
         const kept = picks.filter(Boolean);
         return (
           <>
-            <SolSays>{step.prompt}</SolSays>
+            <DawnSays>{step.prompt}</DawnSays>
             <p className="me">{kept.length ? kept.join(" · ") : t.pickedNone}</p>
           </>
         );
@@ -286,7 +286,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       };
       return (
         <>
-          <SolSays>{step.prompt}</SolSays>
+          <DawnSays>{step.prompt}</DawnSays>
           <div className="card">
             <span className="label">{at + 1} / {step.pairs.length}</span>
             <div className="grid2">
@@ -338,11 +338,11 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       }
       return (
         <>
-          <SolSays mood="curious">{format(t.recallIntro, { title })} {step.prompt}</SolSays>
+          <DawnSays mood="curious">{format(t.recallIntro, { title })} {step.prompt}</DawnSays>
           {L.done ? (
             <>
               <div className="know recall"><span className="label">{t.recallLabel}</span><p data-say>{step.answer}</p></div>
-              <SolSays mood="happy">{L.pick === 0 ? t.recallRemembered : t.recallShown}</SolSays>
+              <DawnSays mood="happy">{L.pick === 0 ? t.recallRemembered : t.recallShown}</DawnSays>
             </>
           ) : active ? (
             <div className="replies">
@@ -363,7 +363,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
           {L.pick !== undefined ? (
             <>
               <p className="me">{L.pick === 0 ? t.tryIt : t.notToday}</p>
-              <SolSays mood={L.pick === 0 ? "happy" : "calm"}>{L.pick === 0 ? t.tryReply : t.notReply}</SolSays>
+              <DawnSays mood={L.pick === 0 ? "happy" : "calm"}>{L.pick === 0 ? t.tryReply : t.notReply}</DawnSays>
             </>
           ) : active ? (
             <div className="replies">
@@ -378,7 +378,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       if (!L.started) {
         return (
           <>
-            <SolSays mood="calm">{t.breatheAsk}</SolSays>
+            <DawnSays mood="calm">{t.breatheAsk}</DawnSays>
             {!L.done ? (
               <div className="replies">
                 <button type="button" className="reply" onClick={() => set({ started: true })}>{t.breatheYes}</button>
@@ -393,9 +393,9 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       const value = L.text ?? name;
       return (
         <>
-          <SolSays mood="curious">{step.text}</SolSays>
+          <DawnSays mood="curious">{step.text}</DawnSays>
           {L.done ? (
-            L.kept ? <><p className="me">{value}</p><SolSays mood="happy">{format(t.nameHello, { name: value.toLowerCase() })}</SolSays></> : null
+            L.kept ? <><p className="me">{value}</p><DawnSays mood="happy">{format(t.nameHello, { name: value.toLowerCase() })}</DawnSays></> : null
           ) : active ? (
             <div className="card">
               <label className="sr" htmlFor="name-in">{step.text}</label>
@@ -410,7 +410,7 @@ function StepView({ step, L, active, set, from }: { step: Step; L: Local; active
       );
     }
     case "end":
-      return <SolSays mood="happy">{line(step.text)}</SolSays>;
+      return <DawnSays mood="happy">{line(step.text)}</DawnSays>;
   }
 }
 
@@ -420,7 +420,7 @@ function WelcomeSky() {
   const [tod] = useState(() => timeOfDay());
   return (
     <div className={`welcome-sky ${tod}`} style={{ background: `var(--sky-${tod})` }} aria-hidden="true">
-      {on ? <div className="welcome-sol"><Sol mood={tod === "night" ? "sleepy" : "happy"} /></div> : null}
+      {on ? <div className="welcome-dawn"><Dawn mood={tod === "night" ? "sleepy" : "happy"} /></div> : null}
       <p className="welcome-name">{content().copy.app.name}</p>
     </div>
   );

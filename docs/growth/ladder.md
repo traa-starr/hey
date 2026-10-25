@@ -4,13 +4,13 @@ For heavy moments. It helps someone think their way up, one believable rung at a
 
 ## The flow
 
-1. **Feel check** (before), with sol's welcome. Skippable.
+1. **Feel check** (before), with dawn's welcome. Skippable.
 2. **Where are we starting?** A feeling word, or the loud sentence. The sentence lives in the tab only; it is saved only if the person ticks "keep the sentence too" on the last screen. Otherwise the feeling word is stored as `start`. A typed sentence that isn't one of the offered ones asks "which feeling is closest?".
 3. **Why one rung at a time** (first climb only; always one tap away as "why small steps?"): big self-statements can backfire for some people (Wood, Perunovic & Lee, 2009), and looking at a moment from a slightly different angle is reappraisal (Gross, 1998; 2015). Sources and evidence labels are shown and live in content.
 4. **A rung:** 3 candidate thoughts, each a little lighter than the last, keyed to the starting point. Tap one to fill the box, then make it their own. Ways to begin are offered too.
 5. **How true does this feel?** 0 to 100, unset until the person moves it, so a number is always an answer.
    - 60 or more: it becomes a rung. One more rung, or enough for now (up to five rungs).
-   - Below 60: sol thanks them for the honesty and offers a smaller step (curious, never correcting). Stopping is always fine.
+   - Below 60: dawn thanks them for the honesty and offers a smaller step (curious, never correcting). Stopping is always fine.
 6. **Feel check** (after). Skippable.
 7. **The climb:** the ladder drawn bottom to top in their own sentences, next to before and after (only if both checks were answered).
 8. **Keep the climb** (or let it go), then optionally **take the top rung into today**.

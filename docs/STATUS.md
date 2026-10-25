@@ -2,9 +2,9 @@
 
 Roadmap: `docs/map.md` (don't copy it here).
 
-- **Build:** 2.
-- **Branch:** `dev`, from `main` at edf0f76.
-- **Last batch:** B0 step 0.2 (CI speed), 2026-10-24. Not proven until the next PR from `dev` runs.
-- **Next:** B0, step 0.3 (Project instructions); chat to decide on the e2e slowdown fix (see REPORT.md).
+- **Build:** 3.
+- **Branch:** `dev`; `main` at b0bcdaa (PR #27 merged 2026-10-24).
+- **Last step:** B1 1.1 done 2026-10-25 (companion is dawn in code and docs; SPEC.md matches the code).
+- **Next:** B1 step 1.2 (draft `docs/thesis.md`).
 - **Open decisions:** none.
-- **Pending phone checks:** none (build 2 confirmed 2026-10-24).
+- **Pending phone checks:** build 3 (settings shows build 3; welcome and check-in show dawn).

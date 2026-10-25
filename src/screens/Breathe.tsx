@@ -3,7 +3,7 @@ import { useState } from "react";
 import { content } from "../content/load";
 import { go } from "../router";
 import { Breath } from "../ui/Breath";
-import { FlowTop, Screen, SolSays, useLine } from "../ui/kit";
+import { FlowTop, Screen, DawnSays, useLine } from "../ui/kit";
 
 export function Breathe() {
   const t = content().copy.breathe;
@@ -16,7 +16,7 @@ export function Breathe() {
       <Screen id="breathe">
         {run === 0 ? (
           <>
-            <SolSays mood="calm">{line(t.sub)}</SolSays>
+            <DawnSays mood="calm">{line(t.sub)}</DawnSays>
             <button className="btn" type="button" onClick={() => setRun(1)}>{t.start}</button>
           </>
         ) : (

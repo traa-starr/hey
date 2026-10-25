@@ -6,7 +6,7 @@ import { weights } from "../lib/voice";
 import { go, href } from "../router";
 import { store } from "../store/store";
 import { useData } from "../store/useStore";
-import { FlowTop, HabitGlyph, LoudRange, Screen, SolSays } from "../ui/kit";
+import { FlowTop, HabitGlyph, LoudRange, Screen, DawnSays } from "../ui/kit";
 
 export function Catch({ habit }: { habit?: string }) {
   const c = content();
@@ -58,7 +58,7 @@ export function Catch({ habit }: { habit?: string }) {
           </>
         ) : (
           <>
-            <SolSays mood="happy">{t.saved}</SolSays>
+            <DawnSays mood="happy">{t.saved}</DawnSays>
             {picked ? (() => {
               const h = c.habits.find((x) => x.id === picked)!;
               return <a className="habit-row" href={href({ name: "habit", id: h.id })}><HabitGlyph habit={h} morph /><span><b>{h.name}</b><small>{h.job}</small></span></a>;

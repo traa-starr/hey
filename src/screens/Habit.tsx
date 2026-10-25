@@ -1,7 +1,7 @@
 // one voice habit up close: what it says, what it's trying to do, and ways to answer it.
 import { content } from "../content/load";
 import { go, href } from "../router";
-import { FlowTop, HabitGlyph, Screen, SolSays, colorVar } from "../ui/kit";
+import { FlowTop, HabitGlyph, Screen, DawnSays, colorVar } from "../ui/kit";
 
 export function Habit({ id }: { id: string }) {
   const c = content();
@@ -28,8 +28,8 @@ export function Habit({ id }: { id: string }) {
           <span className="label">{t.says}</span>
           {h.says.map((s) => <p key={s} className="quote" style={{ fontSize: "1.3rem" }} data-say>“{s}”</p>)}
         </div>
-        <SolSays mood="happy"><b>{t.job}:</b> {h.job}</SolSays>
-        <SolSays mood="curious"><b>{t.misses}:</b> {h.misses}</SolSays>
+        <DawnSays mood="happy"><b>{t.job}:</b> {h.job}</DawnSays>
+        <DawnSays mood="curious"><b>{t.misses}:</b> {h.misses}</DawnSays>
         <section className="section" aria-labelledby="answers-h">
           <h2 id="answers-h" className="label">{t.answers}</h2>
           {h.answers.map((a) => {

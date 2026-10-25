@@ -2,7 +2,7 @@
 
 ## Idea
 
-A warm, confident app for adults, with a companion. sol, a small dawn-light character, makes the app feel alive and carries lessons as conversation. Color does a lot of the work: every voice habit has its own color and glyph, so people recognize their habits at a glance. Text is short and arrives one bubble at a time.
+A warm, confident app for adults, with a companion. dawn, a small dawn-light character, makes the app feel alive and carries lessons as conversation. Color does a lot of the work: every voice habit has its own color and glyph, so people recognize their habits at a glance. Text is short and arrives one bubble at a time.
 
 ## Color
 
@@ -35,14 +35,14 @@ The cover is always a night sky (deep violet to plum, a darker spine on the left
 
 Scale (rem): .78 label (uppercase, +.08em) · .9 small · 1.0625 body · 1.1–1.35 card heads · 1.6 screen questions · 2.3–2.55 page titles and greeting.
 
-## sol
+## dawn, the companion
 
 - A soft rounded body with a sunrise gradient (#ffd978 → #ffa45e → #ff6f5b), a white highlight, faint cheeks, a glow.
 - Moods change only the face: calm, happy, curious, sleepy (at night).
 - Idle: breathes (4.5s) and floats (6s); blinks every few seconds. All of it stops under reduced motion.
 - Appears on home, beside its chat bubbles (once per run of bubbles), on check-in and breathe. Never on settings or data screens.
 - Its name is editable; it can be hidden entirely, and then bubbles stand alone.
-- sol is scripted. It never claims feelings or knowledge it doesn't have, and never pretends to be a therapist.
+- dawn is scripted. It never claims feelings or knowledge it doesn't have, and never pretends to be a therapist.
 
 ## Shape and space
 
@@ -67,7 +67,7 @@ A speaker button in the top bar when turned on; reads the screen's main text (`d
 
 ## Layout rules
 
-- One idea and one main action per screen. sol's bubbles about 30 words at most.
+- One idea and one main action per screen. dawn's bubbles about 30 words at most.
 - Home has a sky, one next step, two shortcuts, and a hidden line. Nothing else.
 - Every text field has idea chips.
 - Icons always come with a text label.

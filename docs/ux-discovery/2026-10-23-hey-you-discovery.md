@@ -86,7 +86,7 @@ Do not add engagement metrics (streaks, DAU, session counts). They conflict with
 | --- | --- | --- |
 | The primary persona exists as described and wants this | wrong people, wrong tone | study screener and sessions |
 | People will open the app in a loud moment, not only when calm | most features (answer it) go unused | follow-up: where was I when I used it? |
-| Scripted sol feels warm, not childish | adult audience bounces | session reactions |
+| Scripted dawn feels warm, not childish | adult audience bounces | session reactions |
 | No-nudge design gives enough pull | low return | one-week follow-up; if it fails, find a gentle way to invite, not a streak |
 | Some lessons may be too long or heavy | drop-off mid-lesson | task 2 in the study |
 | Persona 2 and 3 may be one audience with persona 1 | wasted scope | merge if sessions show the same needs |

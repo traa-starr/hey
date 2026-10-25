@@ -1,4 +1,4 @@
-// sol: a small dawn-light companion. it breathes, floats and blinks; its mood changes its face.
+// dawn: a small dawn-light companion. it breathes, floats and blinks; its mood changes its face.
 import { useId } from "react";
 
 export type Mood = "calm" | "happy" | "curious" | "sleepy";
@@ -16,10 +16,10 @@ const MOUTH: Record<Mood, React.ReactNode> = {
   sleepy: <path d="M56 81q4 2 8 0" fill="none" strokeWidth="3" strokeLinecap="round" />
 };
 
-export function Sol({ mood = "calm" }: { mood?: Mood }) {
+export function Dawn({ mood = "calm" }: { mood?: Mood }) {
   const id = useId().replace(/:/g, "");
   return (
-    <svg className="sol" viewBox="0 0 120 120" aria-hidden="true">
+    <svg className="dawn-face" viewBox="0 0 120 120" aria-hidden="true">
       <defs>
         <radialGradient id={`${id}g`} cx=".5" cy=".55" r=".5">
           <stop offset="0" stopColor="#ffd27a" stopOpacity=".7" /><stop offset="1" stopColor="#ffd27a" stopOpacity="0" />

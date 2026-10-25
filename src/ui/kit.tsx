@@ -10,7 +10,7 @@ import { format } from "../lib/template";
 import { href, isMoving, type Route } from "../router";
 import { useData } from "../store/useStore";
 import { GLYPH, Icon } from "./icons";
-import { Sol, type Mood } from "./Sol";
+import { Dawn, type Mood } from "./Dawn";
 
 const ease = [0.2, 0.8, 0.2, 1] as const;
 // the first screen after opening the app keeps the browser's own focus
@@ -105,11 +105,11 @@ export function useCompanion() {
 }
 
 // a message from dawn (or a plain bubble when the companion is turned off)
-export function SolSays({ children, mood = "calm", say = true }: { children: ReactNode; mood?: Mood; say?: boolean }) {
+export function DawnSays({ children, mood = "calm", say = true }: { children: ReactNode; mood?: Mood; say?: boolean }) {
   const { on } = useCompanion();
   return (
     <div className="msg">
-      {on ? <span className="av"><Sol mood={mood} /></span> : null}
+      {on ? <span className="av"><Dawn mood={mood} /></span> : null}
       <p className="bubble" data-say={say ? true : undefined}>{children}</p>
     </div>
   );
