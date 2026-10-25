@@ -58,7 +58,7 @@ for (const scheme of (process.env.SCHEMES ?? "light,dark").split(",")) {
   const shot = async (name, wait = 700) => { await page.waitForTimeout(wait); await page.screenshot({ path: `${out}/${scheme}-${name}.png` }); };
   const tap = (name) => page.getByRole("button", { name, exact: true }).first().click();
 
-  // a brand new person: the welcome as a chat with sol
+  // a brand new person: the welcome as a chat with dawn
   await page.goto(base);
   await page.waitForSelector(".chat");
   await shot("01-welcome");

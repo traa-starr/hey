@@ -23,14 +23,17 @@ Done when: Sam runs the app locally from Code's instructions and sees the build 
 - 0.1b Fix `npm run check` on Windows (D10): rename `src/growth/ladder/ladder.ts` to `ladder-logic.ts` (rename only), forward-slash file keys in `content.test.ts`. `npm run check` passes on Windows. Phone check: settings shows "build 2", the ladder still opens. **Done (build 2), phone-checked 2026-10-24.**
 - 0.2 CI speed (D12): chat profiled it (e2e ~370s of ~430s, runs twice per merge). Code skips e2e on push to `main` and on docs-only PRs, reports why e2e doubled, and adds a README tip (phone browser, not the home-screen icon). Phone check: none. **Done 2026-10-24 (no BUILD bump).** Docs-only test: a `git diff` step against the PR base (D13). Proven only when the next PR from `dev` runs.
   - Note: e2e slowdown not fixed. Likely causes and proposed fix in REPORT.md (0.2): retries masking a flaky test, and 2 default CI workers.
-- 0.3 Sam pastes the Project instructions from `workflow.md` into the Project. Phone check: none.
+- 0.3 Sam pastes the Project instructions from `workflow.md` into the Project. Phone check: none. **Done 2026-10-24.**
+
+B0 done 2026-10-24. 0.2 proven on PR #27: main push ~30s (was ~430s); PR e2e 3.2m, no flaky tests (D14).
 
 ## B1 - the mark
 
 Goal: say what hey you is for and how we would know it works.
 Done when: `docs/thesis.md` is written and Sam agrees with it; every feature is mapped to a claim; unsupported claims are listed.
 
-- 1.1 Fix the dawn / sol mismatch (one name, everywhere) and reconcile `SPEC.md` with the code.
+- 1.1 Fix the dawn / sol mismatch (one name, everywhere) and reconcile `SPEC.md` with the code. **Done (build 3) 2026-10-25.** Phone check: settings shows "build 3"; welcome and check-in show dawn.
+  - Note: CSS uses `dawn-face` / `dawn-box` / `welcome-dawn`, since `.dawn` is the sky's time-of-day class (D16). SPEC differences are listed in REPORT.md; no bugs found, one unused copy key (`habit.answer`).
 - 1.2 Draft `docs/thesis.md`: purpose, who it's for, claims with evidence labels (Kross 2014, Wood 2009, CBT traps, etc.), what it cannot claim.
 - 1.3 Feature-to-claim table and gap list.
 

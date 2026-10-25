@@ -28,39 +28,55 @@ Commit: (Sam commits; leave blank or "not yet")
 
 ## This session
 
-Step / batch: B0 step 0.2 (CI speed, D12)
-Build: 2 (not bumped; no app change)
+Step / batch: B1 step 1.1 (one companion name, SPEC.md matches code; D15)
+Build: 3
 Commit: not yet
 
 ## Verified by running
 - `npm run check`: typecheck, lint, unit tests pass (13 files, 115 tests).
-- The workflow change is not run yet. It is proven only when the next PR from `dev` runs (and again on the merge push to `main`).
+- `git grep` for `sol` / `Sol` in `src`, `content`, `scripts`, `e2e`: nothing left (only words like "resolve", "console", "cortisol").
+- e2e not run (NEXT.md didn't ask). No e2e spec used the old names, so none changed.
 
 ## Needs the phone (exact taps)
-- None.
+- you → settings → bottom: "build 3".
+- you → settings → replay the welcome: dawn shows in the sky and beside each bubble; nothing says "Sol". Close it.
+- home → "check in" chip: dawn shows above the question; set it, tap "that's it", dawn shows again with the thanks.
+- home and practice: dawn's line and the "what would help right now?" bubble still show.
+
+## User-visible text changes
+- None. No screen ever showed "Sol": the name on screen was always `companionDefault` ("dawn"). Only code, copy keys and docs said sol.
 
 ## Changed files
-- `.github/workflows/deploy.yml`: new `scope` step decides `e2e=true|false`. Push to `main` → false (runs `npm run build`, then deploy). PR → false when every changed file is under `docs/` or ends in `.md`. `workflow_dispatch` → true. All Playwright steps are gated on it. Checkout now uses `fetch-depth: 0` so the diff against the PR base works.
-- `README.md`: one line, open the URL in the phone's browser, not the home-screen icon.
-- `docs/map.md`, `docs/STATUS.md`, `docs/decisions.md` (D13), `docs/REPORT.md`.
+- `src/ui/Sol.tsx` → `src/ui/Dawn.tsx` (git mv); component `Sol` → `Dawn`, `SolSays` → `DawnSays` (kit.tsx and every screen and growth screen that uses it).
+- CSS (`src/styles/app.css`): `.sol` → `.dawn-face`, `.solbox` → `.dawn-box`, `.welcome-sol` → `.welcome-dawn`, comments. Not `.dawn`: the sky already gets the class `dawn` at dawn hour (`sky ${tod}`), so `.dawn` would have styled the sky too.
+- Copy keys: `copy.json` `sol` → `dawnSays` (the home line per time of day), `practice.sol` → `practice.dawn`; growth keys `*Sol*` → `*Dawn*` (e.g. `nearSol` → `nearDawn`, `hubSolReturn` → `hubDawnReturn`, `solHome` → `dawnHome`) in `content/growth/{ladder,lines,proof,warm}` with their Zod schemas, screens and `lines.test.ts`.
+- `src/lib/build.ts`: BUILD 3. `scripts/shots.mjs`: a comment.
+- Docs: sol → dawn in `docs/DESIGN.md` (heading now "dawn, the companion"), `docs/SPEC.md`, `SPEC.md` (the "loud right now" draft), `docs/growth/*` (incl. `SolSays` in PLAN.md), `docs/art`, `docs/research`, `docs/review`, `docs/ux-discovery`. Left as history: `decisions.md`, `NEXT.md`, the B0 inventory line in `map.md`.
+- Time of day `dawn` (`TimeOfDay`, `greeting.dawn`, `dawnSays.dawn`, `--sky-dawn`) kept. Renaming it to `early` would touch the type, CSS variables, copy and tests for no gain; the class names above already keep the two apart.
 
-## Docs-only skip: how
-- Simplest option: a shell `git diff --name-only origin/$BASE...HEAD | grep -qvE '^docs/|\.md$'` in the same job. No third-party action, no `paths-ignore` (that would skip the whole workflow and leave a required check hanging). The job always runs, so `check` always reports green.
-
-## Why e2e went from ~200s to ~370s (report only)
-- Code-side growth since 2026-10-23 is small: the tour (2 tests, ~15 taps) and one catch-step test. That explains maybe 10–20s, not ~170s. The 8 `waitForTimeout` calls add ~10s total and are fixed, so they can't double the time.
-- Cause 1 (most likely): `retries: 1` hiding a flaky test. A test that hits the 60s timeout and then passes on retry costs ~60–120s of wall time with 2 workers, and the run still shows green. To confirm: open a slow run's e2e step and look for "flaky" in the `github` reporter annotations. Fix: make that test wait on state (e.g. replace `waitForTimeout` with `expect(...)` waits; pin the clock in tests that touch home, since the sky and returning ideas follow the hour and date).
-- Cause 2: workers. Playwright's default on CI is half the cores, so 2 workers on the 4-vCPU `ubuntu-latest`. The long walk-through tests (growth-proof lesson loop, ladder, 20-card voice check) run back to back on those 2. Fix: try `workers: 4` on CI in `playwright.config.ts` and compare one run.
-- The app build (`tsc -b && vite build`) also runs inside the e2e step via `webServer`, so a slower build shows up as slower e2e.
+## SPEC changes (docs/SPEC.md, code wins)
+- Paths: names and order now match `index.json` (a kind start, talk to you, meet the inner voice, voice habits, what i like, what i think); lesson titles updated ("the good stuff", "small thanks", "what matters most", "changing my mind").
+- Added the 7th path, "how the mind works" (6 lessons).
+- Welcome step 3: the real line ("here, we practice kindness pointed inward…"); the tour starts after it.
+- Home: a growth card (look back, today's line, proof) sits above "next up"; "your next step" → "next up"; "you told yourself" → "from the book".
+- Lesson step types: added `know` and `recall`.
+- Practice: dawn's bubble, growth tiles, way pages.
+- Catch it: opened from a habit, the habit is preselected. Answer it: started from a way, the way step is skipped.
+- Book: "about you" → "about me", "after you answered" → "after answering", growth sections, cover title.
+- New sections: quick look around (tour), growth practices.
+- Settings: real labels and order; added "replay the quick look around" and the build label.
+- Data: `grown` table (Dexie v3) and `kv.tour`.
+- Verified-by table: tour and growth e2e specs.
+- Looks like a bug: none found. One leftover: `copy.habit.answer` ("answer it now") isn't used by any screen. Left alone.
 
 ## Differences from NEXT.md
-- None.
+- Also renamed sol in the root `SPEC.md` (a separate draft spec), since NEXT says "docs" and it named the companion.
 
 ## Decisions needed (each: recommendation, default)
-- Fix the e2e slowdown? Recommendation: first read the flaky annotations on one slow run, then a small step for the flaky test plus `workers: 4`. Default: leave as is until B3.
+- Remove the unused `copy.habit.answer`, or show it on the habit page? Recommendation: remove it in B2. Default: leave it.
 
 ## Map changes
-- B0 0.2 marked done (no BUILD bump), with a note on the unfixed slowdown. Inventory CI line updated.
+- B1 1.1 marked done (build 3), with the class-name note.
 
 ## Proposed next step
-- B0 step 0.3 (Project instructions), after the next `dev` PR shows the new workflow working.
+- B1 step 1.2: draft `docs/thesis.md`.

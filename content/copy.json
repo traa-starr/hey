@@ -29,7 +29,7 @@
     "dusk": "evening, {name}.",
     "noName": "you"
   },
-  "sol": {
+  "dawnSays": {
     "dawn": [
       "thank you for starting the day here.",
       "new day. one small kind thing is plenty.",
@@ -139,7 +139,7 @@
     "intro": "every inner voice has a few habits, and each one started out trying to help. curious which ones show up most? no right answers, about two minutes.",
     "start": "start",
     "mapTitle": "voice map",
-    "mapSol": "thank you for being honest. that takes some courage. bigger means more often, and every one of these has been trying to help.",
+    "mapDawn": "thank you for being honest. that takes some courage. bigger means more often, and every one of these has been trying to help.",
     "mapEmpty": "a voice check draws this map.",
     "again": "check again",
     "top": "loudest habits",
@@ -250,7 +250,7 @@
   },
   "practice": {
     "title": "practice",
-    "sol": "what would help right now?",
+    "dawn": "what would help right now?",
     "catch": "catch it",
     "catchSub": "3 taps, no typing",
     "answer": "answer it",

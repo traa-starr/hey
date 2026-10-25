@@ -1,4 +1,4 @@
-/* hey you v3. one thing per screen, a companion named sol, a sky that follows the hour.
+/* hey you v3. one thing per screen, a companion named dawn, a sky that follows the hour.
    dusk violet with sunrise coral and gold; every voice habit carries its own color. see docs/DESIGN.md. */
 
 :root {
@@ -77,11 +77,11 @@ h1, h2, h3 { font-family: var(--display); margin: 0; letter-spacing: -0.02em; li
 .voice { font-family: var(--voice); font-style: italic; }
 p { margin: 0; }
 
-/* sol */
-.sol { width: 100%; height: 100%; overflow: visible; display: block; }
-.sol .bodyg { animation: breathe 4.5s ease-in-out infinite; transform-origin: 60px 70px; transform-box: view-box; }
-.sol .floatg { animation: float 6s ease-in-out infinite; }
-.sol .lid { animation: blink 5s infinite; transform-origin: center; transform-box: fill-box; }
+/* dawn */
+.dawn-face { width: 100%; height: 100%; overflow: visible; display: block; }
+.dawn-face .bodyg { animation: breathe 4.5s ease-in-out infinite; transform-origin: 60px 70px; transform-box: view-box; }
+.dawn-face .floatg { animation: float 6s ease-in-out infinite; }
+.dawn-face .lid { animation: blink 5s infinite; transform-origin: center; transform-box: fill-box; }
 @keyframes breathe { 50% { transform: scale(1.035, .975); } }
 @keyframes float { 50% { transform: translateY(-4px); } }
 @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
@@ -131,7 +131,7 @@ p { margin: 0; }
 .hello { display: grid; grid-template-columns: 1fr 8.5rem; align-items: end; gap: 6px; margin-top: 14px; position: relative; }
 .hello h1 { font-size: 2.55rem; overflow-wrap: anywhere; }
 .hello p { margin-top: 8px; font-size: 1.05rem; opacity: .9; }
-.solbox { width: 8.5rem; height: 8.5rem; margin-bottom: -8px; }
+.dawn-box { width: 8.5rem; height: 8.5rem; margin-bottom: -8px; }
 .next { display: flex; gap: 14px; align-items: center; background: var(--surface); border-radius: 26px; padding: 16px; box-shadow: var(--shadow); border: 0; text-align: left; width: 100%; text-decoration: none; color: inherit; transition: transform .15s var(--ease); }
 .next .art { width: 4.25rem; height: 4.25rem; border-radius: 18px; flex: none; display: grid; place-items: center; }
 .next b { font-family: var(--display); font-size: 1.22rem; font-weight: 650; display: block; line-height: 1.15; }
@@ -149,10 +149,10 @@ p { margin: 0; }
 .told { background: var(--surface); border-radius: 22px; padding: 14px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 4px; }
 .told blockquote { margin: 0; font-family: var(--voice); font-style: italic; font-size: 1.3rem; line-height: 1.25; }
 
-/* welcome: the sky at this hour, sol, and the name */
+/* welcome: the sky at this hour, dawn, and the name */
 .welcome-sky { border-radius: 30px; min-height: 15rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 22px; color: #1d1736; overflow: hidden; }
 .welcome-sky.night, .welcome-sky.dusk { color: #fff; }
-.welcome-sol { width: 9rem; height: 9rem; }
+.welcome-dawn { width: 9rem; height: 9rem; }
 .welcome-name { font-family: var(--display); font-weight: 700; font-size: 2.3rem; letter-spacing: -0.03em; line-height: 1; }
 
 /* chat */
@@ -160,8 +160,8 @@ p { margin: 0; }
 .chat-step { display: flex; flex-direction: column; gap: 12px; }
 .msg { display: flex; gap: 8px; align-items: flex-end; }
 .av { width: 2.9rem; height: 2.9rem; flex: none; margin: 0 -2px -4px -6px; }
-.av .sol { transform: scale(1.3); }
-/* in a run of sol messages, the face shows once, on the last bubble */
+.av .dawn-face { transform: scale(1.3); }
+/* in a run of dawn messages, the face shows once, on the last bubble */
 .msg:has(+ .msg) .av, .chat-step:has(+ .chat-step > .msg:first-child) > .msg:last-child .av { visibility: hidden; }
 .bubble { background: var(--surface); color: var(--ink); border-radius: 22px 22px 22px 6px; padding: 13px 16px; box-shadow: var(--shadow); font-size: 1.05rem; max-width: 88%; line-height: 1.45; }
 .me { align-self: flex-end; background: var(--primary); color: var(--on-primary); border-radius: 22px 22px 6px 22px; padding: 11px 16px; max-width: 85%; font-weight: 500; }

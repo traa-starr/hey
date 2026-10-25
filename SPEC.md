@@ -94,7 +94,7 @@ Match the surrounding code. Copy follows CLAUDE.md voice: lowercase, warm, plain
 
 - **Always:** thank first; start with what's good; offer skip; every answer welcome; keep the tap budget visible in tests.
 - **Ask first:** storing anything new on the device; changing the home shortcuts; adding or reordering habit labels; any new claim or evidence label.
-- **Never:** streaks, points, reminders, notifications, "you haven't…" copy; storing the inner voice's sentence by default; offering a hard thought to keep; diagnosing; telling anyone to leave a relationship; AI-generated lines (sol is scripted).
+- **Never:** streaks, points, reminders, notifications, "you haven't…" copy; storing the inner voice's sentence by default; offering a hard thought to keep; diagnosing; telling anyone to leave a relationship; AI-generated lines (dawn is scripted).
 
 ## 9. Open questions for Sam
 

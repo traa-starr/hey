@@ -5,7 +5,7 @@ import { shortDate } from "../../lib/time";
 import { go, href } from "../../router";
 import { store } from "../../store/store";
 import { useData } from "../../store/useStore";
-import { FlowTop, PageTitle, Screen, SolSays } from "../../ui/kit";
+import { FlowTop, PageTitle, Screen, DawnSays } from "../../ui/kit";
 import { LINES, T, linesFrom, type Line } from "./lines";
 import "./lines.css";
 
@@ -21,7 +21,7 @@ export function Hub() {
       <FlowTop onClose={close} />
       <Screen id="lines-hub">
         <PageTitle>{T.hubTitle}</PageTitle>
-        <SolSays mood="happy">{lines.length ? T.hubSolReturn : T.hubSol}</SolSays>
+        <DawnSays mood="happy">{lines.length ? T.hubDawnReturn : T.hubDawn}</DawnSays>
         <div className="actions">
           <a className="btn" href={href({ name: "grow", feature: "lines", sub: "new" })} onClick={() => buzz(6)}>{T.make}</a>
           <a className="btn quiet" href={href({ name: "grow", feature: "lines", sub: "why" })}>{T.why}</a>
@@ -76,7 +76,7 @@ export function Why() {
         <div className="lines-sources">
           {LINES.why.map((w) => (
             <div key={w.id} className="lines-sources">
-              <SolSays mood="calm">{w.text}</SolSays>
+              <DawnSays mood="calm">{w.text}</DawnSays>
               <p className="source">{T.sources}: {w.source.label} · {T.evidence}: {w.source.evidence}</p>
             </div>
           ))}

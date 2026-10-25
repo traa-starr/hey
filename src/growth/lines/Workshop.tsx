@@ -8,7 +8,7 @@ import { format } from "../../lib/template";
 import { go } from "../../router";
 import { store } from "../../store/store";
 import { useData } from "../../store/useStore";
-import { Chips, FlowTop, Ideas, Screen, SolSays } from "../../ui/kit";
+import { Chips, FlowTop, Ideas, Screen, DawnSays } from "../../ui/kit";
 import { FeelCheck } from "../feel/FeelCheck";
 import { middle, saveShift, type Feel } from "../feel/feel";
 import { Shift } from "../feel/Shift";
@@ -114,7 +114,7 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
       <>
         {top}
         <Screen id="lines-before">
-          <SolSays mood="happy">{T.beforeIntro}</SolSays>
+          <DawnSays mood="happy">{T.beforeIntro}</DawnSays>
           <FeelCheck id="lines-before" phase="before" value={before} onChange={setBefore} />
           <div className="actions">
             <button className="btn" type="button" onClick={() => { markAsked(); setHaveBefore(true); go2("value"); }}>{T.continue}</button>
@@ -132,8 +132,8 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
         {top}
         <Screen id="lines-value">
           <h1 className="h2" data-say>{T.valueAsk}</h1>
-          <SolSays mood="calm">{T.valueSol}</SolSays>
-          <SolSays mood="curious">{T.valueTeach}</SolSays>
+          <DawnSays mood="calm">{T.valueDawn}</DawnSays>
+          <DawnSays mood="curious">{T.valueTeach}</DawnSays>
           <Source id="values" />
           <Chips
             label={T.valueAsk}
@@ -163,8 +163,8 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
         {top}
         <Screen id="lines-moment">
           <h1 className="h2" data-say>{asking}</h1>
-          <SolSays mood="curious">{T.momentSol}</SolSays>
-          <SolSays mood="calm">{name.trim() ? T.momentTeach : T.momentTeachFirst}</SolSays>
+          <DawnSays mood="curious">{T.momentDawn}</DawnSays>
+          <DawnSays mood="calm">{name.trim() ? T.momentTeach : T.momentTeachFirst}</DawnSays>
           <Source id="name" />
           <div className="lines-frame">
             <label className="label" htmlFor="lines-moment-text">{`${T.momentLabel}: ${who} ${value ? (name.trim() ? value.third : value.first) : own.trim().toLowerCase()}, ${T.momentFrame}`}</label>
@@ -189,7 +189,7 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
         {top}
         <Screen id="lines-shape">
           <h1 className="h2" data-say>{T.shapeAsk}</h1>
-          <SolSays mood="happy">{T.shapeSol}</SolSays>
+          <DawnSays mood="happy">{T.shapeDawn}</DawnSays>
           <div className="lines-gallery" role="group" aria-label={T.shapeAsk}>
             {shapes.map((s) => (
               <button key={s} type="button" className="lines-pick" aria-pressed={text === s} onClick={() => { buzz(4); setText(s); }}>
@@ -210,8 +210,8 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
         {top}
         <Screen id="lines-tune">
           <h1 className="h2" data-say>{T.tuneAsk}</h1>
-          <SolSays mood="happy">{T.tuneSol}</SolSays>
-          <SolSays mood="calm">{LINES.why.find((w) => w.id === "backfire")?.text}</SolSays>
+          <DawnSays mood="happy">{T.tuneDawn}</DawnSays>
+          <DawnSays mood="calm">{LINES.why.find((w) => w.id === "backfire")?.text}</DawnSays>
           <Source id="backfire" />
           <div className="lines-frame">
             <label className="label" htmlFor="lines-text">{T.tuneLabel}</label>
@@ -258,7 +258,7 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
         {top}
         <Screen id="lines-try">
           <h1 className="h2" data-say>{T.tryAsk}</h1>
-          <SolSays mood="calm">{T.trySol}</SolSays>
+          <DawnSays mood="calm">{T.tryDawn}</DawnSays>
           <div className="lines-stage"><p className="lines-quote" data-say>{text}</p></div>
           {canSpeak() ? (
             <button className="btn quiet" type="button" onClick={() => { if (reading) { stopSpeaking(); setReading(false); } else { speak(text); setReading(true); } }}>
@@ -276,7 +276,7 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
             />
             <div className="ends" aria-hidden="true"><span>{T.truthEnds[0]}</span><span>{T.truthEnds[1]}</span></div>
           </div>
-          {reply ? <SolSays mood={truth! < 40 ? "curious" : "happy"}>{reply}</SolSays> : null}
+          {reply ? <DawnSays mood={truth! < 40 ? "curious" : "happy"}>{reply}</DawnSays> : null}
           <div className="actions">
             <button className="btn" type="button" disabled={truth === null} onClick={keep}>{T.keep}</button>
             <button className="btn quiet" type="button" onClick={() => go2("tune")}>{T.tuneMore}</button>
@@ -291,7 +291,7 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
       <>
         <FlowTop onClose={leave} />
         <Screen id="lines-after">
-          <SolSays mood="happy">{T.afterIntro}</SolSays>
+          <DawnSays mood="happy">{T.afterIntro}</DawnSays>
           <FeelCheck id="lines-after" phase="after" value={after} onChange={setAfter} />
           <div className="actions">
             <button className="btn" type="button" onClick={() => { saveShift("lines", before, after, recId ?? undefined); setShifted(true); go2("done"); }}>{T.continue}</button>
@@ -310,7 +310,7 @@ export function Workshop({ tuneId }: { tuneId?: string }) {
       <Screen id="lines-done">
         <h1 className="h2" data-say>{existing || tuneId ? T.tuned : T.keptAsk}</h1>
         <div className="lines-stage"><p className="lines-quote" data-say>{line}</p></div>
-        <SolSays mood="happy">{name.trim() ? format(T.keptSol, { name: name.trim().toLowerCase() }) : T.keptSolNoName}</SolSays>
+        <DawnSays mood="happy">{name.trim() ? format(T.keptDawn, { name: name.trim().toLowerCase() }) : T.keptDawnNoName}</DawnSays>
         {shifted ? <Shift before={before} after={after} /> : null}
         <p className="small">{T.doneThanks}</p>
         <div className="actions">

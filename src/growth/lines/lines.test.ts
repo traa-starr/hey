@@ -22,7 +22,7 @@ describe("your lines: content", () => {
     }
   });
   it("keeps dawn's lines short", () => {
-    for (const k of ["hubSol", "hubSolReturn", "valueSol", "valueTeach", "momentSol", "momentTeach", "shapeSol", "tuneSol", "trySol", "truthLow", "truthMid", "truthHigh", "keptSol"]) {
+    for (const k of ["hubDawn", "hubDawnReturn", "valueDawn", "valueTeach", "momentDawn", "momentTeach", "shapeDawn", "tuneDawn", "tryDawn", "truthLow", "truthMid", "truthHigh", "keptDawn"]) {
       expect(String((LINES.copy as Record<string, unknown>)[k]).split(/\s+/).length, k).toBeLessThanOrEqual(32);
     }
   });

@@ -4,8 +4,8 @@ import { content } from "../content/load";
 import { buzz, keptChime, stepChime } from "../lib/feedback";
 import { go } from "../router";
 import { store } from "../store/store";
-import { FlowTop, HabitGlyph, LoudRange, Screen, SolSays, useCompanion } from "../ui/kit";
-import { Sol } from "../ui/Sol";
+import { FlowTop, HabitGlyph, LoudRange, Screen, DawnSays, useCompanion } from "../ui/kit";
+import { Dawn } from "../ui/Dawn";
 
 export function CheckIn() {
   const c = content();
@@ -21,13 +21,13 @@ export function CheckIn() {
       <Screen id={saved ? "checkin-done" : "checkin"}>
         {saved ? (
           <>
-            {comp.on ? <div style={{ width: "9rem", height: "9rem", margin: "0 auto" }}><Sol mood="happy" /></div> : null}
-            <SolSays mood="happy">{t.saved}</SolSays>
+            {comp.on ? <div style={{ width: "9rem", height: "9rem", margin: "0 auto" }}><Dawn mood="happy" /></div> : null}
+            <DawnSays mood="happy">{t.saved}</DawnSays>
             <button className="btn" type="button" onClick={leave}>{c.copy.app.done}</button>
           </>
         ) : (
           <>
-            {comp.on ? <div style={{ width: "8rem", height: "8rem", margin: "0 auto" }}><Sol mood="curious" /></div> : null}
+            {comp.on ? <div style={{ width: "8rem", height: "8rem", margin: "0 auto" }}><Dawn mood="curious" /></div> : null}
             <h1 className="h2" style={{ textAlign: "center" }} data-say>{t.ask}</h1>
             <LoudRange value={loud} onChange={(n) => { if (n !== loud) { buzz(6); stepChime(n); } setLoud(n); }} />
             <p className="label">{t.which}</p>

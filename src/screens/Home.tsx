@@ -10,7 +10,7 @@ import { Icon } from "../ui/icons";
 import { Screen, Tabs, colorVar, useCompanion } from "../ui/kit";
 import { Today } from "../growth/Today";
 import { pathArt } from "../ui/art";
-import { Sol } from "../ui/Sol";
+import { Dawn } from "../ui/Dawn";
 
 function Stars() {
   return (
@@ -33,8 +33,8 @@ export function Home() {
   const [revealed, setRevealed] = useState(false);
   const tod = timeOfDay();
   const name = data.name.toLowerCase() || copy.greeting.noName;
-  const lines = copy.sol[tod];
-  const solLine = lines[dailyIndex(lines.length)] ?? lines[0];
+  const lines = copy.dawnSays[tod];
+  const dawnLine = lines[dailyIndex(lines.length)] ?? lines[0];
   const next = nextLesson(c, data.done);
   const told = data.entries.filter((e) => e.kind === "voice" && !e.said && !e.holdsSaid);
   const line = told[dailyIndex(told.length)];
@@ -51,9 +51,9 @@ export function Home() {
           <div className="hello" style={comp.on ? undefined : { gridTemplateColumns: "1fr" }}>
             <div>
               <h1 data-say>{format(copy.greeting[tod], { name })}</h1>
-              <p data-say>{solLine}</p>
+              <p data-say>{dawnLine}</p>
             </div>
-            {comp.on ? <div className="solbox"><Sol mood={tod === "night" ? "sleepy" : "happy"} /></div> : null}
+            {comp.on ? <div className="dawn-box"><Dawn mood={tod === "night" ? "sleepy" : "happy"} /></div> : null}
           </div>
         </section>
 

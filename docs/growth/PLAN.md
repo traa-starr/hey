@@ -65,7 +65,7 @@ Home card priorities, so cards never fight:
 
 ### Navigating
 
-Use `go({ name: "grow", feature: "<id>", sub: "..." })` and `href(...)` from `src/router.ts`. Going deeper slides in and closing slides back automatically. Use `FlowTop` (close goes to `{ name: "practice" }`), `Screen`, `SolSays`, `Chips`, `Ideas` and the other pieces in `src/ui/kit.tsx`, and match the look of existing screens.
+Use `go({ name: "grow", feature: "<id>", sub: "..." })` and `href(...)` from `src/router.ts`. Going deeper slides in and closing slides back automatically. Use `FlowTop` (close goes to `{ name: "practice" }`), `Screen`, `DawnSays`, `Chips`, `Ideas` and the other pieces in `src/ui/kit.tsx`, and match the look of existing screens.
 
 ### Saving
 
@@ -123,11 +123,11 @@ Expected reads: the warm room speaks the person's own `lines`; proof turns a lad
 For when it's heavy.
 1. Feel check.
 2. "where are you starting?": a feeling word, or the loud sentence (the sentence is not stored unless they opt in).
-3. sol offers 3 to 4 candidate next thoughts, each only slightly more hopeful, from `content/growth/ladder/` and keyed to the starting point.
+3. dawn offers 3 to 4 candidate next thoughts, each only slightly more hopeful, from `content/growth/ladder/` and keyed to the starting point.
 4. The person picks one or writes their own, then rewrites it in their own words, with ideas offered.
 5. "how true does this feel?" (0 to 100).
    - At 60 or more: it becomes a rung, and they go one up.
-   - Below 60: sol offers a smaller step, and stays curious, never correcting.
+   - Below 60: dawn offers a smaller step, and stays curious, never correcting.
 6. Stop any time, or after 3 to 5 rungs.
 7. The ladder, drawn bottom to top in their own sentences, beside the feel check after.
 8. Keep the climb. Optionally take the top rung into real life, which proof can pick up.
@@ -137,7 +137,7 @@ Teach, briefly and in bubbles, why believable beats big (the Wood 2009 finding) 
 ### 2. your lines (`lines`)
 1. Pick a value: a list in content (honesty, humor, showing up, curiosity, care, courage…), plus "my own word".
 2. Recall one small, recent moment you lived it. No painful memories; prompts stay small and everyday.
-3. sol shapes it into a line that uses the person's name, *"sam shows up, like yesterday with mia."*, from templates in content. With no name, use first person (*"i show up, like yesterday with mia."*). Second-person "you" self-talk belongs only to the "you" trick lesson; see Voice in `CLAUDE.md`.
+3. dawn shapes it into a line that uses the person's name, *"sam shows up, like yesterday with mia."*, from templates in content. With no name, use first person (*"i show up, like yesterday with mia."*). Second-person "you" self-talk belongs only to the "you" trick lesson; see Voice in `CLAUDE.md`.
 4. Tune it: swap words using a word bank drawn from the person's own words (their book entries and past lines) plus content suggestions.
 5. Try it on, read aloud if they like. "how true does this feel?"
 6. Keep it.
@@ -180,7 +180,7 @@ No overclaiming. "Neuroplasticity" only with care, never "rewire your brain in 7
 4. No new dependencies: four agents editing `package.json` would collide. Use what's installed (React, motion, zod/mini, Dexie), or ask in your request file.
 5. No streaks, points, badges, levels or guilt. Counts appear only where they help someone see their own pattern.
 6. Every claim has a source and an honest evidence label in content. If you can't source it, don't say it.
-7. Every text field offers tappable ideas. sol's bubbles stay about 30 words or fewer. One idea per screen.
+7. Every text field offers tappable ideas. dawn's bubbles stay about 30 words or fewer. One idea per screen.
 8. Accessibility: real buttons and labels, visible focus, `aria-valuetext` on sliders, text alternatives for anything drawn, and full use without motion.
 9. Before your PR, all of these pass:
    - `npm run check` (typecheck, lint, unit tests) and `npm run e2e`, including your `e2e/growth-<id>.spec.ts`. That spec covers the main flow at 390px and runs axe on your screens, as `e2e/a11y.spec.ts` does.

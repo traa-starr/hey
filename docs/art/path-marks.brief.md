@@ -5,7 +5,7 @@
 ## Path marks (`src/ui/art.tsx`)
 
 - **Grid:** 64×64 viewBox, 3px round strokes, round joins, drawn in `currentColor` on the path's color. Cut-outs use `var(--art-bg)`, which is set to the same path color.
-- **Language:** the same rounded line-plus-fill language as the habit glyphs, at three opacities (about .3, .55 and 1) for depth. No faces, no characters (sol is the only character), nothing cute.
+- **Language:** the same rounded line-plus-fill language as the habit glyphs, at three opacities (about .3, .55 and 1) for depth. No faces, no characters (dawn is the only character), nothing cute.
 - **Concepts, one per path:**
   - meet your inner voice: two speech bubbles. The large familiar one sits behind; a smaller, solid one of your own sits in front, with a calm wave inside.
   - your voice habits: overlapping rounds of different sizes, echoing the voice map.
@@ -16,7 +16,7 @@
 
 ## Welcome sky (`WelcomeSky` in `src/screens/Chat.tsx`)
 
-The home sky for the current hour, with sol large and happy (sleepy at night) and the name "hey you" in Bricolage Grotesque. It's decorative (`aria-hidden`), since the chat carries the words.
+The home sky for the current hour, with dawn large and happy (sleepy at night) and the name "hey you" in Bricolage Grotesque. It's decorative (`aria-hidden`), since the chat carries the words.
 
 ## App icon (`public/icons/`)
 

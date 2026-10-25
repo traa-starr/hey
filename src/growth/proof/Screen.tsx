@@ -8,7 +8,7 @@ import { shortDate } from "../../lib/time";
 import { go, href } from "../../router";
 import { store } from "../../store/store";
 import { useData } from "../../store/useStore";
-import { FlowTop, Ideas, Screen, Sentence, SolSays, useLine } from "../../ui/kit";
+import { FlowTop, Ideas, Screen, Sentence, DawnSays, useLine } from "../../ui/kit";
 import { FeelCheck } from "../feel/FeelCheck";
 import { middle, saveShift, type Feel } from "../feel/feel";
 import { Shift } from "../feel/Shift";
@@ -86,7 +86,7 @@ function Home() {
     <>
       <FlowTop onClose={() => go({ name: "practice" })} title={T.title} />
       <Screen id="proof-home">
-        <SolSays>{L(T.solHome)}</SolSays>
+        <DawnSays>{L(T.dawnHome)}</DawnSays>
         <a className="btn" href={newHref} onClick={() => buzz(6)}>{open.length ? T.startAgain : T.start}</a>
 
         {open.length ? (
@@ -124,7 +124,7 @@ function Home() {
         <button className="link" type="button" aria-expanded={why} onClick={() => setWhy((w) => !w)}>{why ? T.whyHide : T.why}</button>
         {why ? (
           <section className="section" aria-label={T.why}>
-            {T.whyBubbles.map((b) => <SolSays key={b}>{b}</SolSays>)}
+            {T.whyBubbles.map((b) => <DawnSays key={b}>{b}</DawnSays>)}
             <div className="card">
               <p className="label">{T.whySources}</p>
               {T.sourcesList.map((s) => (
@@ -180,7 +180,7 @@ function Morning() {
         {at === "source" ? (
           <>
             <h1 className="h2" data-say>{T.sourceAsk}</h1>
-            <SolSays>{L(T.sourceTeach)}</SolSays>
+            <DawnSays>{L(T.sourceTeach)}</DawnSays>
             <div className="proof-sources">
               {offered.map((s) => (
                 <button key={`${s.kind}-${s.text}`} type="button" className="proof-source" onClick={() => choose(s)}>
@@ -197,7 +197,7 @@ function Morning() {
           <>
             <Write id="proof-claim" prompt={T.claimAsk} template={T.claimTemplate} ideas={PROOF.ideas.claim} placeholder={T.claimPlaceholder} value={claim} onChange={setClaim} hint={T.voiceHint} />
             <Again claim={claim} />
-            <SolSays>{L(T.claimSol)}</SolSays>
+            <DawnSays>{L(T.claimDawn)}</DawnSays>
             <button className="btn" type="button" disabled={!claim.trim()} onClick={() => { buzz(6); next(); }}>{app.next}</button>
           </>
         ) : at === "predict" ? (
@@ -205,7 +205,7 @@ function Morning() {
             {!voice ? <p className="reply-line" data-say>{claim}</p> : null}
             <Again claim={claim} />
             <Write id="proof-predict" prompt={L(T.predictAsk)} template={T.predictTemplate} ideas={PROOF.ideas.predict[ideas]} placeholder={T.predictPlaceholder} value={prediction} onChange={setPrediction} />
-            <SolSays>{L(T.predictSol)}</SolSays>
+            <DawnSays>{L(T.predictDawn)}</DawnSays>
             <button className="btn" type="button" disabled={!prediction.trim()} onClick={() => { buzz(6); next(); }}>{app.next}</button>
           </>
         ) : at === "plan" ? (
@@ -221,7 +221,7 @@ function Morning() {
         ) : (
           <>
             <h1 className="h2" data-say>{T.doneTitle}</h1>
-            <SolSays mood="happy">{L(T.doneSol)}</SolSays>
+            <DawnSays mood="happy">{L(T.doneDawn)}</DawnSays>
             <p className="small">{T.doneNote}</p>
             <a className="btn" href={href({ name: "home" })}>{T.doneHome}</a>
             <a className="btn quiet" href={href({ name: "grow", feature: "proof" })}>{T.doneBack}</a>
@@ -291,7 +291,7 @@ function Evening({ id }: { id: string }) {
       <Screen id={`proof-close-${at}`}>
         {at === "feel1" ? (
           <>
-            <SolSays mood="happy">{L(T.eveningAsk)}</SolSays>
+            <DawnSays mood="happy">{L(T.eveningAsk)}</DawnSays>
             <FeelCheck id="proof-before" phase="before" value={draft} onChange={setDraft} />
             <button className="btn" type="button" onClick={() => { setFb(draft); setDraft(middle()); next(); }}>{app.continue}</button>
             <button className="btn ghost" type="button" onClick={() => { setFb(null); setDraft(middle()); next(); }}>{app.skip}</button>
@@ -310,7 +310,7 @@ function Evening({ id }: { id: string }) {
             </div>
             {happened ? (
               <>
-                <SolSays>{L(happened.reply)}</SolSays>
+                <DawnSays>{L(happened.reply)}</DawnSays>
                 <button className="btn" type="button" onClick={next}>{app.continue}</button>
               </>
             ) : null}
@@ -321,13 +321,13 @@ function Evening({ id }: { id: string }) {
               <>
                 <h1 className="h2" data-say>{T.keepAsk}</h1>
                 <p className="reply-line" data-say>{keptText}</p>
-                <SolSays mood="happy">{L(T.keptSol)}</SolSays>
+                <DawnSays mood="happy">{L(T.keptDawn)}</DawnSays>
                 <button className="btn" type="button" onClick={next}>{app.continue}</button>
               </>
             ) : (
               <>
                 <Write id="proof-keep" prompt={T.keepAsk} template={T.keepTemplate} ideas={keepIdeas} placeholder={T.keepPlaceholder} value={text} onChange={setText} />
-                <SolSays>{T.keepTeach}</SolSays>
+                <DawnSays>{T.keepTeach}</DawnSays>
                 <button className="btn" type="button" disabled={!text.trim()} onClick={keep}>{T.keepIt}</button>
                 <button className="btn ghost" type="button" onClick={next}>{T.nothingToKeep}</button>
               </>
@@ -347,7 +347,7 @@ function Evening({ id }: { id: string }) {
           </>
         ) : at === "feel2" ? (
           <>
-            <SolSays>{L(outcome === "closed" ? T.closedSol : outcome === "letGo" ? T.letGoSol : T.openSol)}</SolSays>
+            <DawnSays>{L(outcome === "closed" ? T.closedDawn : outcome === "letGo" ? T.letGoDawn : T.openDawn)}</DawnSays>
             <FeelCheck id="proof-after-feel" phase="after" value={draft} onChange={setDraft} />
             <button className="btn" type="button" onClick={() => endFeel(draft)}>{app.continue}</button>
             <button className="btn ghost" type="button" onClick={() => endFeel(null)}>{app.skip}</button>
@@ -355,10 +355,10 @@ function Evening({ id }: { id: string }) {
         ) : (
           <>
             <h1 className="h2" data-say>{T.thanks}</h1>
-            <SolSays mood="happy">{L(T.reflectDone)}</SolSays>
+            <DawnSays mood="happy">{L(T.reflectDone)}</DawnSays>
             {fb && fa ? (
               <>
-                <p className="small">{T.shiftSol}</p>
+                <p className="small">{T.shiftDawn}</p>
                 <Shift before={fb} after={fa} />
               </>
             ) : null}

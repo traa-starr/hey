@@ -40,9 +40,9 @@ Tag each observation with one area and one kind. Keep the list short, and add a 
 
 | area | kind |
 | --- | --- |
-| `welcome` `home` `learn` `lesson` `check` `map` `catch` `answer` `breathe` `book` `settings` `sol` `motion` `copy` | `confusion` `discomfort` `delight` `value` `pull` `access` `privacy` `bug` |
+| `welcome` `home` `learn` `lesson` `check` `map` `catch` `answer` `breathe` `book` `settings` `dawn` `motion` `copy` | `confusion` `discomfort` `delight` `value` `pull` `access` `privacy` `bug` |
 
-Example: *P2 laughed at sol's "nice work" and said "a bit much"* → `sol` · `discomfort`.
+Example: *P2 laughed at dawn's "nice work" and said "a bit much"* → `dawn` · `discomfort`.
 
 ## 3. Affinity themes
 

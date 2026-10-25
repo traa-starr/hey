@@ -43,7 +43,7 @@ We are not measuring wellbeing or symptoms. That would need a different study, w
 
 **Tasks (15 min).** Think aloud; don't help unless they're stuck for 60 seconds.
 1. Do a voice check. Then: "What does the map tell you? Does anything feel off or judging?"
-2. Do the first lesson in "meet your inner voice". Then: "Was that too long, too short, or about right? How did sol feel?"
+2. Do the first lesson in "meet your inner voice". Then: "Was that too long, too short, or about right? How did dawn feel?"
 3. "Imagine your inner voice is loud right now. Use the app for that moment." (They can pick an idea instead of typing their own.)
 4. Find your book. "What do you make of this page?"
 

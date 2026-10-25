@@ -3,7 +3,7 @@ import { content } from "../content/load";
 import { onPlugins } from "../growth/registry";
 import { href, type Route } from "../router";
 import { Icon } from "../ui/icons";
-import { PageTitle, Screen, SolSays, Tabs } from "../ui/kit";
+import { PageTitle, Screen, DawnSays, Tabs } from "../ui/kit";
 
 export function Practice() {
   const c = content();
@@ -19,7 +19,7 @@ export function Practice() {
     <>
       <Screen id="practice">
         <PageTitle>{t.title}</PageTitle>
-        <SolSays mood="calm">{t.sol}</SolSays>
+        <DawnSays mood="calm">{t.dawn}</DawnSays>
         <div className="grid2">
           {tools.map((x) => (
             <a key={x.key} className="tile" style={{ background: `var(--${x.color}-soft)` }} href={href(x.route)}>

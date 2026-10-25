@@ -5,7 +5,7 @@ Before writing any code, read `CLAUDE.md`, then `docs/growth/PLAN.md` from start
 **Build:** a workshop where people make their own affirmations from their values and real moments, in their own words, never templates handed down. The full flow is in PLAN.md, section "2. your lines". The parts that matter most:
 - **Pick a value** from content (at least 16, warm and adult), or write your own.
 - **Recall one small, recent moment** you lived it. Prompts stay everyday; never painful memories.
-- **sol shapes it into a line that uses the person's name**, from content templates: *"sam shows up, like yesterday with mia."* With no name, use first person. No "you" self-talk here (see Voice in CLAUDE.md).
+- **dawn shapes it into a line that uses the person's name**, from content templates: *"sam shows up, like yesterday with mia."* With no name, use first person. No "you" self-talk here (see Voice in CLAUDE.md).
 - **Tune it with a word bank** built from the person's own words (their book entries via `useData().entries`, and their past lines) plus content suggestions.
 - **Try it on**, read aloud optionally. Ask "how true does this feel?" and keep it if it fits.
 - **Feel check** (`FeelCheck`, `saveShift("lines", …)`) around the first session of the day; both skippable.

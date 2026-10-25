@@ -7,7 +7,7 @@ A workshop where people make their own affirmations from a value and one small, 
 1. **Feel check** (first session of the day only; skippable). `saveShift("lines", before, after, recordId)` only when both halves happened.
 2. **Value**: one of 19 in content, or "my own word" (with tappable ideas).
 3. **Moment**: one small, recent, everyday moment, with tappable ideas per value. "no moment today" is always there.
-4. **Shape**: sol offers three lines from content templates. With a name: "sam shows up, like yesterday with mia." Without: "i show up, like…". No second-person self-talk.
+4. **Shape**: dawn offers three lines from content templates. With a name: "sam shows up, like yesterday with mia." Without: "i show up, like…". No second-person self-talk.
 5. **Tune**: edit freely. Chips insert at the caret or replace the selection: lead words ("sometimes"), tail words ("in small ways"), words from the person's own book and past lines, and content suggestions.
 6. **Try it on**: read aloud on request (on-device), then "how true does this feel?" (0 to 100, unset until moved). Low answers are met warmly and pointed at a smaller line; any line can still be kept.
 7. **Keep**: `store.grow("lines", "line", { text, value, moment, truth, own? })`. Tuning later uses `store.regrow`.

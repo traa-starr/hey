@@ -5,7 +5,7 @@ import { buzz, keptChime } from "../../lib/feedback";
 import { go, href } from "../../router";
 import { store } from "../../store/store";
 import { useData } from "../../store/useStore";
-import { FlowTop, Ideas, Screen as Page, SolSays } from "../../ui/kit";
+import { FlowTop, Ideas, Screen as Page, DawnSays } from "../../ui/kit";
 import { type Feel, middle, saveShift } from "../feel/feel";
 import { FeelCheck } from "../feel/FeelCheck";
 import { Shift } from "../feel/Shift";
@@ -51,7 +51,7 @@ export default function LadderScreen() {
     case "open":
       body = (
         <>
-          {COPY.welcome.map((w) => <SolSays key={w} mood="happy">{w}</SolSays>)}
+          {COPY.welcome.map((w) => <DawnSays key={w} mood="happy">{w}</DawnSays>)}
           <FeelCheck id="ladder-before" phase="before" value={s.before} onChange={(before) => update({ before })} />
           <div className="actions">
             <button className="btn" type="button" onClick={() => toStep("start", { didBefore: true })}>{COPY.next}</button>
@@ -100,7 +100,7 @@ export default function LadderScreen() {
     case "near":
       body = (
         <>
-          <SolSays mood="calm">{COPY.nearSol}</SolSays>
+          <DawnSays mood="calm">{COPY.nearDawn}</DawnSays>
           <h2 className="h2" data-say>{COPY.nearAsk}</h2>
           <div className="chips" role="group" aria-label={COPY.nearAsk}>
             {POINTS.map((p) => (
@@ -115,7 +115,7 @@ export default function LadderScreen() {
       body = (
         <>
           <h2 className="h2" data-say>{COPY.whyTitle}</h2>
-          {COPY.why.map((w) => <SolSays key={w} mood="curious">{w}</SolSays>)}
+          {COPY.why.map((w) => <DawnSays key={w} mood="curious">{w}</DawnSays>)}
           <Sources />
           <div className="actions"><button className="btn" type="button" onClick={() => toStep("rung")}>{COPY.whyGot}</button></div>
         </>
@@ -132,7 +132,7 @@ export default function LadderScreen() {
       body = (
         <>
           <p className="ladder-here"><span className="label">{COPY.from}</span><span className="ladder-here-text">{current}</span></p>
-          {s.smaller ? <SolSays mood="curious">{COPY.smallerSol}</SolSays> : null}
+          {s.smaller ? <DawnSays mood="curious">{COPY.smallerDawn}</DawnSays> : null}
           <h2 className="h2" data-say>{s.smaller ? COPY.smallerAsk : COPY.rungAsk}</h2>
           <Ideas ideas={ideas} picked={s.text} onPick={(text) => update({ text })} label={s.smaller ? COPY.smallerAsk : COPY.pickIdeas} />
           <div className="fieldset">
@@ -178,8 +178,8 @@ export default function LadderScreen() {
       const full = s.rungs.length >= MAX_RUNGS;
       body = (
         <>
-          <h2 className="sr">{COPY.heldSol[1]}</h2>
-          <SolSays mood="happy">{full ? COPY.heldTop : COPY.heldSol[0]}</SolSays>
+          <h2 className="sr">{COPY.heldDawn[1]}</h2>
+          <DawnSays mood="happy">{full ? COPY.heldTop : COPY.heldDawn[0]}</DawnSays>
           <Ladder start={point?.word ?? ""} rungs={s.rungs} />
           <div className="actions">
             {full ? (
@@ -199,8 +199,8 @@ export default function LadderScreen() {
       body = (
         <>
           <h2 className="sr">{COPY.smaller}</h2>
-          <SolSays mood="curious">{COPY.shortSol[0]}</SolSays>
-          <SolSays mood="calm">{s.smaller ? COPY.shortAgain : COPY.shortSol[1]}</SolSays>
+          <DawnSays mood="curious">{COPY.shortDawn[0]}</DawnSays>
+          <DawnSays mood="calm">{s.smaller ? COPY.shortAgain : COPY.shortDawn[1]}</DawnSays>
           <div className="actions">
             <button className="btn" type="button" onClick={() => toStep("rung", { smaller: true, text: "" })}>{COPY.smaller}</button>
             <button className="btn quiet" type="button" onClick={stopNow}>{COPY.stay}</button>
@@ -211,7 +211,7 @@ export default function LadderScreen() {
     case "after":
       body = (
         <>
-          <SolSays mood="happy">{COPY.afterSol}</SolSays>
+          <DawnSays mood="happy">{COPY.afterDawn}</DawnSays>
           <FeelCheck id="ladder-after" phase="after" value={s.after} onChange={(after) => update({ after })} />
           <div className="actions">
             <button className="btn" type="button" onClick={() => toStep("climb", { didAfter: true })}>{COPY.next}</button>
@@ -309,7 +309,7 @@ function WhyMore() {
   if (!open) return <button className="link" type="button" aria-expanded={false} onClick={() => setOpen(true)}>{COPY.whyMore}</button>;
   return (
     <div className="ladder-why">
-      {COPY.why.map((w) => <SolSays key={w} mood="curious" say={false}>{w}</SolSays>)}
+      {COPY.why.map((w) => <DawnSays key={w} mood="curious" say={false}>{w}</DawnSays>)}
       <Sources />
       <button className="link" type="button" aria-expanded onClick={() => setOpen(false)}>{COPY.whyHide}</button>
     </div>

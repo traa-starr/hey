@@ -8,7 +8,7 @@ import { format } from "../lib/template";
 import { deck, scoreCheck } from "../lib/voice";
 import { go, href } from "../router";
 import { store } from "../store/store";
-import { FlowTop, Screen, SolSays } from "../ui/kit";
+import { FlowTop, Screen, DawnSays } from "../ui/kit";
 import { VoiceMap } from "./You";
 
 export function Check() {
@@ -45,7 +45,7 @@ export function Check() {
         <FlowTop onClose={leave} title={t.mapTitle} />
         <Screen id="check-intro">
           <h2 className="sr">{c.copy.practice.check}</h2>
-          <SolSays mood="curious">{t.intro}</SolSays>
+          <DawnSays mood="curious">{t.intro}</DawnSays>
           <p className="small">{c.habitsNote}</p>
           <button className="btn" type="button" onClick={() => setStarted(true)}>{t.start}</button>
         </Screen>
@@ -59,9 +59,9 @@ export function Check() {
         <FlowTop onClose={leave} title={t.mapTitle} />
         <Screen id="check-done">
           <h2 className="sr">{c.copy.you.map}</h2>
-          <SolSays mood="happy">{t.mapSol}</SolSays>
+          <DawnSays mood="happy">{t.mapDawn}</DawnSays>
           <VoiceMap />
-          <SolSays mood="happy">{t.kindAfter}</SolSays>
+          <DawnSays mood="happy">{t.kindAfter}</DawnSays>
           <a className="btn" href={href({ name: "lesson", key: "on-your-side/a-kind-minute" })}>{t.kindGo}</a>
         </Screen>
       </>

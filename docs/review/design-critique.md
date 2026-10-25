@@ -10,15 +10,15 @@ The color system, type pairing, and voice are already strong: it reads as adult 
 
 | Finding | Severity | Recommendation |
 | --- | --- | --- |
-| The first screen is one small bubble ("hey you.") and a huge button in a mostly empty page. The most important moment has the least design. | 🔴 Critical | Open on a full sky with sol large, the name set big, then flow into the chat. |
-| In lessons, sol's face sits beside every bubble, because each step is wrapped in its own element and the "show once per run" rule only looks at direct siblings. Five faces in a column read as noise. | 🟡 Moderate | Show the face once per run of sol's bubbles, across steps. |
-| Every screen change is the same fade. Going deeper (path → lesson) and coming back feel identical, so there's no sense of place. | 🟡 Moderate | Directional transitions: forward slides in, close slides down; tabs crossfade. Same-element transitions for sol and lesson art. |
+| The first screen is one small bubble ("hey you.") and a huge button in a mostly empty page. The most important moment has the least design. | 🔴 Critical | Open on a full sky with dawn large, the name set big, then flow into the chat. |
+| In lessons, dawn's face sits beside every bubble, because each step is wrapped in its own element and the "show once per run" rule only looks at direct siblings. Five faces in a column read as noise. | 🟡 Moderate | Show the face once per run of dawn's bubbles, across steps. |
+| Every screen change is the same fade. Going deeper (path → lesson) and coming back feel identical, so there's no sense of place. | 🟡 Moderate | Directional transitions: forward slides in, close slides down; tabs crossfade. Same-element transitions for dawn and lesson art. |
 | Voice map bubbles can spill past the card edge (the bottom one is cut). | 🟢 Minor | Keep the bubbles inside the card; scale the layout to the card. |
 | Practice: the evidence label on each way to answer is squeezed into a right-hand column and wraps awkwardly. | 🟢 Minor | Put the label on its own line as a small tag. |
 
 ## Visual hierarchy
 
-- **What draws the eye first**: on home, sol and the greeting, which is correct. In lessons, it's the repeated faces, which isn't.
+- **What draws the eye first**: on home, dawn and the greeting, which is correct. In lessons, it's the repeated faces, which isn't.
 - **Reading flow**: clear top to bottom everywhere; one main action per screen holds.
 - **Emphasis**: lesson rows and path cards rely on generic line icons (a speaker for "talk to you", a mortarboard for "what you think"). The art carries no meaning, so every path looks equally important and equally generic.
 
@@ -27,9 +27,9 @@ The color system, type pairing, and voice are already strong: it reads as adult 
 | Element | Issue | Recommendation |
 | --- | --- | --- |
 | Dark-mode soft tints | coral-soft (#45201f), gold-soft and orange-soft read as brown, the color this redesign set out to remove (home's voice check tile is the worst) | Shift dark tints toward the violet base so they read as dusk, not mud |
-| sol's calm face | the dot eyes with a small flat mouth read as worried or blank at avatar size | A soft resting smile for calm; keep curious and sleepy distinct |
+| dawn's calm face | the dot eyes with a small flat mouth read as worried or blank at avatar size | A soft resting smile for calm; keep curious and sleepy distinct |
 | Path art | line icons in a colored square, while habits have their own glyphs | One illustrated mark per path in the same language as the habit glyphs |
-| Next step card | uses sol as the lesson's art | Use the lesson's path art; sol stays the companion |
+| Next step card | uses dawn as the lesson's art | Use the lesson's path art; dawn stays the companion |
 
 ## Accessibility
 
@@ -46,6 +46,6 @@ The color system, type pairing, and voice are already strong: it reads as adult 
 
 ## Priority recommendations
 
-1. **Make it flow**: directional screen transitions and a shared sol between home and lessons (View Transitions API, reduced motion respected).
-2. **Give it an identity**: illustrated path marks, a calmer resting face for sol, a hero welcome.
-3. **Clean up the noise**: one sol face per run in lessons, dark tints that read as dusk, evidence tags that don't wrap.
+1. **Make it flow**: directional screen transitions and a shared dawn between home and lessons (View Transitions API, reduced motion respected).
+2. **Give it an identity**: illustrated path marks, a calmer resting face for dawn, a hero welcome.
+3. **Clean up the noise**: one dawn face per run in lessons, dark tints that read as dusk, evidence tags that don't wrap.

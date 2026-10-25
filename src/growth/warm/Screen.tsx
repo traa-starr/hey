@@ -7,7 +7,7 @@ import { go, href } from "../../router";
 import { store } from "../../store/store";
 import { useData } from "../../store/useStore";
 import { Breath } from "../../ui/Breath";
-import { FlowTop, Ideas, Screen, SolSays } from "../../ui/kit";
+import { FlowTop, Ideas, Screen, DawnSays } from "../../ui/kit";
 import type { GrowthScreenProps } from "../types";
 import { FeelCheck } from "../feel/FeelCheck";
 import { middle, saveShift, type Feel } from "../feel/feel";
@@ -53,7 +53,7 @@ function Hub() {
     <>
       <FlowTop onClose={() => go({ name: "practice" })} title={copy.title} />
       <Screen id="warm-hub">
-        <SolSays mood="happy">{voice ? format(copy.hubSolVoice!, { voice: nameOf(voice) }) : copy.hubSol}</SolSays>
+        <DawnSays mood="happy">{voice ? format(copy.hubDawnVoice!, { voice: nameOf(voice) }) : copy.hubDawn}</DawnSays>
         <div className="card warm-voice">
           <span className="label">{copy.voiceTitle}</span>
           {voice ? (
@@ -89,7 +89,7 @@ function VoiceBuilder({ voice, onDone }: { voice: Voice | null; onDone: () => vo
   };
   return (
     <>
-      <SolSays mood="curious">{copy.voiceSol}</SolSays>
+      <DawnSays mood="curious">{copy.voiceDawn}</DawnSays>
       <div className="warm-qs" role="group" aria-label={copy.voiceQualities}>
         {WARM.qualities.map((q) => (
           <button key={q.id} type="button" className="warm-q" aria-pressed={picked.includes(q.id)} onClick={() => toggle(q.id)}>
@@ -166,7 +166,7 @@ function Visit() {
 
   const feelStep = (phase: "before" | "after") => (
     <>
-      <SolSays mood="happy">{phase === "before" ? copy.beforeSol : copy.afterSol}</SolSays>
+      <DawnSays mood="happy">{phase === "before" ? copy.beforeDawn : copy.afterDawn}</DawnSays>
       <FeelCheck id={`warm-${phase}`} phase={phase} value={phase === "before" ? before : after} onChange={phase === "before" ? setBefore : setAfter} />
       <div className="actions">
         <button className="btn" type="button" onClick={() => { setChecked((c) => ({ ...c, [phase]: true })); next(); }}>{copy.continue}</button>
@@ -184,7 +184,7 @@ function Visit() {
 
         {step === "settle" ? (
           <>
-            <SolSays mood="calm">{copy.settleSol}</SolSays>
+            <DawnSays mood="calm">{copy.settleDawn}</DawnSays>
             {breath === "idle" ? <button className="btn quiet" type="button" onClick={() => setBreath("going")}>{copy.breathe}</button> : <Breath breaths={2} onDone={() => setBreath("done")} />}
             <div className="know">
               <span className="label">{copy.touchTitle}</span>
@@ -199,7 +199,7 @@ function Visit() {
 
         {step === "thing" ? (
           <>
-            <SolSays mood="curious">{copy.thingSol}</SolSays>
+            <DawnSays mood="curious">{copy.thingDawn}</DawnSays>
             <div className="section">
               <label className="label" htmlFor="warm-thing">{copy.thingLabel}</label>
               <textarea id="warm-thing" className="field" rows={2} maxLength={140} placeholder={copy.thingPlaceholder} value={thing} onChange={(e) => setThing(e.target.value)} />
@@ -214,7 +214,7 @@ function Visit() {
 
         {step === "answer" ? (
           <>
-            <SolSays mood="calm">{format(trimmed ? copy.answerSol! : copy.answerSolNoThing!, { voice: vname })}</SolSays>
+            <DawnSays mood="calm">{format(trimmed ? copy.answerDawn! : copy.answerDawnNoThing!, { voice: vname })}</DawnSays>
             {trimmed ? (
               <div className="card warm-brought"><span className="label">{copy.brought}</span><p className="quote">{trimmed}</p></div>
             ) : null}
@@ -241,7 +241,7 @@ function Visit() {
 
         {step === "end" ? (
           <>
-            <SolSays mood="happy">{checked.before && checked.after ? copy.endSol : copy.endSolNoShift}</SolSays>
+            <DawnSays mood="happy">{checked.before && checked.after ? copy.endDawn : copy.endDawnNoShift}</DawnSays>
             {checked.before && checked.after ? <Shift before={before} after={after} /> : null}
             {outcome ? (
               <>
@@ -280,7 +280,7 @@ function Why() {
       <FlowTop at={i} of={WARM.why.length} onClose={hub} back={i > 0 ? () => { top(); setI(i - 1); } : undefined} />
       <Screen id={`warm-why-${i}`}>
         <h1 className="warm-sr">{copy.whyTitle}</h1>
-        {page ? <SolSays mood="calm">{page.say}</SolSays> : null}
+        {page ? <DawnSays mood="calm">{page.say}</DawnSays> : null}
         {page?.know && src ? (
           <div className="know">
             <span className="label">{copy.knowLabel}</span>
@@ -290,7 +290,7 @@ function Why() {
         ) : null}
         {last ? (
           <>
-            <SolSays mood="happy">{copy.whyDone}</SolSays>
+            <DawnSays mood="happy">{copy.whyDone}</DawnSays>
             <p className="small">{copy.whyHelp}</p>
             <a className="btn" href={href({ name: "grow", feature: "warm", sub: "visit" })}>{copy.enter}</a>
           </>
