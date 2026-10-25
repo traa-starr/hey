@@ -1,4 +1,6 @@
 # Checks every push and pull request; deploys main to GitHub Pages at /hey/.
+# e2e runs on pull requests and manual runs. It is skipped on push to main (the PR already ran it)
+# and on PRs that only change docs/** or *.md. The check job still runs and goes green either way.
 # Repository settings → Pages → Source must be "GitHub Actions".
 name: check and deploy
 
@@ -20,24 +22,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
           cache: npm
       - run: npm ci
       - run: npm run check
+      - id: scope
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.base_ref }}
+        run: |
+          e2e=true
+          if [ "$EVENT" = push ]; then
+            e2e=false
+          elif [ "$EVENT" = pull_request ] && ! git diff --name-only "origin/$BASE...HEAD" | grep -qvE '^docs/|\.md$'; then
+            e2e=false
+          fi
+          echo "e2e=$e2e" | tee -a "$GITHUB_OUTPUT"
+      # e2e builds the app itself; without e2e, build here
+      - if: steps.scope.outputs.e2e != 'true'
+        run: npm run build
       - id: playwright-version
+        if: steps.scope.outputs.e2e == 'true'
         run: echo "version=$(npx playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
       - id: playwright-cache
+        if: steps.scope.outputs.e2e == 'true'
         uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5.1.0
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
-      - if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - if: steps.scope.outputs.e2e == 'true' && steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
-      - if: steps.playwright-cache.outputs.cache-hit == 'true'
+      - if: steps.scope.outputs.e2e == 'true' && steps.playwright-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
-      - run: npm run e2e
+      - if: steps.scope.outputs.e2e == 'true'
+        run: npm run e2e
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         if: github.ref == 'refs/heads/main'
         with:

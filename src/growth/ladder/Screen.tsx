@@ -13,7 +13,7 @@ import { Ladder } from "./Ladder";
 import {
   COPY, MAX_RUNGS, POINTS, SOURCES, climbs, holds, pointById, pointForSentence, sentenceIdeas, tierFor, topOf, trueWords,
   type Rung
-} from "./ladder";
+} from "./ladder-logic";
 import "./ladder.css";
 
 type Step = "open" | "start" | "near" | "why" | "rung" | "true" | "held" | "short" | "after" | "climb";
