@@ -25,6 +25,7 @@ npm run build      # production build in dist/
 1. `npm install` (first time, or after `package.json` changes).
 2. `npm run dev -- --host`
 3. Vite prints a `Network:` address, like `http://192.168.1.20:5173/hey/`. Open that on the phone. The phone and the computer need to be on the same Wi-Fi.
+   Open it in the phone's browser, not from the home-screen icon: the icon opens the live app (`main`), not this one.
 4. On Windows, the first run may ask whether Node.js can use the network. Allow **private networks**. If the phone can't connect, check Windows Defender Firewall → allowed apps → Node.js → private.
 
 The build number shows at the bottom of you → settings.
